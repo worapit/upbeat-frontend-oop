@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bungee", cursive;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    45deg,
+    #335bf4,
+    #7462ff,
+    #2ae9c9,
+    #88ffba,
+    #ffc06e,
+    #ec9632,
+    #ec4022,
+    #fa2d22,
+    #fa0303
+  );
+  background-size: 300% 300%;
+  animation: color 12s ease-in-out infinite;
+}
+@keyframes color {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 470px;
+  background: #cbcbcb;
+  border-radius: 40px;
+  padding: 25px 20px 15px;
+  gap: 15px;
+}
+.wrapper h2 {
+  color: #7b7b7b;
+  font-size: 28px;
+  text-align: center;
+}
+
+.wrapper textarea {
+  width: 100%;
+  height: 400px;
+  padding: 15px;
+  font-size: 14px;
+
+  border-radius: 5px;
+  border-color: #ded9d9;
+  outline: none;
+  resize: none;
+}
+
+textarea:is(:focus, :valid) {
+  border-width: 2px;
+  padding: 14px;
+  border-color: #bdbdbd;
+}
+
+textarea::-webkit-scrollbar {
+  width: 0px;
+}
+
+a {
+  position: relative;
+  background: #979797;
+  color: #fff !important;
+  border-radius: 15px 15px 15px 15px;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  padding: 10px 30px;
+  transition: 0.5s;
+}
+
+a:hover {
+  letter-spacing: 0.25em;
+  background: var(--clr);
+  box-shadow: 0 0 0px var(--clr);
+  text-decoration: none;
+}
