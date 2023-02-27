@@ -6,18 +6,18 @@ import "./hexagon.css";
 
 export default function Hexagon() {
   //get turn player array regions deposit
-
+  
   //configuration file
-  const row = 4;
-  const column = 5;
-  const regions=[];
-  const hexagon=[];
+  // const row = m;
+  // const column = n;
+  // const regions=[];
+  // const hexagon=[m][n];
 
-  for(let i = 0; i < row; i++){
-    for(let j = 0; j < column; j++){
+  // for(let i = 0; i < row; i++){
+  //   for(let j = 0; j < column; j++){
 
-    }
-  }
+  //   }
+  // }
 
 
 
@@ -38,7 +38,10 @@ export default function Hexagon() {
 
   return (
     <div className="container">
+      <div className="column">
       <div className="column1">
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
@@ -49,8 +52,12 @@ export default function Hexagon() {
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
       </div>
       <div className="column1">
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
@@ -61,7 +68,43 @@ export default function Hexagon() {
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
         <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
       </div>
+      <div className="column1">
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+      </div>
+      <div className="column2">
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+      </div>
+      <div className="column1">
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+      </div>
+      <div className="column2">
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+        <img className="img-eye" src={HexW} />
+      </div>
+    </div>
+
     </div>
   );
 }

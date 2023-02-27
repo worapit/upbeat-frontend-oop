@@ -10,6 +10,11 @@ body {
 }
 
 .container {
+  height: 150px;
+  width: 200px;
+}
+
+.column {
   display: flex;
   gap: 5px;
 }
@@ -33,7 +38,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  
+
   margin-left: -29px;
 }
 

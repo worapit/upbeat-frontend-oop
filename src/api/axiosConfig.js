@@ -1,11 +1,6 @@
 // import axios from "axios";
 
-// const axios = require("axios");
-
-// const mongoUrl =
-//   "mongodb+srv://dorimu:Dream_528260@cluster0.klmxmtb.mongodb.net/test";
-
-// const axiosInstance = axios.create({
-//   baseURL: mongoUrl,
-//   headers: { "ngrok-skip-browser-warning": "true" },
+// export default axios.create({
+//     baseURL:'https://9c96-103-106-239-104.ap.ngrok.io',
+//     headers: {"ngrok-skip-browser-warning": "true"}
 // });
