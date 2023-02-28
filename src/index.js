@@ -7,7 +7,7 @@ import CstPlan from "./CstPlan";
 export default function App() {
   return (
     <div>
-      <CstPlan />;
+      <CstPlan />
     </div>
   );
 }
