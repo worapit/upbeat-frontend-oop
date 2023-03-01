@@ -1,17 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import CstPlan from "./CstPlan"
-import Map from "./Map";
-import CstPlan from "./CstPlan";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from "./Home";
-
+import CstPlan from "./CstPlan";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <Home />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/cstplan" element={<CstPlan />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

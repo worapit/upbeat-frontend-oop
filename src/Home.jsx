@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import myCustomFont from "./font/Space.ttf";
 import "./home.css";
 import ReactDOM from "react-dom";
+import CstPlan from "./CstPlan";
+
 
 export default function Home() {
   const lightRef = useRef(null);
@@ -34,7 +36,7 @@ export default function Home() {
             >
               UPBEAT
             </p>
-            <a href="#" style={{ "--clr": "#ff1867" }}>
+            <a href="/CstPlan" style={{ "--clr": "#ff1867" }}>
               <span style={{ fontFamily: "Bungee" }}>START</span>
               <i></i>
             </a>
