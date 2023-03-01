@@ -7,7 +7,7 @@ import "./cstPlan.css";
 
 export default function CstPlan() {
   return (
-    <div>
+    <div className="background">
       <div className="container">
         <div>
           <CountdownTimer countdownTimestampMs={Date.now() + 5 * 60 * 1000} />
