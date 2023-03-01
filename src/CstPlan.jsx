@@ -9,24 +9,21 @@ export default function CstPlan() {
   return (
     <div>
       <div className="container">
-        <div className="hex">
+        <div>
           <CountdownTimer countdownTimestampMs={Date.now() + 5 * 60 * 1000} />
-          <Hexagon />
-          <div>
-            <div className="question">
-              <a
-                href="#"
-                style={{ "--clr": "#ff1867", borderRadius: "5000px" }}
-              >
-                <span>?</span>
-                <i></i>
-              </a>
-              <div className="budget">
-                <div className="withIcon">
-                  <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
-                </div>
-                <span>100000000</span>
+          <div className="hex">
+            <Hexagon />
+          </div>
+          <div className="question">
+            <a href="#" style={{ "--clr": "#ff1867", borderRadius: "5000px" }}>
+              <span>?</span>
+              <i></i>
+            </a>
+            <div className="budget">
+              <div className="withIcon">
+                <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
               </div>
+              <span>100000000</span>
             </div>
           </div>
         </div>
