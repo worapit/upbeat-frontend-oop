@@ -11,7 +11,7 @@
   width: device-width;
 }
 
-body {
+.backgroundHome {
   width: max-content;
   height: max-content;
   aspect-ratio: 10/3;
@@ -50,7 +50,7 @@ a:hover {
   background: var(--clr);
   box-shadow: 0 0 35px var(--clr);
   text-decoration: none;
-}
+} 
 
 .container {
   display: flex;
