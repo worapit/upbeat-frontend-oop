@@ -1,6 +1,4 @@
 import React, { useRef } from "react";
-import CstPlan from "./CstPlan";
-import { Link } from "react-router-dom";
 import "./home.css";
 
 export default function Home() {
@@ -31,7 +29,7 @@ export default function Home() {
               <span style={{ fontFamily: "Bungee" }}>START</span>
               <i></i>
             </a>
-            <a href="#" style={{ "--clr": "#ff1867" }}>
+            <a href="#" style={{ "--clr": "#ff1867"}}>
               <span style={{ fontFamily: "Bungee" }}>how to play</span>
               <i></i>
             </a>

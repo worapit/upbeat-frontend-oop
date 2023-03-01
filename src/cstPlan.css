@@ -43,13 +43,11 @@ body {
 
 .container {
   display: flex;
-  gap: 50px;
+  gap: 40px;
 }
 
 .hex {
-  margin-inline-start: auto;
-  margin-top: 50px;
-  gap: 5p;
+  margin-top: 20px;
 }
 
 .wrapper {
@@ -112,16 +110,49 @@ a:hover {
 }
 
 .budget {
+  /* margin-top: 25px; */
+  /* margin-left: 150px; */
+  display: flex;
+  align-items: center;
+  color: #444 !important;
   height: 60px;
   width: 300px;
   border: 3px solid #ffffff;
-  background-color:  #645bf6;
+  background-color: #eaeaea;
   border-radius: 20px;
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   box-shadow: 0 6px 0 #b19a9a;
   outline: none;
   box-sizing: border-box;
-  inset: 0 -15px 0 rgba(24, 24, 24, 0.25), 0 45px 0 rgba(0, 0, 0, 0.15);
+  text-align: center;
+  gap: 5px;
 }
 
+.budget span {
+  font-size: 20px;
+  color: #b57676;
+  margin-left: 20px;
+  max-width: 200px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.withIcon {
+  width: 60px;
+  padding-left: 20px;
+  flex-shrink: 0;
+  /* margin-right: auto; */
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+  margin-top: 30px;
+  gap: 20px;
+  
+}
