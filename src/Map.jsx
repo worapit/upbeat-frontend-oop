@@ -6,10 +6,7 @@ import "./Map.css"
 export default function Map() {
   return (
     <div className="backgroundMap ">
-      <div className="container">
-        <Hexagon />
-        <img className="profile" src={Profile} />
-      </div>
+      <img className="profile" src={Profile} />
     </div>
   );
 }
