@@ -1,16 +1,15 @@
 import React, { useRef } from "react";
+import Profile from "./image/profile.png";
 import Hexagon from "./component/Hexagon";
-import CstPlan from "./CstPlan";
-import Home from "./Home";
-import CountdownTimer from "./component/CountdownTimer/CountdownTimer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWallet } from "@fortawesome/free-solid-svg-icons";
-import "./cstPlan.css";
+import "./Map.css"
 
 export default function Map() {
   return (
-    <div>
-      <span>Hello</span>
+    <div className="backgroundMap ">
+      <div className="container">
+        <Hexagon />
+        <img className="profile" src={Profile} />
+      </div>
     </div>
   );
 }
