@@ -7,9 +7,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div>
-     
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path = "/" element = {<Home />} />
+          <Route exact path = "/cstplan" element = {<CstPlan />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
