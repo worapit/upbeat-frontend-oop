@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Home from "./Home";
-import CstPlan from "./CstPlan";
-// import Map from "./Map";
+// import CstPlan from "./CstPlan";
+import Map from "./Map";
+import Hexagon from "./component/Hexagon";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {

@@ -8,9 +8,15 @@
 }
 
 body {
+  overflow: hidden;
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  
+  /* background-image: url("./image/town.png");
+  background-size: cover; */
+  
+
   background: linear-gradient(
     45deg,
     #335bf4,
@@ -38,10 +44,40 @@ body {
   }
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
+.show-regions {
+  height: 450px;
+  width: 800px;
+
+  background-image: url("./image/Sabaody.png");
+  background-size: cover;
+
+  border: 5px solid #238d64;
+  border-radius: 20px 7px 7px 20px;
+  box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
+  overflow: auto;
+  margin: auto;
+  margin-top: 1%;
+  resize: none;
+  padding-left: 8%;
+  padding-right: 7%;
+  padding-top: 3%;
+  padding-bottom: 2%;
+}
+
+.show-regions::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.show-regions::-webkit-scrollbar-track {
+  background: #c5bcbc;
+  border-radius: 500px;
+}
+
+.show-regions::-webkit-scrollbar-thumb {
+  background-color: #073423;
+  border-radius: 3px;
+  border: none;
 }
 
 .show-budget {
@@ -52,7 +88,6 @@ body {
 
 .budget {
   margin-top: 20px;
-  /* margin-left: 150px; */
 
   display: flex;
   align-items: center;
@@ -109,4 +144,66 @@ body {
   color: #fff;
 }
 
+.container-button {
+  position: relative;
+  display: inline-block;
+  margin-left: 1.5%;
+  margin-top: -4.5%;
+}
 
+.container-plan {
+  position: fixed;
+  bottom: 10;
+  right: 0;
+  display: inline-block;
+  margin-right: 1.5%;
+  margin-top: -4.5%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  color: #b57676;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  transition: 0.5s;
+}
+
+.button:hover + .card {
+  visibility: visible;
+  opacity: 0.9;
+  transform: translateY(-20px);
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 330px;
+  width: 230px;
+  max-height: 280px;
+  padding: 10px;
+
+  background-color: #fff;
+  color: #22589a;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 12px;
+}
