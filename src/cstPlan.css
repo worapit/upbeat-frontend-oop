@@ -1,22 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
+  margin:0;
+  padding:0;
+  height: max-content;
+  width: max-content;
   box-sizing: border-box;
   font-family: "Bungee", cursive;
 }
 
 .backgroundCst {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  position: fixed;
+  min-width: max-content;
+  min-height: max-content;
   height: 100%;
   width: 100%;
   background: linear-gradient(
     45deg,
-    #335bf4,
+
     #7462ff,
     #2ae9c9,
     #88ffba,
@@ -26,46 +27,30 @@
     #fa2d22,
     #fa0303
   );
-  background-size: 300% 300%;
+  background-size: auto;
   animation: color 12s ease-in-out infinite;
 }
-@keyframes color {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-}
 
-.container {
-  display: flex;
-  gap: 40px;
-}
-
-.hex {
-  margin-top: -30px;
-  margin-bottom: 30px;
-}
 
 .wrapper {
   display: flex;
-  justify-content: center;
+  position: relative;
+  right: 70px;
+  bottom: 50px;
+  width: 470px;
+  height: fit-content;
+  border: 3px solid #73AD21;
   align-items: center;
   flex-direction: column;
-  width: 470px;
   background: #cbcbcb;
   border-radius: 40px;
   padding: 25px 20px 15px;
-  gap: 15px;
+  gap: 10px;
 }
+
 .wrapper h2 {
   color: #7b7b7b;
   font-size: 28px;
-  text-align: center;
 }
 
 .wrapper textarea {
@@ -73,11 +58,8 @@
   height: 400px;
   padding: 15px;
   font-size: 14px;
-
   border-radius: 5px;
   border-color: #ded9d9;
-  outline: none;
-  resize: none;
 }
 
 textarea:is(:focus, :valid) {
@@ -86,9 +68,6 @@ textarea:is(:focus, :valid) {
   border-color: #bdbdbd;
 }
 
-textarea::-webkit-scrollbar {
-  width: 0px;
-}
 
 a {
   position: relative;
@@ -111,10 +90,10 @@ a:hover {
 }
 
 .budget {
-  /* margin-top: 25px; */
-  /* margin-left: 150px; */
-  display: flex;
+  position: fixed;
+  justify-content: center;
   align-items: center;
+  display: flex;
   color: #444 !important;
   height: 60px;
   width: 300px;
@@ -148,11 +127,4 @@ a:hover {
   /* margin-right: auto; */
 }
 
-.question {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 100px;
-  margin-bottom: 20px;
-  gap: 20px;
-}
+

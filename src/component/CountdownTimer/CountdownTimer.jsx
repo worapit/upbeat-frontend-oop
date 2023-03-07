@@ -4,7 +4,7 @@ import "./CountdownTimer.css";
 import {getRemainingTimeUnitMsTimestamp} from './Utils/CountdownTimerUtils';
 
 const defaultRemainingTime = {
-    seconds: '00',
+    seconds: '05',
     minutes: '05',
 }
 
@@ -20,15 +20,18 @@ const CountdownTimer = ({countdownTimestampMs}) => {
   function updateRemaininngTime(countdown) {
     setRemainingTime(getRemainingTimeUnitMsTimestamp (countdown));
   }
+  
 
 
-  return(
+  return (
     <div className="countdown-timer">
+      <span id="content1" style={{paddingRight: '10px'}}>Time Remaining:</span>
       <span className="two-numbers">{remainingTime.minutes}</span>
       <span>:</span>
       <span className="two-numbers">{remainingTime.seconds}</span>
     </div>
-  ); 
+  );
+   
 }
 
 export default  CountdownTimer; 

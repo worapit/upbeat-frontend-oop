@@ -30,7 +30,7 @@ export default function Home() {
             <p
               style={{
                 fontFamily: "gamefont",
-                fontSize: "10em",
+                fontSize: "8em",
                 color: "#fff",
               }}
             >
