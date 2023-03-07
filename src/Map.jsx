@@ -10,8 +10,6 @@ import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
 
 export default function Map() {
- 
-
   return (
     <div>
       <div className="time">
@@ -23,9 +21,12 @@ export default function Map() {
       </div>
 
       <div className="container-plan">
-        <a className="button" >
+        <a className="buttonM">
           <FontAwesomeIcon icon={faFileLines} size="2x" />
         </a>
+        <div className="button-meaning">
+          <p>CHANGE PLAN</p>
+        </div>
       </div>
 
       <div className="container-button">
@@ -34,11 +35,11 @@ export default function Map() {
         </a>
         <div className="card">
           <h3>HOW TO PLAY?</h3>
-          <p>Card content goes here. </p>
-          <p>Card content goes here. </p>
-          <p>Card content goes here. </p>
-          <p>Card content goes here. </p>
-          <p>Card content goes here. </p>
+          <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
+          <p>BUDGET </p>
+          <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
+          <p>DEPOSIT </p>
+          
           <p>Card content goes here. </p>
           <p>Card content goes here. </p>
           <p>Card content goes here. </p>
