@@ -1,99 +1,60 @@
 import React from "react";
-import HexW from "../image/hex_white.png";
-import HexB from "../image/hex_blue.png";
-import HexR from "../image/hex_red.png";
+import region from "../image/region.png";
+import cityCenter from "../image/city_center.png";
+import city from "../image/city.png";
 import "./hexagon.css";
 
 export default function Hexagon() {
-  //get turn player array regions deposit
+  //max 16*16
+  //min 9*9
+  let rowcf = 18;
+  let column = 18;
+  const regions = [];
+  const centerC = 2;
+  const centerR = 5;
+  const C = 2;
+  const R = 4;
 
-  //configuration file
-  // const row = m;
-  // const column = n;
-  // const regions=[];
-  // const hexagon=[m][n];
+  //max 16*16
+  //min 9*9
+  if (rowcf > 16) rowcf = 16;
+  else if (rowcf < 9) rowcf = 9;
+  if (column > 16) column = 16;
+  else if (column < 9) column = 9;
 
-  // for(let i = 0; i < row; i++){
-  //   for(let j = 0; j < column; j++){
-
-  //   }
-  // }
-
-  // for (let i = 0; i < column; i++) {
-  //   for (let j = 0; j < row; j++) {}
-  // }
-  // for (let i = 0; i < row; i++) {
-  //   const hexagons = [];
-  //   for (let j = 0; j < column; j++) {
-  //     hexagons.push(
-  //       <div className="column" key={`${i}-${j}`}>
-  //         <img className="img-eye" src={MyImage} />
-  //       </div>
-  //     );
-  //   }
-  //   regions.push(<div className="row">{hexagons}</div>);
-  // }
+  //keep picture hexagon(region) in array
+  for (let i = 0; i < rowcf; i++) {
+    const row = [];
+    for (let j = 0; j < column; j++) {
+      if (j === centerC-1 && i === centerR-1 ) row.push(cityCenter);
+      else if (j === C-1 && i === R-1) row.push(city);
+      else row.push(region);
+    }
+    regions.push(row);
+  }
 
   return (
-    <div className="container">
-      <div className="column">
-        <div className="column1">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-        
+    <div>
+      {regions.map((row, rowIndex) => (
+        <div className="rowcss" key={rowIndex}>
+          {row.map((img, colIndex) =>
+            colIndex % 2 === 0 ? (
+              <img
+                key={`${rowIndex}-${colIndex}`}
+                src={img}
+                className="low"
+                style={{ width: "10%" }}
+              />
+            ) : (
+              <img
+                key={`${rowIndex}-${colIndex}`}
+                src={img}
+                style={{ width: "10%" }}
+              />
+            )
+          )}
         </div>
-        <div className="column2">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-
-        </div>
-        <div className="column1">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-         
-        </div>
-        <div className="column2">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-     
-        </div>
-        <div className="column1">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-       
-        </div>
-        <div className="column2">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-        
-        </div>
-        <div className="column1">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-      
-        </div>
-        <div className="column2">
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-          <img className="img-eye" src={HexW} />
-      
-        </div>
-      </div>
+      ))}
     </div>
   );
 }
