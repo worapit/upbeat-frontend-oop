@@ -10,21 +10,9 @@ export default function CstPlan() {
     <div className="backgroundCst">
       <div className="container">
         <div>
-          <CountdownTimer countdownTimestampMs={Date.now() + 5 * 60 * 1000} />
+        <CountdownTimer countdownTimestampMs={Date.now() + 5 * 60 * 1000 + 5 * 1000} />
           <div className="hex">
             <Hexagon />
-          </div>
-          <div className="question">
-            <a href="#" style={{ "--clr": "#ff1867", borderRadius: "5000px" }}>
-              <span>?</span>
-              <i></i>
-            </a>
-            <div className="budget">
-              <div className="withIcon">
-                <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
-              </div>
-              <span>100000000</span>
-            </div>
           </div>
         </div>
         <div className="wrapper">
@@ -34,6 +22,18 @@ export default function CstPlan() {
             <span style={{ fontFamily: "Bungee" }}>COMPLETE</span>
             <i></i>
           </a>
+        </div>
+        <div className="question">
+            <a href="#" style={{ "--clr": "#ff1867", borderRadius: "5000px" }}>
+              <span>?</span>
+              <i></i>
+            </a>
+        </div>
+        <div className="budget">
+          <div className="withIcon">
+            <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
+          </div>
+          <span>100000000</span>
         </div>
       </div>
     </div>
