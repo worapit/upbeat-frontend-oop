@@ -32,7 +32,7 @@ body {
   background-size: 300% 300%;
   animation: color 12s ease-in-out infinite;
 }
-@keyframes color {
+/* @keyframes color {
   0% {
     background-position: 0 50%;
   }
@@ -42,7 +42,7 @@ body {
   100% {
     background-position: 0 50%;
   }
-}
+} */
 
 .show-regions {
   height: 450px;
@@ -153,8 +153,7 @@ body {
 
 .container-plan {
   position: fixed;
-  display: inline-block;
-  top: 92.7%;
+  /* display: inline-block; */
   right: 0%;
   margin-right: 1.5%;
   margin-top: -4.5%;
@@ -176,7 +175,7 @@ body {
 .button:hover + .card {
   visibility: visible;
   opacity: 0.9;
-  transform: translateY(-20px);
+  transform: translateY(-10%);
 }
 
 
