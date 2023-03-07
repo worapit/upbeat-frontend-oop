@@ -37,11 +37,10 @@ export default function Map() {
           <h3>HOW TO PLAY?</h3>
           <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
           <p>BUDGET </p>
+          <p>...................... </p>
           <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
           <p>DEPOSIT </p>
-          
-          <p>Card content goes here. </p>
-          <p>Card content goes here. </p>
+          <p>...................... </p>
           <p>Card content goes here. </p>
           <p>Card content goes here. </p>
           <p>Card content goes here. </p>
