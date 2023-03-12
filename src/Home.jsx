@@ -26,10 +26,12 @@ export default function Home() {
     <div id="homevideo">
       <video src={homevideo} autoPlay loop muted></video>
       <div className="rec"> </div>
+
       <div className ="upbeat">
         <p style={{
             fontFamily: "gamefont"}}>upbeat</p>
       </div>
+
       <div className="home-container">
         <div className="home-login">
           <h2 style={{ fontSize: "50px"}}>SIGN IN</h2>
@@ -48,6 +50,7 @@ export default function Home() {
           </form>
         </div>
       </div>
+
       <style dangerouslySetInnerHTML={{ __html: styles }} />
     </div>
 

@@ -5,136 +5,273 @@
 }
 
 #homevideo video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-
-
-.upbeat {
-  position: absolute;
-  width: 523px;
-  height: 132px;
-  left: 200px;
-  top: 330px;
-  
-  font-family: 'space';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 170px;
-  line-height: 132px;
-
-  
-  
-  color: #FFFFFF;
-}
-
-.rec
-{
-  position: absolute;
   width: 100%;
   height: 100%;
-  right: -335px;
-  object-fit: cover;
 
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.93) 18.39%, rgba(0, 0, 0, 0.91) 22.13%, rgba(0, 0, 0, 0.9) 25.71%, rgba(0, 0, 0, 0.86) 33.85%, rgba(0, 0, 0, 0.82) 40.33%, rgba(0, 0, 0, 0.77) 47.48%, rgba(0, 0, 0, 0.66) 53.43%, rgba(0, 0, 0, 0.55) 60.74%, rgba(0, 0, 0, 0.44) 65.33%, rgba(0, 0, 0, 0.35) 72.64%, rgba(0, 0, 0, 0.22) 78.59%, rgba(0, 0, 0, 0.11) 84.55%);
-  background-blend-mode: darken;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  transform: matrix(0, -1, -1, 0, 0, 0);
-} 
-.home-login h2 {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  text-align: center;
-  margin-bottom: 50px;
-  font-weight: 600;
-  color: rgb(250, 249, 249);
+  height: fit-content;
+  object-fit: cover;
+  z-index: -1;
 }
 
-.home-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  resize: none;
+@media only screen and (max-height: 750px) {
+  .upbeat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  padding-top: 3% ;
-  gap: 15px;
+    position: fixed;
+    top: 40%;
+    left: 10%;
+
+    font-family: "space";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 170px;
+    line-height: 132px;
+
+    color: #ffffff;
+  }
+
+  .rec {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -335px;
+    object-fit: cover;
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.93) 18.39%,
+      rgba(0, 0, 0, 0.91) 22.13%,
+      rgba(0, 0, 0, 0.9) 25.71%,
+      rgba(0, 0, 0, 0.86) 33.85%,
+      rgba(0, 0, 0, 0.82) 40.33%,
+      rgba(0, 0, 0, 0.77) 47.48%,
+      rgba(0, 0, 0, 0.66) 53.43%,
+      rgba(0, 0, 0, 0.55) 60.74%,
+      rgba(0, 0, 0, 0.44) 65.33%,
+      rgba(0, 0, 0, 0.35) 72.64%,
+      rgba(0, 0, 0, 0.22) 78.59%,
+      rgba(0, 0, 0, 0.11) 84.55%
+    );
+    background-blend-mode: darken;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transform: matrix(0, -1, -1, 0, 0, 0);
+  }
+
+  .home-login h2 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 600;
+    color: rgb(250, 249, 249);
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    resize: none;
+
+    padding-top: 3%;
+    gap: 15px;
+  }
+
+  .home-login {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+
+    right: 10%;
+    top: 17%;
+
+    padding: 50px;
+
+    backdrop-filter: blur(1px);
+    border: 4px solid mediumaquamarine;
+
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    resize: none;
+
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .home-login .home-inputBox {
+    position: relative;
+  }
+
+  .home-login .home-inputBox input {
+    position: relative;
+    width: 80%;
+    padding: 7px 20px;
+    outline: none;
+    font-size: 1.3em;
+    color: #22589a;
+    border-radius: 50px;
+    background: #fff;
+    border: none;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-login .home-inputBox ::placeholder {
+    color: rgb(184, 171, 174);
+  }
+
+  .home-login .home-inputBox #btn {
+    position: relative;
+    border: none;
+    outline: none;
+    background: crimson;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 500;
+    transition: 0.2s;
+    margin-left: 34px;
+    margin-top: 40px;
+  }
+
+  .home-login .home-inputBox #btn:hover {
+    letter-spacing: 0.2em;
+    color: black;
+    background: mediumaquamarine;
+  }
 }
 
-.home-login {
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  left: 850px;
-  top: 170px;
-  padding: 50px;
-  
-  backdrop-filter: blur(1px);
-  border: 4px solid mediumaquamarine;
+@media only screen and (min-height: 750px) {
+  .upbeat {
+    position: absolute;
+    width: 523px;
+    height: 132px;
+    left: 200px;
+    top: 330px;
 
-  border-radius: 50px;
-  display: flex;
-  flex-direction: column;
-  resize: none;
+    font-family: "space";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 170px;
+    line-height: 132px;
 
-  
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+  }
+
+  .rec {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: -335px;
+    object-fit: cover;
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.93) 18.39%,
+      rgba(0, 0, 0, 0.91) 22.13%,
+      rgba(0, 0, 0, 0.9) 25.71%,
+      rgba(0, 0, 0, 0.86) 33.85%,
+      rgba(0, 0, 0, 0.82) 40.33%,
+      rgba(0, 0, 0, 0.77) 47.48%,
+      rgba(0, 0, 0, 0.66) 53.43%,
+      rgba(0, 0, 0, 0.55) 60.74%,
+      rgba(0, 0, 0, 0.44) 65.33%,
+      rgba(0, 0, 0, 0.35) 72.64%,
+      rgba(0, 0, 0, 0.22) 78.59%,
+      rgba(0, 0, 0, 0.11) 84.55%
+    );
+    background-blend-mode: darken;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transform: matrix(0, -1, -1, 0, 0, 0);
+  }
+  .home-login h2 {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 600;
+    color: rgb(250, 249, 249);
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    resize: none;
+
+    padding-top: 3%;
+    gap: 15px;
+  }
+
+  .home-login {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    left: 850px;
+    top: 170px;
+    padding: 50px;
+
+    backdrop-filter: blur(1px);
+    border: 4px solid mediumaquamarine;
+
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    resize: none;
+
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .home-login .home-inputBox {
+    position: relative;
+  }
+
+  .home-login .home-inputBox input {
+    position: relative;
+    width: 80%;
+    padding: 7px 20px;
+    outline: none;
+    font-size: 1.3em;
+    color: #22589a;
+    border-radius: 50px;
+    background: #fff;
+    border: none;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .home-login .home-inputBox ::placeholder {
+    color: rgb(184, 171, 174);
+  }
+
+  .home-login .home-inputBox #btn {
+    position: relative;
+    border: none;
+    outline: none;
+    background: crimson;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 500;
+    transition: 0.2s;
+    margin-left: 34px;
+    margin-top: 40px;
+  }
+
+  .home-login .home-inputBox #btn:hover {
+    letter-spacing: 0.2em;
+    color: black;
+    background: mediumaquamarine;
+  }
 }
-
-.home-login .home-inputBox {
-  position: relative;
-}
-
-.home-login .home-inputBox input {
-  position: relative;
-  width: 80%;
-  padding: 7px 20px;
-  outline: none;
-  font-size: 1.3em;
-  color: #22589a;
-  border-radius: 50px;
-  background: #fff;
-  border: none;
-  margin-bottom: 20px;
-  margin-left: 10px;
-  justify-content: center;
-  align-items: center;
-
-
-}
-
-.home-login .home-inputBox ::placeholder {
-  color: rgb(184, 171, 174);
-}
-
-.home-login .home-inputBox #btn {
-  position: relative;
-  border: none;
-  outline: none;
-  background: crimson;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.3em;
-  font-weight: 500;
-  transition: 0.2s;
-  margin-left: 34px;
-  margin-top: 40px;
-}
-
-.home-login .home-inputBox #btn:hover {
-  letter-spacing: 0.20em;
-  color: black;
-  background:mediumaquamarine;
-}
-
-
-
-
-
-
-
