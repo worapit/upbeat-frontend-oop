@@ -197,7 +197,7 @@ body {
       flex-direction: column;
       resize: none;
     
-      gap: 40px;
+      gap: 20px;
     
     }
     
@@ -216,7 +216,7 @@ body {
       text-decoration: none !important;
       text-transform: uppercase;
       text-align: center;
-      font-size: 55px;
+      font-size: 40px;
       letter-spacing: 4px;
     
       padding: 15px 30px;
