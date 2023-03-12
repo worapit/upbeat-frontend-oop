@@ -18,6 +18,13 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+    transition: opacity 1.8s ease-in-out;
+
+    
+  }
+
+  .fade-out {
+    opacity: 0;
   }
 
 
@@ -63,11 +70,9 @@ img.pass {
 
 .login {
   position: relative;
-  padding: 25px;
+ 
   
-  backdrop-filter: blur(15px);
-  border: 1px solid #fff;
-
+  top: 280px;
   border-radius: 30px;
   width: 350px;
   display: flex;
@@ -93,15 +98,14 @@ img.pass {
 
 .login .log-inputBox input {
   position: relative;
-  width: 80%;
+  width: 100%;
   padding: 7px 20px;
   outline: none;
-  font-size: 1em;
+  font-size: 9em;
   color: #22589a;
   border-radius: 50px;
   background: #fff;
   border: none;
-  margin-bottom: 20px;
   margin-left: 10px;
   justify-content: center;
   align-items: center;
@@ -114,18 +118,71 @@ img.pass {
 
 .login .log-inputBox #btn {
   position: relative;
-  border: none;
-  outline: none;
-  background: #22589a;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1.25em;
+
+  background: rgb(128, 249, 146);
+  color: black;
+
+  font-size: 3em;
   font-weight: 500;
-  transition: 0.5s;
-  margin-left: 34px;
+  transition: 0.7s;
+  
+
 }
 
 .login .log-inputBox #btn:hover {
-  letter-spacing: 0.25em;
+
   background:crimson;
+  
+  box-shadow: 0 0 5px crimson, 0 0 10px crimson, 0 0 15px crimson, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
+  animation: glow3 1s infinite;
+}
+
+@keyframes glow3 {
+  0% {
+    opacity: 0.9;
+    box-shadow: 0 0 5px crimson, 0 0 10px crimson, 0 0 15px crimson, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+  100% {
+    opacity: 0.9;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
+  }
+}
+
+
+.login .log-inputBox #btnn {
+  position: relative;
+
+  background: rgb(108, 212, 241);
+  color: black;
+
+  font-size: 1.25em;
+  font-weight: 500;
+  transition: 0.7s;
+
+}
+
+.login .log-inputBox #btnn:hover {
+  letter-spacing: 0.2em;
+  background:thistle;
+  box-shadow: 0 0 5px rebeccapurple, 0 0 10px rebeccapurple, 0 0 15px crimson, 0 0 20px rebeccapurple, 0 0 35px rebeccapurple, 0 0 40px rebeccapurple, 0 0 50px rebeccapurple, 0 0 75px rebeccapurple;
+  animation: glow 1s infinite;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.9;
+    box-shadow: 0 0 5px rebeccapurple, 0 0 10px rebeccapurple, 0 0 15px rebeccapurple, 0 0 20px rebeccapurple, 0 0 35px rebeccapurple 0 0 40px rebeccapurple, 0 0 50px rebeccapurple, 0 0 75px rebeccapurple;
+  }
+  50% {
+    opacity: 0.5;
+    box-shadow: none;
+  }
+  100% {
+    opacity: 0.9;
+    box-shadow: 0 0 5px rebeccapurple, 0 0 10px rebeccapurple, 0 0 15px rebeccapurple, 0 0 20px rebeccapurple, 0 0 35px rebeccapurple, 0 0 40px rebeccapurple, 0 0 50px rebeccapurple, 0 0 75px rebeccapurple;
+  }
 }
