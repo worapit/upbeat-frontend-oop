@@ -19,14 +19,6 @@
   min-height: 100vh;
   height: 100%;
   width: 100%;
-
-  position: fixed;
-  top:0%;
-
-  background-image: url("./image/bg1.JPG");
-  background-size: cover;
-
-  /* background: linear-gradient(
     45deg,
     #335bf4,
     #7462ff,
