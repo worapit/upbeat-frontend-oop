@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@font-face {
+  font-family: space;
+  src: url(./font/Space.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Bungee", cursive;
+  width: device-width;
+}
+
+body {
+  overflow: hidden;
+}
+
+#bg-video video {
+  width: 100%;
+  height: fit-content;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.load-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 22%;
+
+  color: antiquewhite;
+  
+}
+
+.load-text h1 {
+ 
+  text-shadow: 
+  0.025em 0.025em 0.02em rgb(219, 177, 28),
+  0.05em 0.05em 0.02em  rgb(23, 23, 151),
+  0.075em 0.075em 0.02em  rgb(202, 43, 43),
+  0.1em 0.1em 0 black;
+
+  font-size: 2.2em;
+
+  letter-spacing: 0.1em;
+
+}
+
