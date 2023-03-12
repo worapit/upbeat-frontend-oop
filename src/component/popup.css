@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Bungee", cursive;
+  width: device-width;
+}
+
+
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    width: 900px;
+    height: 500px;
+
+    background: #e6e6e6;
+    box-shadow: 0px 5px 5px rgba(83, 56, 11, 0.5);
+   
+    border: 5px solid rgba(83, 56, 11, 0.5);
+    border-radius: 40px;
+    padding: 20px;
+
+    
+    /* margin-top: 2%; */
+}
+

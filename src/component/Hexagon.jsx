@@ -7,8 +7,9 @@ import "./hexagon.css";
 export default function Hexagon() {
   //max 16*16
   //min 9*9
-  let rowcf = 18;
-  let column = 18;
+  let rowcf = 16;
+  let column = 16
+  ;
   const regions = [];
   const centerC = 2;
   const centerR = 5;

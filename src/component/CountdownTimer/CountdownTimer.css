@@ -3,8 +3,8 @@
 .countdown-timer {
     font-size: 40px;
     position: relative;
-    left: auto;
-    top: 80px;
+    top: 6%;
+    color:blueviolet;
     justify-content: center;
     align-items: center;
 }
