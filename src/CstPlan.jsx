@@ -11,6 +11,7 @@ export default function CstPlan() {
     <div className="cst-page">
       <div className="show-cstPlan">
         <div className="cst-show-detail">
+
           <CountdownTimer
             countdownTimestampMs={Date.now() + 5 * 60 * 1000 + 5 * 1000}
           />
@@ -33,6 +34,7 @@ export default function CstPlan() {
               <span>5000</span>
             </div>
           </div>
+          
         </div>
 
         <div className="cst-wrapper">
@@ -43,6 +45,7 @@ export default function CstPlan() {
             <i></i>
           </a>
         </div>
+
       </div>
     </div>
   );
