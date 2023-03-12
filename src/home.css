@@ -6,15 +6,20 @@
 * {
   margin: 0rem;
   padding: 0rem;
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
   font-family: "Bungee", cursive;
   width: device-width;
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: max-content;
   height: max-content;
-  aspect-ratio: 10/3;
+  font-size: 2em;
   touch-action: pan-x pan-y;
   user-select: none;
   zoom: reset;
@@ -31,10 +36,14 @@ body {
   flex-direction: column;
   gap: 40px;
   padding-top: 50px;
+  text-align: center;
+  font-size: 2em;
+  width: auto;
 }
 
 a {
   position: relative;
+  bottom: 160px;
   background: #444;
   color: #fff !important;
   border-radius: 30px 30px 30px 30px;
@@ -44,7 +53,11 @@ a {
   letter-spacing: 0.1em;
   padding: 0px 30px;
   transition: 0.5s;
+  width: max-content;
+  max-width: max-content;
+  height: max-content;
 }
+
 a:hover {
   letter-spacing: 0.25em;
   background: var(--clr);
@@ -52,12 +65,7 @@ a:hover {
   text-decoration: none;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+
 
 #hex-grid {
   height: 100vh;
