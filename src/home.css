@@ -25,15 +25,32 @@
 
     position: fixed;
     top: 40%;
-    left: 10%;
+    left: 7%;
+
+    text-shadow: 0em 0em 0em rgb(190, 153, 21),
+      0.03em 0.03em 0.02em rgb(178, 152, 214),
+      0.06em 0.06em 0.01em rgb(80, 16, 198), 0.1em 0.1em 0 black;
+    letter-spacing: 0.02em;
 
     font-family: "space";
     font-style: normal;
-    font-weight: 400;
+    font-weight: 00;
     font-size: 170px;
     line-height: 132px;
 
     color: #ffffff;
+  }
+
+  .planet img {
+    position: absolute;
+    top: -17%;
+    left: -4%;
+    width: 60%;
+    rotate: 10deg;
+
+    opacity: 0.8;
+
+    z-index: -1;
   }
 
   .rec {
@@ -157,6 +174,11 @@
     left: 200px;
     top: 330px;
 
+    text-shadow: 0em 0em 0em rgb(190, 153, 21),
+      0.03em 0.03em 0.02em rgb(178, 152, 214),
+      0.06em 0.06em 0.01em rgb(80, 16, 198), 0.1em 0.1em 0 black;
+    letter-spacing: 0.02em;
+
     font-family: "space";
     font-style: normal;
     font-weight: 400;
@@ -164,6 +186,18 @@
     line-height: 132px;
 
     color: #ffffff;
+  }
+
+  .planet img {
+    position: absolute;
+    top: -6%;
+    left: 2%;
+    width: 60%;
+    rotate: 10deg;
+
+    opacity: 0.8;
+
+    z-index: -1;
   }
 
   .rec {
