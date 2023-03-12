@@ -17,6 +17,17 @@
   z-index: -1;
 }
 
+
+img.user {
+width: 40px; /* change to desired width */
+margin-left: 5px;
+}
+img.pass {
+width: 40px; /* change to desired width */
+margin-left: 5px;
+}
+
+
 @media only screen and (max-height: 750px) {
   .upbeat {
     display: flex;
