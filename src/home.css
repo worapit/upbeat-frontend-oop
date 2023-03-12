@@ -59,6 +59,7 @@
     height: 100%;
     right: -335px;
     object-fit: cover;
+    z-index: -1;
 
     background: linear-gradient(
       180deg,
