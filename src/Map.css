@@ -4,9 +4,7 @@
   src: url(./font/Space.ttf);
 }
 
-@media only screen and (max-width: 1440px) {
-  /* CSS rules to be applied when the condition is met */
-}
+
 
 * {
   box-sizing: border-box;
@@ -19,18 +17,12 @@
   min-height: 100vh;
   height: 100%;
   width: 100%;
-    45deg,
-    #335bf4,
-    #7462ff,
-    #2ae9c9,
-    #88ffba,
-    #ffc06e,
-    #ec9632,
-    #ec4022,
-    #fa2d22,
-    #fa0303
-  );
-  background-size: 300% 300%; */
+
+  position: fixed;
+  top: 0%;
+  
+  background-image: url("./image/bg1.JPG");
+  background-size: cover; 
 
 }
 
