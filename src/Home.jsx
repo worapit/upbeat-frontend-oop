@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import myCustomFont from "./font/Space.ttf";
 import "./home.css";
 import ReactDOM from "react-dom";
+import homevideo from "./image/homevideo.mp4"
 
 export default function Home() {
   const lightRef = useRef(null);
@@ -20,40 +21,15 @@ export default function Home() {
   `;
 
   return (
-    <div className="home-page ">
-      <header id="hex-grid" onMouseMove={handleMouseMove}>
-        <div className="light" ref={lightRef}></div>
-          <div className="grid">
-            <div className="home-button">
+    <div id="homevideo">
+      <video src={homevideo} autoPlay loop muted></video>
+      <div className="rec">
+        <div className ="upbeat">
+          <p>upbeat</p>
+        </div>
+        </div>
+        <style dangerouslySetInnerHTML={{ __html: styles }} />
+      </div>
 
-              <p
-                style={{
-                  fontFamily: "gamefont",
-                  color: "#fff",
-                }}
-              >
-                UPBEAT
-              </p>
-
-
-              
-
-              <div className="home-show-button">
-                <a href="/login" style={{ "--clr": "#ff1867" }}>
-                  <span style={{ fontFamily: "Bungee" }}>START</span>
-                  <i></i>
-                </a>
-                <a href="#" style={{ "--clr": "#ff1867" }}>
-                  <span style={{ fontFamily: "Bungee" }}>how to play</span>
-                  <i></i>
-                </a>
-              </div>
-
-            </div>
-          </div>
-
-      </header>
-      <style dangerouslySetInnerHTML={{ __html: styles }} />
-    </div>
   );
 }
