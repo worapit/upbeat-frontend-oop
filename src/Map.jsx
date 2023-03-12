@@ -5,6 +5,7 @@ import CstPlan from "./CstPlan";
 import CountdownTimer from "./component/CountdownTimer/CountdownTimer";
 import PopUp from "./component/PopUp";
 
+
 import myCustomFontt from "./font/Space.ttf";
 
 
@@ -38,7 +39,8 @@ export default function Map() {
 
   return (
     <div className="map-page">
-      <div className="map-time">
+
+      <div className="map-header">
         <span
           style={{
             fontFamily: "space",
