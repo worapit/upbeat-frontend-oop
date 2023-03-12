@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
 * {
-  box-sizing: border-box;
+  box-sizing:content-box;
   font-family: "Bungee", cursive;
   width: device-width;
 }
@@ -114,5 +114,5 @@ body {
 
 .login .log-inputBox #btn:hover {
   letter-spacing: 0.25em;
-  background: #096d4d;
+  background:crimson;
 }
