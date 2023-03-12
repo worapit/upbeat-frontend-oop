@@ -2,9 +2,10 @@ import React, { useRef } from "react";
 import myCustomFont from "./font/Space.ttf";
 import "./home.css";
 import ReactDOM from "react-dom";
-import homevideo from "./image/homevideo.mp4"
-import user from "./image/user.png"
-import pass from "./image/padlock.png"
+import homevideo from "./image/homevideo.mp4";
+import MyPlanet from "./image/neptune.png";
+import user from "./image/user.png";
+import pass from "./image/padlock.png";
 
 export default function Home() {
   const lightRef = useRef(null);
@@ -27,14 +28,25 @@ export default function Home() {
       <video src={homevideo} autoPlay loop muted></video>
       <div className="rec"> </div>
 
-      <div className ="upbeat">
-        <p style={{
-            fontFamily: "gamefont"}}>upbeat</p>
+      <div className="upbeat">
+        <p
+          style={{
+            fontFamily: "gamefont",
+          }}
+        >
+          upbeat
+        </p>
       </div>
 
+      <div className="planet">
+        <img src={MyPlanet} />
+      </div>
+
+
+  
       <div className="home-container">
         <div className="home-login">
-          <h2 style={{ fontSize: "50px"}}>SIGN IN</h2>
+          <h2 style={{ fontSize: "50px" }}>SIGN IN</h2>
           <div className="home-inputBox">
             <img className="user" src={user}></img>
             <input type="text" placeholder="Username" />
@@ -53,6 +65,5 @@ export default function Home() {
 
       <style dangerouslySetInnerHTML={{ __html: styles }} />
     </div>
-
   );
 }
