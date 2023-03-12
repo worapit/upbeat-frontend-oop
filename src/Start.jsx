@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import myLogin from "./image/startvideo.mp4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import PopUp from "./component/PopUp";
 import "./start.css";
-import Loading from "./Loading";
 
 export default function Start() {
   const videoRef = useRef(null);
@@ -25,27 +27,53 @@ export default function Start() {
     };
   }, []);
 
+  //pop up how to play
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  function openPopup() {
+    setIsPopupOpen(true);
+  }
+
+  function closePopup() {
+    setIsPopupOpen(false);
+  }
+
   return (
-    <div id="log-bg-video">
-      <video ref={videoRef} src={myLogin} autoPlay loop muted></video>
-      <form action="/loading">
-        <div className="log-container">
-          <div className="login">
-            <div className="log-inputBox">
-              <input type="submit" value="Start Game" id="btn" />
-            </div>
-          </div>
+    <div id="start-bg-video">
+      <video ref={videoRef} src={myLogin} autoPlay loop muted ></video>
+
+      <div className="start-container">
+        <div className="start-button">
+
+          <a href="/loading" style={{ "--clr": "#ff1867" }}>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            start game
+          </a>
+
+          <a onClick={openPopup} style={{ "--clr": "#1e9bff" }}>
+          <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            how to play
+          </a>
+          {isPopupOpen && (
+            <div id="start-popup-container">
+              <PopUp />
+              <a onClick={closePopup}>
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  style={{ color: "#fff" }}
+                  size="2x"
+                />
+              </a>
+            </div> 
+          )}
         </div>
-      </form>
-      <form action="/howto">
-        <div className="log-container">
-          <div className="login">
-            <div className="log-inputBox">
-              <input type="submit" value="HOW TO PLAY" id="btnn" />
-            </div>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
