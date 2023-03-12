@@ -4,16 +4,6 @@
   src: url(./font/Space.ttf);
 }
 
-.home-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 100vh;
-  height: 100%;
-  width: 100%;
-}
-
 #homevideo video {
     width: 100%;
     height: 100%;
@@ -25,99 +15,124 @@
   }
 
 
-/* .log-background {
-  background-image: url("./image/space.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-
-  height: 100%;
-  width: 100%;
-
-  height: 100vh;
-} */
-
 .upbeat {
   position: absolute;
   width: 523px;
   height: 132px;
-  left: 858px;
-  top: 208px;
+  left: 200px;
+  top: 330px;
   
-  font-family: 'Bungee Shade';
+  font-family: 'space';
   font-style: normal;
   font-weight: 400;
-  font-size: 110px;
+  font-size: 170px;
   line-height: 132px;
-  /* identical to box height */
+
   
   
   color: #FFFFFF;
 }
 
- .rec
+.rec
 {
-position: absolute;
-width: 100%;
-height: 100%;
-right: -460px;
-object-fit: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: -335px;
+  object-fit: cover;
 
-background: linear-gradient(180deg, rgba(0, 0, 0, 0.93) 18.39%, rgba(0, 0, 0, 0.91) 22.13%, rgba(0, 0, 0, 0.9) 25.71%, rgba(0, 0, 0, 0.86) 33.85%, rgba(0, 0, 0, 0.82) 40.33%, rgba(0, 0, 0, 0.77) 47.48%, rgba(0, 0, 0, 0.66) 53.43%, rgba(0, 0, 0, 0.55) 60.74%, rgba(0, 0, 0, 0.44) 65.33%, rgba(0, 0, 0, 0.35) 72.64%, rgba(0, 0, 0, 0.22) 78.59%, rgba(0, 0, 0, 0.11) 84.55%);
-background-blend-mode: darken;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-transform: matrix(0, -1, -1, 0, 0, 0);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.93) 18.39%, rgba(0, 0, 0, 0.91) 22.13%, rgba(0, 0, 0, 0.9) 25.71%, rgba(0, 0, 0, 0.86) 33.85%, rgba(0, 0, 0, 0.82) 40.33%, rgba(0, 0, 0, 0.77) 47.48%, rgba(0, 0, 0, 0.66) 53.43%, rgba(0, 0, 0, 0.55) 60.74%, rgba(0, 0, 0, 0.44) 65.33%, rgba(0, 0, 0, 0.35) 72.64%, rgba(0, 0, 0, 0.22) 78.59%, rgba(0, 0, 0, 0.11) 84.55%);
+  background-blend-mode: darken;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transform: matrix(0, -1, -1, 0, 0, 0);
 } 
-
-
-
-.home-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  gap: 40px;
-  margin-top: -2%;
+.home-login h2 {
+  position: relative;
+  width: 100%;
   text-align: center;
-  width: auto;
+  margin-bottom: 50px;
+  font-weight: 600;
+  color: rgb(250, 249, 249);
 }
 
-.home-button p{
-  font-size: 15em;
-}
-
-.home-show-button {
+.home-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  resize: none;
+
+  padding-top: 3% ;
+  gap: 15px;
+}
+
+.home-login {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  left: 850px;
+  top: 170px;
+  padding: 50px;
+  
+  backdrop-filter: blur(1px);
+  border: 4px solid mediumaquamarine;
+
+  border-radius: 50px;
+  display: flex;
   flex-direction: column;
-  margin-top: -40px;
-  gap: 40px;
+  resize: none;
+
+  
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
 }
 
-.home-show-button a {
-  bottom: 160px;
-  background: #444;
-  color: #fff !important;
-  border-radius: 30px 30px 30px 30px;
-  text-decoration: none !important;
-  text-transform: uppercase;
-  font-size: 3em;
-  letter-spacing: 0.1em;
-  padding: 0px 30px;
-  transition: 0.5s;
-  width: max-content;
-  max-width: max-content;
-  height: max-content;
+.home-login .home-inputBox {
+  position: relative;
 }
 
-.home-show-button a:hover {
-  letter-spacing: 0.25em;
-  background: var(--clr);
-  box-shadow: 0 0 35px var(--clr);
-  text-decoration: none;
+.home-login .home-inputBox input {
+  position: relative;
+  width: 80%;
+  padding: 7px 20px;
+  outline: none;
+  font-size: 1.3em;
+  color: #22589a;
+  border-radius: 50px;
+  background: #fff;
+  border: none;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+
+
 }
+
+.home-login .home-inputBox ::placeholder {
+  color: rgb(184, 171, 174);
+}
+
+.home-login .home-inputBox #btn {
+  position: relative;
+  border: none;
+  outline: none;
+  background: crimson;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: 500;
+  transition: 0.2s;
+  margin-left: 34px;
+  margin-top: 40px;
+}
+
+.home-login .home-inputBox #btn:hover {
+  letter-spacing: 0.20em;
+  color: black;
+  background:mediumaquamarine;
+}
+
+
 
 
 
