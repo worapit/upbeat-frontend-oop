@@ -19,6 +19,10 @@
   min-height: 100vh;
   height: 100%;
   width: 100%;
+  
+  position: fixed;
+  top: 0%;
+  
   background-image: url("./image/bg1.JPG");
   background-size: cover; 
 }
@@ -258,5 +262,4 @@
   margin: 5px;
   font-size: 12px;
 }
-
 
