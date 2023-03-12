@@ -40,7 +40,7 @@ export default function Map() {
   return (
     <div className="map-page">
 
-      <div className="map-time">
+      <div className="map-header">
         <span
           style={{
             fontFamily: "space",
