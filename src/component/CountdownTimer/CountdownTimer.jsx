@@ -1,3 +1,4 @@
+import { color } from "@mui/system";
 import React from "react";
 import {useState , useEffect } from 'react';
 import "./CountdownTimer.css";
@@ -25,7 +26,7 @@ const CountdownTimer = ({countdownTimestampMs}) => {
 
   return (
     <div className="countdown-timer">
-      <span id="content1" style={{paddingRight: '10px'}}>Time Remaining:</span>
+      <span id="content1" style={{paddingRight: '10px' , color: "#fff"}}>Time Remaining:</span>
       <span className="two-numbers">{remainingTime.minutes}</span>
       <span>:</span>
       <span className="two-numbers">{remainingTime.seconds}</span>

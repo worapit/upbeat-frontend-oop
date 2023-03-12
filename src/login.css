@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Bungee", cursive;
+  width: device-width;
+}
+
+body {
+  overflow: hidden;
+}
+
+#log-bg-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+
+/* .log-background {
+  background-image: url("./image/space.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  height: 100%;
+  width: 100%;
+
+  height: 100vh;
+} */
+
+.log-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  resize: none;
+
+  padding-top: 3% ;
+  gap: 15px;
+}
+
+
+
+.log-logo {
+    width: 18%;
+    display: flex;
+    align-items: center;
+}
+
+.login {
+  position: relative;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  border: 1px solid #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-right: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  resize: none;
+
+  gap: 15px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+.login h2 {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 600;
+  color: rgb(250, 249, 249);
+}
+
+.login .log-inputBox {
+  position: relative;
+}
+
+.login .log-inputBox input {
+  position: relative;
+  width: 100%;
+  padding: 7px 20px;
+  outline: none;
+  font-size: 1em;
+  color: #22589a;
+  border-radius: 50px;
+  background: #fff;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.login .log-inputBox ::placeholder {
+  color: rgb(184, 171, 174);
+}
+
+.login .log-inputBox #btn {
+  position: relative;
+  border: none;
+  outline: none;
+  background: #22589a;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.25em;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+.login .log-inputBox #btn:hover {
+  letter-spacing: 0.25em;
+  background: #096d4d;
+}
