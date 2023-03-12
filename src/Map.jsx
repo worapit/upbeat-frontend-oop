@@ -5,8 +5,6 @@ import CstPlan from "./CstPlan";
 import CountdownTimer from "./component/CountdownTimer/CountdownTimer";
 import PopUp from "./component/PopUp";
 
-import { Helmet } from "react-helmet";
-
 import myCustomFontt from "./font/Space.ttf";
 
 
@@ -40,12 +38,6 @@ export default function Map() {
 
   return (
     <div className="map-page">
-      <Helmet>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-      </Helmet>
       <div className="map-time">
         <span
           style={{
