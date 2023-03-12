@@ -1,21 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Bungee", cursive;
+@font-face {
+  font-family: space;
+  src: url(./font/Space.ttf);
 }
 
+@media only screen and (max-width: 1440px) {
+  /* CSS rules to be applied when the condition is met */
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Bungee", cursive;
+  width: device-width;
+}
+
+
+.map-page {
   min-height: 100vh;
   height: 100%;
   width: 100%;
-  
-  /* background-image: url("./image/town.png");
-  background-size: cover; */
-  
 
-  background: linear-gradient(
+  position: fixed;
+  top:0%;
+
+  background-image: url("./image/bg1.JPG");
+  background-size: cover;
+
+  /* background: linear-gradient(
     45deg,
     #335bf4,
     #7462ff,
@@ -27,34 +38,30 @@
     #fa2d22,
     #fa0303
   );
-  background-size: 300% 300%;
-  animation: color 12s ease-in-out infinite;
-}
-/* @keyframes color {
-  0% {
-    background-position: 0 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0 50%;
-  }
-} */
+  background-size: 300% 300%; */
 
-.show-regions {
+}
+
+.map-show-regions {
   height: 450px;
   width: 800px;
 
-  background-image: url("./image/Sabaody.png");
-  background-size: cover;
 
-  border: 5px solid #238d64;
+  background:  rgba(35, 42, 145, 0.25);
+  backdrop-filter: blur(40px);
+ 
+  border-bottom: 3px solid rgba(6, 5, 5, 0.25);
+  border-right: 3px solid rgba(3, 2, 2, 0.25);
+
+  border: 5px solid rgb(187, 167, 88);
+  border-left-style:double;
+  border-right-style:double;
   border-radius: 20px 7px 7px 20px;
   box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
+
   overflow: auto;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 1%;
   resize: none;
   padding-left: 8%;
   padding-right: 7%;
@@ -62,29 +69,29 @@
   padding-bottom: 2%;
 }
 
-.show-regions::-webkit-scrollbar {
+.map-show-regions::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 
-.show-regions::-webkit-scrollbar-track {
-  background: #c5bcbc;
+.map-show-regions::-webkit-scrollbar-track {
+  background: #e9edc4;
   border-radius: 500px;
 }
 
-.show-regions::-webkit-scrollbar-thumb {
-  background-color: #073423;
+.map-show-regions::-webkit-scrollbar-thumb {
+  background-color: #850a3bdb;
   border-radius: 3px;
   border: none;
 }
 
-.show-budget {
+.map-show-budget {
   position: absolute;
   top: 20px;
   left: 20px;
 }
 
-.budget {
+.map-budget {
   margin-top: 20px;
 
   display: flex;
@@ -104,7 +111,7 @@
   gap: 5px;
 }
 
-.budget span {
+.map-budget span {
   font-size: 20px;
   color: #b57676;
   margin-left: 20px;
@@ -115,14 +122,14 @@
   text-overflow: ellipsis;
 }
 
-.withIcon {
+.map-withIcon {
   width: 60px;
   padding-left: 20px;
   flex-shrink: 0;
   /* margin-right: auto; */
 }
 
-.profile {
+.map-profile {
   width: 150px;
   height: 150px;
   position: absolute;
@@ -132,24 +139,94 @@
   margin-top: 35px;
 }
 
-.time {
+.map-time {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
   margin-top: 20px;
-  font-size: 60px;
+  font-size: 70px;
+  font-family: space;
   color: #fff;
 }
 
-.container-button {
-  position: relative;
-  display: inline-block;
+.map-container-button {
+  position: fixed;
+  left: 0%;
   margin-left: 1.5%;
   margin-top: -4.5%;
 }
 
-.container-plan {
+.map-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  color: #b57676;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  transition: 0.5s;
+}
+
+.map-button:hover + .map-button-meaning1 {
+  visibility: visible;
+  opacity: 0.9;
+  transform: translateX(20px);
+}
+
+.map-button-meaning1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  margin-top: -90%;
+  margin-left: 80%;
+  width: 130px;
+
+  background-color: #fff;
+  color: #22589a;
+  border-radius: 190px 90px 90px 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.map-button-meaning1 p {
+  margin: 5px;
+  font-size: 12px;
+}
+
+
+
+#popup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+
+  gap: 15px;
+}
+
+
+
+
+
+
+
+.map-container-plan {
   position: fixed;
   /* display: inline-block; */
   right: 0%;
@@ -157,7 +234,7 @@
   margin-top: -4.5%;
 }
 
-.button {
+.map-buttonM {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,63 +247,15 @@
   transition: 0.5s;
 }
 
-.button:hover + .card {
-  visibility: visible;
-  opacity: 0.9;
-  transform: translateY(-10%);
-}
-
-
-.card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 330px;
-  width: 230px;
-  max-height: 280px;
-  padding: 10px;
-  outline: none;
-  background-color: #fff;
-  color: #22589a;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.card h3 {
-  margin: 0 0 10px;
-  font-size: 14px;
-}
-
-.card p {
-  margin: 0;
-  font-size: 12px;
-}
-
-.buttonM {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #eaeaea;
-  color: #b57676;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  transition: 0.5s;
-}
-
-.buttonM:hover + .button-meaning{
+.map-buttonM:hover + .map-button-meaning {
   visibility: visible;
   opacity: 0.9;
   transform: translateX(-40px);
 }
 
-.button-meaning{
+.map-button-meaning {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -234,19 +263,19 @@
   margin-top: -90%;
   margin-left: -160%;
   width: 130px;
-  
 
   background-color: #fff;
   color: #22589a;
-  border-radius: 30px  50px 5px 30px;
+  border-radius: 30px 50px 5px 30px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   visibility: hidden;
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
 
-.button-meaning p {
-  margin:  5px;
+.map-button-meaning p {
+  margin: 5px;
   font-size: 12px;
 }
+
 

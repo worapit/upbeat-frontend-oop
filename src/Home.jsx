@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import myCustomFont from "./font/Space.ttf";
 import "./home.css";
 import ReactDOM from "react-dom";
-import CstPlan from "./CstPlan";
-
 
 export default function Home() {
   const lightRef = useRef(null);
@@ -22,30 +20,38 @@ export default function Home() {
   `;
 
   return (
-    <div className="container">
+    <div className="home-page ">
       <header id="hex-grid" onMouseMove={handleMouseMove}>
         <div className="light" ref={lightRef}></div>
-        <div className="grid">
-          <div className="button">
-            <p
-              style={{
-                fontFamily: "gamefont",
-                fontSize: "8em",
-                color: "#fff",
-              }}
-            >
-              UPBEAT
-            </p>
-            <a href="/CstPlan" style={{ "--clr": "#ff1867" }}>
-              <span style={{ fontFamily: "Bungee" }}>START</span>
-              <i></i>
-            </a>
-            <a href="#" style={{ "--clr": "#ff1867" }}>
-              <span style={{ fontFamily: "Bungee" }}>how to play</span>
-              <i></i>
-            </a>
+          <div className="grid">
+            <div className="home-button">
+
+              <p
+                style={{
+                  fontFamily: "gamefont",
+                  color: "#fff",
+                }}
+              >
+                UPBEAT
+              </p>
+
+
+              
+
+              <div className="home-show-button">
+                <a href="/login" style={{ "--clr": "#ff1867" }}>
+                  <span style={{ fontFamily: "Bungee" }}>START</span>
+                  <i></i>
+                </a>
+                <a href="#" style={{ "--clr": "#ff1867" }}>
+                  <span style={{ fontFamily: "Bungee" }}>how to play</span>
+                  <i></i>
+                </a>
+              </div>
+
+            </div>
           </div>
-        </div>
+
       </header>
       <style dangerouslySetInnerHTML={{ __html: styles }} />
     </div>
