@@ -124,7 +124,7 @@
   margin-top: 35px;
 }
 
-.map-time {
+.map-header{
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
