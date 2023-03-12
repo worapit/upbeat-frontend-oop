@@ -8,136 +8,177 @@
 
 body {
   overflow: hidden;
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none;
 }
 
-#log-bg-video video {
+#start-bg-video video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
-    transition: opacity 1.8s ease-in-out;
+    transition: opacity 5.0s ease-in-out;
+    filter: brightness(75%);
+
+    
 
     
   }
+
 
   .fade-out {
     opacity: 0;
   }
 
 
-/* .log-background {
-  background-image: url("./image/space.gif");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
 
-  height: 100%;
-  width: 100%;
-
-  height: 100vh;
-} */
-
-.log-container {
+.start-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  resize: none;
-
-  padding-top: 3% ;
-  gap: 15px;
 }
 
 
-
-.log-logo {
-    width: 18%;
-    display: flex;
-    align-items: center;
-}
-img.user {
-  width: 40px; /* change to desired width */
-  margin-left: 5px;
-}
-img.pass {
-  width: 40px; /* change to desired width */
-  margin-left: 5px;
-}
-
-
-.login {
-  position: relative;
+.start-button {
+  position: fixed;
  
   
-  top: 280px;
-  border-radius: 30px;
-  width: 350px;
+  top: 50%;
+  border-radius: 1px;
+  
   display: flex;
   flex-direction: column;
   resize: none;
 
-  gap: 15px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+  gap: 40px;
+
 }
 
-.login h2 {
+
+
+
+
+
+.start-button a {
   position: relative;
-  width: 100%;
+  display: inline-block;
+  color: var(--clr) !important;
+  /* background-color: #272020; */
+  border-radius: 15px 15px 15px 15px;
+
+  text-decoration: none !important;
+  text-transform: uppercase;
   text-align: center;
-  font-size: 2em;
-  font-weight: 600;
-  color: rgb(250, 249, 249);
+  font-size: 45px;
+  letter-spacing: 4px;
+
+  padding: 15px 30px;
+  overflow: hidden;
+  transition: 0.2s;
+
 }
 
-.login .log-inputBox {
-  position: relative;
+
+.start-button a:hover{
+  /* letter-spacing: 0.25em; */
+  color: #fbfbfb !important;
+  background: var(--clr);
+  box-shadow: 0 0 10px var(--clr) , 0 0 40px var(--clr), 0 0 0px var(--clr);
+  transition-delay: 1s;
+
+  text-shadow:   0.1em 0.1em 0  #382c2c;
 }
 
-.login .log-inputBox input {
-  position: relative;
+.start-button a span{
+  position: absolute;
+  display: block;
+}
+
+.start-button a span:nth-child(1){
+  top: 0;
+  left: -100%;
   width: 100%;
-  padding: 7px 20px;
-  outline: none;
-  font-size: 9em;
-  color: #22589a;
-  border-radius: 50px;
-  background: #fff;
-  border: none;
-  margin-left: 10px;
+  height: 2px;
+  background: linear-gradient(90deg,transparent,var(--clr));
+}
+
+.start-button a:hover span:nth-child(1){
+  left: 100%;
+  transition: 1s;
+  
+}
+
+.start-button a span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg,transparent,var(--clr));
+}
+
+.start-button a:hover span:nth-child(3){
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+  
+}
+
+.start-button a span:nth-child(2){
+  top: -100%;
+  right: 0%;
+  width:2px;
+  height: 100%;
+  background: linear-gradient(180deg,transparent,var(--clr));
+}
+
+.start-button a:hover span:nth-child(2){
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+  
+}
+
+.start-button a span:nth-child(4){
+ bottom: -100%;
+  left: 0%;
+  width:2px;
+  height: 100%;
+  background: linear-gradient(360deg,transparent,var(--clr));
+}
+
+.start-button a:hover span:nth-child(4){
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+  
+}
+
+#start-popup-container {
+  display: flex;
   justify-content: center;
   align-items: center;
 
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+
+  gap: 15px;
 }
 
-.login .log-inputBox ::placeholder {
-  color: rgb(184, 171, 174);
-}
 
-.login .log-inputBox #btn {
-  position: relative;
 
-  background: rgb(128, 249, 146);
-  color: black;
-
-  font-size: 3em;
-  font-weight: 500;
-  transition: 0.7s;
-  
-
-}
-
-.login .log-inputBox #btn:hover {
-
-  background:crimson;
-  
-  box-shadow: 0 0 5px crimson, 0 0 10px crimson, 0 0 15px crimson, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
-  animation: glow3 1s infinite;
-}
-
-@keyframes glow3 {
+/* @keyframes glow3 {
   0% {
     opacity: 0.9;
     box-shadow: 0 0 5px crimson, 0 0 10px crimson, 0 0 15px crimson, 0 0 20px crimson, 0 0 35px crimson, 0 0 40px crimson, 0 0 50px crimson, 0 0 75px crimson;
@@ -185,4 +226,4 @@ img.pass {
     opacity: 0.9;
     box-shadow: 0 0 5px rebeccapurple, 0 0 10px rebeccapurple, 0 0 15px rebeccapurple, 0 0 20px rebeccapurple, 0 0 35px rebeccapurple, 0 0 40px rebeccapurple, 0 0 50px rebeccapurple, 0 0 75px rebeccapurple;
   }
-}
+} */
