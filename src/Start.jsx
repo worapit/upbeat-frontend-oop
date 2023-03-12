@@ -1,38 +1,51 @@
-import React, { useRef } from "react";
-import Logo from "./image/logo.png";
-import myLogin from "./image/space.mp4";
+import React, { useEffect, useRef } from "react";
+import myLogin from "./image/startvideo.mp4";
 import "./start.css";
-import user from "./image/user.png"
-import pass from "./image/padlock.png"
+import Loading from "./Loading";
 
-export default function start() {
+export default function Start() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const handleEnded = () => {
+      video.classList.add("fade-out");
+      video.currentTime = 0;
+      video.play();
+      setTimeout(() => {
+        video.classList.remove("fade-out");
+      }, 1800);
+    };
+
+    video.addEventListener("ended", handleEnded);
+
+    return () => {
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
   return (
     <div id="log-bg-video">
-      <video src={myLogin} autoPlay loop muted></video>
-      <div className="log-container">
-        <img className="log-logo" src={Logo} />
-        <div className="login">
-          <h2>SIGN IN</h2>
-          <div className="log-inputBox">
-          <img className="user" src={user}></img>
-            <input type="text" placeholder="Username" />
-          </div>
-          <div className="log-inputBox">
-          <img className="pass" src={pass}></img>
-            <input type="local" placeholder="Local-Host" />
-          </div>
-          <form action="/loading">
-            <div class="log-inputBox">
-              <input type="submit" value="Login" id="btn" />
+      <video ref={videoRef} src={myLogin} autoPlay loop muted></video>
+      <form action="/loading">
+        <div className="log-container">
+          <div className="login">
+            <div className="log-inputBox">
+              <input type="submit" value="Start Game" id="btn" />
             </div>
-          </form>
-          {/* <div className="group">
-            <a href="#">LOGIN</a>
-          </div> */}
+          </div>
         </div>
-        
-      </div>
-      
+      </form>
+      <form action="/howto">
+        <div className="log-container">
+          <div className="login">
+            <div className="log-inputBox">
+              <input type="submit" value="HOW TO PLAY" id="btnn" />
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
