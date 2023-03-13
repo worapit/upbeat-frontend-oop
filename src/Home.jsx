@@ -4,7 +4,6 @@ import "./home.css";
 import homevideo from "./image/homevideo.mp4";
 import MyPlanet from "./image/neptune.png";
 import user from "./image/user.png";
-import pass from "./image/padlock.png";
 
 export default function Home() {
   const lightRef = useRef(null);
@@ -38,13 +37,13 @@ export default function Home() {
 
       <div className="home-container">
         <div className="home-login">
-          <h2 style={{ fontSize: "50px" }}>PLayer</h2>
+          <h2 style={{ fontSize: "50px", fontFamily: "Bungee" }}>PLAYER</h2>
           <div className="home-inputBox">
             <img className="user" src={user}></img>
-            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" style={{fontFamily: "Bungee" }} />
           </div>
           <form action="/start">
-            <div class="home-inputBox">
+            <div class="home-inputBox" style={{fontFamily: "Bungee" }}>
               <input type="submit" value="JOIN" id="btn" />
             </div>
           </form>
