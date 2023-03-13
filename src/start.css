@@ -7,7 +7,6 @@
 
 * {
   box-sizing:content-box;
-  font-family: "Bungee", cursive;
   width: device-width;
 }
 
@@ -70,6 +69,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      font-family: "Bungee", cursive;
     }
     
     

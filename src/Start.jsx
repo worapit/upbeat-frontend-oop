@@ -61,7 +61,7 @@ export default function Start() {
         </p>
         <style dangerouslySetInnerHTML={{ __html: styles2 }} />
       </div>
-        <div className="start-button">
+        <div className="start-button" style={{ fontFamily: "gamefont2"}}>
 
           <a href="/loading" style={{ "--clr": "#68BB59" }}>
             <span></span>
