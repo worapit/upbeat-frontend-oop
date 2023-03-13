@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import myCustomFont from "./font/Space.ttf";
 import "./home.css";
-import ReactDOM from "react-dom";
 import homevideo from "./image/homevideo.mp4";
 import MyPlanet from "./image/neptune.png";
 import user from "./image/user.png";
@@ -27,13 +26,8 @@ export default function Home() {
     <div id="homevideo">
       <video src={homevideo} autoPlay loop muted></video>
       <div className="rec"> </div>
-
       <div className="upbeat">
-        <p
-          style={{
-            fontFamily: "gamefont",
-          }}
-        >
+        <p style={{ fontFamily: "gamefont",}}>
           upbeat
         </p>
       </div>
@@ -42,27 +36,20 @@ export default function Home() {
         <img src={MyPlanet} />
       </div>
 
-
-  
       <div className="home-container">
         <div className="home-login">
-          <h2 style={{ fontSize: "50px" }}>SIGN IN</h2>
+          <h2 style={{ fontSize: "50px" }}>PLayer</h2>
           <div className="home-inputBox">
             <img className="user" src={user}></img>
             <input type="text" placeholder="Username" />
           </div>
-          <div className="home-inputBox">
-            <img className="pass" src={pass}></img>
-            <input type="local" placeholder="Local-Host" />
-          </div>
           <form action="/start">
             <div class="home-inputBox">
-              <input type="submit" value="Login" id="btn" />
+              <input type="submit" value="JOIN" id="btn" />
             </div>
           </form>
         </div>
       </div>
-
       <style dangerouslySetInnerHTML={{ __html: styles }} />
     </div>
   );

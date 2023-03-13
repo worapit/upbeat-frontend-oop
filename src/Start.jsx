@@ -60,6 +60,8 @@ export default function Start() {
             <span></span>
             how to play
           </a>
+
+       
           {isPopupOpen && (
             <div id="start-popup-container">
               <PopUp />

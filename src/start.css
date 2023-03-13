@@ -2,7 +2,7 @@
 
 * {
   box-sizing:content-box;
-  font-family: "Bungee", cursive;
+  /* font-family: "Bungee", cursive; */
   width: device-width;
 }
 
@@ -197,7 +197,7 @@ body {
       flex-direction: column;
       resize: none;
     
-      gap: 20px;
+      gap: 10px;
     
     }
     
