@@ -48,10 +48,8 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      /* margin-top: 10%; */
   
-      position: fixed;
-      top: 40%;
-      left: 7%;
   
       text-shadow: 0em 0em 0em rgb(190, 153, 21),
         0.03em 0.03em 0.02em rgb(178, 152, 214),
@@ -60,9 +58,8 @@ body {
   
       font-family: "space2";
       font-style: normal;
-      font-weight: 00;
-      font-size: 170px;
-      line-height: 132px;
+      font-size: 200px;
+   
   
       color: #ffffff;
     }
@@ -87,7 +84,7 @@ body {
       flex-direction: column;
       resize: none;
     
-      gap: 40px;
+      gap: 20px;
     
     }
     
@@ -99,14 +96,14 @@ body {
     .start-button a {
       position: relative;
       display: inline-block;
-      color: var(--clr) !important;
+      color: #d4c2c2  !important;
       /* background-color: #272020; */
       border-radius: 15px 15px 15px 15px;
     
       text-decoration: none !important;
       text-transform: uppercase;
       text-align: center;
-      font-size: 40px;
+      font-size: 30px;
       letter-spacing: 4px;
     
       padding: 15px 30px;
@@ -209,6 +206,26 @@ body {
   }
 
   @media only screen and (min-height: 750px){
+    .start-upbeat {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* margin-top: 10%; */
+  
+  
+      text-shadow: 0em 0em 0em rgb(190, 153, 21),
+        0.03em 0.03em 0.02em rgb(178, 152, 214),
+        0.06em 0.06em 0.01em rgb(80, 16, 198), 0.1em 0.1em 0 black;
+      letter-spacing: 0.02em;
+  
+      font-family: "space2";
+      font-style: normal;
+      font-size: 240px;
+   
+  
+      color: #ffffff;
+    }
+
     .start-container {
       display: flex;
       justify-content: center;
@@ -227,7 +244,7 @@ body {
       flex-direction: column;
       resize: none;
     
-      gap: 10px;
+      gap: 20px;
     
     }
     
@@ -239,7 +256,7 @@ body {
     .start-button a {
       position: relative;
       display: inline-block;
-      color: var(--clr) !important;
+      color: #d4c2c2  !important;
       /* background-color: #272020; */
       border-radius: 15px 15px 15px 15px;
     
