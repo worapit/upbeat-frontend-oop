@@ -6,9 +6,11 @@ import CstPlan from "./CstPlan";
 import Home from "./Home";
 import Start from "./Start";
 import Loading from "./Loading";
+import Cnfile from "./Cnfile";
 import "./index.css";
 import Waiting from "./Waiting"
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
       <div>
         <Routes>
           <Route exact path="/" element={<Home />} />
+           <Route path="/cnfile" element={<Cnfile />}/>
           <Route path="/start" element={<Start />} />
           <Route path="/loading" element={<Loading />} />
           <Route path="/cstplan" element={<CstPlan />} />
