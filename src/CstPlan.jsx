@@ -6,10 +6,12 @@ import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./cstPlan.css";
 import AceEditor from "react-ace";
-import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-java";
+import "ace-builds/src-noconflict/theme-dracula";
+import "ace-builds/src-noconflict/ext-language_tools"
 
-import "ace-builds/src-noconflict/theme-monokai";
-
+export const min = 2;
+export const sec = 0;
 
 
 export default function CstPlan() {
@@ -18,9 +20,9 @@ export default function CstPlan() {
       <div className="show-cstPlan">
         <div className="cst-show-detail">
         
-          <CountdownTimer 
-            countdownTimestampMs={Date.now() + 5 * 60 * 1000 + 5 * 1000}
-          />
+        <CountdownTimer 
+            countdownTimestampMs={Date.now() +  min * 60 * 1000 + sec * 1000}/>
+
           <div className="cst-show-regions">
             <Hexagon />
           </div>
@@ -46,12 +48,18 @@ export default function CstPlan() {
         <div className="cst-wrapper">
           <h2 style={{ fontFamily: "Bungee" }}> CONSTRUCTION PLAN</h2>
           <AceEditor
-            mode="javascript"
-            theme="monokai"
+            mode="java"
+            theme="dracula"
             name="plan-editor"
             editorProps={{ $blockScrolling: true }}
-            fontSize ="13px"
-            
+            fontSize ="17px"
+            setOptions={{
+                fontFamily: "'JetBrains Mono', monospace",
+                enableBasicAutocompletion: true,
+                enableLiveAutocompletion: true,
+                enableSnippets: true,
+                enableMultiselect: true,
+              }}
           />
           <a href="/map"  style={{ "--clr": "#ff1867" }}>
             <span style={{ fontFamily: "Bungee" }}>COMPLETE</span>

@@ -115,7 +115,7 @@ margin-left: 5px;
   .home-login {
     position: absolute;
     width: 450px;
-    height: 450px;
+    height: 400px;
 
     right: 10%;
     top: 17%;
@@ -123,7 +123,7 @@ margin-left: 5px;
     padding: 50px;
 
     backdrop-filter: blur(1px);
-    border: 4px solid mediumaquamarine;
+    border: 6px solid mediumaquamarine;
 
     border-radius: 50px;
     display: flex;
@@ -262,13 +262,13 @@ margin-left: 5px;
   .home-login {
     position: absolute;
     width: 450px;
-    height: 450px;
+    height: 400px;
     left: 850px;
     top: 170px;
     padding: 70px;
     
     backdrop-filter: blur(1px);
-    border: 4px solid mediumaquamarine;
+    border: 6px solid mediumaquamarine;
 
     border-radius: 50px;
     display: flex;
