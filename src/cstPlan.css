@@ -45,7 +45,7 @@ body {
   }
 
   .cst-show-regions {
-    height: 45%;
+    height: 55%;
     width: 70%;
 
     background: rgba(35, 42, 145, 0.25);
@@ -83,7 +83,7 @@ body {
   }
 
   .cst-show-regions::-webkit-scrollbar-thumb {
-    background-color: #f9dfe9db;
+    background-color: #850a3bdb;
     border-radius: 3px;
     border: none;
   }
@@ -92,12 +92,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'JetBrains Mono', monospace; 
-
+    
     width: 1400%;
     height: 1400%;
 
-    background: rgb(0, 0, 0);
+    background: linear-gradient(to bottom, #8A2BE2, #4B0082);
     box-shadow: 0px 5px 5px rgba(33, 23, 4, 0.5);
 
     border-radius: 40px;
@@ -108,18 +107,18 @@ body {
 
     gap: 10px;
 
-    
+    font-family: 'JetBrains Mono', monospace;
 
   }
 
   .cst-wrapper h2 {
-    color: #cb1818;
+    color: #fff8f8;
     font-size: 28px;
   }
 
   .cst-wrapper a {
     position: relative;
-    background: #793434;
+    background: #ff3d3d;
     color: #fff !important;
     border-radius: 15px 15px 15px 15px;
     text-decoration: none !important;
@@ -210,6 +209,7 @@ body {
     flex-shrink: 0;
   }
 }
+
 
 @media only screen and (min-height: 750px) {
   .cst-page {

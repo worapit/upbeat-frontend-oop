@@ -7,6 +7,7 @@ import Home from "./Home";
 import Start from "./Start";
 import Loading from "./Loading";
 import "./index.css";
+import Waiting from "./Waiting"
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -14,11 +15,12 @@ function App() {
      <Router>
       <div>
         <Routes>
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/start" element={<Start />} />
           <Route path="/loading" element={<Loading />} />
           <Route path="/cstplan" element={<CstPlan />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/waiting" element={<Waiting />} />
         </Routes>
       </div>
      </Router>

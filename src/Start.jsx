@@ -79,7 +79,7 @@ export default function Start() {
             how to play
           </a>
 
-          <a href="/home" style={{ "--clr": "#D21404" }}>
+          <a href="/" style={{ "--clr": "#D21404" }}>
           <span></span>
             <span></span>
             <span></span>
@@ -87,7 +87,6 @@ export default function Start() {
             Back to menu
           </a>
 
-       
           {isPopupOpen && (
             <div id="start-popup-container">
               <PopUp />
