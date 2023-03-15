@@ -25,6 +25,10 @@ const styles = `
         id="bg-video"
       ></video>
       <div className="load-text">
+      <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <h1
            style={{
             fontFamily: "space"

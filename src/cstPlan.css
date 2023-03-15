@@ -30,7 +30,6 @@ body {
     justify-content: center;
     align-content: center;
 
-
     margin-right: 10%;
     gap: 3%;
   }
@@ -46,7 +45,7 @@ body {
   }
 
   .cst-show-regions {
-    height: 60%;
+    height: 55%;
     width: 70%;
 
     background: rgba(35, 42, 145, 0.25);
@@ -93,21 +92,23 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    
     width: 1400%;
-    height: 100%;
+    height: 1400%;
 
     background: linear-gradient(to bottom, #8A2BE2, #4B0082);
     box-shadow: 0px 5px 5px rgba(33, 23, 4, 0.5);
-  
 
     border-radius: 40px;
     padding: 25px 20px 15px;
     margin-left: -5%;
 
-    margin-top: 5%;
+    margin-top: 3%;
 
     gap: 10px;
+
+    font-family: 'JetBrains Mono', monospace;
+
   }
 
   .cst-wrapper h2 {
@@ -130,18 +131,18 @@ body {
 
   .cst-wrapper a:hover {
     letter-spacing: 0.25em;
-    background: #187e5e;
+    background: #096d4d;
     box-shadow: 0 0 0px var(--clr);
     text-decoration: none;
   }
 
   .cst-wrapper textarea {
     width: 100%;
-    height: 500px;
+    height: 400px;
     padding: 15px;
     font-size: 14px;
     border-radius: 10px;
-
+    /* border-color: #222d69; */
     resize: none;
   }
 
@@ -171,7 +172,6 @@ body {
     display: flex;
     flex-direction: initial;
     gap: 20px;
-    
   }
 
   .cst-budget {
@@ -209,6 +209,7 @@ body {
     flex-shrink: 0;
   }
 }
+
 
 @media only screen and (min-height: 750px) {
   .cst-page {

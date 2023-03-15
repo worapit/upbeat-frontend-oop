@@ -10,7 +10,8 @@ import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools"
 
-
+export const min = 2;
+export const sec = 0;
 
 
 export default function CstPlan() {
@@ -20,7 +21,7 @@ export default function CstPlan() {
         <div className="cst-show-detail">
         
         <CountdownTimer 
-            countdownTimestampMs={Date.now() +  5 * 60 * 1000 + 5 * 1000}/>
+            countdownTimestampMs={Date.now() +  min * 60 * 1000 + sec * 1000}/>
 
           <div className="cst-show-regions">
             <Hexagon />

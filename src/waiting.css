@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@font-face {
+  font-family: space;
+  src: url(./font/Space.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  /* font-family: "Bungee", cursive; */
+  width: device-width;
+}
+
+body {
+  overflow: hidden;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  z-index: -1;
+  transition: opacity 5.0s ease-in-out;
+  filter: brightness(50%); 
+}
+
+.waiting-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 22%;
+  color: rgb(226, 238, 238);
+}
+
+.waiting-text h2 {
+  text-shadow: 
+  0.025em 0.025em 0.02em palevioletred,
+  0.05em 0.05em 0.02em  plum,
+  0.075em 0.075em 0.02em  black,
+  0.1em 0.1em 0 rgb(255, 0, 51);
+  letter-spacing: 0.1em;
+  font-size: 2.2em;
+}
+
+.waiting-text span
+{
+  position: absolute;
+  background: #c877e9;
+}
+
+.waiting-text span:nth-child(1)
+{
+  width: 100%;
+  height: 6px;
+  top: 0;
+  left: -100%;
+  animation: animate1 2s linear infinite;
+  
+}
+
+.waiting-text span:nth-child(3)
+{
+  width: 100%;
+  height: 6px;
+  bottom: 0;
+  right: -100%;
+  animation: animate3 2s linear infinite;
+}
+
+.waiting-text span:nth-child(2)
+{
+  width: 6px;
+  height: 100%;
+  top: -100%;
+  right: 0;
+  animation: animate2 2s linear infinite;
+}
+
+.waiting-text span:nth-child(4)
+{
+  width: 6px;
+  height: 100%;
+  bottom: -100%;
+  left: 0;
+  animation: animate4 2s linear infinite;
+}
+
+@keyframes animate1
+{
+  0%
+  {
+    left: -100%;
+  }
+  20%
+  {
+    left: 0;
+  }
+  40%
+  {
+    left: 100%;
+  }
+  60%
+  {
+    left: 100%;
+  }
+  80%
+  {
+    left: 100%;
+  }
+  100%
+  {
+    left: 100%;
+  }
+}
+
+@keyframes animate2
+{
+  0%
+  {
+    top: -100%;
+  }
+  20%
+  {
+    top: -100%;
+  }
+  40%
+  {
+    top: 0;
+  }
+  60%
+  {
+    top: 100%;
+  }
+  80%
+  {
+    top: 100%;
+  }
+  100%
+  {
+    top: 100%;
+  }
+}
+
+@keyframes animate3
+{
+  0%
+  {
+    right: -100%;
+  }
+  20%
+  {
+    right: -100%;
+  }
+  40%
+  {
+    right: -100%;
+  }
+  60%
+  {
+    right: 0;
+  }
+  80%
+  {
+    right: 100%;
+  }
+  100%
+  {
+    right: 100%;
+  }
+}
+
+@keyframes animate4
+{
+  0%
+  {
+    bottom: -100%;
+  }
+  20%
+  {
+    bottom: -100%;
+  }
+  40%
+  {
+    bottom: -100%;
+  }
+  60%
+  {
+    bottom: -100%;
+  }
+  80%
+  {
+    bottom: 0;
+  }
+  100%
+  {
+    bottom: 100%;
+  }
+}
