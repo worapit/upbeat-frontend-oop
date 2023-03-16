@@ -50,9 +50,9 @@ body {
       margin-top: 5%;
   
   
-      text-shadow: 0em 0em 0em rgb(190, 153, 21),
-        0.03em 0.03em 0.02em rgb(178, 152, 214),
-        0.06em 0.06em 0.01em rgb(80, 16, 198), 0.1em 0.1em 0 black;
+      text-shadow: 0em 0em 0em rgb(0, 0, 0),
+        0.03em 0.03em 0.02em rgb(250, 199, 15),
+        0.06em 0.06em 0.01em rgb(248, 140, 24), 0.1em 0.1em 0 rgb(0, 0, 0);
       letter-spacing: 0.02em;
   
       font-family: "space2";
@@ -60,7 +60,7 @@ body {
       font-size: 200px;
    
   
-      color: #ffffff;
+      color: #f2d9d9;
     }
   
 
@@ -213,9 +213,9 @@ body {
       margin-top: 3%;
   
   
-      text-shadow: 0em 0em 0em rgb(190, 153, 21),
-        0.03em 0.03em 0.02em rgb(178, 152, 214),
-        0.06em 0.06em 0.01em rgb(80, 16, 198), 0.1em 0.1em 0 black;
+      text-shadow: 0em 0em 0em rgb(0, 0, 0),
+        0.03em 0.03em 0.02em rgb(250, 199, 15),
+        0.06em 0.06em 0.01em rgb(248, 140, 24), 0.1em 0.1em 0 rgb(0, 0, 0);
       letter-spacing: 0.02em;
   
       font-family: "space2";

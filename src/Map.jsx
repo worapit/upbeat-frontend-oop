@@ -44,6 +44,7 @@ export default function Map() {
         <span
           style={{
             fontFamily: "space",
+            fontSize: "70px",
           }}
         >
           YOUR TURN
@@ -69,13 +70,13 @@ export default function Map() {
           <div className="map-withIcon">
             <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
           </div>
-          <span>100000</span>
+          <span style={{ fontFamily: "Bungee" }}>100000</span>
         </div>
         <div className="map-budget">
           <div className="map-withIcon">
             <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
           </div>
-          <span>5000</span>
+          <span style={{ fontFamily: "Bungee" }}>5000</span>
         </div>
       </div>
 
