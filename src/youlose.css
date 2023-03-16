@@ -14,44 +14,59 @@ body {
   overflow: hidden;
 }
 
-#bg-video {
+.youlosecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+  
+
+#youlose-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   object-fit: cover;
   z-index: -1;
   transition: opacity 5.0s ease-in-out;
-  filter: brightness(65%); 
+  filter: brightness(100%); 
 }
 
-.waiting-text {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  padding-top: 22%;
-  color: rgb(226, 238, 238);
-}
+.youlose-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    color: #000000;
 
-.waiting-text h2 {
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.5);
+    border: 10px solid #631bff;
+    border-radius: 20px;
+    background: linear-gradient(to bottom, #f2e097, #f42f39);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}  
+  
+
+.youlose-text h1 {
   text-shadow: 
-  0.025em 0.025em 0.02em palevioletred,
-  0.05em 0.05em 0.02em  plum,
+  0.025em 0.025em 0.02em rgb(255, 238, 49),
+  0.05em 0.05em 0.02em  rgb(236, 247, 188),
   0.075em 0.075em 0.02em  black,
   0.1em 0.1em 0 rgb(255, 0, 51);
   letter-spacing: 0.1em;
-  font-size: 2.2em;
+  font-size: 4.8em;
 }
 
-.waiting-text span
+/* .youlose-text span
 {
   position: absolute;
   background: #c877e9;
 }
 
-.waiting-text span:nth-child(1)
+.youlose-text span:nth-child(1)
 {
   width: 100%;
   height: 6px;
@@ -198,4 +213,4 @@ body {
   {
     bottom: 100%;
   }
-}
+} */

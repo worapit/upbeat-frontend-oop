@@ -7,6 +7,7 @@ import Home from "./Home";
 import Start from "./Start";
 import Loading from "./Loading";
 import Cnfile from "./Cnfile";
+import Youlose from "./Youlose";
 import "./index.css";
 import Waiting from "./Waiting"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/cstplan" element={<CstPlan />} />
           <Route path="/map" element={<Map />} />
           <Route path="/waiting" element={<Waiting />} />
+          <Route path="/youlose" element={<Youlose />} />
         </Routes>
       </div>
      </Router>

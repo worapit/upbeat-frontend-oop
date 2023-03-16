@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
-import myWaiting from "./image/Waiting.mp4";
+import lose from "./image/youlose.mp4";
 import myCustomFontt from "./font/Space.ttf";
-import "./waiting.css";
+import "./youlose.css";
 
 
 
-export default function Waiting() {
+export default function Youlose() {
   
 const styles = `
   @font-face {
@@ -19,34 +19,31 @@ const styles = `
     <div>
 
       <video
-        src={myWaiting}
+        src={lose}
         autoPlay
         loop
         muted
         play-inline
-        id="bg-video"
+        id="youlose-video"
         
       ></video>
 
       
       {/* <img src={waitwall}></img> */}
-    
-      <div className="waiting-text">
+      <div class="youlosecontainer">
+      <div className="youlose-text">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-      <h2
+      <h1
            style={{
             fontFamily: "space"
           }}
         >
-          WAITING...</h2>
-          <h2
-           style={{
-            fontFamily: "space"
-          }}
-        > Another player is setting game.</h2>
+          YOU LOSE</h1>
+  
+      </div>
       </div>
     </div>
   );
