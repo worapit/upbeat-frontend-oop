@@ -1,23 +1,57 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock} from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import React, { useState, useRef, useEffect } from "react";
 
 import "./cnfile.css";
 
 export default function Cnfile() {
   const [valueR, setValueR] = useState(9);
   const [valueC, setValueC] = useState(9);
+  const [selectedOption, setSelectedOption] = useState("NORMAL");
+  const [initBudget, setInitBudget] = useState(10000);
+  const [initCenterDep, setInitCenterDep] = useState(100);
+  const [revCost, setRevCost] = useState(100);
+  const [maxDep, setMaxDep] = useState(1000000);
+  const [interestPct, setInterestPct] = useState(5);
 
   const handleChangeR = (event) => {
     setValueR(parseInt(event.target.value));
-    sliderValue.textContent = valueR;
-    sliderValue.style.left = valueR / 2 + "%";
   };
 
   const handleChangeC = (event) => {
     setValueC(parseInt(event.target.value));
-    sliderValue.textContent = valueC;
-    sliderValue.style.left = valueC / 2 + "%";
+  };
+
+  const setBudgetValues = (value) => {
+    switch (value) {
+      case "EASY":
+        setInitBudget(15000);
+        setInitCenterDep(60);
+        setRevCost(80);
+        setMaxDep(400000);
+        setInterestPct(8);
+        break;
+      case "NORMAL":
+        setInitBudget(10000);
+        setInitCenterDep(100);
+        setRevCost(100);
+        setMaxDep(1000000);
+        setInterestPct(5);
+        break;
+      case "HARD":
+        setInitBudget(500);
+        setInitCenterDep(160);
+        setRevCost(200);
+        setMaxDep(1600000);
+        setInterestPct(2);
+        break;
+    }
+  };
+
+  const handleOptionClick = (e) => {
+    setSelectedOption(e.target.value);
+    setBudgetValues(e.target.value);
   };
 
   return (
@@ -82,10 +116,169 @@ export default function Cnfile() {
 
               <div className="cn-line"></div>
 
-              <div className="cn-time"></div>
+              <div className="cn-time">
+                <div className="cn-time-show">
+                  <h3>init_plan</h3>
+                  <div class="cn-time-picker">
+                    <input
+                      type="number"
+                      id="minute"
+                      min="5"
+                      max="55"
+                      step="5"
+                    />
 
-              <FontAwesomeIcon icon={faClock} size= "3x" />
+                    <p>:</p>
+
+                    <input
+                      type="number"
+                      id="seconds"
+                      min="0"
+                      max="55"
+                      step="5"
+                    />
+                  </div>
+                </div>
+
+                <div className="cn-time-icon">
+                  <FontAwesomeIcon icon={faClock} size="4x" />
+                  <p>MIN : SEC</p>
+                </div>
+
+                <div className="cn-time-show">
+                  <h3>plan_rev</h3>
+                  <div class="cn-time-picker">
+                    <input
+                      type="number"
+                      id="minute"
+                      min="5"
+                      max="55"
+                      step="5"
+                    />
+
+                    <p>:</p>
+
+                    <input
+                      type="number"
+                      id="seconds"
+                      min="0"
+                      max="55"
+                      step="5"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="cn-line"></div>
+
+              <div className="cn-radio">
+                <label for="group1-option1">
+                  <input
+                    type="radio"
+                    id="group1-option1"
+                    name="radio-group1"
+                    value="EASY"
+                    onClick={handleOptionClick}
+                  />
+                  <span class="custom-radio"></span>
+                  EASY
+                </label>
+
+                <label for="group1-option2">
+                  <input
+                    type="radio"
+                    id="group1-option2"
+                    name="radio-group1"
+                    value="NORMAL"
+                    onClick={handleOptionClick}
+                  />
+                  <span class="custom-radio"></span>
+                  NORMAL
+                </label>
+
+                <label for="group1-option3">
+                  <input
+                    type="radio"
+                    id="group1-option3"
+                    name="radio-group1"
+                    value="HARD"
+                    onClick={handleOptionClick}
+                  />
+                  <span class="custom-radio"></span>
+                  HARD
+                </label>
+              </div>
+
+              <div className="cn-setting-budget">
+                <div className="decor-span">
+                  <div>
+                    <span>budget = </span>
+                    <span
+                      style={{
+                        color: "#fff",
+                        textShadow: "0.08em 0.1em 0 #000",
+                      }}
+                    >
+                      {initBudget}
+                    </span>
+                  </div>
+                  <div>
+                    <span>center_dep = </span>
+                    <span
+                      style={{
+                        color: "#fff",
+                        textShadow: "0.08em 0.1em 0 #000",
+                      }}
+                    >
+                      {initCenterDep}
+                    </span>
+                  </div>
+                  <div>
+                    <span>rev_cost = </span>{" "}
+                    <span
+                      style={{
+                        color: "#fff",
+                        textShadow: "0.08em 0.1em 0 #000",
+                      }}
+                    >
+                      {revCost}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="decor-span">
+                  <div>
+                    <span>max_dep = </span>{" "}
+                    <span
+                      style={{
+                        color: "#fff",
+                        textShadow: "0.08em 0.1em 0 #000",
+                      }}
+                    >
+                      {maxDep}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span>interest_pct = </span>
+                    <span
+                      style={{
+                        color: "#fff",
+                        textShadow: "0.08em 0.1em 0 #000",
+                      }}
+                    >
+                      {interestPct}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="cn-container-button">
+            <a className="cn-button">
+              <FontAwesomeIcon icon={faCheck} size="2x" />
+            </a>
           </div>
         </div>
       </div>

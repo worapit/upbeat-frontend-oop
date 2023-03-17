@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  font-family: "Bungee", cursive;
+  width: device-width;
+}
+
 #bg-cnfile {
   height: 100%;
   min-height: 100vh;
@@ -15,14 +21,29 @@
   justify-content: center;
   align-items: center;
   position: absolute;
+ 
 }
 
-.cn-box {
+.cn-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 10%; */
+  
+    text-shadow: 0em 0em 0em rgb(190, 153, 21),
+      0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
+      0.1em 0.1em 0 black;
+    letter-spacing: 0.02em;
+    font-size: 100px;
     
+    color: #fff;
+  }
+
+.cn-box {
   margin: -6% auto;
 
   width: 900px;
-  height: 550px;
+  height: 570px;
 
   background: rgb(254, 255, 255, 0.5);
   backdrop-filter: blur(3px);
@@ -34,105 +55,48 @@
   box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
 
   position: relative;
-  z-index: 0;
 }
 
 .cn-plan {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 
-    position: fixed;
-    top: 15%;
-    left: 6%;
+  position: fixed;
+  top: 15%;
+  left: 6%;
 }
 
-.cn-row-column{
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
+.cn-row-column {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
 }
 
 .cn-line {
-    display: flex;
-    justify-content: center;
-    width: 790px;
-    height: 3px;
-    background: #fff;
+  display: flex;
+  justify-content: center;
+  width: 790px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .cn-choice {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .cn-choice p {
   text-shadow: 0em 0em 0em rgb(190, 153, 21),
     0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
-    0.15em 0.15em 0 black;
+    0.12em 0.12em 0 black;
   letter-spacing: 0.02em;
   font-size: 20px;
-  margin-left:10px;
-  margin-bottom: -45px ;
-  color: #fff;
-}
-
-.cn-time {
-
-}
-
-.cn-time input[type="number"]::-webkit-outer-spin-button {
-
-}
-
-.cn-time input[type="number"]::-webkit-inner-spin-button {
-
-}
-
-.cn-time input[type="number"] {
-
-}
-
-.cn-time h1 {
-
-}
-
-.cn-time h1 span{
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cn-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* margin-top: 10%; */
-
-  text-shadow: 0em 0em 0em rgb(190, 153, 21),
-    0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
-    0.1em 0.1em 0 black;
-  letter-spacing: 0.02em;
-  z-index: 3;
-  font-size: 100px;
-
+  margin-left: 10px;
+  margin-bottom: -45px;
   color: #fff;
 }
 
@@ -140,7 +104,6 @@
   display: grid;
   text-align: center;
   place-content: center;
-
 
   height: 40px;
   width: 300px;
@@ -243,6 +206,146 @@
   border-radius: 50%;
   border: 1px solid #664aff;
   cursor: pointer;
+}
+
+.cn-time {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+}
+
+.cn-time-icon {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  font-size: 17px;
+
+  margin-top: 18px;
+}
+
+.cn-time-show {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.cn-time-show h3 {
+  text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
+    0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
+  letter-spacing: 0.02em;
+  font-size: 20px;
+  color: #fff;
+}
+
+.cn-time-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 20px;
+  width: 200px;
+}
+
+.cn-time-picker p {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 15px;
+  margin-right: 5px;
+  margin-left: 5px;
+  color: #696464;
+}
+
+.cn-time-picker input {
+  width: 65px;
+  height: 60px;
+  font-size: 30px;
+  color: #664aff;
+
+  border-radius: 20%;
+  border: 3px solid #f3ebeb;
+  text-align: center;
+}
+
+.cn-radio label {
+  text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
+    0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
+  letter-spacing: 0.02em;
+  font-size: 20px;
+  color: #fff;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+}
+
+.custom-radio::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2.5px solid #ccc;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+input[type="radio"]:checked + .custom-radio::before {
+  background-color: #664aff;
+  border-color: #ffffff;
+}
+
+/* .cn-time-picker input[type="number"]::-webkit-inner-spin-button,
+.cn-time-picker input[type="number"]::-webkit-outer-spin-button,
+.cn-time-picker input[type="number"]::-ms-clear {
+
+} */
+
+.cn-setting-budget {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 760px;
+  height: 110px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  gap: 10px;
+}
+
+.decor-span {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.cn-setting-budget span {
+  letter-spacing: 0.6px;
+  color: #fdf6fe;
+  font-size: 18px;
+}
+
+.cn-container-button {
+  position: fixed;
+
+  right: 0%;
+  margin-right: 1.5%;
+  margin-top: 1.6%;
+
+}
+
+.cn-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaeaea;
+  color: #b57676;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  transition: 0.5s;
 }
 
 #star1 {
