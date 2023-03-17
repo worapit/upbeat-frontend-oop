@@ -272,8 +272,20 @@
     0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
   letter-spacing: 0.02em;
   font-size: 20px;
-  color: #fff;
 }
+
+label[for="group1-option1"] {
+  color: rgb(97, 227, 90);
+}
+
+label[for="group1-option2"] {
+  color: rgb(227, 211, 90);
+}
+
+label[for="group1-option3"] {
+  color: rgb(246, 107, 33);
+}
+
 
 input[type="radio"] {
   visibility: hidden;
@@ -307,9 +319,9 @@ input[type="radio"]:checked + .custom-radio::before {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 760px;
+  width: 800px;
   height: 110px;
-  border: 2px solid #fff;
+  border: 5px dotted  #664aff;
   border-radius: 25px;
   gap: 10px;
 }
@@ -322,7 +334,7 @@ input[type="radio"]:checked + .custom-radio::before {
 
 .cn-setting-budget span {
   letter-spacing: 0.6px;
-  color: #fdf6fe;
+  color: #fbfafb;
   font-size: 18px;
 }
 
@@ -340,7 +352,7 @@ input[type="radio"]:checked + .custom-radio::before {
   align-items: center;
   justify-content: center;
   background-color: #eaeaea;
-  color: #b57676;
+  color: #9444db;
   width: 60px;
   height: 60px;
   border-radius: 50%;

@@ -40,7 +40,7 @@ export default function Cnfile() {
         setInterestPct(5);
         break;
       case "HARD":
-        setInitBudget(500);
+        setInitBudget(5000);
         setInitCenterDep(160);
         setRevCost(200);
         setMaxDep(1600000);
@@ -118,7 +118,7 @@ export default function Cnfile() {
 
               <div className="cn-time">
                 <div className="cn-time-show">
-                  <h3>init_plan</h3>
+                  <h3>time write plan</h3>
                   <div class="cn-time-picker">
                     <input
                       type="number"
@@ -146,7 +146,7 @@ export default function Cnfile() {
                 </div>
 
                 <div className="cn-time-show">
-                  <h3>plan_rev</h3>
+                  <h3>time change plan</h3>
                   <div class="cn-time-picker">
                     <input
                       type="number"
@@ -180,6 +180,7 @@ export default function Cnfile() {
                     value="EASY"
                     onClick={handleOptionClick}
                   />
+                  
                   <span class="custom-radio"></span>
                   EASY
                 </label>
@@ -223,7 +224,7 @@ export default function Cnfile() {
                     </span>
                   </div>
                   <div>
-                    <span>center_dep = </span>
+                    <span>center deposit = </span>
                     <span
                       style={{
                         color: "#fff",
@@ -234,7 +235,7 @@ export default function Cnfile() {
                     </span>
                   </div>
                   <div>
-                    <span>rev_cost = </span>{" "}
+                    <span>cost of changing plan = </span>{" "}
                     <span
                       style={{
                         color: "#fff",
@@ -248,7 +249,7 @@ export default function Cnfile() {
 
                 <div className="decor-span">
                   <div>
-                    <span>max_dep = </span>{" "}
+                    <span>max deposit = </span>{" "}
                     <span
                       style={{
                         color: "#fff",
@@ -260,7 +261,7 @@ export default function Cnfile() {
                   </div>
 
                   <div>
-                    <span>interest_pct = </span>
+                    <span>interest percent = </span>
                     <span
                       style={{
                         color: "#fff",
