@@ -21,8 +21,14 @@
   justify-content: center;
   align-items: center;
   position: absolute;
- 
+
 }
+
+/* .cn-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
 
 .cn-header {
     display: flex;
@@ -34,14 +40,17 @@
       0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
       0.1em 0.1em 0 black;
     letter-spacing: 0.02em;
-    font-size: 100px;
+    font-size: 90px;
     
     color: #fff;
-  }
+    position: relative;
+    z-index: 2;
+}
+
 
 .cn-box {
   margin: -6% auto;
-
+  
   width: 900px;
   height: 570px;
 
@@ -55,6 +64,7 @@
   box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
 
   position: relative;
+  z-index: 1;
 }
 
 .cn-plan {
@@ -242,7 +252,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  background: #aa59f2;
   border-radius: 20px;
   width: 200px;
 }
@@ -298,7 +308,7 @@ input[type="radio"] {
   height: 15px;
   border-radius: 50%;
   border: 2.5px solid #ccc;
-  background-color: #fff;
+  background-color: #ffffff;
   margin-right: 10px;
 }
 
@@ -321,7 +331,7 @@ input[type="radio"]:checked + .custom-radio::before {
   text-align: center;
   width: 800px;
   height: 110px;
-  border: 5px dotted  #664aff;
+  border: 5px solid  #664aff;
   border-radius: 25px;
   gap: 10px;
 }
@@ -334,7 +344,7 @@ input[type="radio"]:checked + .custom-radio::before {
 
 .cn-setting-budget span {
   letter-spacing: 0.6px;
-  color: #fbfafb;
+  color: #000000;
   font-size: 18px;
 }
 
@@ -348,17 +358,54 @@ input[type="radio"]:checked + .custom-radio::before {
 }
 
 .cn-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #eaeaea;
-  color: #9444db;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
-  transition: 0.5s;
+  /* Add your regular button styles here */
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  color: #008118;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  display: flex; /* Use flexbox */
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  font-size: 16px;
+  border-radius: 50%; /* Make the button circular */
+  width: 70px; /* Set the width and height of the button */
+  height: 70px;
+  z-index: 1;
 }
+
+.cn-button:hover:before {
+  /* Add the text to the button and hide it by default */
+  content: "Complete";
+  color: #008118;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 2;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.cn-button:hover:before {
+  /* Show the text on hover */
+  opacity: 1;
+}
+
+.cn-button:hover {
+  /* Add your hover styles here */
+  background-color: #008118;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+
+
+
 
 #star1 {
   width: 1px;
