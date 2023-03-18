@@ -1,11 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import myCustomFont from "./font/Space.ttf";
 import "./home.css";
 import homevideo from "./image/homevideo.mp4";
 import MyPlanet from "./image/neptune.png";
 import user from "./image/user.png";
+import { Client } from "@stomp/stompjs"
+
+const url = 'ws://localhost:8080/project';
+let client;
 
 export default function Home() {
+  const [username, setUsername] = useState("");
   const lightRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -20,6 +25,40 @@ export default function Home() {
       src: url(${myCustomFont}) format('truetype');
     }
   `;
+
+  useEffect(() =>
+  {
+    if (!client)
+    {
+      client = new Client(
+      {
+        brokerURL: url,
+        onConnect: () => {
+          client.subscribe("/app/game");
+          client.subscribe("/topic/game");
+        }
+      });
+
+      client.activate();
+    }
+  }, []);
+
+  const createPlayer = () =>
+  {
+    if (client) {
+      if (client.connected)
+      {
+        client.publish(
+          {
+            destination: "/app/newPlayer",
+            body: JSON.stringify(
+              {
+                name: username,
+              }),
+          });
+      }
+    }
+  };
 
   return (
     <div id="homevideo">
@@ -40,11 +79,12 @@ export default function Home() {
           <h2 style={{ fontSize: "50px", fontFamily: "Bungee" }}>PLAYER</h2>
           <div className="home-inputBox">
             <img className="user" src={user}></img>
-            <input type="text" placeholder="Username" style={{fontFamily: "Bungee" }} />
+            <input type="text" placeholder="Username" style={{ fontFamily: "Bungee" }}
+              onChange={(e) => setUsername(e.target.value)} value={username}/>
           </div>
-          <form action="/start">
+          <form action="/start" onClick={() => createPlayer()}>
             <div class="home-inputBox" style={{fontFamily: "Bungee" }}>
-              <input type="submit" value="JOIN" id="btn" />
+              <input type="submit" value="JOIN" id="btn"/>
             </div>
           </form>
         </div>
