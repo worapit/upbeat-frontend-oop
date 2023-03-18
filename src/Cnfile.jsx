@@ -95,14 +95,23 @@ export default function Cnfile() {
 
   const setConfig = () => {
     if (client) {
-      let config = `m=${valueR}\nn=${valueC}\ninit_plan_min=${initPlanMin}\ninit_plan_sec=${initPlanSec}\ninit_budget=${initBudget}\ninit_center_dep=${initCenterDep}\nplan_rev_min=${planRevMin}\nplan_rev_sec=${planRevSec}\nrev_cost=${revCost}\nmax_dep=${maxDep}\ninterest_pct=${interestPct}`;
       if (client.connected) {
         client.publish(
           {
             destination: "/app/config",
             body: JSON.stringify(
               {
-                config: config,
+                m: valueR,
+                n: valueC,
+                init_plan_min: initPlanMin,
+                init_plan_sec: initPlanSec,
+                init_budget: initBudget,
+                init_center_dep: initCenterDep,
+                plan_rev_min: planRevMin,
+                plan_rev_sec: planRevSec,
+                rev_cost: revCost,
+                max_dep: maxDep,
+                interest_pct: interestPct,
               }),
           });
       }
