@@ -4,16 +4,39 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
 
 import "./cnfile.css";
+import { Client } from "@stomp/stompjs";
+
+const url = 'ws://localhost:8080/project';
+let client;
 
 export default function Cnfile() {
   const [valueR, setValueR] = useState(9);
   const [valueC, setValueC] = useState(9);
   const [selectedOption, setSelectedOption] = useState("NORMAL");
+  const [initPlanMin, setInitPlanMin] = useState(5);
+  const [initPlanSec, setInitPlanSec] = useState(0);
   const [initBudget, setInitBudget] = useState(10000);
   const [initCenterDep, setInitCenterDep] = useState(100);
+  const [planRevMin, setPlanRevMin] = useState(30);
+  const [planRevSec, setPlanRevSec] = useState(0);
   const [revCost, setRevCost] = useState(100);
   const [maxDep, setMaxDep] = useState(1000000);
   const [interestPct, setInterestPct] = useState(5);
+
+  useEffect(() => {
+    if (!client) {
+      client = new Client(
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game");
+            client.subscribe("/topic/game");
+          }
+        });
+
+      client.activate();
+    }
+  }, []);
 
   const handleChangeR = (event) => {
     setValueR(parseInt(event.target.value));
@@ -21,6 +44,22 @@ export default function Cnfile() {
 
   const handleChangeC = (event) => {
     setValueC(parseInt(event.target.value));
+  };
+
+  const handleChangeInitPlanMin = (event) => {
+    setInitPlanMin(parseInt(event.target.value));
+  };
+
+  const handleChangeInitPlanSec = (event) => {
+    setInitPlanSec(parseInt(event.target.value));
+  };
+
+  const handleChangePlanRevMin = (event) => {
+    setPlanRevMin(parseInt(event.target.value));
+  };
+
+  const handleChangePlanRevSec = (event) => {
+    setPlanRevSec(parseInt(event.target.value));
   };
 
   const setBudgetValues = (value) => {
@@ -52,6 +91,22 @@ export default function Cnfile() {
   const handleOptionClick = (e) => {
     setSelectedOption(e.target.value);
     setBudgetValues(e.target.value);
+  };
+
+  const setConfig = () => {
+    if (client) {
+      let config = `m=${valueR}\nn=${valueC}\ninit_plan_min=${initPlanMin}\ninit_plan_sec=${initPlanSec}\ninit_budget=${initBudget}\ninit_center_dep=${initCenterDep}\nplan_rev_min=${planRevMin}\nplan_rev_sec=${planRevSec}\nrev_cost=${revCost}\nmax_dep=${maxDep}\ninterest_pct=${interestPct}`;
+      if (client.connected) {
+        client.publish(
+          {
+            destination: "/app/config",
+            body: JSON.stringify(
+              {
+                config: config,
+              }),
+          });
+      }
+    }
   };
 
   return (
@@ -126,6 +181,8 @@ export default function Cnfile() {
                       min="5"
                       max="55"
                       step="5"
+                      value={initPlanMin}
+                      onChange={handleChangeInitPlanMin}
                     />
 
                     <p>:</p>
@@ -136,6 +193,8 @@ export default function Cnfile() {
                       min="0"
                       max="55"
                       step="5"
+                      value={initPlanSec}
+                      onChange={handleChangeInitPlanSec}
                     />
                   </div>
                 </div>
@@ -154,6 +213,8 @@ export default function Cnfile() {
                       min="5"
                       max="55"
                       step="5"
+                      value={planRevMin}
+                      onChange={handleChangePlanRevMin}
                     />
 
                     <p>:</p>
@@ -164,6 +225,8 @@ export default function Cnfile() {
                       min="0"
                       max="55"
                       step="5"
+                      value={planRevSec}
+                      onChange={handleChangePlanRevSec}
                     />
                   </div>
                 </div>
@@ -277,7 +340,7 @@ export default function Cnfile() {
           </div>
 
           <div className="cn-container-button">
-            <a className="cn-button">
+            <a className="cn-button" onClick={() => setConfig()}>
               <FontAwesomeIcon icon={faCheck} size="2x" />
             </a>
           </div>
