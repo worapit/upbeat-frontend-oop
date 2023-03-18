@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import Hexagon from "./component/Hexagon";
-import CountdownTimer from "./component/CountdownTimer/CountdownTimer";
+import CountdownTimer from "./CountdownTimer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
@@ -9,9 +9,7 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools"
-
-export const min = 2;
-export const sec = 0;
+import { min, sec } from './constants';
 
 
 export default function CstPlan() {

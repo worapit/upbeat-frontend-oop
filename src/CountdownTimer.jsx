@@ -2,8 +2,9 @@ import { color } from "@mui/system";
 import React from "react";
 import { useState , useEffect } from 'react';
 import "./CountdownTimercss.css";
-import {getRemainingTimeUnitMsTimestamp} from './Utils/CountdownTimerUtils';
-import { min, sec } from "/Users/auswitch/Desktop/upbeat-frontend-oop/src/CstPlan.jsx";
+import {getRemainingTimeUnitMsTimestamp} from './CountdownTimerUtils';
+import { min, sec } from './constants';
+
 
 const CountTimer = ({ countdownTimestampMs, minutes = min, seconds = sec }) => {
   const [remainingTime, setRemainingTime] = useState({

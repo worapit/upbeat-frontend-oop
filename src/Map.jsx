@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Profile from "./image/profile.png";
 import Hexagon from "./component/Hexagon";
 import CstPlan from "./CstPlan";
-import CountdownTimer from "./component/CountdownTimer/CountdownTimer";
+import CountdownTimer from "./CountdownTimer";
 import PopUp from "./component/PopUp";
 
 
