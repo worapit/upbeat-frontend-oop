@@ -5,12 +5,15 @@ import homevideo from "./image/homevideo.mp4";
 import MyPlanet from "./image/neptune.png";
 import user from "./image/user.png";
 import { Client } from "@stomp/stompjs"
+import { useNavigate } from "react-router-dom";
 
-const url = 'ws://localhost:8080/project';
+const url = 'ws://192.168.1.51:8080/project';
 let client;
 
 export default function Home() {
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+  
   const lightRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -26,10 +29,8 @@ export default function Home() {
     }
   `;
 
-  useEffect(() =>
-  {
-    if (!client)
-    {
+  useEffect(() => {
+    if (!client){
       client = new Client(
       {
         brokerURL: url,
@@ -43,9 +44,9 @@ export default function Home() {
     }
   }, []);
 
-  const createPlayer = () =>
-  {
+  const createPlayer = () => {
     if (client) {
+      localStorage.setItem("username", username);
       if (client.connected)
       {
         client.publish(
@@ -58,6 +59,7 @@ export default function Home() {
           });
       }
     }
+    navigate("/start");
   };
 
   return (
@@ -82,7 +84,7 @@ export default function Home() {
             <input type="text" placeholder="Username" style={{ fontFamily: "Bungee" }}
               onChange={(e) => setUsername(e.target.value)} value={username}/>
           </div>
-          <form action="/start" onClick={() => createPlayer()}>
+          <form onClick={() => createPlayer()}>
             <div class="home-inputBox" style={{fontFamily: "Bungee" }}>
               <input type="submit" value="JOIN" id="btn"/>
             </div>

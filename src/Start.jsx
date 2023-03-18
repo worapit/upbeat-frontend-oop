@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import PopUp from "./component/Popup";
 import "./start.css";
+import { Client } from "@stomp/stompjs";
+
+const url = 'ws://192.168.1.51:8080/project';
+let client;
 
 export default function Start() {
 
@@ -19,6 +23,20 @@ export default function Start() {
   const videoRef = useRef(null);
 
   useEffect(() => {
+    
+    if (!client) {
+      client = new Client(
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game");
+            client.subscribe("/topic/game");
+          }
+        });
+
+      client.activate();
+    }
+
     const video = videoRef.current;
 
     const handleEnded = () => {
@@ -48,12 +66,42 @@ export default function Start() {
     setIsPopupOpen(false);
   }
 
+  const ready = () => {
+    if (client) {
+      let username = localStorage.getItem("username");
+      if (client.connected) {
+        client.publish(
+          {
+            destination: "/app/ready",
+            body: JSON.stringify(
+              {
+                name: username,
+                ready: true,
+              }),
+          });
+      }
+    }
+  };
+
+  const deletePlayer = () => {
+    if (client) {
+      let username = localStorage.getItem("username");
+      if (client.connected) {
+        client.publish(
+          {
+            destination: "/app/deletePlayer",
+            body: JSON.stringify(
+              {
+                name: username,
+              }),
+          });
+      }
+    }
+  };
+
   return (
     <div id="start-bg-video">
       <video ref={videoRef} src={myLogin} autoPlay loop muted ></video>
-      
-      
-
       <div className="start-container">
       <div>
         <p className="start-upbeat" style={{ fontFamily: "gamefont2"}}>
@@ -63,7 +111,7 @@ export default function Start() {
       </div>
         <div className="start-button" style={{ fontFamily: "gamefont2"}}>
 
-          <a href="/loading" style={{ "--clr": "#68BB59" }}>
+          <a onClick={() => ready()} href="/loading" style={{ "--clr": "#68BB59" }}>
             <span></span>
             <span></span>
             <span></span>
@@ -79,7 +127,7 @@ export default function Start() {
             how to play
           </a>
 
-          <a href="/" style={{ "--clr": "#D21404" }}>
+          <a onClick={() => deletePlayer()} href="/" style={{ "--clr": "#D21404" }}>
           <span></span>
             <span></span>
             <span></span>
