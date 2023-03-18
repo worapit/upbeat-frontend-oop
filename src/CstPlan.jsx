@@ -47,7 +47,7 @@ export default function CstPlan() {
 
         <div className="cst-wrapper">
           <h2 style={{ fontFamily: "Bungee" }}> CONSTRUCTION PLAN</h2>
-          <AceEditor
+          <AceEditor className="my-editor"
             mode="java"
             theme="dracula"
             name="plan-editor"
