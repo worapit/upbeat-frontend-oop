@@ -3,7 +3,7 @@ import Profile from "./image/profile.png";
 import Hexagon from "./component/Hexagon";
 import CstPlan from "./CstPlan";
 import CountdownTimer from "./CountdownTimer";
-import PopUp from "./component/PopUp";
+import PopUp from "./component/Popup";
 
 
 import myCustomFontt from "./font/Space.ttf";

@@ -3,7 +3,7 @@ import myLogin from "./image/startvideo.mp4";
 import myCustomFont2 from "./font/Space.ttf";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import PopUp from "./component/PopUp";
+import PopUp from "./component/Popup";
 import "./start.css";
 
 export default function Start() {
