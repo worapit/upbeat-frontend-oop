@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Map from "./Map";
 import CstPlan from "./CstPlan";
@@ -11,7 +11,7 @@ import Youlose from "./Youlose";
 import "./index.css";
 import Waiting from "./Waiting"
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import reportWebVitals from "./reportWebVitals";
 
 function App() {
   return (
@@ -32,4 +32,11 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
