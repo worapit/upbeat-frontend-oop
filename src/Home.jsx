@@ -12,8 +12,10 @@ let client;
 
 export default function Home() {
   const [username, setUsername] = useState("");
+  const [nameP1, setNameP1] = useState(null);
+  const [nameP2, setNameP2] = useState(null);
   const navigate = useNavigate();
-  
+
   const lightRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -30,36 +32,58 @@ export default function Home() {
   `;
 
   useEffect(() => {
-    if (!client){
+    if (!client) {
       client = new Client(
-      {
-        brokerURL: url,
-        onConnect: () => {
-          client.subscribe("/app/game");
-          client.subscribe("/topic/game");
-        }
-      });
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game", (message) => {
+              const body = JSON.parse(message.body);
+              setNameP1(body["nameP1"]);
+              setNameP2(body["nameP2"]);
+            });
 
+            client.subscribe("/topic/game", (message) => {
+              const body = JSON.parse(message.body);
+              setNameP1(body["nameP1"]);
+              setNameP2(body["nameP2"]);
+            });
+          }
+        });
       client.activate();
     }
-  }, []);
+  }, [nameP1, nameP2]);
 
   const createPlayer = () => {
-    if (client) {
-      localStorage.setItem("username", username);
-      if (client.connected)
-      {
-        client.publish(
-          {
-            destination: "/app/newPlayer",
-            body: JSON.stringify(
-              {
-                name: username,
-              }),
-          });
-      }
+    if (nameP1 != null && nameP2 != null)
+    {
+      alert("the player is full.");
     }
-    navigate("/start");
+    else if (username == "") {
+      alert("you must enter username.");
+    }
+    else if (/ /g.test(username))
+    {
+      alert("username cannot have space.");
+    }
+    else if (nameP1 === username) {
+      alert("the username is already being used.");
+    }
+    else if (client) {
+      localStorage.setItem("username", username);
+      if (client.connected) {
+        client.publish(
+        {
+          destination: "/app/newPlayer",
+          body: JSON.stringify(
+            {
+              name: username,
+            }),
+        });
+      }
+      
+      navigate("/start");
+    }
   };
 
   return (
@@ -84,11 +108,9 @@ export default function Home() {
             <input type="text" placeholder="Username" style={{ fontFamily: "Bungee" }}
               onChange={(e) => setUsername(e.target.value)} value={username}/>
           </div>
-          <form onClick={() => createPlayer()}>
             <div class="home-inputBox" style={{fontFamily: "Bungee" }}>
-              <input type="submit" value="JOIN" id="btn"/>
+              <input type="submit" value="JOIN" id="btn" onClick={() => createPlayer()}/>
             </div>
-          </form>
         </div>
       </div>
       <style dangerouslySetInnerHTML={{ __html: styles }} />
