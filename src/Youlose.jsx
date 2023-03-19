@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import lose from "./image/youlose.mp4";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import myCustomFontt from "./font/Space.ttf";
 import "./youlose.css";
 
@@ -38,10 +40,15 @@ export default function Youlose() {
               YOU LOSE
             </h1>
           </div>
+          <a
+            style={{
+              fontFamily:  "Bungee",
+            }}
+          >
+            {/* <FontAwesomeIcon icon={faArrowLeft}  size="1x" /> */}
+            back to home
+          </a>
         </div>
-
-        <a>helllo</a>
-
       </div>
     </div>
   );
