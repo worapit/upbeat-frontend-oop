@@ -47,10 +47,7 @@ const styles = `
 
       client.activate();
     }
-  }, []);
-
-  console.log(p1Ready);
-  console.log(p2Ready);
+  }, [p1Ready, p2Ready]);
 
   if (p1Ready && p2Ready)
   {

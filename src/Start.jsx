@@ -23,7 +23,6 @@ export default function Start() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    
     if (!client) {
       client = new Client(
         {
@@ -76,7 +75,6 @@ export default function Start() {
             body: JSON.stringify(
               {
                 name: username,
-                ready: true,
               }),
           });
       }
