@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Hexagon from "./component/Hexagon";
 import CountdownTimer from "./CountdownTimer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,8 +11,57 @@ import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools"
 import { min, sec } from './constants';
 
+import { url } from "./constants";
+import { Client } from "@stomp/stompjs";
+
+let client;
 
 export default function CstPlan() {
+
+  const [planText, setPlanText] = useState("");
+  const [nameP1, setNameP1] = useState(null);
+  const [nameP2, setNameP2] = useState(null);
+
+  useEffect(() => {
+    if (!client) {
+      client = new Client(
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game", (message) => {
+              const body = JSON.parse(message.body);
+              setNameP1(body["nameP1"]);
+              setNameP2(body["nameP2"]);
+            });
+
+            client.subscribe("/topic/game", (message) => {
+              const body = JSON.parse(message.body);
+              setNameP1(body["nameP1"]);
+              setNameP2(body["nameP2"]);
+            });
+          }
+        });
+      client.activate();
+    }
+  }, [nameP1, nameP2]);
+
+  const setPlan = () => {
+    if (client) {
+      if (client.connected) {
+        let username = localStorage.getItem("username");
+        client.publish(
+          {
+            destination: "/app/setPlan",
+            body: JSON.stringify(
+              {
+                name: username,
+                plan: planText,
+              }),
+          });
+      }
+    }
+  };
+
   return (
     <div className="cst-page">
       <div className="show-cstPlan">
@@ -57,9 +106,10 @@ export default function CstPlan() {
                 enableLiveAutocompletion: true,
                 enableSnippets: true,
                 enableMultiselect: true,
-              }}
+            }}
+            onChange={(e)=>setPlanText(e)}
           />
-          <a href="/map"  style={{ "--clr": "#ff1867" }}>
+          <a onClick={() => setPlan()} href="/map"  style={{ "--clr": "#ff1867" }}>
             <span style={{ fontFamily: "Bungee" }}>COMPLETE</span>
             <i></i>
           </a>

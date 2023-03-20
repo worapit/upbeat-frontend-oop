@@ -3,10 +3,11 @@ import myLoading from "./image/loading.mp4";
 import myCustomFontt from "./font/Space.ttf";
 import "./loading.css";
 import { color } from "@mui/system";
+
+import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
 import { useNavigate } from "react-router-dom";
 
-const url = 'ws://192.168.1.51:8080/project';
 let client;
 
 export default function Loading() {

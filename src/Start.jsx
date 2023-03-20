@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import PopUp from "./component/Popup";
 import "./start.css";
+
+import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
 
-const url = 'ws://192.168.1.51:8080/project';
 let client;
 
 export default function Start() {

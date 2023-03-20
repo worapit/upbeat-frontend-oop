@@ -4,9 +4,11 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import React, { useState, useRef, useEffect } from "react";
 
 import "./cnfile.css";
-import { Client } from "@stomp/stompjs";
 
-const url = 'ws://localhost:8080/project';
+import { url } from "./constants";
+import { Client } from "@stomp/stompjs";
+import { useNavigate } from "react-router-dom";
+
 let client;
 
 export default function Cnfile() {
@@ -22,6 +24,7 @@ export default function Cnfile() {
   const [revCost, setRevCost] = useState(100);
   const [maxDep, setMaxDep] = useState(1000000);
   const [interestPct, setInterestPct] = useState(5);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!client) {
@@ -97,24 +100,26 @@ export default function Cnfile() {
     if (client) {
       if (client.connected) {
         client.publish(
-          {
-            destination: "/app/config",
-            body: JSON.stringify(
-              {
-                m: valueR,
-                n: valueC,
-                init_plan_min: initPlanMin,
-                init_plan_sec: initPlanSec,
-                init_budget: initBudget,
-                init_center_dep: initCenterDep,
-                plan_rev_min: planRevMin,
-                plan_rev_sec: planRevSec,
-                rev_cost: revCost,
-                max_dep: maxDep,
-                interest_pct: interestPct,
-              }),
-          });
+        {
+          destination: "/app/config",
+          body: JSON.stringify(
+            {
+              m: valueR,
+              n: valueC,
+              init_plan_min: initPlanMin,
+              init_plan_sec: initPlanSec,
+              init_budget: initBudget,
+              init_center_dep: initCenterDep,
+              plan_rev_min: planRevMin,
+              plan_rev_sec: planRevSec,
+              rev_cost: revCost,
+              max_dep: maxDep,
+              interest_pct: interestPct,
+            }),
+        });
       }
+
+      navigate("/cstplan");
     }
   };
 

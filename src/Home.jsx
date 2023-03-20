@@ -4,10 +4,11 @@ import "./home.css";
 import homevideo from "./image/homevideo.mp4";
 import MyPlanet from "./image/neptune.png";
 import user from "./image/user.png";
+
+import { url } from "./constants";
 import { Client } from "@stomp/stompjs"
 import { useNavigate } from "react-router-dom";
 
-const url = 'ws://192.168.1.51:8080/project';
 let client;
 
 export default function Home() {
