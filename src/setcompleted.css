@@ -67,7 +67,7 @@ body {
   height: fit-content;
   object-fit: cover;
   z-index: -1;
-  filter: brightness(85%); 
+  filter: brightness(120%); 
 }
 
 .setcpt-text {
@@ -106,7 +106,7 @@ body {
     margin-right: auto;
     margin-top: 60px;
     background: rgba(38, 19, 60, 0.5);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(12px);
     font-family: 'Bungee', cursive;
     border-bottom: 3px solid rgba(6, 5, 5, 0.25);
     border-right: 3px solid rgba(0, 0, 0, 0.25);
