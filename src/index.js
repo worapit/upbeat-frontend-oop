@@ -5,6 +5,7 @@ import Map from "./Map";
 import CstPlan from "./CstPlan";
 import Home from "./Home";
 import Start from "./Start";
+import SetComplete from "./SetComplete";
 import Loading from "./Loading";
 import Cnfile from "./Cnfile";
 import Youlose from "./Youlose";
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
            <Route path="/cnfile" element={<Cnfile />}/>
           <Route path="/start" element={<Start />} />
+          <Route path="/setcomplete" element={<SetComplete />} />
           <Route path="/loading" element={<Loading />} />
           <Route path="/cstplan" element={<CstPlan />} />
           <Route path="/map" element={<Map />} />

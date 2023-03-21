@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@font-face {
+  font-family: space;
+  src: url(./font/Space.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  /* font-family: "Bungee", cursive; */
+  width: device-width;
+}
+
+.setcpt-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+}
+
+
+.setcpt-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    line-height: 45px;
+    text-shadow: 0em 0em 0em rgb(190, 153, 21),
+      0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
+      0.1em 0.1em 0 black;
+    letter-spacing: 0.02em;
+  
+    
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    font-size: 40px;
+    margin-top: 40px;
+    
+}
+
+body {
+  overflow: hidden;
+}
+
+#countdown {
+
+    color: #f46666;
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+  
+  
+  
+#setcpt-video video {
+  width: 100%;
+  height: fit-content;
+  
+}
+
+#setcpt-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(85%); 
+}
+
+.setcpt-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding-top: 22%;
+
+  color: antiquewhite;
+  
+}
+
+.setcpt-text h1 {
+ 
+  text-shadow: 
+  0.025em 0.025em 0.02em rgb(219, 177, 28),
+  0.05em 0.05em 0.02em  rgb(23, 23, 151),
+  0.075em 0.075em 0.02em  rgb(202, 43, 43),
+  0.1em 0.1em 0 black;
+
+  font-size: 2.2em;
+
+  letter-spacing: 0.1em;
+
+}
+
+#box-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    background: rgba(38, 19, 60, 0.5);
+    backdrop-filter: blur(15px);
+    font-family: 'Bungee', cursive;
+    border-bottom: 3px solid rgba(6, 5, 5, 0.25);
+    border-right: 3px solid rgba(0, 0, 0, 0.25);
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px 0px rgba(223, 52, 52, 0.75);
+}
+  
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin: 20px;
+    font-size: 22px;
+    color:#fff
+}
+  
+  
+
+
