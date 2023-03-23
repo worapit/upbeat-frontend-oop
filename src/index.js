@@ -9,6 +9,7 @@ import SetComplete from "./SetComplete";
 import Loading from "./Loading";
 import Cnfile from "./Cnfile";
 import Youlose from "./Youlose";
+import Youwin from "./Youwin";
 import "./index.css";
 import Waiting from "./Waiting"
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/waiting" element={<Waiting />} />
           <Route path="/youlose" element={<Youlose />} />
+          <Route path="/youwin" element={<Youwin />} />
         </Routes>
       </div>
      </Router>

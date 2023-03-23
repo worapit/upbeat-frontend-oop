@@ -4,7 +4,7 @@ import myLoading from "./image/setcpt.mp4";
 import myCustomFontt from "./font/Space.ttf";
 import "./setcompleted.css";
 
-export default function Loading() {
+export default function SetComplete() {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(11);
 

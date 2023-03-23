@@ -1,17 +1,29 @@
-import React, { useRef } from "react";
-import lose from "./image/youlose.mp4";
+import React, { useState, useEffect } from "react"; // Import useState and useEffect
+import lose from "./image/youlose2.mp4";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import myCustomFontt from "./font/Space.ttf";
+import { useNavigate } from "react-router-dom";
 import "./youlose.css";
 
 export default function Youlose() {
-  const styles = `
-  @font-face {
-    font-family: 'space';
-    src: url(${myCustomFontt}) format('truetype');
-  }
-`;
+
+  const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(8);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown(countdown - 1);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [countdown]);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate("/");
+    }
+  }, [countdown, navigate]);
 
   return (
     <div>
@@ -20,34 +32,24 @@ export default function Youlose() {
         autoPlay
         loop
         muted
-        play-inline
+        playsInline // Change play-inline to playsInline
         id="youlose-video"
       ></video>
       {/* <div id="yl-popup-container"></div> */}
 
-      <div className="you-lose-show">
-        <div class="youlosecontainer">
-          <div className="youlose-text">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <h1
-              style={{
-                fontFamily: "space",
-              }}
-            >
-              YOU LOSE
-            </h1>
-          </div>
-          <a
-            style={{
-              fontFamily:  "Bungee",
-            }}
-          >
-            {/* <FontAwesomeIcon icon={faArrowLeft}  size="1x" /> */}
-            back to home
-          </a>
+      <div id="youlose-container">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <div className="youlosebox">
+          <p style={{ fontFamily: "space" , fontSize: "90px" }}>
+            You Lose
+          </p>
+          <p style={{ fontFamily: "space" , fontSize: "50px" }}>
+            Back to home in {" "}
+            <span id="countdown">{countdown}</span>
+          </p>
         </div>
       </div>
     </div>
