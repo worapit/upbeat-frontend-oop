@@ -46,7 +46,7 @@ body {
   object-fit: cover;
   z-index: -1;
   transition: opacity 5s ease-in-out;
-  filter: brightness(100%);
+  filter: brightness(130%);
 }
 
 
@@ -56,13 +56,13 @@ body {
   justify-content: center;
   align-items: center;
   position: fixed;
-  height: fit-content;
-  width: fit-content;
+  height: 300px;
+  width: 500px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: rgba(105, 61, 76, 0.613);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(3px);
   border-bottom: 8px solid rgba(207, 57, 57, 0.907); /* changed the color to black */
   border-right: 8px solid rgba(207, 57, 57, 0.907); /* changed the color to black */
   border-top: 8px solid rgba(207, 57, 57, 0.907); /* changed the color to black */
