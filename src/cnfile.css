@@ -374,6 +374,7 @@ input[type="radio"]:checked + .custom-radio::before {
 .cn-button:hover:before {
   /* Add the text to the button and hide it by default */
   content: "Complete";
+  font-family: "bungee";
   color: #008118;
   position: absolute;
   top: -50px;

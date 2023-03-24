@@ -119,7 +119,7 @@ export default function Cnfile() {
         });
       }
 
-      navigate("/cstplan");
+      navigate("/setcomplete");
     }
   };
 
