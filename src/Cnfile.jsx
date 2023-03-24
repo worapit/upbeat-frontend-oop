@@ -353,11 +353,12 @@ export default function Cnfile() {
             </div>
           </div>
 
+
+          </div>
           <div className="cn-container-button">
             <a className="cn-button" onClick={() => setConfig()}>
               <FontAwesomeIcon icon={faCheck} size="2x" />
             </a>
-          </div>
         </div>
       </div>
     </div>
