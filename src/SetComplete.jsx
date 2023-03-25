@@ -1,11 +1,14 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import myLoading from "./image/setcpt.mp4";
 import myCustomFontt from "./font/Space.ttf";
 import "./setcompleted.css";
+import Hexagon from "./component/Hexagon";
 
 export default function SetComplete() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { valueR, valueC} = location.state || {};
   const [countdown, setCountdown] = useState(11);
 
   useEffect(() => {
@@ -21,6 +24,9 @@ export default function SetComplete() {
       navigate("/cstPlan");
     }
   }, [countdown, navigate]);
+
+
+  
 
   const styles = `
     @font-face {
@@ -39,6 +45,7 @@ export default function SetComplete() {
         play-inline
         id="setcpt-video"
       ></video>
+      
         <div id="setcpt-title">
             <p className="setcpt-header" style={{ fontFamily: "space", fontSize: "60px" }}>
                 Setting is complete
@@ -50,8 +57,8 @@ export default function SetComplete() {
             <div id="box-container">
                 <div className="box">
                     <p style={{fontSize: "50px", fontFamily: "space"}}>Map size</p>
-                    <p>row:  9</p>
-                    <p>column:  9</p>
+                    <p>row:  {valueR}</p>
+                    <p>column:  {valueC}</p>
                     
                 </div>
                 <div className="box">

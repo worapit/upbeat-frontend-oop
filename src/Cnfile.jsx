@@ -41,13 +41,22 @@ export default function Cnfile() {
     }
   }, []);
 
-  const handleChangeR = (event) => {
-    setValueR(parseInt(event.target.value));
+  const [hasSliderChangedR, setHasSliderChangedR] = useState(false);
+  const handleChangeRSlide = (event) => {
+    setValueR(event.target.value);
+    setHasSliderChangedR(true);
   };
 
-  const handleChangeC = (event) => {
-    setValueC(parseInt(event.target.value));
+  const [hasSliderChangedC, setHasSliderChangedC] = useState(false);
+  const handleChangeCSlide = (event) => {
+    setValueC(event.target.value);
+    setHasSliderChangedC(true);
   };
+  
+
+
+
+
 
   const handleChangeInitPlanMin = (event) => {
     setInitPlanMin(parseInt(event.target.value));
@@ -99,27 +108,28 @@ export default function Cnfile() {
   const setConfig = () => {
     if (client) {
       if (client.connected) {
-        client.publish(
-        {
+        client.publish({
           destination: "/app/config",
-          body: JSON.stringify(
-            {
-              m: valueR,
-              n: valueC,
-              init_plan_min: initPlanMin,
-              init_plan_sec: initPlanSec,
-              init_budget: initBudget,
-              init_center_dep: initCenterDep,
-              plan_rev_min: planRevMin,
-              plan_rev_sec: planRevSec,
-              rev_cost: revCost,
-              max_dep: maxDep,
-              interest_pct: interestPct,
-            }),
+          body: JSON.stringify({
+            m: valueR,
+            n: valueC,
+            init_plan_min: initPlanMin,
+            init_plan_sec: initPlanSec,
+            init_budget: initBudget,
+            init_center_dep: initCenterDep,
+            plan_rev_min: planRevMin,
+            plan_rev_sec: planRevSec,
+            rev_cost: revCost,
+            max_dep: maxDep,
+            interest_pct: interestPct,
+          }),
         });
       }
-
-      navigate("/setcomplete");
+      localStorage.setItem("valueR", valueR);
+      localStorage.setItem("valueC", valueC);
+      navigate("/setcomplete", {
+        state: { valueR, valueC},
+      });
     }
   };
 
@@ -143,7 +153,7 @@ export default function Cnfile() {
 
                   <div className="cn-range-container">
                     <div className="sliderValue">
-                      <span>{valueR}</span>
+                      <span>{hasSliderChangedR ? valueR : "0"}</span>
                     </div>
                     <div className="field">
                       <div className="value left">9</div>
@@ -153,7 +163,7 @@ export default function Cnfile() {
                         max="16"
                         steps="1"
                         value={valueR}
-                        onChange={handleChangeR}
+                        onChange={handleChangeRSlide}
                       />
                       <div className="value right">16</div>
                     </div>
@@ -162,10 +172,9 @@ export default function Cnfile() {
 
                 <div className="cn-choice">
                   <p>column</p>
-
                   <div className="cn-range-container">
                     <div className="sliderValue">
-                      <span>{valueC}</span>
+                      <span>{hasSliderChangedC ? valueC : "0"}</span>
                     </div>
                     <div className="field">
                       <div className="value left">9</div>
@@ -175,7 +184,7 @@ export default function Cnfile() {
                         max="16"
                         steps="1"
                         value={valueC}
-                        onChange={handleChangeC}
+                        onChange={handleChangeCSlide}
                       />
                       <div className="value right">16</div>
                     </div>

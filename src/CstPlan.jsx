@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Hexagon from "./component/Hexagon";
 import CountdownTimer from "./CountdownTimer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,6 +22,9 @@ export default function CstPlan() {
   const [planText, setPlanText] = useState("");
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { valueR, valueC} = location.state || {};
 
   useEffect(() => {
     if (!client) {
@@ -71,7 +75,8 @@ export default function CstPlan() {
             countdownTimestampMs={Date.now() +  min * 60 * 1000 + sec * 1000}/>
 
           <div className="cst-show-regions">
-            <Hexagon />
+          <Hexagon valueR={valueR} valueC={valueC}  />
+
           </div>
 
           <div className="cst-show-budget">
