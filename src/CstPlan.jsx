@@ -17,14 +17,14 @@ import { Client } from "@stomp/stompjs";
 let client;
 
 export default function CstPlan() {
-
   const [planText, setPlanText] = useState("");
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
   const [valueR, setValueR] = useState(9);
   const [valueC, setValueC] = useState(9);
-  const [initPlanMin, setInitPlanMin] = useState(5);
+  const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
+  const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -64,7 +64,23 @@ export default function CstPlan() {
         });
       client.activate();
     }
+    const storedTimestamp = localStorage.getItem("timerTimestamp");
+    if (storedTimestamp && !isNaN(storedTimestamp)) {
+      setStartingTimestamp(parseInt(storedTimestamp));
+    }
   }, [nameP1, nameP2]);
+
+  useEffect(() => {
+    if (initPlanMin !== 0 || initPlanSec !== 0) {
+      if (!localStorage.getItem("timerTimestamp")) {
+        const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+        setStartingTimestamp(newTimestamp);
+        localStorage.setItem("timerTimestamp", newTimestamp);
+      }
+    }
+  }, [initPlanMin, initPlanSec]);
+
+  
 
   const setPlan = () => {
     if (client) {
@@ -89,7 +105,7 @@ export default function CstPlan() {
         <div className="cst-show-detail">
         
         <CountdownTimer 
-            countdownTimestampMs={Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000}
+            countdownTimestampMs={startingTimestamp}
             minutes={initPlanMin}
             seconds={initPlanSec} />
 
