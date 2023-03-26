@@ -83,6 +83,41 @@ export default function SetComplete() {
     }
   }, [countdown, navigate]);
 
+  useEffect(() => {
+    const videoElement = document.getElementById("setcpt-video");
+
+    function resizeVideo() {
+      const windowAspectRatio = window.innerWidth / window.innerHeight;
+      const videoAspectRatio = videoElement.videoWidth / videoElement.videoHeight;
+
+      if (windowAspectRatio > videoAspectRatio) {
+        videoElement.style.width = "100vw";
+        videoElement.style.height = "auto";
+        videoElement.style.top = "50%";
+        videoElement.style.left = "50%";
+        videoElement.style.transform = "translate(-50%, -50%)";
+      } else {
+        videoElement.style.width = "auto";
+        videoElement.style.height = "100vh";
+        videoElement.style.top = "50%";
+        videoElement.style.left = "50%";
+        videoElement.style.transform = "translate(-50%, -50%)";
+      }
+    }
+
+    if (videoElement.readyState >= 2) {
+      resizeVideo();
+    } else {
+      videoElement.addEventListener("loadeddata", resizeVideo);
+    }
+
+    window.addEventListener("resize", resizeVideo);
+
+    return () => {
+      window.removeEventListener("resize", resizeVideo);
+    };
+  }, []);
+
   const styles = `
     @font-face {
       font-family: 'space';

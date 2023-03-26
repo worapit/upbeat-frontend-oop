@@ -54,19 +54,18 @@ body {
   
   
 #setcpt-video video {
-  width: 100%;
-  height: fit-content;
-  
+  position: absolute;
+  object-fit: cover;
 }
 
 #setcpt-video {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: fit-content;
-  object-fit: cover;
   z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   filter: brightness(120%); 
 }
 

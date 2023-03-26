@@ -14,20 +14,22 @@ body {
   overflow: hidden;
 }
 
-#waitbg-video video {
-  width: 100%;
-  height: fit-content;
-}
-
 #waitbg-video {
   position: fixed;
   top: 0;
   left: 0;
-  object-fit: cover;
   z-index: -1;
-  transition: opacity 5.0s ease-in-out;
-  filter: brightness(65%); 
-} 
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#waitbg-video video {
+  position: absolute;
+  object-fit: cover;
+}
+
+
 
 
 

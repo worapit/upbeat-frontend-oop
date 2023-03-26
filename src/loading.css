@@ -14,20 +14,25 @@ body {
   overflow: hidden;
 }
 
-#bg-video video {
-  width: 100%;
-  height: fit-content;
-}
-
 #bg-video {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: fit-content;
-  object-fit: cover;
   z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
+
+#bg-video video {
+  position: absolute;
+  object-fit: cover;
+}
+
+
+
+
+
 
 .load-text {
   display: flex;
