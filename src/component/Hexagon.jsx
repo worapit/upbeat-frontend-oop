@@ -10,8 +10,8 @@ export default function Hexagon({ valueR, valueC }) { // Receive valueR and valu
   const location = useLocation();
   
 
-  const rowcf = localStorage.getItem("valueR");
-  const column = localStorage.getItem("valueC");
+  const rowcf = valueR;
+  const column = valueC;
 
   const regions = [];
   const centerC = 2;

@@ -52,11 +52,6 @@ export default function Cnfile() {
     setValueC(event.target.value);
     setHasSliderChangedC(true);
   };
-  
-
-
-
-
 
   const handleChangeInitPlanMin = (event) => {
     setInitPlanMin(parseInt(event.target.value));
@@ -125,11 +120,7 @@ export default function Cnfile() {
           }),
         });
       }
-      localStorage.setItem("valueR", valueR);
-      localStorage.setItem("valueC", valueC);
-      navigate("/setcomplete", {
-        state: { valueR, valueC},
-      });
+      navigate("/setcomplete");
     }
   };
 

@@ -22,9 +22,9 @@ export default function CstPlan() {
   const [planText, setPlanText] = useState("");
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
+  const [valueR, setValueR] = useState(9);
+  const [valueC, setValueC] = useState(9);
   const navigate = useNavigate();
-  const location = useLocation();
-  const { valueR, valueC} = location.state || {};
 
   useEffect(() => {
     if (!client) {
@@ -42,6 +42,18 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setNameP1(body["nameP1"]);
               setNameP2(body["nameP2"]);
+            });
+
+            client.subscribe("/app/getConfig", (message) => {
+              const body = JSON.parse(message.body);
+              setValueR(body["m"]);
+              setValueC(body["n"]);
+            });
+
+            client.subscribe("/topic/getConfig", (message) => {
+              const body = JSON.parse(message.body);
+              setValueR(body["m"]);
+              setValueC(body["n"]);
             });
           }
         });

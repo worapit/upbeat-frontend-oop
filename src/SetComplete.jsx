@@ -5,11 +5,69 @@ import myCustomFontt from "./font/Space.ttf";
 import "./setcompleted.css";
 import Hexagon from "./component/Hexagon";
 
+import { url } from "./constants";
+import { Client } from "@stomp/stompjs";
+
+let client;
+
 export default function SetComplete() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { valueR, valueC} = location.state || {};
+  const [valueR, setValueR] = useState(9);
+  const [valueC, setValueC] = useState(9);
+  const [initPlanMin, setInitPlanMin] = useState(5);
+  const [initPlanSec, setInitPlanSec] = useState(0);
+  const [initBudget, setInitBudget] = useState(10000);
+  const [initCenterDep, setInitCenterDep] = useState(100);
+  const [planRevMin, setPlanRevMin] = useState(30);
+  const [planRevSec, setPlanRevSec] = useState(0);
+  const [revCost, setRevCost] = useState(100);
+  const [maxDep, setMaxDep] = useState(1000000);
+  const [interestPct, setInterestPct] = useState(5);
   const [countdown, setCountdown] = useState(11);
+
+  useEffect(() => {
+    if (!client) {
+      client = new Client(
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game");
+            client.subscribe("/topic/game");
+            client.subscribe("/app/getConfig", (message) => {
+              const body = JSON.parse(message.body);
+              setValueR(body["m"]);
+              setValueC(body["n"]);
+              setInitPlanMin(body["init_plan_min"]);
+              setInitPlanSec(body["init_plan_sec"]);
+              setInitBudget(body["init_budget"]);
+              setInitCenterDep(body["init_center_dep"]);
+              setPlanRevMin(body["plan_rev_min"]);
+              setPlanRevSec(body["plan_rev_sec"]);
+              setRevCost(body["rev_cost"]);
+              setMaxDep(body["max_dep"]);
+              setInterestPct(body["interest_pct"]);
+              console.log(body);
+            });
+            client.subscribe("/topic/getConfig", (message) => {
+              const body = JSON.parse(message.body);
+              setValueR(body["m"]);
+              setValueC(body["n"]);
+              setInitPlanMin(body["init_plan_min"]);
+              setInitPlanSec(body["init_plan_sec"]);
+              setInitBudget(body["init_budget"]);
+              setInitCenterDep(body["init_center_dep"]);
+              setPlanRevMin(body["plan_rev_min"]);
+              setPlanRevSec(body["plan_rev_sec"]);
+              setRevCost(body["rev_cost"]);
+              setMaxDep(body["max_dep"]);
+              setInterestPct(body["interest_pct"]);
+              console.log(body);
+            });
+          }
+        });
+      client.activate();
+    }
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,9 +82,6 @@ export default function SetComplete() {
       navigate("/cstPlan");
     }
   }, [countdown, navigate]);
-
-
-  
 
   const styles = `
     @font-face {
@@ -63,16 +118,16 @@ export default function SetComplete() {
                 </div>
                 <div className="box">
                     <p style={{fontSize: "50px", fontFamily: "space"}}>Time</p>
-                    <p>time write plan: 5:00</p>
-                    <p>time change plan: 3:00</p> 
+                    <p>time write plan: {initPlanMin}:{initPlanSec}</p>
+                    <p>time change plan: {planRevMin}:{planRevSec}</p> 
                 </div>
                 <div className="box">
                     <p style={{fontSize: "50px", fontFamily: "space"}}>Properties</p>
-                    <p>budget: 15000</p>
-                    <p>center deposit: 60</p>
-                    <p>cost of changing plan: 80</p>
-                    <p>max deposit: 400000</p>
-                    <p>interest percent: 8</p>
+                    <p>budget: {initBudget}</p>
+                    <p>center deposit: {initCenterDep}</p>
+                    <p>cost of changing plan: {revCost}</p>
+                    <p>max deposit: {maxDep}</p>
+                    <p>interest percent: {interestPct}</p>
                 </div>
             </div>
         </div>
