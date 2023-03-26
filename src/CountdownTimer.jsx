@@ -3,10 +3,8 @@ import React from "react";
 import { useState , useEffect } from 'react';
 import "./CountdownTimercss.css";
 import {getRemainingTimeUnitMsTimestamp} from './CountdownTimerUtils';
-import { min, sec } from './constants';
 
-
-const CountTimer = ({ countdownTimestampMs, minutes = min, seconds = sec }) => {
+const CountTimer = ({ countdownTimestampMs, minutes, seconds }) => {
   const [remainingTime, setRemainingTime] = useState({
     minutes: minutes < 10 ? `0${minutes}` : minutes.toString(),
     seconds: seconds < 10 ? `0${seconds}` : seconds.toString(),
@@ -24,7 +22,7 @@ const CountTimer = ({ countdownTimestampMs, minutes = min, seconds = sec }) => {
   }
 
   const totalSeconds = Number(remainingTime.seconds) + Number(remainingTime.minutes) * 60;
-  const totalDurationSeconds = Number(sec) + Number(min) * 60;
+  const totalDurationSeconds = Number(seconds) + Number(minutes) * 60;
   const percentageRemaining = totalSeconds / totalDurationSeconds * 100;
   
 

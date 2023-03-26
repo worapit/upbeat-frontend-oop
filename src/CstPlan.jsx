@@ -10,7 +10,6 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools"
-import { min, sec } from './constants';
 
 import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
@@ -24,6 +23,8 @@ export default function CstPlan() {
   const [nameP2, setNameP2] = useState(null);
   const [valueR, setValueR] = useState(9);
   const [valueC, setValueC] = useState(9);
+  const [initPlanMin, setInitPlanMin] = useState(5);
+  const [initPlanSec, setInitPlanSec] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -48,12 +49,16 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setValueR(body["m"]);
               setValueC(body["n"]);
+              setInitPlanMin(body["init_plan_min"]);
+              setInitPlanSec(body["init_plan_sec"]);
             });
 
             client.subscribe("/topic/getConfig", (message) => {
               const body = JSON.parse(message.body);
               setValueR(body["m"]);
               setValueC(body["n"]);
+              setInitPlanMin(body["init_plan_min"]);
+              setInitPlanSec(body["init_plan_sec"]);
             });
           }
         });
@@ -84,7 +89,9 @@ export default function CstPlan() {
         <div className="cst-show-detail">
         
         <CountdownTimer 
-            countdownTimestampMs={Date.now() +  min * 60 * 1000 + sec * 1000}/>
+            countdownTimestampMs={Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000}
+            minutes={initPlanMin}
+            seconds={initPlanSec} />
 
           <div className="cst-show-regions">
           <Hexagon valueR={valueR} valueC={valueC}  />
