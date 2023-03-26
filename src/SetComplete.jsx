@@ -90,6 +90,8 @@ export default function SetComplete() {
     }
   `;
 
+  localStorage.removeItem("timerTimestamp");
+
   return (
     <div>
       <video
