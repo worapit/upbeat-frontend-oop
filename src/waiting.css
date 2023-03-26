@@ -14,17 +14,31 @@ body {
   overflow: hidden;
 }
 
-#bg-video {
+#waitbg-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: fit-content;
-  object-fit: cover;
   z-index: -1;
-  transition: opacity 5.0s ease-in-out;
-  filter: brightness(65%); 
+  overflow: hidden;
 }
+
+#waitbg-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100vw;
+  min-height: 100vh;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  transition: opacity 5.0s ease-in-out;
+  filter: brightness(65%);
+}
+
+
 
 .waiting-text {
   display: flex;

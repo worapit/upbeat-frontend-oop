@@ -45,7 +45,7 @@ const styles = `
 
   if (completeSet)
   {
-    navigate("/cstplan");
+    navigate("/setcomplete");
   }
   
   return (
@@ -57,12 +57,12 @@ const styles = `
         loop
         muted
         play-inline
-        id="bg-video"
+        id="waitbg-video"
         
       ></video>
 
       
-      {/* <img src={waitwall}></img> */}
+     
     
       <div className="waiting-text">
         <span></span>
