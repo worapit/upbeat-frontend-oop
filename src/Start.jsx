@@ -8,31 +8,32 @@ import "./start.css";
 
 import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
+import { useNavigate } from "react-router-dom";
 
 let client;
 
 export default function Start() {
-
   const styles2 = `
   @font-face {
     font-family: 'gamefont2';
-    
     src: url(${myCustomFont2}) format('truetype');
   }
 `;
 
   const videoRef = useRef(null);
+  const navigate = useNavigate();
+  const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
+    
     if (!client) {
-      client = new Client(
-        {
-          brokerURL: url,
-          onConnect: () => {
-            client.subscribe("/app/game");
-            client.subscribe("/topic/game");
-          }
-        });
+      client = new Client({
+        brokerURL: url,
+        onConnect: () => {
+          client.subscribe("/app/game");
+          client.subscribe("/topic/game");
+        },
+      });
 
       client.activate();
     }
@@ -52,10 +53,10 @@ export default function Start() {
 
     return () => {
       video.removeEventListener("ended", handleEnded);
+
     };
   }, []);
 
-  //pop up how to play
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   function openPopup() {
@@ -70,14 +71,12 @@ export default function Start() {
     if (client) {
       let username = localStorage.getItem("username");
       if (client.connected) {
-        client.publish(
-          {
-            destination: "/app/ready",
-            body: JSON.stringify(
-              {
-                name: username,
-              }),
-          });
+        client.publish({
+          destination: "/app/ready",
+          body: JSON.stringify({
+            name: username,
+          }),
+        });
       }
     }
   };
@@ -85,69 +84,102 @@ export default function Start() {
   const deletePlayer = () => {
     if (client) {
       let username = localStorage.getItem("username");
-      if (client.connected) {
-        client.publish(
-          {
-            destination: "/app/deletePlayer",
-            body: JSON.stringify(
-              {
-                name: username,
-              }),
-          });
-      }
+      if (client.connected)
+      {
+      client.publish({
+        destination: "/app/deletePlayer",
+        body: JSON.stringify({
+          name: username,
+        }),
+      });
     }
-  };
+  }
+};
 
-  return (
-    <div id="start-bg-video">
-      <video ref={videoRef} src={myLogin} autoPlay loop muted ></video>
-      <div className="start-container">
+const confirmNavigation = () => {
+  deletePlayer();
+  navigate("/");
+};
+
+return (
+  <div id="start-bg-video">
+    <video ref={videoRef} src={myLogin} autoPlay loop muted></video>
+    <div className="start-container">
       <div>
-        <p className="start-upbeat" style={{ fontFamily: "gamefont2"}}>
+        <p className="start-upbeat" style={{ fontFamily: "gamefont2" }}>
           upbeat
         </p>
         <style dangerouslySetInnerHTML={{ __html: styles2 }} />
       </div>
-        <div className="start-button" style={{ fontFamily: "gamefont2"}}>
-
-          <a onClick={() => ready()} href="/loading" style={{ "--clr": "#68BB59" }}>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            start game
-          </a>
-
-          <a onClick={openPopup} style={{ "--clr": "#1e9bff" }}>
+      <div className="start-button" style={{ fontFamily: "gamefont2" }}>
+        <a
+          onClick={() => ready()}
+          href="/loading"
+          style={{ "--clr": "#68BB59" }}
+        >
           <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            how to play
-          </a>
-
-          <a onClick={() => deletePlayer()} href="/" style={{ "--clr": "#D21404" }}>
           <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Back to menu
-          </a>
+          <span></span>
+          <span></span>
+          start game
+        </a>
+        <a onClick={openPopup} style={{ "--clr": "#1e9bff" }}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          how to play
+        </a>
 
-          {isPopupOpen && (
-            <div id="start-popup-container">
-              <PopUp />
-              <a onClick={closePopup}>
-                <FontAwesomeIcon
-                  icon={faXmark}
-                  style={{ color: "#fff" }}
-                  size="2x"
-                />
-              </a>
-            </div> 
-          )}
-        </div>
+        <a
+          onClick={() => {
+            setShowConfirm(true);
+          }}
+          style={{ "--clr": "#D21404" }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Back to menu
+        </a>
+
+        {isPopupOpen && (
+          <div id="start-popup-container">
+            <PopUp />
+            <a onClick={closePopup}>
+              <FontAwesomeIcon
+                icon={faXmark}
+                style={{ color: "#fff" }}
+                size="2x"
+              />
+            </a>
+          </div>
+        )}
+
+        {showConfirm && (
+          <div className="confirm-dialog">
+            <div className="confirm-dialog-content">
+              <h3>Are you sure you want to leave?</h3>
+              <div className="confirm-actions">
+                <button
+                  className="confirm-yes"
+                  onClick={confirmNavigation}
+                >
+                  Yes
+                </button>
+                <button
+                  className="confirm-no"
+                  onClick={() => setShowConfirm(false)}
+                >
+                  No
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
-  );
+  </div>
+);
 }
