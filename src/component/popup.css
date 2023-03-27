@@ -30,7 +30,7 @@
   /* margin-top: 2%; */
 }
 
-.popup-button-show{
+.popup-button-show {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,20 +42,16 @@
   bottom: 15px;
 }
 
-.popup-button {
+
+.popup-button-show a {
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-family: "Bungee";
   font-size: 15px;
-
   text-decoration: none;
-
-
   background-color: #ffffff;
-  color:  rgba(83, 56, 11, 0.5);
-
+  color: rgba(83, 56, 11, 0.5);
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -63,12 +59,11 @@
   transition: 0.5s;
 }
 
-.popup-button:hover {
-  color: rgba(0, 0, 0, 0.6);;
+.popup-button-show a:hover {
+  color: rgba(0, 0, 0, 0.6);
 }
 
-
-.popup-button.active {
+.popup-button-show a.active {
   border: 3px solid rgba(83, 56, 11, 0.5);
 }
 

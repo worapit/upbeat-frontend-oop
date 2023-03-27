@@ -25,7 +25,6 @@ export default function Start() {
   const [showConfirm, setShowConfirm] = useState(false);
 
   useEffect(() => {
-    
     if (!client) {
       client = new Client({
         brokerURL: url,
@@ -53,7 +52,6 @@ export default function Start() {
 
     return () => {
       video.removeEventListener("ended", handleEnded);
-
     };
   }, []);
 
@@ -84,102 +82,104 @@ export default function Start() {
   const deletePlayer = () => {
     if (client) {
       let username = localStorage.getItem("username");
-      if (client.connected)
-      {
-      client.publish({
-        destination: "/app/deletePlayer",
-        body: JSON.stringify({
-          name: username,
-        }),
-      });
+      if (client.connected) {
+        client.publish({
+          destination: "/app/deletePlayer",
+          body: JSON.stringify({
+            name: username,
+          }),
+        });
+      }
     }
-  }
-};
+  };
 
-const confirmNavigation = () => {
-  deletePlayer();
-  navigate("/");
-};
+  const confirmNavigation = () => {
+    deletePlayer();
+    navigate("/");
+  };
 
-return (
-  <div id="start-bg-video">
-    <video ref={videoRef} src={myLogin} autoPlay loop muted></video>
-    <div className="start-container">
-      <div>
-        <p className="start-upbeat" style={{ fontFamily: "gamefont2" }}>
-          upbeat
-        </p>
-        <style dangerouslySetInnerHTML={{ __html: styles2 }} />
-      </div>
-      <div className="start-button" style={{ fontFamily: "gamefont2" }}>
-        <a
-          onClick={() => ready()}
-          href="/loading"
-          style={{ "--clr": "#68BB59" }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          start game
-        </a>
-        <a onClick={openPopup} style={{ "--clr": "#1e9bff" }}>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          how to play
-        </a>
+  return (
+    <div id="start-bg-video">
+      <video ref={videoRef} src={myLogin} autoPlay loop muted></video>
+      <div className="start-container">
+        <div>
+          <p className="start-upbeat" style={{ fontFamily: "gamefont2" }}>
+            upbeat
+          </p>
+          <style dangerouslySetInnerHTML={{ __html: styles2 }} />
+        </div>
+        <div className="start-button" style={{ fontFamily: "gamefont2" }}>
+          <a
+            className="start-choice-button"
+            onClick={() => ready()}
+            href="/loading"
+            style={{ "--clr": "#68BB59" }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            start game
+          </a>
+          <a
+            className="start-choice-button"
+            onClick={openPopup}
+            style={{ "--clr": "#1e9bff" }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            how to play
+          </a>
 
-        <a
-          onClick={() => {
-            setShowConfirm(true);
-          }}
-          style={{ "--clr": "#D21404" }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          Back to menu
-        </a>
+          <a
+            className="start-choice-button"
+            onClick={() => {
+              setShowConfirm(true);
+            }}
+            style={{ "--clr": "#D21404" }}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Back to menu
+          </a>
 
-        {isPopupOpen && (
-          <div id="start-popup-container">
-            <PopUp />
-            <a onClick={closePopup}>
-              <FontAwesomeIcon
-                icon={faXmark}
-                style={{ color: "#fff" }}
-                size="2x"
-              />
-            </a>
-          </div>
-        )}
+          {isPopupOpen && (
+            <div id="start-popup-container">
+              <PopUp />
+              <a onClick={closePopup}>
+                <FontAwesomeIcon
+                  icon={faXmark}
+                  style={{ color: "#fff" }}
+                  size="2x"
+                />
+              </a>
+            </div>
+          )}
 
-        {showConfirm && (
-          <div className="confirm-dialog">
-            <div className="confirm-dialog-content">
-              <h3>Are you sure you want to leave?</h3>
-              <div className="confirm-actions">
-                <button
-                  className="confirm-yes"
-                  onClick={confirmNavigation}
-                >
-                  Yes
-                </button>
-                <button
-                  className="confirm-no"
-                  onClick={() => setShowConfirm(false)}
-                >
-                  No
-                </button>
+          {showConfirm && (
+            <div className="confirm-dialog">
+              <div className="confirm-dialog-content">
+                <h3>Are you sure you want to leave?</h3>
+                <div className="confirm-actions">
+                  <button className="confirm-yes" onClick={confirmNavigation}>
+                    Yes
+                  </button>
+                  <button
+                    className="confirm-no"
+                    onClick={() => setShowConfirm(false)}
+                  >
+                    No
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
 }

@@ -134,9 +134,7 @@ body {
     
     
     
-    
-    
-    .start-button a {
+    .start-choice-button{
       position: relative;
       display: inline-block;
       color: #d4c2c2  !important;
@@ -155,9 +153,7 @@ body {
     
     }
     
-    
-    .start-button a:hover{
-      /* letter-spacing: 0.25em; */
+    .start-choice-button:hover{
       color: #fbfbfb !important;
       background: var(--clr);
       box-shadow: 0 0 10px var(--clr) , 0 0 40px var(--clr), 0 0 0px var(--clr);
