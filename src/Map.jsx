@@ -38,11 +38,6 @@ export default function Map() {
   }
 `;
 
-  // Receive valueR and valueC as props
-
-  // const navigate = useNavigate();
-  // const location = useLocation();
-
   const rowcf = 9;
   const column = 16;
 
@@ -87,14 +82,6 @@ export default function Map() {
           <span >DEPOSIT</span>
         </div>
         <div className="text-box-deposit">
-         
-    
-         
-         
-
-        
-          
-    
         </div>
       </div>
 

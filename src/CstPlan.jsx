@@ -37,6 +37,15 @@ export default function CstPlan() {
     setShowPopup(false);
   };
 
+  const regions = [[]];
+  for (let i = 0; i < valueR; i++) {
+    const row = [];
+    for (let j = 0; j < valueC; j++) {
+      row.push(j);
+    }
+    regions.push(row);
+  }
+
   useEffect(() => {
     if (!client) {
       client = new Client(
@@ -90,8 +99,6 @@ export default function CstPlan() {
     }
   }, [initPlanMin, initPlanSec]);
 
-  
-
   const setPlan = () => {
     if (client) {
       if (client.connected) {
@@ -109,6 +116,8 @@ export default function CstPlan() {
     }
   };
 
+  const click = (x, y) => { };
+
   return (
     <div className="cst-page">
       <div className="show-cstPlan">
@@ -120,7 +129,18 @@ export default function CstPlan() {
             seconds={initPlanSec} />
 
           <div className="cst-show-regions">
-            <Hexagon valueR={valueR} valueC={valueC}  />
+            {regions.map((row, rowIndex) => (
+              <div className="rowcss" key={rowIndex}>
+                {row.map((col, colIndex) => (
+                  <Hexagon
+                    key={`${rowIndex}${colIndex}`}
+                    x={rowIndex}
+                    y={colIndex}
+                    click={click}
+                  />
+                ))}
+              </div>
+            ))}
           </div>
 
           <div className="cst-show-budget">
