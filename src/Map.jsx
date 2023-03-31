@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Client } from "@stomp/stompjs";
+import React, { useState } from "react";
 import Profile from "./image/profile.png";
 import Hexagon from "./component/Hexagon";
+import CstPlan from "./CstPlan";
+import CountdownTimer from "./CountdownTimer";
 import PopUp from "./component/Popup";
+
+import myCustomFontt from "./font/Space.ttf";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -11,44 +14,14 @@ import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
-import { url } from "./constants";
-
-let client;
 
 import region from "./image/region.png";
 import cityCenter from "./image/city_center.png";
 import city from "./image/city.png";
 
 export default function Map() {
-  const [valueR, setValueR] = useState(null);
-  const [valueC, setValueC] = useState(null);
   //pop up how to play
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  useEffect(() => {
-   
-
-    if (!client) {
-      client = new Client(
-        {
-          brokerURL: url,
-          onConnect: () => {
-            client.subscribe("/app/getConfig", (message) => {
-              const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
-            });
-
-            client.subscribe("/topic/getConfig", (message) => {
-              const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
-            });
-          }
-        });
-      client.activate();
-    }
-  }, []);
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -127,7 +100,18 @@ export default function Map() {
 
       {/* <img className="map-profile" src={Profile} /> */}
       <div className="map-show-regions">
-
+        {regions.map((row, rowIndex) => (
+          <div className="rowcss" key={rowIndex}>
+            {row.map((col, colIndex) => (
+              <Hexagon
+                key={`${rowIndex}${colIndex}`}
+                x={rowIndex}
+                y={colIndex}
+                click={click}
+              />
+            ))}
+          </div>
+        ))}
       </div>
 
       <div className="map-container-plan">
