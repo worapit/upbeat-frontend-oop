@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@font-face {
+  font-family: space;
+  src: url(./font/Space.ttf);
+}
 
 .pages{
   box-sizing: border-box;
@@ -9,10 +13,6 @@
 body {
   overflow: hidden;
 }
-
-
-
-
 
 @media only screen and (max-height: 749px) {
   .cst-page {
@@ -66,7 +66,7 @@ body {
     resize: none;
     padding-left: 9%;
     padding-right: 8%;
-    padding-top: 3%;
+    padding-top: 15%;
     padding-bottom: 2%;
     margin-top: 4%;
     margin-bottom: 2%;
@@ -190,7 +190,7 @@ body {
     flex-shrink: 0;
   }
 
-  .popup {
+  .cstpopup {
     position: fixed;
     top: 0;
     left: 0;
@@ -200,35 +200,47 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-    
+    z-index: 1000;
   }
   
-  .popup-content {
+  .cstpopup-content {
     background-color: rgba(201, 199, 238, 0.88);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     font-family: "bungee";
-    border: #181111, 10px, solid;
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
   }
+  
   .cstplanno,
-  .cstplanyes
-  {
-    padding: 10px 20px;
-    background-color: #25861e;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-  .cstplanno
-  {
-    background-color: #D21404;
-  }
+.cstplanyes {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 8px;
+  margin-left: 40px;
+  margin-right: 40px;
+  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+}
+
+.cstplanyes {
+  background-color: #25861e;
+}
+
+.cstplanno {
+  background-color: #D21404;
+}
+
+
+.cstplanno:hover,
+.cstplanyes:hover {
+  background-color: rgb(87, 21, 230);
+}
+  
 }
 
 
@@ -290,7 +302,7 @@ body {
 
     padding-left: 9%;
     padding-right: 8%;
-    padding-top: 3%;
+    padding-top: 15%;
     padding-bottom: 2%;
 
     margin-top: 6%;
@@ -418,7 +430,7 @@ body {
     flex-shrink: 0;
   }
 
-  .popup {
+  .cstpopup {
     position: fixed;
     top: 0;
     left: 0;
@@ -428,33 +440,44 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100;
-    
+    z-index: 1000;
   }
   
-  .popup-content {
+  .cstpopup-content {
     background-color: rgba(201, 199, 238, 0.88);
     padding: 40px;
     border-radius: 20px;
     text-align: center;
     font-family: "bungee";
-    border: #181111, 10px, solid;
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
   }
+  
   .cstplanno,
-  .cstplanyes
-  {
-    padding: 10px 20px;
-    background-color: #25861e;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-  .cstplanno
-  {
-    background-color: #D21404;
-  }
+.cstplanyes {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 8px;
+  margin-left: 40px;
+  margin-right: 40px;
+  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+}
+
+.cstplanyes {
+  background-color: #25861e;
+}
+
+.cstplanno {
+  background-color: #D21404;
+}
+
+
+.cstplanno:hover,
+.cstplanyes:hover {
+  letter-spacing: 5px;
+}
 }

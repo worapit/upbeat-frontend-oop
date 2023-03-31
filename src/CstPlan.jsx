@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Hexagon from "./component/Hexagon";
 import CountdownTimer from "./CountdownTimer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./cstPlan.css";
 import AceEditor from "react-ace";
@@ -161,7 +160,7 @@ export default function CstPlan() {
             theme="dracula"
             name="plan-editor"
             editorProps={{ $blockScrolling: true }}
-            fontSize ="17px"
+            fontSize ="13px"
             setOptions={{
                 fontFamily: "'JetBrains Mono', monospace",
                 enableBasicAutocompletion: true,
@@ -180,14 +179,13 @@ export default function CstPlan() {
               <span>COMPLETE</span>
               <i></i>
             </a>
-
           </div>
         </div>
         {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
+        <div className="cstpopup">
+          <div className="cstpopup-content">
             <p style={{fontSize: "30px"}}>Are you sure to confirm this plan?</p>
-            <p style={{color: "red"}}>Keep in mind that changing plans will cost your budget.</p>
+            <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
             <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Yes</button>
             <button className="cstplanno" onClick={() => handleConfirmation(false)}>No</button>
           </div>
