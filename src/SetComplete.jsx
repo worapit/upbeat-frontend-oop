@@ -14,12 +14,14 @@ export default function SetComplete() {
   const navigate = useNavigate();
   const [valueR, setValueR] = useState(9);
   const [valueC, setValueC] = useState(9);
-  const [initPlanMin, setInitPlanMin] = useState(5);
-  const [initPlanSec, setInitPlanSec] = useState(0);
+  const [initPlanMin, setInitPlanMin] = useState('02');
+  const [initPlanSec, setInitPlanSec] = useState('00');
+  const [planRevMin, setPlanRevMin] = useState('02');
+  const [planRevSec, setPlanRevSec] = useState('00');
   const [initBudget, setInitBudget] = useState(10000);
   const [initCenterDep, setInitCenterDep] = useState(100);
-  const [planRevMin, setPlanRevMin] = useState(30);
-  const [planRevSec, setPlanRevSec] = useState(0);
+  // const [planRevMin, setPlanRevMin] = useState(30);
+  // const [planRevSec, setPlanRevSec] = useState(0);
   const [revCost, setRevCost] = useState(100);
   const [maxDep, setMaxDep] = useState(1000000);
   const [interestPct, setInterestPct] = useState(5);
@@ -155,8 +157,8 @@ export default function SetComplete() {
                 </div>
                 <div className="box">
                     <p style={{fontSize: "50px", fontFamily: "space"}}>Time</p>
-                    <p>time write plan: {initPlanMin}:{initPlanSec}</p>
-                    <p>time change plan: {planRevMin}:{planRevSec}</p> 
+                    <p>time write plan: {initPlanMin.toString().padStart(2, '0')}:{initPlanSec.toString().padStart(2, '0')}</p>
+                    <p>time change plan: {planRevMin.toString().padStart(2, '0')}:{planRevSec.toString().padStart(2, '0')}</p> 
                 </div>
                 <div className="box">
                     <p style={{fontSize: "50px", fontFamily: "space"}}>Properties</p>

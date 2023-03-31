@@ -141,25 +141,25 @@ export default function PopUp() {
 
       <div className="popup-button-show">
         <a
-          className={`popup-button ${page === "p1" ? "active" : ""}`}
+          className={` ${page === "p1" ? "active" : ""}`}
           onClick={handleP1Click}
         >
           1
         </a>
         <a
-          className={`popup-button ${page === "p2" ? "active" : ""}`}
+          className={`${page === "p2" ? "active" : ""}`}
           onClick={handleP2Click}
         >
           2
         </a>
         <a
-          className={`popup-button ${page === "p3" ? "active" : ""}`}
+          className={` ${page === "p3" ? "active" : ""}`}
           onClick={handleP3Click}
         >
           3
         </a>
         <a
-          className={`popup-button ${page === "p4" ? "active" : ""}`}
+          className={` ${page === "p4" ? "active" : ""}`}
           onClick={handleP4Click}
         >
           4

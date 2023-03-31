@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import myLoading from "./image/loading.mp4";
 import myCustomFontt from "./font/Space.ttf";
 import "./loading.css";
-import { color } from "@mui/system";
+
 
 import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
