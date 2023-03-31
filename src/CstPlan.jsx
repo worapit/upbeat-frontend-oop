@@ -176,7 +176,7 @@ export default function CstPlan() {
               <i></i>
             </a>
             <a onClick={handleClickComplete} className="complete">
-              <span>COMPLETE</span>
+              <span>Confirm</span>
               <i></i>
             </a>
           </div>
@@ -186,8 +186,8 @@ export default function CstPlan() {
           <div className="cstpopup-content">
             <p style={{fontSize: "30px"}}>Are you sure to confirm this plan?</p>
             <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
-            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Yes</button>
-            <button className="cstplanno" onClick={() => handleConfirmation(false)}>No</button>
+            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Confirm</button>
+            <button className="cstplanno" onClick={() => handleConfirmation(false)}>Cancel</button>
           </div>
         </div>
       )}

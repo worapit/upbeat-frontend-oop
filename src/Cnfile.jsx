@@ -21,16 +21,16 @@ export default function Cnfile() {
   const [planRevSec, setPlanRevSec] = useState('00');
   const [initBudget, setInitBudget] = useState(10000);
   const [initCenterDep, setInitCenterDep] = useState(100);
-  // const [planRevMin, setPlanRevMin] = useState(2);
-  // const [planRevSec, setPlanRevSec] = useState(0);
   const [revCost, setRevCost] = useState(100);
   const [maxDep, setMaxDep] = useState(1000000);
   const [interestPct, setInterestPct] = useState(5);
-  
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
+  
+  
   const handleIncrease = (e, isMinute, planType) => {
-    const step = 1;
-    const max = isMinute ? 55 : 59;
+    const step = isMinute ? 1 : 5;
+    const max = isMinute ? 59 : 55;
     const input = e.target.nextElementSibling;
     const value = parseInt(input.value);
     const newValue = value + step <= max ? value + step : max;
@@ -44,12 +44,12 @@ export default function Cnfile() {
   };
   
   const handleDecrease = (e, isMinute, planType) => {
-    const step = 1;
-    const min = isMinute ? "02" : "0";
+    const step = isMinute ? 1 : 5;
+    const min = isMinute ? 2 : 0;
     const input = e.target.previousElementSibling;
     const value = parseInt(input.value);
     const newValue = value - step >= min ? value - step : min;
-    input.value = newValue;
+    input.value = newValue.toString().padStart(2, '0');
   
     if (planType === "write") {
       isMinute ? handleChangeInitPlanMin({ target: input }) : handleChangeInitPlanSec({ target: input });
@@ -57,6 +57,7 @@ export default function Cnfile() {
       isMinute ? handleChangePlanRevMin({ target: input }) : handleChangePlanRevSec({ target: input });
     }
   };
+  
   
 
   useEffect(() => {
@@ -134,6 +135,11 @@ export default function Cnfile() {
   };
 
   const setConfig = () => {
+    setShowPopup(true);
+  };
+  
+  const handleConfirm = () => {
+    setShowPopup(false);
     if (client) {
       if (client.connected) {
         client.publish({
@@ -165,8 +171,8 @@ export default function Cnfile() {
         <div id="star3"></div>
 
         <div id="cn-title">
-          <p className="cn-header" style={{ fontFamily: "Bungee" }}>
-            SETTING
+          <p className="cn-header" style={{ fontFamily: "Bungee", fontSize: "72px" }}>
+            CONFIGURATION
           </p>
 
           <div className="cn-box">
@@ -177,7 +183,7 @@ export default function Cnfile() {
 
                   <div className="cn-range-container">
                     <div className="sliderValue">
-                      <span>{hasSliderChangedR ? valueR : "0"}</span>
+                      <span>{hasSliderChangedR ? valueR : "9"}</span>
                     </div>
                     <div className="field">
                       <div className="value left">9</div>
@@ -198,7 +204,7 @@ export default function Cnfile() {
                   <p>column</p>
                   <div className="cn-range-container">
                     <div className="sliderValue">
-                      <span>{hasSliderChangedC ? valueC : "0"}</span>
+                      <span>{hasSliderChangedC ? valueC : "9"}</span>
                     </div>
                     <div className="field">
                       <div className="value left">9</div>
@@ -277,7 +283,7 @@ export default function Cnfile() {
 
               <div className="cn-time-icon">
                 <FontAwesomeIcon icon={faClock} size="4x" />
-                <p>MIN : SEC</p>
+                <p style={{color: "white"}}>MIN : SEC</p>
               </div>
 
               <div className="cn-time-show">
@@ -354,17 +360,19 @@ export default function Cnfile() {
                   EASY
                 </label>
 
-                <label for="group1-option2">
-                  <input
-                    type="radio"
-                    id="group1-option2"
-                    name="radio-group1"
-                    value="NORMAL"
-                    onClick={handleOptionClick}
-                  />
-                  <span class="custom-radio"></span>
-                  NORMAL
-                </label>
+                <label htmlFor="group1-option2">
+                <input
+                  type="radio"
+                  id="group1-option2"
+                  name="radio-group1"
+                  value="NORMAL"
+                  onClick={handleOptionClick}
+                  checked
+                />
+                <span className="custom-radio"></span>
+                NORMAL
+              </label>
+
 
                 <label for="group1-option3">
                   <input
@@ -452,6 +460,26 @@ export default function Cnfile() {
               <FontAwesomeIcon icon={faCheck} size="2x" />
             </a>
         </div>
+        {showPopup && (
+            <div className="modepopup">
+              <div className="modepopup-inner">
+                <h2 style={{fontSize: "28px"}}>Are you sure to confirm configuration?</h2>
+                <h2 style={{color: "crimson", fontSize: "20px", textDecoration: "underline"}}>keep in mind your configuration may give you an advantage.</h2>
+                <button
+                  className="modepopup-confirm-button"
+                  onClick={() => handleConfirm()}
+                >
+                  Confirm
+                </button>
+                <button
+                  className="modepopup-close-button"
+                  onClick={() => setShowPopup(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
       </div>
     </div>
   );

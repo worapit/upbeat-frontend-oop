@@ -46,7 +46,7 @@
   width: 900px;
   height: 570px;
 
-  background: rgba(144, 159, 235, 0.5);
+  background: rgba(122, 120, 235, 0.381);
   backdrop-filter: blur(0px);
   font-family: 'Bungee', cursive;
   border-bottom: 3px solid rgba(6, 5, 5, 0.25);
@@ -339,9 +339,62 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + .custom-radio::before {
-  background-color: #664aff;
+  background-color: #4e33e8;
   border-color: #ffffff;
 }
+
+.modepopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modepopup-inner {
+  background-color: rgba(201, 199, 238, 0.88);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  font-family: "bungee";
+  border: 7px solid #008118;
+  box-sizing: border-box;
+  max-width: 80%; /* Optional: Limit width of the popup content */
+}
+
+.modepopup-close-button,
+.modepopup-confirm-button {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  border-radius: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 2%;
+  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+}
+.modepopup-confirm-button {
+  background-color: #4f94e2;
+}
+.modepopup-close-button {
+  background-color: #e24f65;
+}
+
+.modepopup-confirm-button:hover {
+  background-color: #2a81e4;
+}
+
+.modepopup-close-button:hover {
+  background-color: #d32f2f;
+}
+
 
 /* .cn-time-picker input[type="number"]::-webkit-inner-spin-button,
 .cn-time-picker input[type="number"]::-webkit-outer-spin-button,
@@ -370,7 +423,7 @@ input[type="radio"]:checked + .custom-radio::before {
 
 .cn-setting-budget span {
   letter-spacing: 0.6px;
-  color: #000000;
+  color: #dedffa;
   font-size: 18px;
 }
 
@@ -404,7 +457,7 @@ input[type="radio"]:checked + .custom-radio::before {
 
 .cn-button:hover:before {
   /* Add the text to the button and hide it by default */
-  content: "Complete";
+  content: "Confirm";
   font-family: "bungee";
   color: #008118;
   position: absolute;

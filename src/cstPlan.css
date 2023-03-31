@@ -118,7 +118,7 @@ body {
     margin-bottom: 5px;
   }
   
-  .check-syntax, .complete {
+  .check-syntax {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -127,8 +127,23 @@ body {
     font-size: 16px;
     font-family: "Bungee", sans-serif;
     text-decoration: none;
-    color: #181111;
-    background-color: #dcf70e;
+    color: #ffffff;
+    background-color: #ff0000;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: background-color 0.3s, letter-spacing 0.3s;
+  }
+  .complete {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Bungee", sans-serif;
+    text-decoration: none;
+    color: #000000;
+    background-color: #00e8fd;
     cursor: pointer;
     border-radius: 40px;
     transition: background-color 0.3s, letter-spacing 0.3s;
@@ -139,12 +154,12 @@ body {
   }
   
   .check-syntax:hover {
-    background-color: #3dff98;
+    background-color: #f8a520;
     letter-spacing: 0.20em;
   }
   
   .complete:hover {
-    background-color: #ff3d81;
+    background-color: #00ff40;
     letter-spacing: 0.20em;
   }
   
@@ -218,28 +233,32 @@ body {
   .cstplanno,
   .cstplanyes {
     padding: 10px 20px;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     cursor: pointer;
     font-size: 22px;
-    border-radius: 8px;
+    border-radius: 40px;
     margin-left: 40px;
     margin-right: 40px;
+    margin-top: 2%;
     transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
   }
 
   .cstplanyes {
-    background-color: #25861e;
+    background-color: #4f94e2;
   }
 
   .cstplanno {
-    background-color: #D21404;
+    background-color: #e24f65;
   }
 
-
-  .cstplanno:hover,
+  .cstplanno:hover
+  {
+    background-color: #d32f2f;
+  }
+  
   .cstplanyes:hover {
-    background-color: rgb(87, 21, 230);
+    background-color: #2a81e4;
   }
   
 }
