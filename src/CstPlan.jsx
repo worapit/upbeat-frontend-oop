@@ -10,7 +10,6 @@ import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-dracula";
 import "ace-builds/src-noconflict/ext-language_tools"
-
 import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
 
@@ -110,8 +109,7 @@ export default function CstPlan() {
             seconds={initPlanSec} />
 
           <div className="cst-show-regions">
-          <Hexagon valueR={valueR} valueC={valueC}  />
-
+            <Hexagon valueR={valueR} valueC={valueC}  />
           </div>
 
           <div className="cst-show-budget">
