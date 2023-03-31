@@ -171,6 +171,7 @@ body {
     box-sizing: border-box;
     text-align: center;
     gap: 5px;
+  
   }
 
   .cst-budget span {
@@ -196,7 +197,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.65);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -215,31 +216,31 @@ body {
   }
   
   .cstplanno,
-.cstplanyes {
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 22px;
-  border-radius: 8px;
-  margin-left: 40px;
-  margin-right: 40px;
-  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
-}
+  .cstplanyes {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 8px;
+    margin-left: 40px;
+    margin-right: 40px;
+    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+  }
 
-.cstplanyes {
-  background-color: #25861e;
-}
+  .cstplanyes {
+    background-color: #25861e;
+  }
 
-.cstplanno {
-  background-color: #D21404;
-}
+  .cstplanno {
+    background-color: #D21404;
+  }
 
 
-.cstplanno:hover,
-.cstplanyes:hover {
-  background-color: rgb(87, 21, 230);
-}
+  .cstplanno:hover,
+  .cstplanyes:hover {
+    background-color: rgb(87, 21, 230);
+  }
   
 }
 

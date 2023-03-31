@@ -32,11 +32,14 @@ body {
 }
 
 .confirm-dialog-content {
-  background-color: rgb(239, 237, 246);
+  background-color: rgba(201, 199, 238, 0.88);
   padding: 40px;
   border-radius: 20px;
-  
   text-align: center;
+  font-family: "bungee";
+  border: 7px solid #f31c1c;
+  box-sizing: border-box;
+  max-width: 80%; /* Optional: Limit width of the popup content */
 }
 
 .confirm-actions {
@@ -58,6 +61,11 @@ body {
 
 .confirm-no {
   background-color: #D21404;
+}
+
+.confirm-yes:hover,
+.confirm-no:hover {
+  background-color: rgb(87, 21, 230);
 }
 
 
