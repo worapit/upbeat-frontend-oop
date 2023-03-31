@@ -147,10 +147,17 @@ export default function CstPlan() {
             }}
             onChange={(e)=>setPlanText(e)}
           />
-          <a onClick={() => setPlan()} href="/map"  style={{ "--clr": "#ff1867" }}>
-            <span style={{ fontFamily: "Bungee" }}>COMPLETE</span>
-            <i></i>
-          </a>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <a onClick={() => setPlan()} href="/map" style={{ "--clr": "#ff1867", marginRight: "25px" }}>
+              <span style={{ fontFamily: "Bungee" }}>CHECK SYNTAX</span>
+              <i></i>
+            </a>
+            <a onClick={() => setPlan()} href="/map" style={{ "--clr": "#ff1867" }}>
+              <span style={{ fontFamily: "Bungee" }}>COMPLETE</span>
+              <i></i>
+            </a>
+          </div>
+
         </div>
 
       </div>
