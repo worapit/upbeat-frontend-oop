@@ -4,7 +4,6 @@ import region from "../image/region.png";
 import cityCenter from "../image/city_center.png";
 import city from "../image/city.png";
 import "./hexagon.css";
-import Deptail from "./Deptail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
