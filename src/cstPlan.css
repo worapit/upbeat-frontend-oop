@@ -51,35 +51,29 @@ body {
   }
 
   .cst-show-regions {
-    height: 55%;
-    width: 70%;
-
+    height: 80%;
+    width: 75%;
     background: rgba(35, 42, 145, 0.25);
     backdrop-filter: blur(40px);
-
     border-bottom: 3px solid rgba(6, 5, 5, 0.25);
     border-right: 3px solid rgba(3, 2, 2, 0.25);
-
     border: 5px solid rgb(187, 167, 88);
     border-left-style: double;
     border-right-style: double;
     border-radius: 20px 7px 7px 20px;
     box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
-
     overflow: auto;
     resize: none;
-
     padding-left: 9%;
     padding-right: 8%;
     padding-top: 3%;
     padding-bottom: 2%;
-
-    margin-top: 6%;
+    margin-top: 4%;
     margin-bottom: 2%;
   }
 
   .cst-show-regions::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
     height: 5px;
   }
 
@@ -89,9 +83,8 @@ body {
   }
 
   .cst-show-regions::-webkit-scrollbar-thumb {
-    background-color: #850a3bdb;
-    border-radius: 3px;
-    border: none;
+    background-color: #f0363adb;
+    border-radius: 4px;
   }
 
   .cst-wrapper {
@@ -101,19 +94,14 @@ body {
     border-width: 1px;
     width: 1400%;
     height: 1400%;
-
     background: linear-gradient(to bottom, #b66efa, #4B0082);
     box-shadow: 0px 5px 5px rgba(33, 23, 4, 0.5);
-    
     border-radius: 40px;
     padding: 15px 10px 10px;
     margin-left: auto;
     margin-right: -6.5%;
-
     margin-top: 3%;
-
     gap: 10px;
-
     font-family: 'JetBrains Mono', monospace;
 
   }
@@ -123,57 +111,43 @@ body {
     font-size: 28px;
   }
 
-  .cst-wrapper a {
-    position: relative;
-    background: #ff3d3d;
-    color: #fff !important;
-    border-radius: 15px 15px 15px 15px;
-    text-decoration: none !important;
-    text-transform: uppercase;
-    font-size: 1em;
-    letter-spacing: 0.1em;
-    padding: 10px 30px;
-    transition: 0.5s;
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
-
-  .cst-wrapper a:hover {
-    letter-spacing: 0.25em;
-    background: #096d4d;
-    box-shadow: 0 0 0px var(--clr);
-    text-decoration: none;
-  }
-
-  .cst-wrapper textarea {
-    width: 100%;
-    height: 400px;
-    padding: 15px;
-    font-size: 14px;
-    border-radius: 10px;
-    /* border-color: #222d69; */
-    resize: none;
-  }
-
-  textarea:is(:focus, :valid) {
-    border-width: 2px;
-    padding: 14px;
-    border-color: rgb(172, 155, 88);
-  }
-
-  textarea::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  textarea::-webkit-scrollbar-track {
-    background: #e0d8d8;
-    border-radius: 500px;
-  }
-
-  textarea::-webkit-scrollbar-thumb {
-    background-color: #793434;
-    border-radius: 3px;
+  
+  .check-syntax, .complete {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Bungee", sans-serif;
+    text-decoration: none;
+    color: #181111;
+    background-color: #dcf70e;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: background-color 0.3s, letter-spacing 0.3s;
   }
+  
+  .check-syntax {
+    margin-right: 25px;
+  }
+  
+  .check-syntax:hover {
+    background-color: #3dff98;
+    letter-spacing: 0.20em;
+  }
+  
+  .complete:hover {
+    background-color: #ff3d81;
+    letter-spacing: 0.20em;
+  }
+  
 
   .cst-show-budget {
     display: flex;
@@ -187,7 +161,7 @@ body {
     color: #444 !important;
     height: 50px;
     width: 200px;
-    border: 3px solid #ffffff;
+    border: 3px solid #d16f6f;
     background-color: #eaeaea;
     border-radius: 20px;
     border-bottom-left-radius: 30px;
@@ -214,6 +188,46 @@ body {
     width: 60px;
     padding-left: 20px;
     flex-shrink: 0;
+  }
+
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    
+  }
+  
+  .popup-content {
+    background-color: rgba(201, 199, 238, 0.88);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: #181111, 10px, solid;
+  }
+  .cstplanno,
+  .cstplanyes
+  {
+    padding: 10px 20px;
+    background-color: #25861e;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  .cstplanno
+  {
+    background-color: #D21404;
   }
 }
 
@@ -325,56 +339,38 @@ body {
     font-size: 28px;
   }
 
-  .cst-wrapper a {
-    position: relative;
-    background: #ff3d3d;
-    color: #fff !important;
-    border-radius: 15px 15px 15px 15px;
-    text-decoration: none !important;
-    text-transform: uppercase;
-    font-size: 1em;
-    letter-spacing: 0.1em;
-    padding: 10px 30px;
-    transition: 0.5s;
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
   }
-
-  .cst-wrapper a:hover {
-    letter-spacing: 0.25em;
-    background: #187e5e;
-    box-shadow: 0 0 0px var(--clr);
-    text-decoration: none;
-  }
-
-  .cst-wrapper textarea {
-    width: 100%;
-    height: 500px;
-    padding: 15px;
-    font-size: 14px;
-    border-radius: 10px;
-
-    resize: none;
-  }
-
-  textarea:is(:focus, :valid) {
-    border-width: 2px;
-    padding: 14px;
-    border-color: rgb(172, 155, 88);
-  }
-
-  textarea::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
-
-  textarea::-webkit-scrollbar-track {
-    background: #e0d8d8;
-    border-radius: 500px;
-  }
-
-  textarea::-webkit-scrollbar-thumb {
-    background-color: #793434;
-    border-radius: 3px;
+  
+  .check-syntax, .complete {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Bungee", sans-serif;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #ff1867;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .check-syntax {
+    margin-right: 25px;
+  }
+  
+  .check-syntax:hover {
+    background-color: #ff3d81;
+  }
+  
+  .complete:hover {
+    background-color: #ff3d81;
   }
 
   .cst-show-budget {
@@ -418,30 +414,4 @@ body {
     padding-left: 20px;
     flex-shrink: 0;
   }
-
-  .button-wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    background-color: transparent;
-    color: #ff1867;
-    border: 2px solid #1a1215;
-    border-radius: 30px;
-    font-family: "Bungee", sans-serif;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .button:hover {
-    background-color: #ff1867;
-    color: #fff;
-  }
-  
 }

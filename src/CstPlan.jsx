@@ -24,7 +24,18 @@ export default function CstPlan() {
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
+  const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
+  const handleClickComplete = () => {
+    setShowPopup(true);
+  };
+  const handleConfirmation = (choice) => {
+    if (choice) {
+      // Navigate to the map
+      navigate("/map");
+    }
+    setShowPopup(false);
+  };
 
   useEffect(() => {
     if (!client) {
@@ -115,23 +126,16 @@ export default function CstPlan() {
           <div className="cst-show-budget">
             <div className="cst-budget">
               <div className="cst-withIcon">
-                <FontAwesomeIcon icon={faWallet} color="#b19a9a" size="2x" />
-              </div>
-              <span style={{ fontFamily: "Bungee" }} >100000</span>
-            </div>
-
-            <div className="cst-budget">
-              <div className="cst-withIcon">
                 <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
               </div>
-              <span style={{ fontFamily: "Bungee" }} >5000</span>
+              <span style={{ fontFamily: "Bungee" }} >100000</span>
             </div>
           </div>
           
         </div>
 
         <div className="cst-wrapper">
-          <h2 style={{ fontFamily: "Bungee" }}> CONSTRUCTION PLAN</h2>
+          <h2 style={{fontFamily: "Bungee"}} >CONSTRUCTION PLAN</h2>
           <AceEditor className="my-editor"
             mode="java"
             theme="dracula"
@@ -147,19 +151,28 @@ export default function CstPlan() {
             }}
             onChange={(e)=>setPlanText(e)}
           />
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <a onClick={() => setPlan()} href="/map" style={{ "--clr": "#ff1867", marginRight: "25px" }}>
-              <span style={{ fontFamily: "Bungee" }}>CHECK SYNTAX</span>
+          <div className="button-container">
+            <a onClick={() => setPlan()} href="/map" className="check-syntax">
+              <span>CHECK SYNTAX</span>
               <i></i>
             </a>
-            <a onClick={() => setPlan()} href="/map" style={{ "--clr": "#ff1867" }}>
-              <span style={{ fontFamily: "Bungee" }}>COMPLETE</span>
+            <a onClick={handleClickComplete} className="complete">
+              <span>COMPLETE</span>
               <i></i>
             </a>
+
           </div>
-
         </div>
-
+        {showPopup && (
+        <div className="popup">
+          <div className="popup-content">
+            <p style={{fontSize: "30px"}}>Are you sure to confirm this plan?</p>
+            <p style={{color: "red"}}>Keep in mind that changing plans will cost your budget.</p>
+            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Yes</button>
+            <button className="cstplanno" onClick={() => handleConfirmation(false)}>No</button>
+          </div>
+        </div>
+      )}
       </div>
     </div>
   );
