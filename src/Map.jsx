@@ -73,7 +73,6 @@ export default function Map() {
         <span
           style={{
             fontFamily: "space",
-            fontSize: "70px",
           }}
         >
           YOUR TURN
