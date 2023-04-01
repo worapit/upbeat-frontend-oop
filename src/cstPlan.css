@@ -75,7 +75,6 @@ body {
     width: 5px;
     height: 5px;
   }
-
   .cst-show-regions::-webkit-scrollbar-track {
     background: hsla(291, 89%, 11%, 0.348);
     border-radius: 500px;

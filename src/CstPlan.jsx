@@ -153,7 +153,6 @@ export default function CstPlan() {
               </div>
             ))}
           </div>
-
           <div className="cst-show-budget">
             <div className="cst-budget">
               <span>BUDGET :</span>
