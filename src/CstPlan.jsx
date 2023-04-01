@@ -22,12 +22,9 @@ export default function CstPlan() {
   const [territory, setTerritory] = useState([[]]);
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
-  const [showErrorPopup, setShowErrorPopup] = useState(false);
-  const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-
   const handleClickComplete = () => {
     setShowPopup(true);
   };
@@ -38,6 +35,15 @@ export default function CstPlan() {
     }
     setShowPopup(false);
   };
+
+  const regions = [[]];
+  for (let i = 0; i < valueR; i++) {
+    const row = [];
+    for (let j = 0; j < valueC; j++) {
+      row.push(j);
+    }
+    regions.push(row);
+  }
 
   useEffect(() => {
     if (!client) {
@@ -80,34 +86,31 @@ export default function CstPlan() {
             });
           }
         });
-      client.activate();
-    }
-
-    if (syntaxCheckClicked && errorMgs) {
-      setShowErrorPopup(true);
-    }
-
-    const storedTimestamp = localStorage.getItem("timerTimestamp");
-    if (storedTimestamp && !isNaN(storedTimestamp)) {
-      setStartingTimestamp(parseInt(storedTimestamp));
-    }
-  }, [nameP1, nameP2, errorMgs, syntaxCheckClicked]);
-
-  useEffect(() => {
-    if (initPlanMin !== 0 || initPlanSec !== 0) {
-      if (!localStorage.getItem("timerTimestamp")) {
-        const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
-        setStartingTimestamp(newTimestamp);
-        localStorage.setItem("timerTimestamp", newTimestamp);
+        client.activate();
       }
-    }
-  }, [initPlanMin, initPlanSec]);
-
-  const setPlan = () => {
-    setSyntaxCheckClicked(true);
-    if (client) {
-      if (client.connected) {
-        let username = localStorage.getItem("username");
+      if (errorMgs) {
+        alert(errorMgs);
+      }
+      const storedTimestamp = localStorage.getItem("timerTimestamp");
+      if (storedTimestamp && !isNaN(storedTimestamp)) {
+        setStartingTimestamp(parseInt(storedTimestamp));
+      }
+    }, [nameP1, nameP2, errorMgs]);
+  
+    useEffect(() => {
+      if (initPlanMin !== 0 || initPlanSec !== 0) {
+        if (!localStorage.getItem("timerTimestamp")) {
+          const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+          setStartingTimestamp(newTimestamp);
+          localStorage.setItem("timerTimestamp", newTimestamp);
+        }
+      }
+    }, [initPlanMin, initPlanSec]);
+  
+    const setPlan = () => {
+      if (client) {
+        if (client.connected) {
+          let username = localStorage.getItem("username");
         client.publish(
           {
             destination: "/app/setPlan",
@@ -127,7 +130,6 @@ export default function CstPlan() {
       }
     }
   };
-  
 
   const click = (x, y) => { };
 
@@ -142,7 +144,7 @@ export default function CstPlan() {
             seconds={initPlanSec} />
 
           <div className="cst-show-regions">
-            {territory.map((row, rowIndex) => (
+            {regions.map((row, rowIndex) => (
               <div className="rowcss" key={rowIndex}>
                 {row.map((col, colIndex) => (
                   <Hexagon
@@ -155,7 +157,6 @@ export default function CstPlan() {
               </div>
             ))}
           </div>
-
           <div className="cst-show-budget">
           <div className="cst-show-type2">
           <span style={{fontFamily: "Bungee"}} >BUDGET</span>
@@ -195,7 +196,6 @@ export default function CstPlan() {
             <button style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }} disabled={errorMgs != null} onClick={handleClickComplete} className="complete">
               Confirm
             </button>
-            
           </div>
         </div>
 
