@@ -19,8 +19,7 @@ export default function CstPlan() {
   const [errorMgs, setErrorMgs] = useState(null);
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
-  const [valueR, setValueR] = useState(9);
-  const [valueC, setValueC] = useState(9);
+  const [territory, setTerritory] = useState([[]]);
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
@@ -28,6 +27,7 @@ export default function CstPlan() {
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
+
   const handleClickComplete = () => {
     setShowPopup(true);
   };
@@ -39,15 +39,6 @@ export default function CstPlan() {
     setShowPopup(false);
   };
 
-  const regions = [[]];
-  for (let i = 0; i < valueR; i++) {
-    const row = [];
-    for (let j = 0; j < valueC; j++) {
-      row.push(j);
-    }
-    regions.push(row);
-  }
-
   useEffect(() => {
     if (!client) {
       client = new Client(
@@ -56,15 +47,15 @@ export default function CstPlan() {
           onConnect: () => {
             client.subscribe("/app/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["nameP1"]);
-              setNameP2(body["nameP2"]);
+              setNameP1(body["player1"]["name"]);
+              setNameP2(body["player2"]["name"]);
               setErrorMgs(body["errorMgs"]);
             });
 
             client.subscribe("/topic/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["nameP1"]);
-              setNameP2(body["nameP2"]);
+              setNameP1(body["player1"]["name"]);
+              setNameP2(body["player2"]["name"]);
               if (body["playerMgs"] == localStorage.getItem("username")) {
                 setErrorMgs(body["errorMgs"]);
               }
@@ -72,18 +63,20 @@ export default function CstPlan() {
 
             client.subscribe("/app/getConfig", (message) => {
               const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
               setInitPlanMin(body["init_plan_min"]);
               setInitPlanSec(body["init_plan_sec"]);
             });
 
-            client.subscribe("/topic/getConfig", (message) => {
+            client.subscribe("/topic/getConfig");
+
+            client.subscribe("/app/territory", (message) => {
               const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
-              setInitPlanMin(body["init_plan_min"]);
-              setInitPlanSec(body["init_plan_sec"]);
+              setTerritory(body);
+            });
+
+            client.subscribe("/topic/territory", (message) => {
+              const body = JSON.parse(message.body);
+              setTerritory(body);
             });
           }
         });
@@ -149,7 +142,7 @@ export default function CstPlan() {
             seconds={initPlanSec} />
 
           <div className="cst-show-regions">
-            {regions.map((row, rowIndex) => (
+            {territory.map((row, rowIndex) => (
               <div className="rowcss" key={rowIndex}>
                 {row.map((col, colIndex) => (
                   <Hexagon

@@ -12,8 +12,7 @@ import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
 
 export default function Map() {
-  const [valueR, setValueR] = useState(9);
-  const [valueC, setValueC] = useState(9);
+  const [territory, setTerritory] = useState([[]]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   
@@ -25,15 +24,14 @@ export default function Map() {
           onConnect: () => {
             client.subscribe("/app/game");
             client.subscribe("/topic/game");
-            client.subscribe("/app/getConfig", (message) => {
+            client.subscribe("/app/territory", (message) => {
               const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
+              setTerritory(body);
             });
-            client.subscribe("/topic/getConfig", (message) => {
+
+            client.subscribe("/topic/territory", (message) => {
               const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
+              setTerritory(body);
             });
           }
         });
@@ -55,14 +53,6 @@ export default function Map() {
     src: url(${myCustomFontt}) format('truetype');
   }
 `;
-
-  for (let i = 0; i < valueR; i++) {
-    const row = [];
-    for (let j = 0; j < valueC; j++) {
-      row.push(j);
-    }
-    regions.push(row);
-  }
 
   const click = (x, y) => {
     setDepositPosition({x,y})
@@ -102,7 +92,7 @@ export default function Map() {
 
       {/* <img className="map-profile" src={Profile} /> */}
       <div className="map-show-regions">
-        {regions.map((row, rowIndex) => (
+        {territory.map((row, rowIndex) => (
           <div className="rowcss" key={rowIndex}>
             {row.map((col, colIndex) => (
               <Hexagon
