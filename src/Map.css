@@ -577,8 +577,8 @@
     display: flex;
     align-items: center;
     color: #444 !important;
-    height: 60px;
-    width: 250px;
+    height: 70px;
+    width: 300px;
     border: 3px solid #ffffff;
     background-color: #eaeaea;
     border-radius: 20px;
@@ -592,7 +592,7 @@
   }
 
   .map-budget span {
-    font-size: 22px;
+    font-size: 28px;
     color: #b57676;
     margin-left: 20px;
     max-width: 200px;
@@ -781,8 +781,6 @@
    
     display: flex;
     color: #444 !important;
-    height: 100px;
-    width: 230px;
     border: 3px solid #ffffff;
     background-color: #eaeaea;
     border-radius: 20px;
@@ -802,8 +800,8 @@
     padding: 10px;
     padding-top: 25px;
 
-    height: 180px;
-    width: 250px;
+    height: 200px;
+    width: 280px;
    
 
     border: 3px solid #ffffff;
@@ -833,6 +831,7 @@
   }
 
   .display-deposit-box{
+    margin-top: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -844,15 +843,27 @@
     gap: 35px;
   }
 
+  .display-deposit-box p{
+    font-size: 25px;
+  }
+
   .deposit-border-decor{
     padding-top: 10px;
     justify-content: center;
     align-items: center;
     border: 3px double #b0a39b;
     
-    width: 170px;
+    margin-bottom: 15px;
+    width: 230px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+  }
+
+  .deposit-border-decor p{
+    font-size: 27px;
+  }
+  .deposit-border-decor span{
+    font-size: 23px;
   }
 
 
