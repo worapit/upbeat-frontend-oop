@@ -238,7 +238,6 @@ body {
     align-items: center;
   }
 
-
   .cstpopup {
     position: fixed;
     top: 0;
@@ -262,6 +261,31 @@ body {
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
+
+  .error-cstpopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .error-cstpopup-content {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: 7px solid; /* Remove the color from here */
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+  
   
   .cstplanno,
   .cstplanyes {
@@ -526,6 +550,31 @@ body {
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
+
+  .error-cstpopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .error-cstpopup-content {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+
   
   .cstplanno,
 .cstplanyes {
@@ -553,4 +602,7 @@ body {
 .cstplanyes:hover {
   letter-spacing: 5px;
 }
+
+
+
 }

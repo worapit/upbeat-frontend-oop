@@ -23,6 +23,8 @@ export default function CstPlan() {
   const [valueC, setValueC] = useState(9);
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
@@ -87,14 +89,16 @@ export default function CstPlan() {
         });
       client.activate();
     }
-    if (errorMgs) {
-      alert(errorMgs);
+
+    if (syntaxCheckClicked && errorMgs) {
+      setShowErrorPopup(true);
     }
+
     const storedTimestamp = localStorage.getItem("timerTimestamp");
     if (storedTimestamp && !isNaN(storedTimestamp)) {
       setStartingTimestamp(parseInt(storedTimestamp));
     }
-  }, [nameP1, nameP2, errorMgs]);
+  }, [nameP1, nameP2, errorMgs, syntaxCheckClicked]);
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
@@ -107,6 +111,7 @@ export default function CstPlan() {
   }, [initPlanMin, initPlanSec]);
 
   const setPlan = () => {
+    setSyntaxCheckClicked(true);
     if (client) {
       if (client.connected) {
         let username = localStorage.getItem("username");
@@ -120,9 +125,16 @@ export default function CstPlan() {
               }),
             replyTo: "/app/game",
           });
+  
+        if (errorMgs) {
+          setShowErrorPopup(true);
+        } else {
+          setShowErrorPopup(false);
+        }
       }
     }
   };
+  
 
   const click = (x, y) => { };
 
@@ -190,8 +202,10 @@ export default function CstPlan() {
             <button style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }} disabled={errorMgs != null} onClick={handleClickComplete} className="complete">
               Confirm
             </button>
+            
           </div>
         </div>
+
         {showPopup && (
         <div className="cstpopup">
           <div className="cstpopup-content">
@@ -201,7 +215,42 @@ export default function CstPlan() {
             <button className="cstplanno" onClick={() => handleConfirmation(false)}>Cancel</button>
           </div>
         </div>
-      )}
+        )}
+        {showErrorPopup && (
+          <div className="error-cstpopup">
+            <div
+              className="error-cstpopup-content"
+              style={{
+                borderColor: errorMgs == null ? "green" : "#f31c1c",
+              }}
+            >
+              <p style={{ fontSize: "28px" }}>
+                {errorMgs == null
+                  ? "Your code is correct"
+                  : "Your code is incorrect"}
+                {errorMgs && <><br />{"Reason: " +errorMgs}</>}
+              </p>
+              {errorMgs == null && (
+                <>
+                  <br />
+                  <p
+                    style={{
+                      color: "green",
+                      textDecoration: "underline",
+                      fontSize: "20px",
+                      marginTop: "-30px"
+                    }}
+                  >
+                    You can click confirm
+                  </p>
+                </>
+              )}
+              <button className="cstplanno" onClick={() => setShowErrorPopup(false)}>
+                Close
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
