@@ -79,7 +79,7 @@ export default function Map() {
         </span>
       </div>
 
-      <div className="map-show-deposit" style={{ fontFamily: "Bungee" }}>
+      <div className="map-show-deposit" >
         <div className="map-show-type">
           <span >DEPOSIT</span>
         </div>
@@ -123,7 +123,7 @@ export default function Map() {
         </div>
       </div>
 
-      <div className="map-show-budget" style={{ fontFamily: "Bungee" }}>
+      <div className="map-show-budget" style={{ fontFamily: "Outfit"}}>
         <div className="map-show-type2">
           <span >BUDGET</span>
         </div>
