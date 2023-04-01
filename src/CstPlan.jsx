@@ -143,12 +143,15 @@ export default function CstPlan() {
           </div>
 
           <div className="cst-show-budget">
-            <div className="cst-budget">
-              <div className="cst-withIcon">
-                <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
-              </div>
-              <span style={{ fontFamily: "Bungee" }} >100000</span>
-            </div>
+          <div className="cst-show-type2">
+          <span style={{fontFamily: "Bungee"}} >BUDGET</span>
+        </div>
+        <div className="cst-budget">
+          <div className="cst-withIcon">
+            <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
+          </div>
+          <span style={{fontFamily: "Bungee", fontSize: "22px"}}>100000</span>
+        </div>
           </div>
           
         </div>
