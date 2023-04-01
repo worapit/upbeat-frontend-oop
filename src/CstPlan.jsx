@@ -183,7 +183,7 @@ export default function CstPlan() {
             onChange={(e)=>setPlanText(e)}
           />
           <div className="button-container">
-            <a onClick={() => setPlan()} href="/map" className="check-syntax">
+            <a onClick={() => setPlan()} className="check-syntax">
               <span>CHECK SYNTAX</span>
               <i></i>
             </a>
