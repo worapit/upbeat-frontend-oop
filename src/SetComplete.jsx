@@ -48,7 +48,6 @@ export default function SetComplete() {
               setRevCost(body["rev_cost"]);
               setMaxDep(body["max_dep"]);
               setInterestPct(body["interest_pct"]);
-              console.log(body);
             });
             client.subscribe("/topic/getConfig", (message) => {
               const body = JSON.parse(message.body);
@@ -63,7 +62,6 @@ export default function SetComplete() {
               setRevCost(body["rev_cost"]);
               setMaxDep(body["max_dep"]);
               setInterestPct(body["interest_pct"]);
-              console.log(body);
             });
           }
         });

@@ -12,9 +12,34 @@ import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
 
 export default function Map() {
-  
+  const [valueR, setValueR] = useState(9);
+  const [valueC, setValueC] = useState(9);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [depositPosition, setDepositPosition] = useState({ x: 0 ,y: 0  });
+  const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
+  
+  useEffect(() => {
+    if (!client) {
+      client = new Client(
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game");
+            client.subscribe("/topic/game");
+            client.subscribe("/app/getConfig", (message) => {
+              const body = JSON.parse(message.body);
+              setValueR(body["m"]);
+              setValueC(body["n"]);
+            });
+            client.subscribe("/topic/getConfig", (message) => {
+              const body = JSON.parse(message.body);
+              setValueR(body["m"]);
+              setValueC(body["n"]);
+            });
+          }
+        });
+      client.activate();
+    }
+  }, []);
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -31,26 +56,10 @@ export default function Map() {
   }
 `;
 
-  const rowcf = 9;
-  const column = 9;
-
-  const regions = [];
-  const centerC = 2;
-  const centerR = 5;
-  const C = 2;
-  const R = 4;
-
-  if (rowcf > 16) rowcf = 16;
-  else if (rowcf < 9) rowcf = 9;
-  if (column > 16) column = 16;
-  else if (column < 9) column = 9;
-
-  for (let i = 0; i < rowcf; i++) {
+  for (let i = 0; i < valueR; i++) {
     const row = [];
-    for (let j = 0; j < column; j++) {
-      if (j === centerC - 1 && i === centerR - 1) row.push(j);
-      else if (j === C - 1 && i === R - 1) row.push(j);
-      else row.push(j);
+    for (let j = 0; j < valueC; j++) {
+      row.push(j);
     }
     regions.push(row);
   }
