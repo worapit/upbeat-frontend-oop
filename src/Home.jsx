@@ -16,7 +16,8 @@ export default function Home() {
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
   const navigate = useNavigate();
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");  
   const lightRef = useRef(null);
 
   const handleMouseMove = (e) => {
@@ -30,7 +31,43 @@ export default function Home() {
       font-family: 'gamefont';
       src: url(${myCustomFont}) format('truetype');
     }
+    .homepopup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.65);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .homepopup-content {
+      font-size: 28px;
+      background-color: rgba(201, 199, 238, 0.88);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      font-family: "bungee";
+      border: 7px solid #f31c1c;
+      box-sizing: border-box;
+      max-width: 80%; /* Optional: Limit width of the popup content */
+    }
+    homebutton {
+      background-color: #D21404;
+      padding: 10px 20px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 22px;
+      border-radius: 8px;
+      margin-left: 40px;
+      margin-right: 40px;
+      transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+    }
   `;
+  
 
   useEffect(() => {
     if (!client) {
@@ -60,36 +97,36 @@ export default function Home() {
   }, [nameP1, nameP2]);
 
   const createPlayer = () => {
-    if (nameP1 != null && nameP2 != null)
-    {
-      alert("the player is full.");
-    }
-    else if (username == "") {
-      alert("you must enter username.");
-    }
-    else if (/ /g.test(username))
-    {
-      alert("username cannot have space.");
-    }
-    else if (nameP1 === username) {
-      alert("the username is already being used.");
-    }
-    else if (client) {
+    if (nameP1 != null && nameP2 != null) {
+      setPopupMessage("The player is full");
+      setShowPopup(true);
+    } else if (username === "") {
+      setPopupMessage("You must enter a username");
+      setShowPopup(true);
+    } else if (/ /g.test(username)) {
+      setPopupMessage("Username cannot have space");
+      setShowPopup(true);
+    } else if (nameP1 === username) {
+      setPopupMessage("The username is already being used");
+      setShowPopup(true);
+    } else if (client) {
       localStorage.setItem("username", username);
       if (client.connected) {
-        client.publish(
-        {
+        client.publish({
           destination: "/app/newPlayer",
-          body: JSON.stringify(
-            {
-              name: username,
-            }),
+          body: JSON.stringify({
+            name: username,
+          }),
           replyTo: "/topic/game",
         });
       }
-      
+  
       navigate("/start");
     }
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   useEffect(() => {
@@ -154,7 +191,16 @@ export default function Home() {
             </div>
         </div>
       </div>
+      {showPopup && (
+        <div className="homepopup">
+          <div className="homepopup-content">
+            <p>{popupMessage}</p>
+            <homebutton onClick={closePopup}>Close</homebutton>
+          </div>
+        </div>
+      )}
       <style dangerouslySetInnerHTML={{ __html: styles }} />
     </div>
   );
 }
+
