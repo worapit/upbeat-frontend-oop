@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Hexagon from "./component/Hexagon";
 import PopUp from "./component/Popup";
 
@@ -11,10 +11,17 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
 
+import { url } from "./constants";
+import { Client } from "@stomp/stompjs";
+import { useNavigate } from "react-router-dom";
+
+let client;
+
 export default function Map() {
   const [territory, setTerritory] = useState([[]]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
   
   useEffect(() => {
     if (!client) {
