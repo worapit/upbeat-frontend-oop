@@ -16,6 +16,7 @@ let client;
 
 export default function CstPlan() {
   const [planText, setPlanText] = useState("");
+  const [errorMgs, setErrorMgs] = useState(null);
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
   const [valueR, setValueR] = useState(9);
@@ -55,12 +56,16 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setNameP1(body["nameP1"]);
               setNameP2(body["nameP2"]);
+              setErrorMgs(body["errorMgs"]);
             });
 
             client.subscribe("/topic/game", (message) => {
               const body = JSON.parse(message.body);
               setNameP1(body["nameP1"]);
               setNameP2(body["nameP2"]);
+              if (body["playerMgs"] == localStorage.getItem("username")) {
+                setErrorMgs(body["errorMgs"]);
+              }
             });
 
             client.subscribe("/app/getConfig", (message) => {
@@ -82,11 +87,14 @@ export default function CstPlan() {
         });
       client.activate();
     }
+    if (errorMgs) {
+      alert(errorMgs);
+    }
     const storedTimestamp = localStorage.getItem("timerTimestamp");
     if (storedTimestamp && !isNaN(storedTimestamp)) {
       setStartingTimestamp(parseInt(storedTimestamp));
     }
-  }, [nameP1, nameP2]);
+  }, [nameP1, nameP2, errorMgs]);
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
@@ -110,6 +118,7 @@ export default function CstPlan() {
                 name: username,
                 plan: planText,
               }),
+            replyTo: "/app/game",
           });
       }
     }
@@ -178,10 +187,9 @@ export default function CstPlan() {
               <span>CHECK SYNTAX</span>
               <i></i>
             </a>
-            <a onClick={handleClickComplete} className="complete">
-              <span>Confirm</span>
-              <i></i>
-            </a>
+            <button style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }} disabled={errorMgs != null} onClick={handleClickComplete} className="complete">
+              Confirm
+            </button>
           </div>
         </div>
         {showPopup && (
