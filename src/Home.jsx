@@ -56,8 +56,6 @@ export default function Home() {
           }
         });
       client.activate();
-      console.log(nameP1);
-      console.log(nameP2);
     }
   }, [nameP1, nameP2]);
 
