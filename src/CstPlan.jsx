@@ -28,6 +28,7 @@ export default function CstPlan() {
   const [showPopup, setShowPopup] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
+
   const handleClickComplete = () => {
     setShowPopup(true);
   };
@@ -117,7 +118,6 @@ export default function CstPlan() {
               }),
             replyTo: "/app/game",
           });
-  
         if (errorMgs) {
           setShowErrorPopup(true);
         } else {
@@ -126,6 +126,23 @@ export default function CstPlan() {
       }
     }
   };
+
+  if(localStorage.getItem("timeOut"))
+  {
+    if (client) {
+      if (client.connected) {
+        const username = localStorage.getItem("username");
+        client.publish({
+          destination: "/app/setPlan",
+          body: JSON.stringify({
+            name: username,
+            plan: "done",
+          }),
+        });
+      }
+      navigate("/map");
+    }
+  }
   
   const click = (x, y) => {
     x--;
@@ -204,47 +221,60 @@ export default function CstPlan() {
               <span>CHECK SYNTAX</span>
               <i></i>
             </a>
-            <button
-              style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }}
-              disabled={errorMgs != null}
-              onClick={handleClickComplete}
-              className="complete"
-            >
+            <button style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }} disabled={errorMgs != null} onClick={handleClickComplete} className="complete">
               Confirm
             </button>
+            
           </div>
         </div>
 
         {showPopup && (
-          <div className="cstpopup">
-            <div className="cstpopup-content">
-              <p style={{ fontSize: "30px" }}>
-                Are you sure to confirm this plan?
+        <div className="cstpopup">
+          <div className="cstpopup-content">
+            <p style={{fontSize: "30px"}}>Are you sure to confirm this plan?</p>
+            <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
+            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Confirm</button>
+            <button className="cstplanno" onClick={() => handleConfirmation(false)}>Cancel</button>
+          </div>
+        </div>
+        )}
+
+        {showErrorPopup && (
+          <div className="error-cstpopup">
+            <div
+              className="error-cstpopup-content"
+              style={{
+                borderColor: errorMgs == null ? "green" : "#f31c1c",
+              }}
+            >
+              <p style={{ fontSize: "28px" }}>
+                {errorMgs == null
+                  ? "Your code is correct"
+                  : "Your code is incorrect"}
+                {errorMgs && <><br />{"Reason: " +errorMgs}</>}
               </p>
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "20px",
-                  textDecoration: "underline",
-                }}
-              >
-                Keep in mind that changing plans will cost your budget.
-              </p>
-              <button
-                className="cstplanyes"
-                onClick={() => handleConfirmation(true)}
-              >
-                Confirm
-              </button>
-              <button
-                className="cstplanno"
-                onClick={() => handleConfirmation(false)}
-              >
-                Cancel
+              {errorMgs == null && (
+                <>
+                  <br />
+                  <p
+                    style={{
+                      color: "green",
+                      textDecoration: "underline",
+                      fontSize: "20px",
+                      marginTop: "-30px"
+                    }}
+                  >
+                    You can click confirm
+                  </p>
+                </>
+              )}
+              <button className="cstplanno" onClick={() => setShowErrorPopup(false)}>
+                Close
               </button>
             </div>
           </div>
         )}
+
       </div>
     </div>
   );

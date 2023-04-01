@@ -22,6 +22,8 @@ export default function Map() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
+
+  localStorage.removeItem("timeOut");
   
   useEffect(() => {
     if (!client) {

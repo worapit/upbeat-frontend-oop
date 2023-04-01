@@ -326,7 +326,6 @@ body {
     align-items: center;
     z-index: 1000;
   }
-
   .cstpopup-content {
     background-color: rgba(201, 199, 238, 0.88);
     padding: 40px;
@@ -338,35 +337,60 @@ body {
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
 
+  .error-cstpopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .error-cstpopup-content {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+
+  
   .cstplanno,
-  .cstplanyes {
-    padding: 10px 20px;
-    color: rgb(255, 255, 255);
-    border: none;
-    cursor: pointer;
-    font-size: 22px;
-    border-radius: 40px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 2%;
-    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
-  }
+.cstplanyes {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 8px;
+  margin-left: 40px;
+  margin-right: 40px;
+  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+}
 
-  .cstplanyes {
-    background-color: #4f94e2;
-  }
+.cstplanyes {
+  background-color: #25861e;
+}
 
-  .cstplanno {
-    background-color: #e24f65;
-  }
+.cstplanno {
+  background-color: #D21404;
+}
 
-  .cstplanno:hover {
-    background-color: #d32f2f;
-  }
 
-  .cstplanyes:hover {
-    background-color: #2a81e4;
-  }
+.cstplanno:hover,
+.cstplanyes:hover {
+  letter-spacing: 5px;
+}
+
+
+
 }
 
 @media only screen and (min-height: 750px) {
@@ -694,33 +718,58 @@ body {
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
 
+  .error-cstpopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .error-cstpopup-content {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+
+  
   .cstplanno,
-  .cstplanyes {
-    padding: 10px 20px;
-    color: rgb(255, 255, 255);
-    border: none;
-    cursor: pointer;
-    font-size: 22px;
-    border-radius: 40px;
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 2%;
-    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
-  }
+.cstplanyes {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  border-radius: 8px;
+  margin-left: 40px;
+  margin-right: 40px;
+  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+}
 
-  .cstplanyes {
-    background-color: #4f94e2;
-  }
+.cstplanyes {
+  background-color: #25861e;
+}
 
-  .cstplanno {
-    background-color: #e24f65;
-  }
+.cstplanno {
+  background-color: #D21404;
+}
 
-  .cstplanno:hover {
-    background-color: #d32f2f;
-  }
 
-  .cstplanyes:hover {
-    background-color: #2a81e4;
-  }
+.cstplanno:hover,
+.cstplanyes:hover {
+  letter-spacing: 5px;
+}
+
+
+
 }
