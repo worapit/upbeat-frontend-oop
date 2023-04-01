@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Hexagon from "./component/Hexagon";
 import PopUp from "./component/Popup";
 
@@ -11,10 +11,40 @@ import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
 
+import { url } from "./constants";
+import { Client } from "@stomp/stompjs";
+import { useNavigate } from "react-router-dom";
+
+let client;
+
 export default function Map() {
-  
+  const [territory, setTerritory] = useState([[]]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [depositPosition, setDepositPosition] = useState({ x: 0 ,y: 0  });
+  const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!client) {
+      client = new Client(
+        {
+          brokerURL: url,
+          onConnect: () => {
+            client.subscribe("/app/game");
+            client.subscribe("/topic/game");
+            client.subscribe("/app/territory", (message) => {
+              const body = JSON.parse(message.body);
+              setTerritory(body);
+            });
+
+            client.subscribe("/topic/territory", (message) => {
+              const body = JSON.parse(message.body);
+              setTerritory(body);
+            });
+          }
+        });
+      client.activate();
+    }
+  }, []);
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -30,30 +60,6 @@ export default function Map() {
     src: url(${myCustomFontt}) format('truetype');
   }
 `;
-
-  const rowcf = 9;
-  const column = 9;
-
-  const regions = [];
-  const centerC = 2;
-  const centerR = 5;
-  const C = 2;
-  const R = 4;
-
-  if (rowcf > 16) rowcf = 16;
-  else if (rowcf < 9) rowcf = 9;
-  if (column > 16) column = 16;
-  else if (column < 9) column = 9;
-
-  for (let i = 0; i < rowcf; i++) {
-    const row = [];
-    for (let j = 0; j < column; j++) {
-      if (j === centerC - 1 && i === centerR - 1) row.push(j);
-      else if (j === C - 1 && i === R - 1) row.push(j);
-      else row.push(j);
-    }
-    regions.push(row);
-  }
 
   const click = (x, y) => {
     setDepositPosition({x,y})
@@ -93,7 +99,7 @@ export default function Map() {
 
       {/* <img className="map-profile" src={Profile} /> */}
       <div className="map-show-regions">
-        {regions.map((row, rowIndex) => (
+        {territory.map((row, rowIndex) => (
           <div className="rowcss" key={rowIndex}>
             {row.map((col, colIndex) => (
               <Hexagon
