@@ -91,7 +91,7 @@ export default function Map() {
             </div>
             <div className="deposit-border-decor">
             <span style={{color: "#b19a9a"}}>deposit</span>
-            <p>10000000000</p>
+            <p>16000000</p>
             </div>
            </div>
         
