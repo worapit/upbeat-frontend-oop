@@ -32,14 +32,14 @@ const styles = `
           onConnect: () => {
             client.subscribe("/app/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["nameP1"]);
+              setNameP1(body["player1"]["name"]);
               setP1Ready(body["p1Ready"]);
               setP2Ready(body["p2Ready"]);
             });
 
             client.subscribe("/topic/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["nameP1"]);
+              setNameP1(body["player1"]["name"]);
               setP1Ready(body["p1Ready"]);
               setP2Ready(body["p2Ready"]);
             });
