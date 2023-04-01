@@ -1,14 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 @font-face {
   font-family: space;
   src: url(./font/Space.ttf);
 }
 
-.pages{
+.pages {
   box-sizing: border-box;
-  font-family: 'JetBrains Mono', monospace; 
+  font-family: "JetBrains Mono", monospace;
   width: device-width;
- }
+}
 
 body {
   overflow: hidden;
@@ -29,15 +29,14 @@ body {
 
   .show-cstPlan {
     display: flex;
-    flex-direction: initial;
     justify-content: center;
     align-content: center;
 
-    margin-right: 10%;
-    gap: 3%;
+    margin-right: 7%;
+    gap: 10%;
   }
   .my-editor .ace_editor .ace_content {
-    font-family: 'JetBrains Mono', monospace !important;
+    font-family: "JetBrains Mono", monospace !important;
   }
 
   .cst-show-detail {
@@ -46,13 +45,13 @@ body {
     align-items: center;
 
     margin-right: -5%;
-    margin-top: -3%;
-    gap: 2%;
+    margin-top: -1%;
+    gap: 3%;
   }
 
   .cst-show-regions {
-    height:45%;
-    width: 75%;
+    height: 350px;
+    width: 550px;
     background: rgba(125, 3, 211, 0.25);
     backdrop-filter: blur(40px);
     border-bottom: 3px solid rgba(6, 5, 5, 0.25);
@@ -60,30 +59,29 @@ body {
     border: 5px solid rgb(187, 167, 88);
     border-left-style: double;
     border-right-style: double;
-    border-radius: 20px 7px 7px 20px;
+    border-radius: 40px 7px 7px 40px;
     box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
     overflow: auto;
 
-    padding-left: 7%;
-    padding-right: 7%;
-    padding-top: 9%;
+    padding-left: 13%;
+    padding-right: 11%;
+    padding-top: 12%;
     padding-bottom: 2%;
     margin-top: 5%;
     margin-bottom: 2%;
   }
 
   .cst-show-regions::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     height: 5px;
   }
-
   .cst-show-regions::-webkit-scrollbar-track {
-    background: #c5bcbc;
+    background: hsla(291, 89%, 11%, 0.348);
     border-radius: 500px;
   }
 
   .cst-show-regions::-webkit-scrollbar-thumb {
-    background-color: #f0363adb;
+    background-color: #9a3b8ddb;
     border-radius: 4px;
   }
 
@@ -91,21 +89,21 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 550px;
+    height: 590px;
     min-height: fit-content;
-    background: linear-gradient(to bottom, #b66efa, #4B0082);
-    box-shadow: 0px 5px 5px rgba(33, 23, 4, 0.5);
+    background: linear-gradient(to bottom, #2c245f, #384e90, #2a235a);
+    box-shadow: 5px 5px 10px rgb(21, 1, 53);
     border-radius: 20px;
     padding-left: 1%;
     padding-right: 1%;
-    padding-top: 1%;
+    padding-top: 1.5%;
     padding-bottom: 1%;
     margin-right: -6.5%;
-    margin-top: 3%;
+    margin-top: 1%;
 
     gap: 5px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
   }
 
   .cst-wrapper h2 {
@@ -119,7 +117,7 @@ body {
     margin-top: 5px;
     margin-bottom: 5px;
   }
-  
+
   .check-syntax {
     display: inline-flex;
     justify-content: center;
@@ -130,12 +128,16 @@ body {
     font-family: "Bungee", sans-serif;
     text-decoration: none;
     color: #ffffff;
-    background-color: #ff0000;
+    background-color: #ff1f4c;
     cursor: pointer;
     border-radius: 40px;
     transition: background-color 0.3s, letter-spacing 0.3s;
+
+    letter-spacing: 0.8px;
+    margin-right: 25px;
   }
   .complete {
+    letter-spacing: 0.8px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -144,28 +146,23 @@ body {
     font-size: 16px;
     font-family: "Bungee", sans-serif;
     text-decoration: none;
-    color: #000000;
-    background-color: #00e8fd;
+    color: #fff;
+    background-color: #1e90ff;
     cursor: pointer;
     border-radius: 40px;
     transition: background-color 0.3s, letter-spacing 0.3s;
   }
-  
-  .check-syntax {
-    margin-right: 25px;
-  }
-  
+
   .check-syntax:hover {
-    background-color: #f8a520;
-    letter-spacing: 0.20em;
+    background-color: #e89309;
+    color: #fff;
+    letter-spacing: 0.15em;
   }
-  
+
   .complete:hover {
-    background-color: #00ff40;
-    letter-spacing: 0.20em;
+    background-color: #03d136;
+    letter-spacing: 0.15em;
   }
-  
-  
 
   .cst-show-budget {
     display: flex;
@@ -175,34 +172,86 @@ body {
 
   .cst-budget {
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    display: flex;
     align-items: center;
     color: #444 !important;
     height: 50px;
-    width: 260px;
-    border: 3px solid #d16f6f;
-    background-color: #eaeaea;
-    border-radius: 20px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0 6px 0 #b19a9a;
+    width: 410px;
+    border: 3px solid #ffffff;
+
+    background: rgba(0, 0, 0, 0.75);
+   
+    border-radius: 10px;
+
     outline: none;
     box-sizing: border-box;
     text-align: center;
     gap: 5px;
     margin-top: -2%;
+    font-family: "Bungee";
   }
 
   .cst-budget span {
     font-size: 20px;
-    color: #b57676;
-    margin-left: 20px;
+    letter-spacing: 0.6px;
+    color: #fff;
+    margin-left: 10px;
+
     max-width: 200px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
   }
+
+  .cst-line-decor{
+    margin-left: 20px;
+    background-color: #fff;
+    height: 55px;
+    width: 3px;
+  }
+
+
+
+  .cst-deposit { 
+    margin-left: 6px;
+    margin-bottom: -13px;
+    
+    height: 65px;
+    width: 200px;
+    border-radius: 10px;
+    
+
+
+    outline: none;
+    box-sizing: border-box;
+    text-align: center;
+    gap: 5px;
+   
+    
+    overflow: hidden;
+}
+
+  .cst-deposit p {
+    font-size: 20px;
+    font-family: "Bungee";
+ 
+
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    margin-top: -10%;
+    margin-bottom: -10px;
+    margin-right: 20px;
+
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 
   .cst-withIcon {
     width: 60px;
@@ -210,32 +259,59 @@ body {
     flex-shrink: 0;
   }
 
-  .cst-show-type2{
+
+ 
+
+  .cst-show-type {
     display: flex;
     justify-self: center;
     align-items: center;
     text-align: center;
-    color: #444 !important;
-    height: 40px;
-    width: 150px;
+    background: rgba(1, 1, 1, 0.75);
+
+    height: 80px;
+    width: 410px;
     border: 3px solid #ffffff;
-    background-color: #0a0909;
-    border-radius: 20px;
+    border-radius: 10px;
+
     outline: none;
     box-sizing: border-box;
-   
+
   }
-  .cst-show-type2 span {
+
+  .cst-show-type p {
+   
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+
     letter-spacing: 0.8px;
-    padding-left: 32px ;
+    padding-top: 20px;
+    padding-left: 20px;
+
+
     font-size: 18px;
-    color: #c08787;
+    color: #fcfcfc;
+    text-shadow: 1px #444;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
+
+
+    font-family: "Bungee";
+
+
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+
+    gap: 35px;
+  }
+
+  .cst-show-deposit {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .cstpopup {
@@ -250,7 +326,7 @@ body {
     align-items: center;
     z-index: 1000;
   }
-  
+
   .cstpopup-content {
     background-color: rgba(201, 199, 238, 0.88);
     padding: 40px;
@@ -262,31 +338,6 @@ body {
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
 
-  .error-cstpopup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .error-cstpopup-content {
-    background-color: rgb(255, 255, 255);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    font-family: "bungee";
-    border: 7px solid; /* Remove the color from here */
-    box-sizing: border-box;
-    max-width: 80%; /* Optional: Limit width of the popup content */
-  }
-  
-  
   .cstplanno,
   .cstplanyes {
     padding: 10px 20px;
@@ -309,17 +360,14 @@ body {
     background-color: #e24f65;
   }
 
-  .cstplanno:hover
-  {
+  .cstplanno:hover {
     background-color: #d32f2f;
   }
-  
+
   .cstplanyes:hover {
     background-color: #2a81e4;
   }
-  
 }
-
 
 @media only screen and (min-height: 750px) {
   .cst-page {
@@ -336,14 +384,14 @@ body {
 
   .show-cstPlan {
     display: flex;
-    flex-direction: initial;
     justify-content: center;
     align-content: center;
-    margin-right: 10%;
-    gap: 3%;
+
+    margin-right: 7%;
+    gap: 10%;
   }
   .my-editor .ace_editor .ace_content {
-    font-family: 'JetBrains Mono', monospace !important;
+    font-family: "JetBrains Mono", monospace !important;
   }
 
   .cst-show-detail {
@@ -352,13 +400,13 @@ body {
     align-items: center;
 
     margin-right: -5%;
-    margin-top: -3%;
-    gap: 2%;
+    margin-top: -1%;
+    gap: 3%;
   }
 
   .cst-show-regions {
-    height:50%;
-    width: 75%;
+    height: 500px;
+    width: 600px;
     background: rgba(125, 3, 211, 0.25);
     backdrop-filter: blur(40px);
     border-bottom: 3px solid rgba(6, 5, 5, 0.25);
@@ -366,13 +414,13 @@ body {
     border: 5px solid rgb(187, 167, 88);
     border-left-style: double;
     border-right-style: double;
-    border-radius: 20px 7px 7px 20px;
+    border-radius: 40px 7px 7px 40px;
     box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
     overflow: auto;
 
-    padding-left: 7%;
-    padding-right: 7%;
-    padding-top: 9%;
+    padding-left: 13%;
+    padding-right: 11%;
+    padding-top: 12%;
     padding-bottom: 2%;
     margin-top: 5%;
     margin-bottom: 2%;
@@ -384,49 +432,49 @@ body {
   }
 
   .cst-show-regions::-webkit-scrollbar-track {
-    background: #c5bcbc;
+    background: hsla(291, 89%, 11%, 0.348);
     border-radius: 500px;
   }
 
   .cst-show-regions::-webkit-scrollbar-thumb {
-    background-color: #850a3bdb;
-    border-radius: 3px;
-    border: none;
+    background-color: #9a3b8ddb;
+    border-radius: 4px;
   }
 
   .cst-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 550px;
     height: 100%;
     min-height: fit-content;
-    background: linear-gradient(to bottom, #b66efa, #4B0082);
-    box-shadow: 0px 5px 5px rgba(33, 23, 4, 0.5);
+    background: linear-gradient(to bottom, #2c245f, #384e90, #2a235a);
+    box-shadow: 5px 5px 10px rgb(21, 1, 53);
     border-radius: 20px;
     padding-left: 1%;
     padding-right: 1%;
-    padding-top: 1%;
+    padding-top: 1.5%;
     padding-bottom: 1%;
     margin-right: -6.5%;
-    margin-top: 3%;
+    margin-top: 3.5%;
+
     gap: 5px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: "JetBrains Mono", monospace;
   }
 
   .cst-wrapper h2 {
-    color: #fff8f8;
+    color: #ffffff;
     font-size: 28px;
   }
 
   .button-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 5px;
   }
-  
-  .check-syntax, .complete {
+
+  .check-syntax {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -435,25 +483,41 @@ body {
     font-size: 16px;
     font-family: "Bungee", sans-serif;
     text-decoration: none;
-    color: #181111;
-    background-color: #dcf70e;
+    color: #ffffff;
+    background-color: #ff1f4c;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: background-color 0.3s, letter-spacing 0.3s;
+
+    letter-spacing: 0.8px;
+    margin-right: 25px;
+  }
+  .complete {
+    letter-spacing: 0.8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: "Bungee", sans-serif;
+    text-decoration: none;
+    color: #fff;
+    background-color: #1e90ff;
     cursor: pointer;
     border-radius: 40px;
     transition: background-color 0.3s, letter-spacing 0.3s;
   }
-  
-  .check-syntax {
-    margin-right: 25px;
-  }
-  
+
   .check-syntax:hover {
-    background-color: #3dff98;
-    letter-spacing: 0.20em;
+    background-color: #e89309;
+    color: #fff;
+    letter-spacing: 0.15em;
   }
-  
+
   .complete:hover {
-    background-color: #ff3d81;
-    letter-spacing: 0.20em;
+    background-color: #03d136;
+    letter-spacing: 0.15em;
   }
 
   .cst-show-budget {
@@ -464,34 +528,86 @@ body {
 
   .cst-budget {
     display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    display: flex;
     align-items: center;
     color: #444 !important;
     height: 50px;
-    width: 260px;
-    border: 3px solid #d16f6f;
-    background-color: #eaeaea;
-    border-radius: 20px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    box-shadow: 0 6px 0 #b19a9a;
+    width: 410px;
+    border: 3px solid #ffffff;
+
+    background: rgba(0, 0, 0, 0.75);
+   
+    border-radius: 10px;
+
     outline: none;
     box-sizing: border-box;
     text-align: center;
     gap: 5px;
     margin-top: -2%;
+    font-family: "Bungee";
   }
 
   .cst-budget span {
     font-size: 20px;
-    color: #b57676;
-    margin-left: 20px;
+    letter-spacing: 0.6px;
+    color: #fff;
+    margin-left: 10px;
+
     max-width: 200px;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
   }
+
+  .cst-line-decor{
+    margin-left: 20px;
+    background-color: #fff;
+    height: 55px;
+    width: 3px;
+  }
+
+
+
+  .cst-deposit { 
+    margin-left: 6px;
+    margin-bottom: -13px;
+    
+    height: 65px;
+    width: 200px;
+    border-radius: 10px;
+    
+
+
+    outline: none;
+    box-sizing: border-box;
+    text-align: center;
+    gap: 5px;
+   
+    
+    overflow: hidden;
+}
+
+  .cst-deposit p {
+    font-size: 20px;
+    font-family: "Bungee";
+ 
+
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+    margin-top: -10%;
+    margin-bottom: -10px;
+    margin-right: 20px;
+
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
 
   .cst-withIcon {
     width: 60px;
@@ -499,32 +615,59 @@ body {
     flex-shrink: 0;
   }
 
-  .cst-show-type2{
+
+ 
+
+  .cst-show-type {
     display: flex;
     justify-self: center;
     align-items: center;
     text-align: center;
-    color: #444 !important;
-    height: 40px;
-    width: 150px;
+    background: rgba(1, 1, 1, 0.75);
+
+    height: 80px;
+    width: 410px;
     border: 3px solid #ffffff;
-    background-color: #0a0909;
-    border-radius: 20px;
+    border-radius: 10px;
+
     outline: none;
     box-sizing: border-box;
-   
+
   }
-  .cst-show-type2 span {
+
+  .cst-show-type p {
+   
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    text-align: center;
+
     letter-spacing: 0.8px;
-    padding-left: 32px ;
+    padding-top: 20px;
+    padding-left: 20px;
+
+
     font-size: 18px;
-    color: #c08787;
+    color: #fcfcfc;
+    text-shadow: 1px #444;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center;
+
+
+    font-family: "Bungee";
+
+
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+
+    gap: 35px;
+  }
+
+  .cst-show-deposit {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .cstpopup {
@@ -533,13 +676,13 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.65);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
   }
-  
+
   .cstpopup-content {
     background-color: rgba(201, 199, 238, 0.88);
     padding: 40px;
@@ -551,55 +694,33 @@ body {
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
 
-  .error-cstpopup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .error-cstpopup-content {
-    background-color: rgb(255, 255, 255);
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    font-family: "bungee";
-    border: 7px solid #f31c1c;
-    box-sizing: border-box;
-    max-width: 80%; /* Optional: Limit width of the popup content */
-  }
-
-  
   .cstplanno,
-.cstplanyes {
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 22px;
-  border-radius: 8px;
-  margin-left: 40px;
-  margin-right: 40px;
-  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
-}
+  .cstplanyes {
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 2%;
+    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+  }
 
-.cstplanyes {
-  background-color: #25861e;
-}
+  .cstplanyes {
+    background-color: #4f94e2;
+  }
 
-.cstplanno {
-  background-color: #D21404;
-}
+  .cstplanno {
+    background-color: #e24f65;
+  }
 
+  .cstplanno:hover {
+    background-color: #d32f2f;
+  }
 
-.cstplanno:hover,
-.cstplanyes:hover {
-  letter-spacing: 5px;
-}
+  .cstplanyes:hover {
+    background-color: #2a81e4;
+  }
 }

@@ -22,28 +22,21 @@ export default function CstPlan() {
   const [territory, setTerritory] = useState([[]]);
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
+  const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
   const handleClickComplete = () => {
     setShowPopup(true);
   };
   const handleConfirmation = (choice) => {
     if (choice) {
-      // Navigate to the map
       navigate("/map");
     }
     setShowPopup(false);
   };
-
-  const regions = [[]];
-  for (let i = 0; i < valueR; i++) {
-    const row = [];
-    for (let j = 0; j < valueC; j++) {
-      row.push(j);
-    }
-    regions.push(row);
-  }
 
   useEffect(() => {
     if (!client) {
@@ -86,31 +79,34 @@ export default function CstPlan() {
             });
           }
         });
-        client.activate();
+      client.activate();
+    }
+
+    if (syntaxCheckClicked && errorMgs) {
+      setShowErrorPopup(true);
+    }
+
+    const storedTimestamp = localStorage.getItem("timerTimestamp");
+    if (storedTimestamp && !isNaN(storedTimestamp)) {
+      setStartingTimestamp(parseInt(storedTimestamp));
+    }
+  }, [nameP1, nameP2, errorMgs, syntaxCheckClicked]);
+
+  useEffect(() => {
+    if (initPlanMin !== 0 || initPlanSec !== 0) {
+      if (!localStorage.getItem("timerTimestamp")) {
+        const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+        setStartingTimestamp(newTimestamp);
+        localStorage.setItem("timerTimestamp", newTimestamp);
       }
-      if (errorMgs) {
-        alert(errorMgs);
-      }
-      const storedTimestamp = localStorage.getItem("timerTimestamp");
-      if (storedTimestamp && !isNaN(storedTimestamp)) {
-        setStartingTimestamp(parseInt(storedTimestamp));
-      }
-    }, [nameP1, nameP2, errorMgs]);
-  
-    useEffect(() => {
-      if (initPlanMin !== 0 || initPlanSec !== 0) {
-        if (!localStorage.getItem("timerTimestamp")) {
-          const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
-          setStartingTimestamp(newTimestamp);
-          localStorage.setItem("timerTimestamp", newTimestamp);
-        }
-      }
-    }, [initPlanMin, initPlanSec]);
-  
-    const setPlan = () => {
-      if (client) {
-        if (client.connected) {
-          let username = localStorage.getItem("username");
+    }
+  }, [initPlanMin, initPlanSec]);
+
+  const setPlan = () => {
+    setSyntaxCheckClicked(true);
+    if (client) {
+      if (client.connected) {
+        let username = localStorage.getItem("username");
         client.publish(
           {
             destination: "/app/setPlan",
@@ -130,21 +126,25 @@ export default function CstPlan() {
       }
     }
   };
-
-  const click = (x, y) => { };
+  
+  const click = (x, y) => {
+    x--;
+    setDepositPosition({ x, y });
+  };
 
   return (
     <div className="cst-page">
+      
       <div className="show-cstPlan">
         <div className="cst-show-detail">
-        
-        <CountdownTimer 
+          <CountdownTimer
             countdownTimestampMs={startingTimestamp}
             minutes={initPlanMin}
-            seconds={initPlanSec} />
+            seconds={initPlanSec}
+          />
 
           <div className="cst-show-regions">
-            {regions.map((row, rowIndex) => (
+            {territory.map((row, rowIndex) => (
               <div className="rowcss" key={rowIndex}>
                 {row.map((col, colIndex) => (
                   <Hexagon
@@ -158,88 +158,89 @@ export default function CstPlan() {
             ))}
           </div>
           <div className="cst-show-budget">
-          <div className="cst-show-type2">
-          <span style={{fontFamily: "Bungee"}} >BUDGET</span>
-        </div>
-        <div className="cst-budget">
-          <div className="cst-withIcon">
-            <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
+            <div className="cst-budget">
+              <span>BUDGET :</span>
+              <span style={{ color: "#DFE658" }}>1600000</span>
+            </div>
           </div>
-          <span style={{fontFamily: "Bungee", fontSize: "22px"}}>100000</span>
-        </div>
+
+          <div className="cst-show-deposit">
+            <div className="cst-show-type">
+              <p>
+                row <br></br> {depositPosition.x}
+              </p>
+              <p>
+                column <br></br> {depositPosition.y}
+              </p>
+              <div className="cst-line-decor"></div>
+              <div className="cst-deposit">
+                <p >DEPOSIT</p>
+                <p style={{ color: "#DFE658"}}>1600000</p>
+              </div>
+            </div>
           </div>
-          
         </div>
 
         <div className="cst-wrapper">
-          <h2 style={{fontFamily: "Bungee"}} >CONSTRUCTION PLAN</h2>
-          <AceEditor className="my-editor"
+          <h2 style={{ fontFamily: "Bungee" }}>CONSTRUCTION PLAN</h2>
+          <AceEditor
+            className="my-editor"
             mode="java"
             theme="dracula"
             name="plan-editor"
             editorProps={{ $blockScrolling: true }}
-            fontSize ="13px"
+            fontSize="13px"
             setOptions={{
-                fontFamily: "'JetBrains Mono', monospace",
-                enableBasicAutocompletion: true,
-                enableLiveAutocompletion: true,
-                enableSnippets: true,
-                enableMultiselect: true,
+              fontFamily: "'JetBrains Mono', monospace",
+              enableBasicAutocompletion: true,
+              enableLiveAutocompletion: true,
+              enableSnippets: true,
+              enableMultiselect: true,
             }}
-            onChange={(e)=>setPlanText(e)}
+            onChange={(e) => setPlanText(e)}
           />
           <div className="button-container">
             <a onClick={() => setPlan()} className="check-syntax">
               <span>CHECK SYNTAX</span>
               <i></i>
             </a>
-            <button style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }} disabled={errorMgs != null} onClick={handleClickComplete} className="complete">
+            <button
+              style={{ cursor: errorMgs != null ? "not-allowed" : "pointer" }}
+              disabled={errorMgs != null}
+              onClick={handleClickComplete}
+              className="complete"
+            >
               Confirm
             </button>
           </div>
         </div>
 
         {showPopup && (
-        <div className="cstpopup">
-          <div className="cstpopup-content">
-            <p style={{fontSize: "30px"}}>Are you sure to confirm this plan?</p>
-            <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
-            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Confirm</button>
-            <button className="cstplanno" onClick={() => handleConfirmation(false)}>Cancel</button>
-          </div>
-        </div>
-        )}
-        {showErrorPopup && (
-          <div className="error-cstpopup">
-            <div
-              className="error-cstpopup-content"
-              style={{
-                borderColor: errorMgs == null ? "green" : "#f31c1c",
-              }}
-            >
-              <p style={{ fontSize: "28px" }}>
-                {errorMgs == null
-                  ? "Your code is correct"
-                  : "Your code is incorrect"}
-                {errorMgs && <><br />{"Reason: " +errorMgs}</>}
+          <div className="cstpopup">
+            <div className="cstpopup-content">
+              <p style={{ fontSize: "30px" }}>
+                Are you sure to confirm this plan?
               </p>
-              {errorMgs == null && (
-                <>
-                  <br />
-                  <p
-                    style={{
-                      color: "green",
-                      textDecoration: "underline",
-                      fontSize: "20px",
-                      marginTop: "-30px"
-                    }}
-                  >
-                    You can click confirm
-                  </p>
-                </>
-              )}
-              <button className="cstplanno" onClick={() => setShowErrorPopup(false)}>
-                Close
+              <p
+                style={{
+                  color: "red",
+                  fontSize: "20px",
+                  textDecoration: "underline",
+                }}
+              >
+                Keep in mind that changing plans will cost your budget.
+              </p>
+              <button
+                className="cstplanyes"
+                onClick={() => handleConfirmation(true)}
+              >
+                Confirm
+              </button>
+              <button
+                className="cstplanno"
+                onClick={() => handleConfirmation(false)}
+              >
+                Cancel
               </button>
             </div>
           </div>
