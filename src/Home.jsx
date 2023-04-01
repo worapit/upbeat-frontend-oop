@@ -40,14 +40,18 @@ export default function Home() {
           onConnect: () => {
             client.subscribe("/app/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["nameP1"]);
-              setNameP2(body["nameP2"]);
+              if (body["player1"])
+                setNameP1(body["player1"]["name"]);
+              if (body["player2"])
+                setNameP2(body["player2"]["name"]);
             });
 
             client.subscribe("/topic/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["nameP1"]);
-              setNameP2(body["nameP2"]);
+              if (body["player1"])
+                setNameP1(body["player1"]["name"]);
+              if (body["player2"])
+                setNameP2(body["player2"]["name"]);
             });
           }
         });
@@ -80,6 +84,7 @@ export default function Home() {
             {
               name: username,
             }),
+          replyTo: "/topic/game",
         });
       }
       

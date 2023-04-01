@@ -309,11 +309,6 @@ body {
     gap: 35px;
   }
 
-  .cst-show-deposit {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
 
   .cstpopup {
     position: fixed;
@@ -338,6 +333,7 @@ body {
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
+
 
   .cstplanno,
   .cstplanyes {
@@ -695,6 +691,7 @@ body {
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
 
+
   .cstplanno,
   .cstplanyes {
     padding: 10px 20px;
@@ -725,3 +722,4 @@ body {
     background-color: #2a81e4;
   }
 }
+

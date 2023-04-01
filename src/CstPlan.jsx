@@ -19,14 +19,16 @@ export default function CstPlan() {
   const [errorMgs, setErrorMgs] = useState(null);
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
-  const [valueR, setValueR] = useState(16);
-  const [valueC, setValueC] = useState(16);
+
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
+
   const handleClickComplete = () => {
     setShowPopup(true);
   };
@@ -38,63 +40,21 @@ export default function CstPlan() {
     setShowPopup(false);
   };
 
-  const regions = [[]];
-  for (let i = 0; i < valueR; i++) {
-    const row = [];
-    for (let j = 0; j < valueC; j++) {
-      row.push(j);
-    }
-    regions.push(row);
-  }
-
   useEffect(() => {
     if (!client) {
-      client = new Client({
-        brokerURL: url,
-        onConnect: () => {
-          client.subscribe("/app/game", (message) => {
-            const body = JSON.parse(message.body);
-            setNameP1(body["nameP1"]);
-            setNameP2(body["nameP2"]);
-            setErrorMgs(body["errorMgs"]);
-          });
 
-          client.subscribe("/topic/game", (message) => {
-            const body = JSON.parse(message.body);
-            setNameP1(body["nameP1"]);
-            setNameP2(body["nameP2"]);
-            if (body["playerMgs"] == localStorage.getItem("username")) {
-              setErrorMgs(body["errorMgs"]);
-            }
-          });
-
-          client.subscribe("/app/getConfig", (message) => {
-            const body = JSON.parse(message.body);
-            setValueR(body["m"]);
-            setValueC(body["n"]);
-            setInitPlanMin(body["init_plan_min"]);
-            setInitPlanSec(body["init_plan_sec"]);
-          });
-
-          client.subscribe("/topic/getConfig", (message) => {
-            const body = JSON.parse(message.body);
-            setValueR(body["m"]);
-            setValueC(body["n"]);
-            setInitPlanMin(body["init_plan_min"]);
-            setInitPlanSec(body["init_plan_sec"]);
-          });
-        },
-      });
       client.activate();
     }
-    if (errorMgs) {
-      alert(errorMgs);
+
+    if (syntaxCheckClicked && errorMgs) {
+      setShowErrorPopup(true);
     }
+
     const storedTimestamp = localStorage.getItem("timerTimestamp");
     if (storedTimestamp && !isNaN(storedTimestamp)) {
       setStartingTimestamp(parseInt(storedTimestamp));
     }
-  }, [nameP1, nameP2, errorMgs]);
+  }, [nameP1, nameP2, errorMgs, syntaxCheckClicked]);
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
@@ -108,20 +68,15 @@ export default function CstPlan() {
   }, [initPlanMin, initPlanSec]);
 
   const setPlan = () => {
+    setSyntaxCheckClicked(true);
     if (client) {
       if (client.connected) {
         let username = localStorage.getItem("username");
-        client.publish({
-          destination: "/app/setPlan",
-          body: JSON.stringify({
-            name: username,
-            plan: planText,
-          }),
-          replyTo: "/app/game",
-        });
+
       }
     }
   };
+  
 
   const click = (x, y) => {
     x--;
@@ -140,7 +95,7 @@ export default function CstPlan() {
           />
 
           <div className="cst-show-regions">
-            {regions.map((row, rowIndex) => (
+            {territory.map((row, rowIndex) => (
               <div className="rowcss" key={rowIndex}>
                 {row.map((col, colIndex) => (
                   <Hexagon
@@ -209,6 +164,7 @@ export default function CstPlan() {
             >
               Confirm
             </button>
+            
           </div>
         </div>
 
@@ -241,6 +197,7 @@ export default function CstPlan() {
               </button>
             </div>
           </div>
+
         )}
       </div>
     </div>

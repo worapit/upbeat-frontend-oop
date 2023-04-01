@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import myLoading from "./image/setcpt.mp4";
 import myCustomFontt from "./font/Space.ttf";
 import "./setcompleted.css";
-import Hexagon from "./component/Hexagon";
 
 import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
@@ -20,8 +19,6 @@ export default function SetComplete() {
   const [planRevSec, setPlanRevSec] = useState('00');
   const [initBudget, setInitBudget] = useState(10000);
   const [initCenterDep, setInitCenterDep] = useState(100);
-  // const [planRevMin, setPlanRevMin] = useState(30);
-  // const [planRevSec, setPlanRevSec] = useState(0);
   const [revCost, setRevCost] = useState(100);
   const [maxDep, setMaxDep] = useState(1000000);
   const [interestPct, setInterestPct] = useState(5);
@@ -48,23 +45,8 @@ export default function SetComplete() {
               setRevCost(body["rev_cost"]);
               setMaxDep(body["max_dep"]);
               setInterestPct(body["interest_pct"]);
-              console.log(body);
             });
-            client.subscribe("/topic/getConfig", (message) => {
-              const body = JSON.parse(message.body);
-              setValueR(body["m"]);
-              setValueC(body["n"]);
-              setInitPlanMin(body["init_plan_min"]);
-              setInitPlanSec(body["init_plan_sec"]);
-              setInitBudget(body["init_budget"]);
-              setInitCenterDep(body["init_center_dep"]);
-              setPlanRevMin(body["plan_rev_min"]);
-              setPlanRevSec(body["plan_rev_sec"]);
-              setRevCost(body["rev_cost"]);
-              setMaxDep(body["max_dep"]);
-              setInterestPct(body["interest_pct"]);
-              console.log(body);
-            });
+            client.subscribe("/topic/getConfig");
           }
         });
       client.activate();
