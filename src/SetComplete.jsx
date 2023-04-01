@@ -46,9 +46,7 @@ export default function SetComplete() {
               setMaxDep(body["max_dep"]);
               setInterestPct(body["interest_pct"]);
             });
-            client.subscribe("/topic/getConfig", (message) => {
-              const body = JSON.parse(message.body);
-            });
+            client.subscribe("/topic/getConfig");
           }
         });
       client.activate();
