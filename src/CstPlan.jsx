@@ -145,7 +145,7 @@ export default function CstPlan() {
   }
   
   const click = (x, y) => {
-    x--;
+    
     setDepositPosition({ x, y });
   };
 
