@@ -1,27 +1,20 @@
 import React, { useState } from "react";
-import Profile from "./image/profile.png";
 import Hexagon from "./component/Hexagon";
-import CstPlan from "./CstPlan";
-import CountdownTimer from "./CountdownTimer";
 import PopUp from "./component/Popup";
 
 import myCustomFontt from "./font/Space.ttf";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
 
-import region from "./image/region.png";
-import cityCenter from "./image/city_center.png";
-import city from "./image/city.png";
-
 export default function Map() {
-  //pop up how to play
+  
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [depositPosition, setDepositPosition] = useState({ x: 0 ,y: 0  });
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -39,7 +32,7 @@ export default function Map() {
 `;
 
   const rowcf = 9;
-  const column = 16;
+  const column = 9;
 
   const regions = [];
   const centerC = 2;
@@ -62,7 +55,9 @@ export default function Map() {
     regions.push(row);
   }
 
-  const click = (x, y) => {};
+  const click = (x, y) => {
+    setDepositPosition({x,y})
+  };
 
   return (
     <div className="map-page">
@@ -82,6 +77,17 @@ export default function Map() {
           <span >DEPOSIT</span>
         </div>
         <div className="text-box-deposit">
+           <div className="text-box-row">
+            <div className="display-deposit-box">
+              <p>row   <br></br> {depositPosition.x}</p>
+              <p>column   <br></br> {depositPosition.y}</p>
+            </div>
+            <div className="deposit-border-decor">
+            <span style={{color: "#b19a9a"}}>deposit</span>
+            <p>10000000000</p>
+            </div>
+           </div>
+        
         </div>
       </div>
 
@@ -118,7 +124,7 @@ export default function Map() {
           <div className="map-withIcon">
             <FontAwesomeIcon icon={faCoins} color="#b19a9a" size="2x" />
           </div>
-          <span>100000</span>
+          <span>10000000</span>
         </div>
       </div>
 
