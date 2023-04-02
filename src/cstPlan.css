@@ -50,7 +50,7 @@ body {
   }
 
   .cst-show-regions {
-    height: 450px;
+    height: 390px;
     width: 550px;
     background: rgba(125, 3, 211, 0.25);
     backdrop-filter: blur(40px);
@@ -90,7 +90,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 550px;
-    height: 650px;
+    height: 620px;
     min-height: fit-content;
     background: linear-gradient(to bottom, #2c245f, #384e90, #2a235a);
     box-shadow: 5px 5px 10px rgb(21, 1, 53);
@@ -100,7 +100,7 @@ body {
     padding-top: 1.5%;
     padding-bottom: 1%;
     margin-right: -6.5%;
-    margin-top: 2%;
+    margin-top: 2.5%;
 
     gap: 5px;
     font-family: "JetBrains Mono", monospace;
