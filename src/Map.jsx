@@ -40,7 +40,10 @@ export default function Map() {
     setIsConfirmPopupOpen(false);
   };
 
-  localStorage.removeItem("timeOut");
+  localStorage.removeItem("timerTimestamp");
+  localStorage.removeItem("minutes");
+  localStorage.removeItem("seconds");
+  localStorage.setItem("setPlan", true);
   
   useEffect(() => {
     if (!client) {
