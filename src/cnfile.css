@@ -12,476 +12,956 @@
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
-.cn-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-
-}
-
-
-
-.cn-header {
+@media only screen and (max-height: 750px) {
+  .cn-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -1.4%; 
-    margin-bottom: 2%;
+    position: absolute;
+  
+  }
+  
+  
+  
+  .cn-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0%; 
+      margin-bottom: 2%;
+      text-shadow: 0em 0em 0em rgb(190, 153, 21),
+        0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
+        0.1em 0.1em 0 black;
+      letter-spacing: 0.02em;
+      font-size: 90px;
+      
+      color: #fff;
+      position: relative;
+      z-index: 2;
+  }
+  
+  
+  .cn-box {
+    margin: -3% auto;
+    
+    width: 900px;
+    height: 570px;
+  
+    background: rgba(122, 120, 235, 0.381);
+    backdrop-filter: blur(0px);
+    font-family: 'Bungee', cursive;
+    border-bottom: 3px solid rgba(6, 5, 5, 0.25);
+    border-right: 3px solid rgba(0, 0, 0, 0.25);
+  
+    border-radius: 50px;
+    box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
+  
+    position: relative;
+    z-index: 1;
+  
+    display: grid;
+    place-items: center;
+  }
+  
+  .cn-plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  
+  
+  
+  .cn-row-column {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+  
+  .cn-line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .cn-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .cn-choice p {
     text-shadow: 0em 0em 0em rgb(190, 153, 21),
       0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
-      0.1em 0.1em 0 black;
+      0.12em 0.12em 0 black;
     letter-spacing: 0.02em;
-    font-size: 90px;
-    
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: -45px;
     color: #fff;
+  }
+  
+  .cn-range-container {
+    display: grid;
+    text-align: center;
+    place-content: center;
+  
+    height: 40px;
+    width: 300px;
+    background: #fff;
+  
+    border-radius: 20px;
+    padding: 0 45px 0 45px;
+  
+    margin-top: 7px;
+  }
+  
+  .cn-range-container .field {
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .cn-range-container .sliderValue {
+    position: relative;
+    width: 100%;
+  }
+  
+  .cn-range-container .sliderValue span {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    color: #fff;
+    font-weight: 500;
+    top: -65px;
+    transform: translateX(-50%);
+    line-height: 45px;
+  }
+  
+  .cn-range-container .sliderValue span:after {
+    position: absolute;
+    content: "";
+    height: 45px;
+    width: 45px;
+    background: #664aff;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid #fff;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    left: 50%;
+    z-index: -1;
+  }
+  
+  .cn-range-container .field .value {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #664aff;
+  }
+  
+  .cn-range-container .field .value.left {
+    left: -43px;
+  }
+  
+  .cn-range-container .field .value.right {
+    right: -43px;
+  }
+  
+  .cn-range-container .field input[type="range"] {
+    height: 4px;
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+  }
+  
+  .cn-range-container .field input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664aff;
+    border-radius: 50%;
+    border: 1px solid #664aff;
+    cursor: pointer;
+  }
+  
+  .cn-range-container .field input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664aff;
+    border-radius: 50%;
+    border: 1px solid #664aff;
+    cursor: pointer;
+  }
+  
+  .cn-range-container .field input[type="range"]::-ms-thumb {
+    -ms-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664aff;
+    border-radius: 50%;
+    border: 1px solid #664aff;
+    cursor: pointer;
+  }
+  
+  .cn-time {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+  }
+  
+  .cn-time-icon {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    font-size:20px;
+  
+    margin-top: 48px;
+  }
+  
+  .cn-time-show {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cn-time-show h3 {
+    text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
+      0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
+    letter-spacing: 0.02em;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cn-time-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+  .cn-time-picker input.decrease {
+    margin-top: 5px;
+    width:40px;
+    height: 40px;
+  }
+  
+  .cn-time-picker input.increase {
+    margin-bottom: 5px;
+    width:40px;
+    height: 40px;
+  }
+  
+  
+  .increase,
+  .decrease {
+    background: rgb(216, 204, 223);
+    border: none;
+    font-size: 1cqmin; /* Adjust the font-size for smaller arrow buttons */
+    cursor:pointer;
+    outline: none;
+  }
+  
+  .cn-time-picker p {
+    font-size: 35px;
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #f8f6f6;
+  }
+  
+  .cn-time-picker input {
+    width: 65px;
+    height: 60px;
+    font-size: 28px;
+    color: #664aff;
+  
+    border-radius: 20%;
+    border: 3px solid #f3ebeb;
+    text-align: center;
+  }
+  
+  .cn-radio label {
+    text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
+      0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
+    letter-spacing: 0.02em;
+    font-size: 20px;
+  }
+  
+  label[for="group1-option1"] {
+    color: rgb(97, 227, 90);
+  }
+  
+  label[for="group1-option2"] {
+    color: rgb(227, 211, 90);
+  }
+  
+  label[for="group1-option3"] {
+    color: rgb(246, 107, 33);
+  }
+  
+  
+  input[type="radio"] {
+    visibility: hidden;
+  }
+  
+  .custom-radio::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2.5px solid #ccc;
+    background-color: #ffffff;
+    margin-right: 10px;
+  }
+  
+  input[type="radio"]:checked + .custom-radio::before {
+    background-color: #4e33e8;
+    border-color: #ffffff;
+  }
+  
+  .modepopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modepopup-inner {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "outfit";
+    border: 8px solid #008118;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+  
+  .modepopup-close-button,
+  .modepopup-confirm-button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 2%;
+    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+  }
+  .modepopup-confirm-button {
+    background-color: #0e863e;
+  }
+  .modepopup-close-button {
+    background-color: #dd2626;
+  }
+  
+  .modepopup-confirm-button:hover {
+    background-color: #1b6b10;
+  }
+  
+  .modepopup-close-button:hover {
+    background-color: #841010;
+  }
+  
+  
+  /* .cn-time-picker input[type="number"]::-webkit-inner-spin-button,
+  .cn-time-picker input[type="number"]::-webkit-outer-spin-button,
+  .cn-time-picker input[type="number"]::-ms-clear {
+  
+  } */
+  
+  .cn-setting-budget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 800px;
+    height: 110px;
+    border: 5px solid  #664aff;
+    border-radius: 25px;
+    gap: 10px;
+  }
+  
+  .decor-span {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+  
+  .cn-setting-budget span {
+    letter-spacing: 0.6px;
+    color: #dedffa;
+    font-size: 18px;
+  }
+  
+  .cn-container-button {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-right: 20px; /* Updated to absolute units (pixels) */
+    margin-bottom: 20px; /* Updated to absolute units (pixels) */
+  }
+  
+  .cn-button {
+    /* Add your regular button styles here */
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    color: #008118;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    font-size: 16px;
+    border-radius: 50%; /* Make the button circular */
+    width: 70px; /* Set the width and height of the button */
+    height: 70px;
+    z-index: 1;
+  }
+  
+  
+  
+  .cn-button:hover:before {
+    /* Add the text to the button and hide it by default */
+    content: "Confirm";
+    font-family: "bungee";
+    color: #008118;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
     z-index: 2;
-}
-
-
-.cn-box {
-  margin: -3% auto;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
   
-  width: 900px;
-  height: 570px;
-
-  background: rgba(122, 120, 235, 0.381);
-  backdrop-filter: blur(0px);
-  font-family: 'Bungee', cursive;
-  border-bottom: 3px solid rgba(6, 5, 5, 0.25);
-  border-right: 3px solid rgba(0, 0, 0, 0.25);
-
-  border-radius: 50px;
-  box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
-
-  position: relative;
-  z-index: 1;
-
-  display: grid;
-  place-items: center;
-}
-
-.cn-plan {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-}
-
-
-
-
-.cn-row-column {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-}
-
-.cn-line {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.cn-choice {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.cn-choice p {
-  text-shadow: 0em 0em 0em rgb(190, 153, 21),
-    0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
-    0.12em 0.12em 0 black;
-  letter-spacing: 0.02em;
-  font-size: 20px;
-  margin-left: 10px;
-  margin-bottom: -45px;
-  color: #fff;
-}
-
-.cn-range-container {
-  display: grid;
-  text-align: center;
-  place-content: center;
-
-  height: 40px;
-  width: 300px;
-  background: #fff;
-
-  border-radius: 20px;
-  padding: 0 45px 0 45px;
-
-  margin-top: 7px;
-}
-
-.cn-range-container .field {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.cn-range-container .sliderValue {
-  position: relative;
-  width: 100%;
-}
-
-.cn-range-container .sliderValue span {
-  position: absolute;
-  height: 45px;
-  width: 45px;
-  color: #fff;
-  font-weight: 500;
-  top: -65px;
-  transform: translateX(-50%);
-  line-height: 45px;
-}
-
-.cn-range-container .sliderValue span:after {
-  position: absolute;
-  content: "";
-  height: 45px;
-  width: 45px;
-  background: #664aff;
-  transform: translateX(-50%) rotate(45deg);
-  border: 3px solid #fff;
-  border-top-right-radius: 50%;
-  border-top-left-radius: 50%;
-  border-bottom-left-radius: 50%;
-  left: 50%;
-  z-index: -1;
-}
-
-.cn-range-container .field .value {
-  position: absolute;
-  font-size: 18px;
-  font-weight: 600;
-  color: #664aff;
-}
-
-.cn-range-container .field .value.left {
-  left: -43px;
-}
-
-.cn-range-container .field .value.right {
-  right: -43px;
-}
-
-.cn-range-container .field input[type="range"] {
-  height: 4px;
-  width: 100%;
-  background: #ddd;
-  border-radius: 5px;
-  outline: none;
-  border: none;
-}
-
-.cn-range-container .field input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  height: 20px;
-  width: 20px;
-  background: #664aff;
-  border-radius: 50%;
-  border: 1px solid #664aff;
-  cursor: pointer;
-}
-
-.cn-range-container .field input[type="range"]::-moz-range-thumb {
-  -moz-appearance: none;
-  height: 20px;
-  width: 20px;
-  background: #664aff;
-  border-radius: 50%;
-  border: 1px solid #664aff;
-  cursor: pointer;
-}
-
-.cn-range-container .field input[type="range"]::-ms-thumb {
-  -ms-appearance: none;
-  height: 20px;
-  width: 20px;
-  background: #664aff;
-  border-radius: 50%;
-  border: 1px solid #664aff;
-  cursor: pointer;
-}
-
-.cn-time {
-  display: flex;
-  flex-direction: row;
-  gap: 80px;
-}
-
-.cn-time-icon {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  gap: 10px;
-  font-size:20px;
-
-  margin-top: 48px;
-}
-
-.cn-time-show {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.cn-time-show h3 {
-  text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
-    0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
-  letter-spacing: 0.02em;
-  font-size: 18px;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.cn-time-picker {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .cn-button:hover:before {
+    /* Show the text on hover */
+    opacity: 1;
+  }
+  
+  .cn-button:hover {
+    /* Add your hover styles here */
+    background-color: #008118;
+    color: #fff;
+    border: 1px solid #555;
+  }
+  
   
 }
 
-.input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+@media only screen and (min-height: 750px) {
+  .cn-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
   
-}
-.cn-time-picker input.decrease {
-  margin-top: 5px;
-  width:40px;
-  height: 40px;
-}
-
-.cn-time-picker input.increase {
-  margin-bottom: 5px;
-  width:40px;
-  height: 40px;
-}
-
-
-.increase,
-.decrease {
-  background: rgb(216, 204, 223);
-  border: none;
-  font-size: 1cqmin; /* Adjust the font-size for smaller arrow buttons */
-  cursor:pointer;
-  outline: none;
-}
-
-.cn-time-picker p {
-  font-size: 35px;
-  text-align: center;
-  margin-top: 15px;
-  margin-right: 5px;
-  margin-left: 5px;
-  color: #f8f6f6;
-}
-
-.cn-time-picker input {
-  width: 65px;
-  height: 60px;
-  font-size: 28px;
-  color: #664aff;
-
-  border-radius: 20%;
-  border: 3px solid #f3ebeb;
-  text-align: center;
-}
-
-.cn-radio label {
-  text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
-    0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
-  letter-spacing: 0.02em;
-  font-size: 20px;
-}
-
-label[for="group1-option1"] {
-  color: rgb(97, 227, 90);
-}
-
-label[for="group1-option2"] {
-  color: rgb(227, 211, 90);
-}
-
-label[for="group1-option3"] {
-  color: rgb(246, 107, 33);
-}
-
-
-input[type="radio"] {
-  visibility: hidden;
-}
-
-.custom-radio::before {
-  content: "";
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  border: 2.5px solid #ccc;
-  background-color: #ffffff;
-  margin-right: 10px;
-}
-
-input[type="radio"]:checked + .custom-radio::before {
-  background-color: #4e33e8;
-  border-color: #ffffff;
-}
-
-.modepopup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modepopup-inner {
-  background-color: rgb(255, 255, 255);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  font-family: "outfit";
-  border: 8px solid #008118;
-  box-sizing: border-box;
-  max-width: 80%; /* Optional: Limit width of the popup content */
-}
-
-.modepopup-close-button,
-.modepopup-confirm-button {
-  padding: 10px 20px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  border-radius: 40px;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 2%;
-  transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
-}
-.modepopup-confirm-button {
-  background-color: #0e863e;
-}
-.modepopup-close-button {
-  background-color: #dd2626;
-}
-
-.modepopup-confirm-button:hover {
-  background-color: #1b6b10;
-}
-
-.modepopup-close-button:hover {
-  background-color: #841010;
-}
-
-
-/* .cn-time-picker input[type="number"]::-webkit-inner-spin-button,
-.cn-time-picker input[type="number"]::-webkit-outer-spin-button,
-.cn-time-picker input[type="number"]::-ms-clear {
-
-} */
-
-.cn-setting-budget {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 800px;
-  height: 110px;
-  border: 5px solid  #664aff;
-  border-radius: 25px;
-  gap: 10px;
-}
-
-.decor-span {
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-}
-
-.cn-setting-budget span {
-  letter-spacing: 0.6px;
-  color: #dedffa;
-  font-size: 18px;
-}
-
-.cn-container-button {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  margin-right: 20px; /* Updated to absolute units (pixels) */
-  margin-bottom: 20px; /* Updated to absolute units (pixels) */
-}
-
-.cn-button {
-  /* Add your regular button styles here */
-  background-color: #ffffff;
-  border: 1px solid #ccc;
-  color: #008118;
-  padding: 0;
-  text-align: center;
-  text-decoration: none;
-  display: flex; /* Use flexbox */
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-  font-size: 16px;
-  border-radius: 50%; /* Make the button circular */
-  width: 70px; /* Set the width and height of the button */
-  height: 70px;
-  z-index: 1;
-}
-
-
-
-.cn-button:hover:before {
-  /* Add the text to the button and hide it by default */
-  content: "Confirm";
-  font-family: "bungee";
-  color: #008118;
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  z-index: 2;
-  background-color: #fff;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-.cn-button:hover:before {
-  /* Show the text on hover */
-  opacity: 1;
-}
-
-.cn-button:hover {
-  /* Add your hover styles here */
-  background-color: #008118;
-  color: #fff;
-  border: 1px solid #555;
+  }
+  
+  
+  
+  .cn-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1%; 
+      margin-bottom: 2%;
+      text-shadow: 0em 0em 0em rgb(190, 153, 21),
+        0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
+        0.1em 0.1em 0 black;
+      letter-spacing: 0.02em;
+      font-size: 90px;
+      
+      color: #fff;
+      position: relative;
+      z-index: 2;
+  }
+  
+  
+  .cn-box {
+    margin: -3% auto;
+    
+    width: 1000px;
+    height: 650px;
+  
+    background: rgba(122, 120, 235, 0.381);
+    backdrop-filter: blur(0px);
+    font-family: 'Bungee', cursive;
+    border-bottom: 3px solid rgba(6, 5, 5, 0.25);
+    border-right: 3px solid rgba(0, 0, 0, 0.25);
+  
+    border-radius: 50px;
+    box-shadow: 0px 5px 5px rgba(77, 49, 5, 0.626);
+  
+    position: relative;
+    z-index: 1;
+  
+    display: grid;
+    place-items: center;
+  }
+  
+  .cn-plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+  
+  
+  
+  
+  .cn-row-column {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+  
+  .cn-line {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .cn-choice {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .cn-choice p {
+    text-shadow: 0em 0em 0em rgb(190, 153, 21),
+      0.03em 0.03em 0.02em rgb(108, 106, 110), 0.06em 0.06em 0.01em rgb(7, 0, 21),
+      0.12em 0.12em 0 black;
+    letter-spacing: 0.02em;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-bottom: -45px;
+    color: #fff;
+  }
+  
+  .cn-range-container {
+    display: grid;
+    text-align: center;
+    place-content: center;
+  
+    height: 40px;
+    width: 300px;
+    background: #fff;
+  
+    border-radius: 20px;
+    padding: 0 45px 0 45px;
+  
+    margin-top: 7px;
+  }
+  
+  .cn-range-container .field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .cn-range-container .sliderValue {
+    position: relative;
+    width: 100%;
+  }
+  
+  .cn-range-container .sliderValue span {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    color: #fff;
+    font-weight: 500;
+    top: -65px;
+    transform: translateX(-50%);
+    line-height: 45px;
+  }
+  
+  .cn-range-container .sliderValue span:after {
+    position: absolute;
+    content: "";
+    height: 45px;
+    width: 45px;
+    background: #664aff;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid #fff;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    left: 50%;
+    z-index: -1;
+  }
+  
+  .cn-range-container .field .value {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: #664aff;
+  }
+  
+  .cn-range-container .field .value.left {
+    left: -43px;
+  }
+  
+  .cn-range-container .field .value.right {
+    right: -43px;
+  }
+  
+  .cn-range-container .field input[type="range"] {
+    height: 4px;
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+  }
+  
+  .cn-range-container .field input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664aff;
+    border-radius: 50%;
+    border: 1px solid #664aff;
+    cursor: pointer;
+  }
+  
+  .cn-range-container .field input[type="range"]::-moz-range-thumb {
+    -moz-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664aff;
+    border-radius: 50%;
+    border: 1px solid #664aff;
+    cursor: pointer;
+  }
+  
+  .cn-range-container .field input[type="range"]::-ms-thumb {
+    -ms-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664aff;
+    border-radius: 50%;
+    border: 1px solid #664aff;
+    cursor: pointer;
+  }
+  
+  .cn-time {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+  }
+  
+  .cn-time-icon {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    font-size:20px;
+  
+    margin-top: 48px;
+  }
+  
+  .cn-time-show {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cn-time-show h3 {
+    text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
+      0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
+    letter-spacing: 0.02em;
+    font-size: 18px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .cn-time-picker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+  .cn-time-picker input.decrease {
+    margin-top: 5px;
+    width:40px;
+    height: 40px;
+  }
+  
+  .cn-time-picker input.increase {
+    margin-bottom: 5px;
+    width:40px;
+    height: 40px;
+  }
+  
+  
+  .increase,
+  .decrease {
+    background: rgb(216, 204, 223);
+    border: none;
+    font-size: 1cqmin; /* Adjust the font-size for smaller arrow buttons */
+    cursor:pointer;
+    outline: none;
+  }
+  
+  .cn-time-picker p {
+    font-size: 35px;
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 5px;
+    margin-left: 5px;
+    color: #f8f6f6;
+  }
+  
+  .cn-time-picker input {
+    width: 65px;
+    height: 60px;
+    font-size: 28px;
+    color: #664aff;
+  
+    border-radius: 20%;
+    border: 3px solid #f3ebeb;
+    text-align: center;
+  }
+  
+  .cn-radio label {
+    text-shadow: 0.03em 0.03em 0.02em rgb(108, 106, 110),
+      0.06em 0.06em 0.01em rgb(7, 0, 21), 0.12em 0.12em 0 black;
+    letter-spacing: 0.02em;
+    font-size: 20px;
+  }
+  
+  label[for="group1-option1"] {
+    color: rgb(97, 227, 90);
+  }
+  
+  label[for="group1-option2"] {
+    color: rgb(227, 211, 90);
+  }
+  
+  label[for="group1-option3"] {
+    color: rgb(246, 107, 33);
+  }
+  
+  
+  input[type="radio"] {
+    visibility: hidden;
+  }
+  
+  .custom-radio::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2.5px solid #ccc;
+    background-color: #ffffff;
+    margin-right: 10px;
+  }
+  
+  input[type="radio"]:checked + .custom-radio::before {
+    background-color: #4e33e8;
+    border-color: #ffffff;
+  }
+  
+  .modepopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modepopup-inner {
+    background-color: rgb(255, 255, 255);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "outfit";
+    border: 8px solid #008118;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+  
+  .modepopup-close-button,
+  .modepopup-confirm-button {
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 2%;
+    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+  }
+  .modepopup-confirm-button {
+    background-color: #0e863e;
+  }
+  .modepopup-close-button {
+    background-color: #dd2626;
+  }
+  
+  .modepopup-confirm-button:hover {
+    background-color: #1b6b10;
+  }
+  
+  .modepopup-close-button:hover {
+    background-color: #841010;
+  }
+  
+  
+  /* .cn-time-picker input[type="number"]::-webkit-inner-spin-button,
+  .cn-time-picker input[type="number"]::-webkit-outer-spin-button,
+  .cn-time-picker input[type="number"]::-ms-clear {
+  
+  } */
+  
+  .cn-setting-budget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 800px;
+    height: 110px;
+    border: 5px solid  #664aff;
+    border-radius: 25px;
+    gap: 10px;
+  }
+  
+  .decor-span {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+  
+  .cn-setting-budget span {
+    letter-spacing: 0.6px;
+    color: #dedffa;
+    font-size: 18px;
+  }
+  
+  .cn-container-button {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin-right: 20px; /* Updated to absolute units (pixels) */
+    margin-bottom: 20px; /* Updated to absolute units (pixels) */
+  }
+  
+  .cn-button {
+    /* Add your regular button styles here */
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    color: #008118;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    font-size: 16px;
+    border-radius: 50%; /* Make the button circular */
+    width: 70px; /* Set the width and height of the button */
+    height: 70px;
+    z-index: 1;
+  }
+  
+  
+  
+  .cn-button:hover:before {
+    /* Add the text to the button and hide it by default */
+    content: "Confirm";
+    font-family: "bungee";
+    color: #008118;
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 2;
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  
+  .cn-button:hover:before {
+    /* Show the text on hover */
+    opacity: 1;
+  }
+  
+  .cn-button:hover {
+    /* Add your hover styles here */
+    background-color: #008118;
+    color: #fff;
+    border: 1px solid #555;
+  }
+  
+  
 }
 
 
