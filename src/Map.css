@@ -401,7 +401,6 @@
 
     display: flex;
     flex-direction: row;
-  
 
     gap: 35px;
   }
@@ -420,35 +419,134 @@
   .deposit-border-decor {
     font-size: 20px;
   }
+
   #mapconfirm-popup-container {
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
+    padding: 20px;
   }
 
   .mapconfirm-popup {
-    background-color: rgb(255, 255, 255);
-    padding: 40px;
-    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: rgb(255, 255, 255); */
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 20px;
+
+    height: 250px;
+    width: 750px;
     text-align: center;
     font-family: "outfit";
-    border: 7px solid #f31c1c;
+    border: 3px solid  rgb(136, 190, 224);
+    
+    box-shadow: 0 0 30px rgb(107, 188, 249);
     box-sizing: border-box;
-    max-width: 80%; /* Optional: Limit width of the popup content */
+    outline: none;
+    max-width: 80%;
     font-size: 36px;
+  }
+
+  .mapconfirm-popup p {
+    color: #211719;
   }
 
   .mapconfirm-popup-buttons {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+  }
+
+  .load-circle-box {
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:80px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+
+  .load-circle-box span {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 6px;
+  }
+
+  .s1 {
+    background: rgb(109, 65, 213);
+    animation: s1 1s infinite;
+  }
+
+  .s2 {
+    background:  rgb(183, 65, 213);
+    animation: s2 1s infinite;
+  }
+
+  .s3 {
+    background: rgb(230, 66, 109);
+    animation: s3 1s infinite;
+  }
+
+  @keyframes s1 {
+    25% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.4);
+    }
+    75% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes s2 {
+    25% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.4);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes s3 {
+    25% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.4);
+    }
   }
 
   .map-yes,
@@ -459,26 +557,25 @@
     cursor: pointer;
     font-size: 22px;
     border-radius: 20px;
-    margin-left: 40px; 
-    margin-right: 40px; 
-    transition: letter-spacing 0.5s; 
+    margin-left: 40px;
+    margin-right: 40px;
+    transition: letter-spacing 0.5s;
   }
 
   .map-yes {
     background-color: #25861e;
   }
-  
+
   .map-no {
-    background-color: #D21404;
+    background-color: #d21404;
   }
 
   .map-yes:hover {
     background-color: #085a02;
   }
-  .map-no:hover{
-    background-color:rgb(163, 15, 40);
+  .map-no:hover {
+    background-color: rgb(163, 15, 40);
   }
-
 }
 
 @media only screen and (min-height: 750px) {
@@ -823,8 +920,6 @@
     border-radius: 20px;
     box-shadow: 0 6px 0 #b19a9a;
 
-  
-
     outline: none;
     box-sizing: border-box;
     text-align: center;
@@ -903,34 +998,136 @@
   }
 
   #mapconfirm-popup-container {
+
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
+    padding: 20px;
   }
 
   .mapconfirm-popup {
-    background-color: rgb(255, 255, 255);
-    padding: 40px;
-    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: rgb(255, 255, 255); */
+    background: rgb(255, 255, 255);
+    
+    padding: 30px;
+    border-radius: 20px;
+
+    margin-top: 50px;
+
+    height: 260px;
+    width: 850px;
     text-align: center;
-    font-family: "bungee";
-    border: 7px solid #f31c1c;
+    font-family: "outfit";
+    border: 3px solid  rgb(136, 190, 224);
+    
+    box-shadow: 0 0 30px rgb(107, 188, 249);
     box-sizing: border-box;
-    max-width: 80%; /* Optional: Limit width of the popup content */
-    font-size: 28px;
+    outline: none;
+    max-width: 80%;
+    font-size: 36px;
+  }
+
+  .mapconfirm-popup p {
+    color: #211719;
+    font-size: 40px;
   }
 
   .mapconfirm-popup-buttons {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+  }
+
+  .load-circle-box {
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left:110px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+  }
+
+  .load-circle-box span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 6px;
+  }
+
+  .s1 {
+    background: rgb(109, 65, 213);
+    animation: s1 1s infinite;
+  }
+
+  .s2 {
+    background:  rgb(183, 65, 213);
+    animation: s2 1s infinite;
+  }
+
+  .s3 {
+    background: rgb(230, 66, 109);
+    animation: s3 1s infinite;
+  }
+
+  @keyframes s1 {
+    25% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.4);
+    }
+    75% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes s2 {
+    25% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.4);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes s3 {
+    25% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.4);
+    }
   }
 
   .map-yes,
@@ -941,24 +1138,23 @@
     cursor: pointer;
     font-size: 22px;
     border-radius: 20px;
-    margin-left: 40px; 
-    margin-right: 40px; 
-    transition: letter-spacing 0.5s; 
+    margin-left: 40px;
+    margin-right: 40px;
+    transition: letter-spacing 0.5s;
   }
 
   .map-yes {
     background-color: #25861e;
   }
-  
+
   .map-no {
-    background-color: #D21404;
+    background-color: #d21404;
   }
 
   .map-yes:hover {
     background-color: #085a02;
   }
-  .map-no:hover{
-    background-color:rgb(163, 15, 40);
+  .map-no:hover {
+    background-color: rgb(163, 15, 40);
   }
-
 }

@@ -31,41 +31,6 @@ export default function Home() {
       font-family: 'gamefont';
       src: url(${myCustomFont}) format('truetype');
     }
-    .homepopup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.65);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .homepopup-content {
-      font-size: 28px;
-      background-color: rgba(201, 199, 238, 0.88);
-      padding: 40px;
-      border-radius: 20px;
-      text-align: center;
-      font-family: "bungee";
-      border: 7px solid #f31c1c;
-      box-sizing: border-box;
-      max-width: 80%; /* Optional: Limit width of the popup content */
-    }
-    homebutton {
-      background-color: #D21404;
-      padding: 10px 20px;
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-size: 22px;
-      border-radius: 8px;
-      margin-left: 40px;
-      margin-right: 40px;
-      transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
-    }
   `;
   
 
@@ -193,7 +158,11 @@ export default function Home() {
       </div>
       {showPopup && (
         <div className="homepopup">
+        
           <div className="homepopup-content">
+          <div className="red-flag-home">
+            <p>!</p>
+          </div>
             <p>{popupMessage}</p>
             <homebutton onClick={closePopup}>Close</homebutton>
           </div>
