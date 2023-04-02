@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Outfit&display=swap");
 @font-face {
   font-family: space2;
   src: url(./font/Space.ttf);
 }
 
 * {
-  box-sizing:content-box;
+  box-sizing: content-box;
   width: device-width;
 }
 
 body {
   overflow: hidden;
-  -webkit-user-select: none; 
-  -moz-user-select: none; 
-  -ms-user-select: none; 
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -62,352 +62,449 @@ body {
 }
 
 .confirm-no {
-  background-color: #D21404;
+  background-color: #d21404;
 }
-
 
 .confirm-no:hover {
   background-color: rgb(160, 13, 13);
 }
-.confirm-yes:hover
-{
+.confirm-yes:hover {
   background-color: rgb(13, 89, 9);
 }
 
-
 #start-bg-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: opacity 5s ease-in-out;
+  filter: brightness(75%);
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+@media only screen and (max-height: 750px) {
+  .start-upbeat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+
+
+    text-shadow: 0px 0px 5px #bb2fe1, 0px 0px 10px #bb2fe1, 0px 0px 10px #bb2fe1,
+      0px 0px 20px #bb2fe1,0.03em 0.03em 0.02em rgb(213, 65, 65),0.06em 0.06em 0.02em rgba(228, 31, 77, 0.564),0.075em 0.075em 0.02em rgba(79, 2, 2, 0.564);
+    letter-spacing: 0.09em;
+
+    font-family: "space2";
+    font-style: normal;
+    font-size: 205px;
+
+    color: #ffffff;
+  }
+
+  .start-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Bungee", cursive;
+  }
+
+  .start-button {
+    position: fixed;
+
+    top: 50%;
+    border-radius: 1px;
+
+    display: flex;
+    flex-direction: column;
+    resize: none;
+
+    gap: 20px;
+  }
+
+  .start-choice-button1 {
+    position: relative;
+    display: inline-block;
+    color: #d4c2c2 !important;
+    /* background-color: #272020; */
+    border-radius: 15px 15px 15px 15px;
+
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 33px;
+    letter-spacing: 4px;
+    font-family: "Outfit";
+
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+
+  .start-choice-button2 {
+    position: relative;
+    display: inline-block;
+    color: #d4c2c2 !important;
+    /* background-color: #272020; */
+    border-radius: 15px 15px 15px 15px;
+
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 33px;
+    letter-spacing: 4px;
+    font-family: "Outfit";
+
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+
+  .start-choice-button3 {
+    position: relative;
+    display: inline-block;
+    color: #d4c2c2 !important;
+    /* background-color: #272020; */
+    border-radius: 15px 15px 15px 15px;
+
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 33px;
+    letter-spacing: 4px;
+    font-family: "Outfit";
+
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+
+  
+
+  .start-choice-button1:hover {
+    color: #fbfbfb !important;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 40px var(--clr), 0 0 0px var(--clr);
+    transition-delay: 1s;
+
+      text-shadow: 0px 0px 5px#9F0FC7, 0px 0px 10px #9F0FC7, 0px 0px 10px #9F0FC7,
+      0px 0px 20px #9F0FC7, 0.03em 0.03em 0.02em rgb(66, 62, 62), 0.06em 0.06em 0.02em rgb(66, 62, 62), 0.09em 0.09em 0.02em rgb(66, 62, 62);
+  }
+
+    
+
+  .start-choice-button2:hover {
+    color: #fbfbfb !important;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 40px var(--clr), 0 0 0px var(--clr);
+    transition-delay: 1s;
+
+      text-shadow: 0px 0px 5px #0F7CD5, 0px 0px 10px #0F7CD5, 0px 0px 10px #0F7CD5,
+      0px 0px 20px #0F7CD5, 0.03em 0.03em 0.02em rgb(66, 62, 62), 0.06em 0.06em 0.02em rgb(66, 62, 62), 0.09em 0.09em 0.02em rgb(66, 62, 62);
+  }
+
+    
+  .start-choice-button3:hover {
+    color: #fbfbfb !important;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 40px var(--clr), 0 0 0px var(--clr);
+    transition-delay: 1s;
+
+      text-shadow: 0px 0px 5px rgb(213, 65, 65), 0px 0px 10px rgb(213, 65, 65), 0px 0px 10px rgb(213, 65, 65),
+      0px 0px 20px rgb(213, 65, 65), 0.03em 0.03em 0.02em rgb(66, 62, 62), 0.06em 0.06em 0.02em rgb(66, 62, 62), 0.09em 0.09em 0.02em rgb(66, 62, 62);
+  }
+
+
+  .start-button a span {
+    position: absolute;
+    display: block;
+  }
+
+  .start-button a span:nth-child(1) {
+    top: 0;
+    left: -100%;
     width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(1) {
+    left: 100%;
+    transition: 1s;
+  }
+
+  .start-button a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(3) {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+  }
+
+  .start-button a span:nth-child(2) {
+    top: -100%;
+    right: 0%;
+    width: 2px;
     height: 100%;
-    object-fit: cover;
+    background: linear-gradient(180deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(2) {
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+  }
+
+  .start-button a span:nth-child(4) {
+    bottom: -100%;
+    left: 0%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+  }
+
+  #start-popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     position: fixed;
     top: 0;
     left: 0;
-    z-index: -1;
-    transition: opacity 5.0s ease-in-out;
-    filter: brightness(75%);
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+
+    gap: 15px;
+  }
+}
+
+@media only screen and (min-height: 750px) {
+  .start-upbeat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+
+
+    text-shadow: 0px 0px 5px #bb2fe1, 0px 0px 10px #bb2fe1, 0px 0px 10px #bb2fe1,
+      0px 0px 20px #bb2fe1,0.03em 0.03em 0.02em rgb(213, 65, 65),0.06em 0.06em 0.02em rgba(228, 31, 77, 0.564),0.075em 0.075em 0.02em rgba(79, 2, 2, 0.564);
+    letter-spacing: 0.09em;
+
+    font-family: "space2";
+    font-style: normal;
+    font-size: 230px;
+
+    color: #ffffff;
   }
 
-
-  .fade-out {
-    opacity: 0;
+  .start-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Bungee", cursive;
   }
 
+  .start-button {
+    position: fixed;
 
+    top: 50%;
+    border-radius: 1px;
 
+    display: flex;
+    flex-direction: column;
+    resize: none;
 
+    gap: 20px;
+  }
 
-  @media only screen and (max-height: 750px){
-    .start-upbeat {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 5%;
-  
-  
-      text-shadow: 0em 0em 0em rgb(0, 0, 0),
-        0.03em 0.03em 0.02em rgb(250, 199, 15),
-        0.06em 0.06em 0.01em rgb(248, 140, 24), 0.1em 0.1em 0 rgb(0, 0, 0);
-      letter-spacing: 0.02em;
-  
-      font-family: "space2";
-      font-style: normal;
-      font-size: 200px;
-   
-  
-      color: #f2d9d9;
-    }
-  
+  .start-choice-button1 {
+    position: relative;
+    display: inline-block;
+    color: #d4c2c2 !important;
+    /* background-color: #272020; */
+    border-radius: 15px 15px 15px 15px;
 
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 37px;
+    letter-spacing: 4px;
+    font-family: "Outfit";
 
-    .start-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Bungee", cursive;
-    }
-    
-    
-    .start-button {
-      position: fixed;
-     
-      
-      top: 50%;
-      border-radius: 1px;
-      
-      display: flex;
-      flex-direction: column;
-      resize: none;
-    
-      gap: 20px;
-    
-    }
-    
-    
-    
-    
-    .start-choice-button{
-      position: relative;
-      display: inline-block;
-      color: #d4c2c2  !important;
-      /* background-color: #272020; */
-      border-radius: 15px 15px 15px 15px;
-    
-      text-decoration: none !important;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 30px;
-      letter-spacing: 4px;
-    
-      padding: 15px 30px;
-      overflow: hidden;
-      transition: 0.2s;
-    
-    }
-    
-    .start-choice-button:hover{
-      color: #fbfbfb !important;
-      background: var(--clr);
-      box-shadow: 0 0 10px var(--clr) , 0 0 40px var(--clr), 0 0 0px var(--clr);
-      transition-delay: 1s;
-    
-      text-shadow:   0.1em 0.1em 0  #382c2c;
-    }
-    
-    .start-button a span{
-      position: absolute;
-      display: block;
-    }
-    
-    .start-button a span:nth-child(1){
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(1){
-      left: 100%;
-      transition: 1s;
-      
-    }
-    
-    .start-button a span:nth-child(3){
-      bottom: 0;
-      right: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(270deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(3){
-      right: 100%;
-      transition: 1s;
-      transition-delay: 0.5s;
-      
-    }
-    
-    .start-button a span:nth-child(2){
-      top: -100%;
-      right: 0%;
-      width:2px;
-      height: 100%;
-      background: linear-gradient(180deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(2){
-      top: 100%;
-      transition: 1s;
-      transition-delay: 0.25s;
-      
-    }
-    
-    .start-button a span:nth-child(4){
-     bottom: -100%;
-      left: 0%;
-      width:2px;
-      height: 100%;
-      background: linear-gradient(360deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(4){
-      bottom: 100%;
-      transition: 1s;
-      transition-delay: 0.75s;
-      
-    }
-    
-    #start-popup-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-    
-      gap: 15px;
-    }
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+
+  .start-choice-button2 {
+    position: relative;
+    display: inline-block;
+    color: #d4c2c2 !important;
+    /* background-color: #272020; */
+    border-radius: 15px 15px 15px 15px;
+
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 37px;
+    letter-spacing: 4px;
+    font-family: "Outfit";
+
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: 0.2s;
+  }
+
+  .start-choice-button3 {
+    position: relative;
+    display: inline-block;
+    color: #d4c2c2 !important;
+    /* background-color: #272020; */
+    border-radius: 15px 15px 15px 15px;
+
+    text-decoration: none !important;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 37px;
+    letter-spacing: 4px;
+    font-family: "Outfit";
+
+    padding: 15px 30px;
+    overflow: hidden;
+    transition: 0.2s;
   }
 
   
-  @media only screen and (min-height: 750px){
-    .start-upbeat {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 5%;
-  
-  
-      text-shadow: 0em 0em 0em rgb(0, 0, 0),
-        0.03em 0.03em 0.02em rgb(250, 199, 15),
-        0.06em 0.06em 0.01em rgb(248, 140, 24), 0.1em 0.1em 0 rgb(0, 0, 0);
-      letter-spacing: 0.02em;
-  
-      font-family: "space2";
-      font-style: normal;
-      font-size: 200px;
-   
-  
-      color: #f2d9d9;
-    }
-  
 
+  .start-choice-button1:hover {
+    color: #fbfbfb !important;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 40px var(--clr), 0 0 0px var(--clr);
+    transition-delay: 1s;
 
-    .start-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Bungee", cursive;
-    }
-    
-    
-    .start-button {
-      position: fixed;
-     
-      
-      top: 50%;
-      border-radius: 1px;
-      
-      display: flex;
-      flex-direction: column;
-      resize: none;
-    
-      gap: 20px;
-    
-    }
-    
-    
-    
-    
-    .start-choice-button{
-      position: relative;
-      display: inline-block;
-      color: #d4c2c2  !important;
-      /* background-color: #272020; */
-      border-radius: 15px 15px 15px 15px;
-    
-      text-decoration: none !important;
-      text-transform: uppercase;
-      text-align: center;
-      font-size: 30px;
-      letter-spacing: 4px;
-    
-      padding: 15px 30px;
-      overflow: hidden;
-      transition: 0.2s;
-    
-    }
-    
-    .start-choice-button:hover{
-      color: #fbfbfb !important;
-      background: var(--clr);
-      box-shadow: 0 0 10px var(--clr) , 0 0 40px var(--clr), 0 0 0px var(--clr);
-      transition-delay: 1s;
-    
-      text-shadow:   0.1em 0.1em 0  #382c2c;
-    }
-    
-    .start-button a span{
-      position: absolute;
-      display: block;
-    }
-    
-    .start-button a span:nth-child(1){
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(90deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(1){
-      left: 100%;
-      transition: 1s;
-      
-    }
-    
-    .start-button a span:nth-child(3){
-      bottom: 0;
-      right: -100%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(270deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(3){
-      right: 100%;
-      transition: 1s;
-      transition-delay: 0.5s;
-      
-    }
-    
-    .start-button a span:nth-child(2){
-      top: -100%;
-      right: 0%;
-      width:2px;
-      height: 100%;
-      background: linear-gradient(180deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(2){
-      top: 100%;
-      transition: 1s;
-      transition-delay: 0.25s;
-      
-    }
-    
-    .start-button a span:nth-child(4){
-     bottom: -100%;
-      left: 0%;
-      width:2px;
-      height: 100%;
-      background: linear-gradient(360deg,transparent,var(--clr));
-    }
-    
-    .start-button a:hover span:nth-child(4){
-      bottom: 100%;
-      transition: 1s;
-      transition-delay: 0.75s;
-    }
-    
-    #start-popup-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      gap: 15px;
-    }
+      text-shadow: 0px 0px 5px#9F0FC7, 0px 0px 10px #9F0FC7, 0px 0px 10px #9F0FC7,
+      0px 0px 20px #9F0FC7, 0.03em 0.03em 0.02em rgb(66, 62, 62), 0.06em 0.06em 0.02em rgb(66, 62, 62), 0.09em 0.09em 0.02em rgb(66, 62, 62);
   }
+
+    
+
+  .start-choice-button2:hover {
+    color: #fbfbfb !important;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 40px var(--clr), 0 0 0px var(--clr);
+    transition-delay: 1s;
+
+      text-shadow: 0px 0px 5px #0F7CD5, 0px 0px 10px #0F7CD5, 0px 0px 10px #0F7CD5,
+      0px 0px 20px #0F7CD5, 0.03em 0.03em 0.02em rgb(66, 62, 62), 0.06em 0.06em 0.02em rgb(66, 62, 62), 0.09em 0.09em 0.02em rgb(66, 62, 62);
+  }
+
+    
+  .start-choice-button3:hover {
+    color: #fbfbfb !important;
+    background: var(--clr);
+    box-shadow: 0 0 10px var(--clr), 0 0 40px var(--clr), 0 0 0px var(--clr);
+    transition-delay: 1s;
+
+      text-shadow: 0px 0px 5px rgb(213, 65, 65), 0px 0px 10px rgb(213, 65, 65), 0px 0px 10px rgb(213, 65, 65),
+      0px 0px 20px rgb(213, 65, 65), 0.03em 0.03em 0.02em rgb(66, 62, 62), 0.06em 0.06em 0.02em rgb(66, 62, 62), 0.09em 0.09em 0.02em rgb(66, 62, 62);
+  }
+
+  .start-button a span {
+    position: absolute;
+    display: block;
+  }
+
+  .start-button a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(1) {
+    left: 100%;
+    transition: 1s;
+  }
+
+  .start-button a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(3) {
+    right: 100%;
+    transition: 1s;
+    transition-delay: 0.5s;
+  }
+
+  .start-button a span:nth-child(2) {
+    top: -100%;
+    right: 0%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(2) {
+    top: 100%;
+    transition: 1s;
+    transition-delay: 0.25s;
+  }
+
+  .start-button a span:nth-child(4) {
+    bottom: -100%;
+    left: 0%;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, var(--clr));
+  }
+
+  .start-button a:hover span:nth-child(4) {
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.75s;
+  }
+
+  #start-popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+
+    gap: 15px;
+  }
+}
+
 

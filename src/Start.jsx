@@ -110,10 +110,10 @@ export default function Start() {
         </div>
         <div className="start-button" style={{ fontFamily: "gamefont2" }}>
           <a
-            className="start-choice-button"
+            className="start-choice-button2"
             onClick={() => ready()}
             href="/loading"
-            style={{ "--clr": "#68BB59" }}
+            style={{ "--clr": "#1e9bff" }}
           >
             <span></span>
             <span></span>
@@ -121,10 +121,11 @@ export default function Start() {
             <span></span>
             start game
           </a>
+          
           <a
-            className="start-choice-button"
+            className="start-choice-button1"
             onClick={openPopup}
-            style={{ "--clr": "#1e9bff" }}
+            style={{ "--clr": "#bb2fe1" }}
           >
             <span></span>
             <span></span>
@@ -134,11 +135,11 @@ export default function Start() {
           </a>
 
           <a
-            className="start-choice-button"
+            className="start-choice-button3"
             onClick={() => {
               setShowConfirm(true);
             }}
-            style={{ "--clr": "#D21404" }}
+            style={{ "--clr": "#ff1867" }}
           >
             <span></span>
             <span></span>
