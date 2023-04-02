@@ -221,7 +221,7 @@ export default function CstPlan() {
               <div className="cst-line-decor"></div>
               <div className="cst-deposit">
                 <p >DEPOSIT</p>
-                <p style={{ color: "#DFE658" }}>{depositPosition.deposit}</p>
+                <p style={{ color: "#DFE658" }}>{depositPosition.owner == null ? "-" : depositPosition.owner["name"] === localStorage.getItem("username") ? depositPosition.deposit : "-"}</p>
               </div>
             </div>
           </div>
