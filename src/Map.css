@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Outfit&display=swap");
 @font-face {
   font-family: space;
   src: url(./font/Space.ttf);
@@ -9,7 +9,6 @@
   /* font-family: "Bungee", cursive; */
   width: device-width;
 }
-
 
 @media only screen and (max-height: 750px) {
   .map-page {
@@ -70,6 +69,7 @@
     position: absolute;
     top: 20px;
     left: 20px;
+    font-weight: bold;
 
     margin-top: 20px;
 
@@ -78,8 +78,7 @@
     gap: 15px;
   }
 
-
-  .map-show-type{
+  .map-show-type {
     margin-right: -30%;
     display: flex;
     justify-self: center;
@@ -93,17 +92,13 @@
     /* background-color: #eaeaea; */
     border-radius: 20px;
 
-
     outline: none;
     box-sizing: border-box;
-
-
   }
-
 
   .map-show-type span {
     letter-spacing: 0.8px;
-    padding-left: 29px ;
+    padding-left: 29px;
     font-size: 18px;
     color: #c08787;
     overflow: hidden;
@@ -114,7 +109,7 @@
     align-items: center;
   }
 
-  .map-show-type2{
+  .map-show-type2 {
     display: flex;
     justify-self: center;
     align-items: center;
@@ -127,14 +122,12 @@
     /* background-color: #eaeaea; */
     border-radius: 20px;
 
-
     outline: none;
     box-sizing: border-box;
-
   }
   .map-show-type2 span {
     letter-spacing: 0.8px;
-    padding-left: 32px ;
+    padding-left: 32px;
     font-size: 18px;
     color: #c08787;
     overflow: hidden;
@@ -145,10 +138,7 @@
     align-items: center;
   }
 
-
-
   .map-budget {
-
     display: flex;
     align-items: center;
     color: #444 !important;
@@ -331,38 +321,37 @@
     align-items: center;
     margin-top: -8.7%;
   }
-  
+
   .low {
     margin-top: 9.2%;
     margin-left: -2%;
     margin-right: -1.99%;
-  } 
+  }
 
-  .map-show-deposit{
+  .map-show-deposit {
     position: fixed;
     top: 7%;
     right: 1%;
 
-    
+    font-weight: bold;
+    font-family: "Outfit";
+
     align-items: center;
-    
 
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
 
-  .text-box-deposit{
-   
+  .text-box-deposit {
     display: flex;
     color: #444 !important;
-    height: 100px;
-    width: 230px;
+
     border: 3px solid #ffffff;
     background-color: #eaeaea;
     border-radius: 20px;
     box-shadow: 0 6px 0 #b19a9a;
-    
+
     /* box-shadow: 0 6px 0 #b19a9a; */
     outline: none;
     box-sizing: border-box;
@@ -377,9 +366,8 @@
     padding: 10px;
     padding-top: 25px;
 
-    height: 160px;
+    height: 200px;
     width: 230px;
-   
 
     border: 3px solid #ffffff;
     background-color: #eaeaea;
@@ -396,18 +384,17 @@
     overflow: hidden;
   }
 
-  .text-box-deposit  p {
-    font-size: 18px;
+  .text-box-deposit p {
+    font-size: 25px;
     color: #b57676;
 
-    
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     /* text-overflow: ellipsis; */
   }
 
-  .display-deposit-box{
+  .display-deposit-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -415,25 +402,24 @@
     display: flex;
     flex-direction: row;
 
-
     gap: 35px;
   }
 
-  .deposit-border-decor{
+  .deposit-border-decor {
     padding-top: 10px;
     justify-content: center;
     align-items: center;
     border: 3px double #b0a39b;
-    
+
     width: 170px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
   }
 
-
- 
+  .deposit-border-decor {
+    font-size: 20px;
+  }
 }
-
 
 @media only screen and (min-height: 750px) {
   .map-page {
@@ -490,11 +476,13 @@
     border: none;
   }
 
-
   .map-show-budget {
     position: absolute;
     top: 35px;
     left: 20px;
+
+    font-weight: bold;
+    font-family: "Outfit";
 
     margin-top: 20px;
 
@@ -503,8 +491,7 @@
     gap: 15px;
   }
 
-
-  .map-show-type{
+  .map-show-type {
     margin-right: -30%;
     display: flex;
     justify-self: center;
@@ -513,23 +500,19 @@
 
     color: #444 !important;
     height: 40px;
-    width: 150px;
+    width: 170px;
     border: 3px solid #ffffff;
     /* background-color: #eaeaea; */
     border-radius: 20px;
 
-
     outline: none;
     box-sizing: border-box;
-
-
   }
-
 
   .map-show-type span {
     letter-spacing: 0.8px;
-    padding-left: 23px ;
-    font-size: 20px;
+    padding-left: 28px;
+    font-size: 25px;
     color: #c08787;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -539,7 +522,7 @@
     align-items: center;
   }
 
-  .map-show-type2{
+  .map-show-type2 {
     display: flex;
     justify-self: center;
     align-items: center;
@@ -547,20 +530,18 @@
 
     color: #444 !important;
     height: 40px;
-    width: 150px;
+    width: 170px;
     border: 3px solid #ffffff;
     /* background-color: #eaeaea; */
     border-radius: 20px;
 
-
     outline: none;
     box-sizing: border-box;
-
   }
   .map-show-type2 span {
     letter-spacing: 0.8px;
-    padding-left: 30px ;
-    font-size: 20px;
+    padding-left: 30px;
+    font-size: 25px;
     color: #c08787;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -570,10 +551,7 @@
     align-items: center;
   }
 
-
-
   .map-budget {
-
     display: flex;
     align-items: center;
     color: #444 !important;
@@ -592,7 +570,7 @@
   }
 
   .map-budget span {
-    font-size: 28px;
+    font-size: 35px;
     color: #b57676;
     margin-left: 20px;
     max-width: 200px;
@@ -756,37 +734,37 @@
     align-items: center;
     margin-top: -8.7%;
   }
-  
+
   .low {
     margin-top: 9.2%;
     margin-left: -2%;
     margin-right: -1.99%;
-  } 
+  }
 
-  .map-show-deposit{
+  .map-show-deposit {
     position: fixed;
     top: 7%;
     right: 1%;
 
-    
+    font-weight: bold;
+    font-family: "Outfit";
     align-items: center;
-    
 
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
 
-  .text-box-deposit{
-   
+  .text-box-deposit {
     display: flex;
     color: #444 !important;
     border: 3px solid #ffffff;
     background-color: #eaeaea;
     border-radius: 20px;
     box-shadow: 0 6px 0 #b19a9a;
-    
-    /* box-shadow: 0 6px 0 #b19a9a; */
+
+  
+
     outline: none;
     box-sizing: border-box;
     text-align: center;
@@ -800,9 +778,8 @@
     padding: 10px;
     padding-top: 25px;
 
-    height: 200px;
-    width: 280px;
-   
+    height: 250px;
+    width: 300px;
 
     border: 3px solid #ffffff;
     background-color: #eaeaea;
@@ -819,19 +796,18 @@
     overflow: hidden;
   }
 
-  .text-box-deposit  p {
-    font-size: 20px;
+  .text-box-deposit p {
+    font-size: 28px;
     color: #b57676;
 
-    
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     /* text-overflow: ellipsis; */
   }
 
-  .display-deposit-box{
-    margin-top: 25px;
+  .display-deposit-box {
+    margin-top: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -839,33 +815,29 @@
     display: flex;
     flex-direction: row;
 
-
     gap: 35px;
   }
 
-  .display-deposit-box p{
-    font-size: 25px;
+  .display-deposit-box p {
+    font-size: 35px;
   }
 
-  .deposit-border-decor{
+  .deposit-border-decor {
     padding-top: 10px;
     justify-content: center;
     align-items: center;
     border: 3px double #b0a39b;
-    
+
     margin-bottom: 15px;
     width: 230px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
   }
 
-  .deposit-border-decor p{
-    font-size: 27px;
+  .deposit-border-decor p {
+    font-size: 35px;
   }
-  .deposit-border-decor span{
-    font-size: 23px;
+  .deposit-border-decor span {
+    font-size: 28px;
   }
-
-
- 
 }
