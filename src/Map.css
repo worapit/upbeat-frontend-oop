@@ -420,6 +420,53 @@
     font-size: 20px;
   }
 
+
+  .mapconfirm-popup1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: rgb(255, 255, 255); */
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 20px;
+
+    height: 500px;
+    width: 850px;
+    text-align: center;
+    font-family: "outfit";
+    border: 3px solid  rgb(136, 190, 224);
+    
+    box-shadow: 0 0 30px rgb(107, 188, 249);
+    box-sizing: border-box;
+    outline: none;
+    max-width: 80%;
+    font-size: 36px;
+  }
+
+  .red-flag-map{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+
+    background-color: #D21404;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .red-flag-map p{
+    font-size: 80px;
+    margin-top: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
   #mapconfirm-popup-container {
 
     position: fixed;
@@ -436,6 +483,7 @@
 
     padding: 20px;
   }
+
 
   .mapconfirm-popup {
     display: flex;
@@ -712,8 +760,8 @@
     display: flex;
     align-items: center;
     color: #444 !important;
-    height: 65px;
-    width: 280px;
+    height: 55px;
+    width: 260px;
     border: 3px solid #ffffff;
     background-color: #eaeaea;
     border-radius: 20px;
@@ -727,7 +775,7 @@
   }
 
   .map-budget span {
-    font-size: 35px;
+    font-size: 30px;
     color: #b57676;
     margin-left: 20px;
     max-width: 200px;
@@ -933,7 +981,7 @@
     padding: 10px;
     padding-top: 25px;
 
-    height: 300px;
+    height: 260px;
     width: 255px;
 
     border: 3px solid #ffffff;
@@ -974,7 +1022,7 @@
   }
 
   .display-deposit-box p {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .deposit-border-decor {
@@ -984,17 +1032,62 @@
     border: 3px double #b0a39b;
 
     margin-bottom: 15px;
-    width: 230px;
+    width: 220px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
-    border-radius: 20px;
   }
 
   .deposit-border-decor p {
-    font-size: 35px;
+    font-size: 30px;
   }
   .deposit-border-decor span {
-    font-size: 28px;
+    font-size: 25px;
+  }
+
+  .mapconfirm-popup1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: rgb(255, 255, 255); */
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 20px;
+
+    height: 500px;
+    width: 850px;
+    text-align: center;
+    font-family: "outfit";
+    border: 3px solid  rgb(136, 190, 224);
+    
+    box-shadow: 0 0 30px rgb(107, 188, 249);
+    box-sizing: border-box;
+    outline: none;
+    max-width: 80%;
+    font-size: 36px;
+  }
+
+  .red-flag-map{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+
+    background-color: #D21404;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .red-flag-map p{
+    font-size: 80px;
+    margin-top: 12px;
+    text-align: center;
+    color: #fff;
   }
 
   #mapconfirm-popup-container {
