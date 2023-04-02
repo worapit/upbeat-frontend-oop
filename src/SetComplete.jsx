@@ -23,7 +23,7 @@ export default function SetComplete() {
   const [revCost, setRevCost] = useState(100);
   const [maxDep, setMaxDep] = useState(1000000);
   const [interestPct, setInterestPct] = useState(5);
-  const [countdown, setCountdown] = useState(1000);
+  const [countdown, setCountdown] = useState(11);
 
   useEffect(() => {
     if (!client) {

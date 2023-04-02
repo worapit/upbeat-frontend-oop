@@ -144,6 +144,10 @@ export default function Cnfile() {
     setBudgetValues(e.target.value);
   };
 
+  const setConfig = () => {
+    setShowPopup(true);
+  };
+
   const handleConfirm = () => {
     setShowPopup(false);
     if (client) {
