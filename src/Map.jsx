@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Hexagon from "./component/Hexagon";
 import PopUp from "./component/Popup";
-
 import myCustomFontt from "./font/Space.ttf";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./Map.css";
-
 import { url } from "./constants";
 import { Client } from "@stomp/stompjs";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +19,19 @@ export default function Map() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
+  const navigateToCstPlan = () => {
+    setIsConfirmPopupOpen(false);
+    navigate('/cstPlan');
+  };
+  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
+  const showConfirmPopup = () => {
+    setIsConfirmPopupOpen(true);
+  };
+  const cancelChangePlan = () => {
+    setIsConfirmPopupOpen(false);
+  };
+  
+  
 
   localStorage.removeItem("timeOut");
   
@@ -79,7 +89,7 @@ export default function Map() {
         </span>
       </div>
 
-      <div className="map-show-deposit" >
+      <div className="map-show-deposit" style={{ fontFamily: "Bungee" }}>
         <div className="map-show-type">
           <span >DEPOSIT</span>
         </div>
@@ -115,7 +125,7 @@ export default function Map() {
       </div>
 
       <div className="map-container-plan">
-        <a className="map-buttonM">
+        <a className="map-buttonM" onClick={showConfirmPopup}>
           <FontAwesomeIcon icon={faFileLines} size="2x" />
         </a>
         <div className="map-button-meaning">
@@ -123,7 +133,7 @@ export default function Map() {
         </div>
       </div>
 
-      <div className="map-show-budget" style={{ fontFamily: "Outfit"}}>
+      <div className="map-show-budget" style={{ fontFamily: "Bungee" }}>
         <div className="map-show-type2">
           <span >BUDGET</span>
         </div>
@@ -156,6 +166,19 @@ export default function Map() {
           </div>
         )}
       </div>
+      {isConfirmPopupOpen && (
+        <div id="mapconfirm-popup-container">
+          <div className="mapconfirm-popup">
+            <p>Are you sure to change plan?</p>
+            <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
+            <div className="mapconfirm-popup-buttons">
+              <button className="map-yes" onClick={navigateToCstPlan}>Confirm</button>
+              <button className="map-no" onClick={cancelChangePlan}>Cancel</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
+
