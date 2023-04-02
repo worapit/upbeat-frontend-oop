@@ -14,7 +14,7 @@ body {
   overflow: hidden;
 }
 
-@media only screen and (max-height: 749px) {
+@media only screen and (max-height: 750px) {
   .cst-page {
     min-height: 100vh;
     height: 100%;
@@ -50,7 +50,7 @@ body {
   }
 
   .cst-show-regions {
-    height: 350px;
+    height: 450px;
     width: 550px;
     background: rgba(125, 3, 211, 0.25);
     backdrop-filter: blur(40px);
@@ -90,7 +90,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 550px;
-    height: 590px;
+    height: 650px;
     min-height: fit-content;
     background: linear-gradient(to bottom, #2c245f, #384e90, #2a235a);
     box-shadow: 5px 5px 10px rgb(21, 1, 53);
@@ -100,7 +100,7 @@ body {
     padding-top: 1.5%;
     padding-bottom: 1%;
     margin-right: -6.5%;
-    margin-top: 1%;
+    margin-top: 2%;
 
     gap: 5px;
     font-family: "JetBrains Mono", monospace;
@@ -114,7 +114,7 @@ body {
   .button-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 5px;
   }
 
@@ -425,12 +425,12 @@ body {
     align-items: center;
 
     margin-right: -5%;
-    margin-top: -1%;
+    margin-top: 0%;
     gap: 3%;
   }
 
   .cst-show-regions {
-    height: 500px;
+    height: 530px;
     width: 600px;
     background: rgba(125, 3, 211, 0.25);
     backdrop-filter: blur(40px);
@@ -455,7 +455,6 @@ body {
     width: 5px;
     height: 5px;
   }
-
   .cst-show-regions::-webkit-scrollbar-track {
     background: hsla(291, 89%, 11%, 0.348);
     border-radius: 500px;
@@ -471,7 +470,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 550px;
-    height: 100%;
+    height: 650px;
     min-height: fit-content;
     background: linear-gradient(to bottom, #2c245f, #384e90, #2a235a);
     box-shadow: 5px 5px 10px rgb(21, 1, 53);
@@ -481,7 +480,7 @@ body {
     padding-top: 1.5%;
     padding-bottom: 1%;
     margin-right: -6.5%;
-    margin-top: 3.5%;
+    margin-top: 5.5%;
 
     gap: 5px;
     font-family: "JetBrains Mono", monospace;
@@ -770,5 +769,7 @@ body {
 .cstplanyes:hover {
   letter-spacing: 3px;
 }
+
+
 
 }
