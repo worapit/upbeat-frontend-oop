@@ -16,12 +16,14 @@ let client;
 
 export default function CstPlan() {
   const [planText, setPlanText] = useState("");
-  const [errorMgs, setErrorMgs] = useState(null);
+  const [errorMgs, setErrorMgs] = useState("");
   const [nameP1, setNameP1] = useState(null);
   const [nameP2, setNameP2] = useState(null);
   const [territory, setTerritory] = useState([[]]);
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
+  const [planRevMin, setPlanRevMin] = useState(0);
+  const [planRevSec, setPlanRevSec] = useState(0);
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
@@ -87,6 +89,8 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setInitPlanMin(body["init_plan_min"]);
               setInitPlanSec(body["init_plan_sec"]);
+              setPlanRevMin(body["plan_rev_min"]);
+              setPlanRevSec(body["plan_rev_sec"]);
             });
 
             client.subscribe("/topic/getConfig");
@@ -123,13 +127,17 @@ export default function CstPlan() {
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
-      if (!localStorage.getItem("timerTimestamp")) {
-        const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
-        setStartingTimestamp(newTimestamp);
-        localStorage.setItem("timerTimestamp", newTimestamp);
+      let newTimestamp;
+      if (!localStorage.getItem("setPlan")) {
+        newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
       }
+      else {
+        newTimestamp = Date.now() + planRevMin * 60 * 1000 + planRevSec * 1000;
+      }
+      setStartingTimestamp(newTimestamp);
+      localStorage.setItem("timerTimestamp", newTimestamp);
     }
-  }, [initPlanMin, initPlanSec]);
+  }, [initPlanMin, initPlanSec, planRevMin, planRevSec]);
 
   const setPlan = () => {
     setSyntaxCheckClicked(true);
@@ -146,11 +154,7 @@ export default function CstPlan() {
               }),
             replyTo: "/app/game",
           });
-        if (errorMgs) {
           setShowErrorPopup(true);
-        } else {
-          setShowErrorPopup(false);
-        }
       }
     }
   };
@@ -173,9 +177,11 @@ export default function CstPlan() {
   }
   
   const click = (x, y) => {
-    
+    x++;
     setDepositPosition({ x, y });
   };
+
+  console.log(errorMgs);
 
   return (
     <div className="cst-page">
@@ -184,8 +190,8 @@ export default function CstPlan() {
         <div className="cst-show-detail">
           <CountdownTimer
             countdownTimestampMs={startingTimestamp}
-            minutes={initPlanMin}
-            seconds={initPlanSec}
+            minutes={localStorage.getItem("setPlan") == null ? initPlanMin : planRevMin}
+            seconds={localStorage.getItem("setPlan") == null ? initPlanSec : planRevSec}
           />
 
           <div className="cst-show-regions">
@@ -242,7 +248,7 @@ export default function CstPlan() {
               enableSnippets: true,
               enableMultiselect: true,
             }}
-            onChange={(e) => setPlanText(e)}
+            onChange={(e) => { setPlanText(e); setErrorMgs(""); }}
           />
           <div className="button-container">
             <a onClick={() => setPlan()} className="check-syntax">
