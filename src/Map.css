@@ -437,11 +437,11 @@
     padding: 40px;
     border-radius: 40px;
     text-align: center;
-    font-family: "bungee";
+    font-family: "outfit";
     border: 7px solid #f31c1c;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
-    font-size: 28px;
+    font-size: 36px;
   }
 
   .mapconfirm-popup-buttons {

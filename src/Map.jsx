@@ -170,10 +170,10 @@ export default function Map() {
         <div id="mapconfirm-popup-container">
           <div className="mapconfirm-popup">
             <p>Are you sure to change plan?</p>
-            <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
+            <p style={{color: "red", fontSize: "26px", textDecoration: "underline", marginTop: "-2%"}}>keep in mind that changing plans will cost your budget and if plans aren't confirmed in time, the system will submit only one word "done" automatically.</p>
             <div className="mapconfirm-popup-buttons">
-              <button className="map-yes" onClick={navigateToCstPlan}>Confirm</button>
-              <button className="map-no" onClick={cancelChangePlan}>Cancel</button>
+              <button className="map-yes" onClick={navigateToCstPlan}>confirm</button>
+              <button className="map-no" onClick={cancelChangePlan}>cancel</button>
             </div>
           </div>
         </div>
