@@ -24,12 +24,15 @@ export default function CstPlan() {
   const [initPlanSec, setInitPlanSec] = useState(0);
   const [planRevMin, setPlanRevMin] = useState(0);
   const [planRevSec, setPlanRevSec] = useState(0);
+
+  const [budget, setBudget] = useState(0);
+
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
 
-  const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
+  const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0, deposit: 0 });
   const navigate = useNavigate();
 
   const handleClickComplete = () => {
@@ -72,6 +75,12 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setNameP1(body["player1"]["name"]);
               setNameP2(body["player2"]["name"]);
+              if (localStorage.getItem("username") === nameP1) {
+                setBudget(body["player1"]["budget"]);
+              }
+              else {
+                setBudget(body["player2"]["budget"]);
+              }
               setErrorMgs(body["errorMgs"]);
             });
 
@@ -79,6 +88,12 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setNameP1(body["player1"]["name"]);
               setNameP2(body["player2"]["name"]);
+              if (localStorage.getItem("username") === nameP1) {
+                setBudget(body["player1"]["budget"]);
+              }
+              else {
+                setBudget(body["player2"]["budget"]);
+              }
               if (body["playerMgs"] == localStorage.getItem("username")) {
                 setErrorMgs(body["errorMgs"]);
               }
@@ -137,7 +152,7 @@ export default function CstPlan() {
       setStartingTimestamp(newTimestamp);
       localStorage.setItem("timerTimestamp", newTimestamp);
     }
-  }, [initPlanMin, initPlanSec, planRevMin, planRevSec]);
+  }, [initPlanMin, initPlanSec, planRevMin, planRevSec, budget]);
 
   const setPlan = () => {
     setSyntaxCheckClicked(true);
@@ -176,10 +191,10 @@ export default function CstPlan() {
     }
   }
   
-  const click = (x, y) => {
+  const click = (x, y, deposit, owner) => {
     x++;
     y++;
-    setDepositPosition({ x, y });
+    setDepositPosition({ x, y, deposit, owner });
   };
 
   return (
@@ -201,8 +216,12 @@ export default function CstPlan() {
                     key={`${rowIndex}${colIndex}`}
                     x={territory[rowIndex][colIndex]["row"]}
                     y={territory[rowIndex][colIndex]["col"]}
+                    deposit={territory[rowIndex][colIndex]["deposit"]}
                     isCityCenter={territory[rowIndex][colIndex]["cityCenter"]}
-                    owner={territory[rowIndex][colIndex]["owner"] == null ? null : territory[rowIndex][colIndex]["owner"]["name"]}
+                    owner={
+                      territory[rowIndex][colIndex]["owner"] == null ?
+                        false : territory[rowIndex][colIndex]["owner"]["name"] === localStorage.getItem("username")
+                    }
                     click={click}
                   />
                 ))}
@@ -212,7 +231,7 @@ export default function CstPlan() {
           <div className="cst-show-budget">
             <div className="cst-budget">
               <span>BUDGET :</span>
-              <span style={{ color: "#DFE658" }}>1600000</span>
+              <span style={{ color: "#DFE658" }}>{budget}</span>
             </div>
           </div>
 
@@ -227,7 +246,7 @@ export default function CstPlan() {
               <div className="cst-line-decor"></div>
               <div className="cst-deposit">
                 <p >DEPOSIT</p>
-                <p style={{ color: "#DFE658"}}>1600000</p>
+                <p style={{ color: "#DFE658" }}>{depositPosition.deposit}</p>
               </div>
             </div>
           </div>

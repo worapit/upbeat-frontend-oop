@@ -7,19 +7,19 @@ import "./hexagon.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function Hexagon({ x, y, isCityCenter, owner, click }) {
+export default function Hexagon({ x, y, deposit, isCityCenter, owner, click }) {
   function setRegion() {
-    if (isCityCenter && owner === localStorage.getItem("username")) return cityCenter;
-    else if (owner === localStorage.getItem("username")) return city;
+    if (isCityCenter && owner) return cityCenter;
+    else if (owner) return city;
     else return region;
   }
 
   return (
-      <img
-        className={y % 2 === 0 ? "low" : null}
-        style={{ width: "10%" }}
-        src={setRegion()}
-        onClick={() => click(x, y)}
-      />
+    <img
+      className={y % 2 === 0 ? "low" : null}
+      style={{ width: "10%" }}
+      src={setRegion()}
+      onClick={() => click(x, y, deposit, owner)}
+    />
   );
 }
