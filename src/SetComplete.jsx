@@ -111,6 +111,7 @@ export default function SetComplete() {
   `;
 
   localStorage.removeItem("timerTimestamp");
+  localStorage.removeItem("setPlan");
 
   return (
     <div>

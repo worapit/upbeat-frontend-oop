@@ -21,10 +21,6 @@ const CountTimer = ({ countdownTimestampMs, minutes, seconds }) => {
   function updateRemainingTime(countdown) {
     setRemainingTime(getRemainingTimeUnitMsTimestamp(countdown));
   }
-  useEffect(() => {
-    localStorage.setItem("minutes", remainingTime.minutes);
-    localStorage.setItem("seconds", remainingTime.seconds);
-  }, [remainingTime]);
 
   const totalSeconds = Number(remainingTime.seconds) + Number(remainingTime.minutes) * 60;
   const totalDurationSeconds = Number(seconds) + Number(minutes) * 60;

@@ -41,8 +41,7 @@ export default function Map() {
   };
 
   localStorage.removeItem("timerTimestamp");
-  localStorage.removeItem("minutes");
-  localStorage.removeItem("seconds");
+  localStorage.removeItem("timeOut");
   localStorage.setItem("setPlan", true);
   
   useEffect(() => {
