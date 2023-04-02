@@ -143,7 +143,7 @@
     align-items: center;
     color: #444 !important;
     height: 50px;
-    width: 225px;
+    width: 215px;
     border: 3px solid #ffffff;
     background-color: #eaeaea;
     border-radius: 20px;
@@ -401,6 +401,7 @@
 
     display: flex;
     flex-direction: row;
+  
 
     gap: 35px;
   }
@@ -837,8 +838,8 @@
     padding: 10px;
     padding-top: 25px;
 
-    height: 280px;
-    width: 280px;
+    height: 300px;
+    width: 255px;
 
     border: 3px solid #ffffff;
     background-color: #eaeaea;
@@ -866,7 +867,7 @@
   }
 
   .display-deposit-box {
-    margin-top: 28px;
+    margin-top: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -891,6 +892,7 @@
     width: 230px;
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
+    border-radius: 20px;
   }
 
   .deposit-border-decor p {

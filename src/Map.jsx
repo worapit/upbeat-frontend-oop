@@ -132,7 +132,7 @@ export default function Map() {
           <span >DEPOSIT</span>
         </div>
         <div className="text-box-deposit">
-           <div className="text-box-row">
+           <div>
             <div className="display-deposit-box">
               <p>row   <br></br> {depositPosition.x}</p>
               <p>column   <br></br> {depositPosition.y}</p>
