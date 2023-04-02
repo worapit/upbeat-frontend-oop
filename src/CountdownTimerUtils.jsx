@@ -4,7 +4,6 @@
     const timestampDayjs = dayjs(timestampMs);
     const nowDayjs = dayjs();
     if(timestampDayjs.isBefore(nowDayjs)) {
-      // localStorage.setItem("timeOut", true);
         return {
             seconds: '00',
             minutes: '00',
