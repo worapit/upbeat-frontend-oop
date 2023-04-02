@@ -15,10 +15,11 @@ export default function Cnfile() {
   const [valueR, setValueR] = useState(9);
   const [valueC, setValueC] = useState(9);
   const [selectedOption, setSelectedOption] = useState("NORMAL");
-  const [initPlanMin, setInitPlanMin] = useState('02');
-  const [initPlanSec, setInitPlanSec] = useState('00');
-  const [planRevMin, setPlanRevMin] = useState('02');
-  const [planRevSec, setPlanRevSec] = useState('00');
+  const [initialLoad, setInitialLoad] = useState(true);
+  const [initPlanMin, setInitPlanMin] = useState("02");
+  const [initPlanSec, setInitPlanSec] = useState("00");
+  const [planRevMin, setPlanRevMin] = useState("02");
+  const [planRevSec, setPlanRevSec] = useState("00");
   const [initBudget, setInitBudget] = useState(10000);
   const [initCenterDep, setInitCenterDep] = useState(100);
   const [revCost, setRevCost] = useState(100);
@@ -26,8 +27,7 @@ export default function Cnfile() {
   const [interestPct, setInterestPct] = useState(5);
   const [showPopup, setShowPopup] = useState(false);
   const navigate = useNavigate();
-  
-  
+
   const handleIncrease = (e, isMinute, planType) => {
     const step = isMinute ? 1 : 5;
     const max = isMinute ? 59 : 55;
@@ -35,41 +35,46 @@ export default function Cnfile() {
     const value = parseInt(input.value);
     const newValue = value + step <= max ? value + step : max;
     input.value = newValue;
-  
+
     if (planType === "write") {
-      isMinute ? handleChangeInitPlanMin({ target: input }) : handleChangeInitPlanSec({ target: input });
+      isMinute
+        ? handleChangeInitPlanMin({ target: input })
+        : handleChangeInitPlanSec({ target: input });
     } else {
-      isMinute ? handleChangePlanRevMin({ target: input }) : handleChangePlanRevSec({ target: input });
+      isMinute
+        ? handleChangePlanRevMin({ target: input })
+        : handleChangePlanRevSec({ target: input });
     }
   };
-  
+
   const handleDecrease = (e, isMinute, planType) => {
     const step = isMinute ? 1 : 5;
     const min = isMinute ? 2 : 0;
     const input = e.target.previousElementSibling;
     const value = parseInt(input.value);
     const newValue = value - step >= min ? value - step : min;
-    input.value = newValue.toString().padStart(2, '0');
-  
+    input.value = newValue.toString().padStart(2, "0");
+
     if (planType === "write") {
-      isMinute ? handleChangeInitPlanMin({ target: input }) : handleChangeInitPlanSec({ target: input });
+      isMinute
+        ? handleChangeInitPlanMin({ target: input })
+        : handleChangeInitPlanSec({ target: input });
     } else {
-      isMinute ? handleChangePlanRevMin({ target: input }) : handleChangePlanRevSec({ target: input });
+      isMinute
+        ? handleChangePlanRevMin({ target: input })
+        : handleChangePlanRevSec({ target: input });
     }
   };
-  
-  
 
   useEffect(() => {
     if (!client) {
-      client = new Client(
-        {
-          brokerURL: url,
-          onConnect: () => {
-            client.subscribe("/app/game");
-            client.subscribe("/topic/game");
-          }
-        });
+      client = new Client({
+        brokerURL: url,
+        onConnect: () => {
+          client.subscribe("/app/game");
+          client.subscribe("/topic/game");
+        },
+      });
 
       client.activate();
     }
@@ -129,15 +134,16 @@ export default function Cnfile() {
     }
   };
 
+  useEffect(() => {
+    setSelectedOption("NORMAL");
+    setInitialLoad(false);
+  }, []);
+
   const handleOptionClick = (e) => {
     setSelectedOption(e.target.value);
     setBudgetValues(e.target.value);
   };
 
-  const setConfig = () => {
-    setShowPopup(true);
-  };
-  
   const handleConfirm = () => {
     setShowPopup(false);
     if (client) {
@@ -171,7 +177,10 @@ export default function Cnfile() {
         <div id="star3"></div>
 
         <div id="cn-title">
-          <p className="cn-header" style={{ fontFamily: "Bungee", fontSize: "72px" }}>
+          <p
+            className="cn-header"
+            style={{ fontFamily: "Bungee", fontSize: "72px" }}
+          >
             CONFIGURATION
           </p>
 
@@ -225,164 +234,164 @@ export default function Cnfile() {
               <div className="cn-line"></div>
 
               <div className="cn-time">
-              <div className="cn-time-show">
-                <h3>time write plan</h3>
-                <div className="cn-time-picker">
-                  <div className="input-container">
-                    <input
-                      type="button"
-                      value="▲"
-                      className="increase"
-                      onClick={(e) => handleIncrease(e, true, "write")}
-                      
-                    />
-                    <input
-                      type="number"
-                      id="minute"
-                      min="5"
-                      max="55"
-                      step="5"
-                      value={initPlanMin.toString().padStart(2, '0')}
-                      onChange={handleChangeInitPlanMin}
-                      readOnly
-                    />
-                    <input
-                      type="button"
-                      value="▼"
-                      className="decrease"
-                      onClick={(e) => handleDecrease(e, true, "write")}
-                    />
+                <div className="cn-time-show">
+                  <h3>time write plan</h3>
+                  <div className="cn-time-picker">
+                    <div className="input-container">
+                      <input
+                        type="button"
+                        value="▲"
+                        className="increase"
+                        onClick={(e) => handleIncrease(e, true, "write")}
+                      />
+                      <input
+                        type="number"
+                        id="minute"
+                        min="5"
+                        max="55"
+                        step="5"
+                        value={initPlanMin.toString().padStart(2, "0")}
+                        onChange={handleChangeInitPlanMin}
+                        readOnly
+                      />
+                      <input
+                        type="button"
+                        value="▼"
+                        className="decrease"
+                        onClick={(e) => handleDecrease(e, true, "write")}
+                      />
+                    </div>
+                    <p>:</p>
+                    <div className="input-container">
+                      <input
+                        type="button"
+                        value="▲"
+                        className="increase"
+                        onClick={(e) => handleIncrease(e, false, "write")}
+                      />
+                      <input
+                        type="number"
+                        id="seconds"
+                        min="0"
+                        max="55"
+                        step="5"
+                        value={initPlanSec.toString().padStart(2, "0")}
+                        onChange={handleChangeInitPlanSec}
+                        readOnly
+                      />
+                      <input
+                        type="button"
+                        value="▼"
+                        className="decrease"
+                        onClick={(e) => handleDecrease(e, false, "write")}
+                      />
+                    </div>
                   </div>
-                  <p>:</p>
-                  <div className="input-container">
-                    <input
-                      type="button"
-                      value="▲"
-                      className="increase"
-                      onClick={(e) => handleIncrease(e, false, "write")}
-                    />
-                    <input
-                      type="number"
-                      id="seconds"
-                      min="0"
-                      max="55"
-                      step="5"
-                      value={initPlanSec.toString().padStart(2, '0')}
-                      onChange={handleChangeInitPlanSec}
-                      readOnly
-                    />
-                    <input
-                      type="button"
-                      value="▼"
-                      className="decrease"
-                      onClick={(e) => handleDecrease(e, false, "write")}
-                    />
+                </div>
+
+                <div className="cn-time-icon">
+                  <FontAwesomeIcon icon={faClock} size="4x" />
+                  <p style={{ color: "white" }}>MIN : SEC</p>
+                </div>
+
+                <div className="cn-time-show">
+                  <h3>time change plan</h3>
+                  <div className="cn-time-picker">
+                    <div className="input-container">
+                      <input
+                        type="button"
+                        value="▲"
+                        className="increase"
+                        onClick={(e) => handleIncrease(e, true, "change")}
+                      />
+                      <input
+                        type="number"
+                        id="minute"
+                        min="3"
+                        max="55"
+                        step="1"
+                        value={planRevMin.toString().padStart(2, "0")}
+                        onChange={handleChangePlanRevMin}
+                        readOnly
+                      />
+                      <input
+                        type="button"
+                        value="▼"
+                        className="decrease"
+                        onClick={(e) => handleDecrease(e, true, "change")}
+                      />
+                    </div>
+                    <p>:</p>
+                    <div className="input-container">
+                      <input
+                        type="button"
+                        value="▲"
+                        className="increase"
+                        onClick={(e) => handleIncrease(e, false, "change")}
+                      />
+                      <input
+                        type="number"
+                        id="seconds"
+                        min="0"
+                        max="55"
+                        step="5"
+                        value={planRevSec.toString().padStart(2, "0")}
+                        onChange={handleChangePlanRevSec}
+                        readOnly
+                      />
+                      <input
+                        type="button"
+                        value="▼"
+                        className="decrease"
+                        onClick={(e) => handleDecrease(e, false, "change")}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <div className="cn-time-icon">
-                <FontAwesomeIcon icon={faClock} size="4x" />
-                <p style={{color: "white"}}>MIN : SEC</p>
-              </div>
-
-              <div className="cn-time-show">
-                <h3>time change plan</h3>
-                <div className="cn-time-picker">
-                  <div className="input-container">
-                    <input
-                      type="button"
-                      value="▲"
-                      className="increase"
-                      onClick={(e) => handleIncrease(e, true, "change")}
-                    />
-                    <input
-                      type="number"
-                      id="minute"
-                      min="3"
-                      max="55"
-                      step="1"
-                      value={planRevMin.toString().padStart(2, '0')}
-                      onChange={handleChangePlanRevMin}
-                      readOnly
-                    />
-                    <input
-                      type="button"
-                      value="▼"
-                      className="decrease"
-                      onClick={(e) => handleDecrease(e, true, "change")}
-                    />
-                  </div>
-                  <p>:</p>
-                  <div className="input-container">
-                    <input
-                      type="button"
-                      value="▲"
-                      className="increase"
-                      onClick={(e) => handleIncrease(e, false, "change")}
-                    />
-                    <input
-                      type="number"
-                      id="seconds"
-                      min="0"
-                      max="55"
-                      step="5"
-                      value={planRevSec.toString().padStart(2, '0')}
-                      onChange={handleChangePlanRevSec}
-                      readOnly
-                    />
-                    <input
-                      type="button"
-                      value="▼"
-                      className="decrease"
-                      onClick={(e) => handleDecrease(e, false, "change")}
-
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
 
               <div className="cn-line"></div>
 
               <div className="cn-radio">
-                <label for="group1-option1">
+                <label htmlFor="group1-option1">
                   <input
                     type="radio"
                     id="group1-option1"
                     name="radio-group1"
                     value="EASY"
                     onClick={handleOptionClick}
+                    checked={selectedOption === "EASY"}
                   />
-                  
-                  <span class="custom-radio"></span>
+                  <span className="custom-radio"></span>
                   EASY
                 </label>
 
                 <label htmlFor="group1-option2">
-                <input
-                  type="radio"
-                  id="group1-option2"
-                  name="radio-group1"
-                  value="NORMAL"
-                  onClick={handleOptionClick}
-                  checked
-                />
-                <span className="custom-radio"></span>
-                NORMAL
-              </label>
+                  <input
+                    type="radio"
+                    id="group1-option2"
+                    name="radio-group1"
+                    value="NORMAL"
+                    onClick={handleOptionClick}
+                    checked={
+                      selectedOption === "NORMAL" ||
+                      (selectedOption === "" && initialLoad)
+                    }
+                  />
+                  <span className="custom-radio"></span>
+                  NORMAL
+                </label>
 
-
-                <label for="group1-option3">
+                <label htmlFor="group1-option3">
                   <input
                     type="radio"
                     id="group1-option3"
                     name="radio-group1"
                     value="HARD"
                     onClick={handleOptionClick}
+                    checked={selectedOption === "HARD"}
                   />
-                  <span class="custom-radio"></span>
+                  <span className="custom-radio"></span>
                   HARD
                 </label>
               </div>
@@ -452,34 +461,42 @@ export default function Cnfile() {
               </div>
             </div>
           </div>
-
-
-          </div>
-          <div className="cn-container-button">
-            <a className="cn-button" onClick={() => setConfig()}>
-              <FontAwesomeIcon icon={faCheck} size="2x" />
-            </a>
+        </div>
+        <div className="cn-container-button">
+          <a className="cn-button" onClick={() => setConfig()}>
+            <FontAwesomeIcon icon={faCheck} size="2x" />
+          </a>
         </div>
         {showPopup && (
-            <div className="modepopup">
-              <div className="modepopup-inner">
-                <h2 style={{fontSize: "36px"}}>Are you sure to confirm configuration?</h2>
-                <h2 style={{color: "crimson", fontSize: "26px", textDecoration: "underline"}}>keep in mind your configuration may give you an advantage.</h2>
-                <button
-                  className="modepopup-confirm-button"
-                  onClick={() => handleConfirm()}
-                >
-                  confirm
-                </button>
-                <button
-                  className="modepopup-close-button"
-                  onClick={() => setShowPopup(false)}
-                >
-                  cancel
-                </button>
-              </div>
+          <div className="modepopup">
+            <div className="modepopup-inner">
+              <h2 style={{ fontSize: "36px" }}>
+                Are you sure to confirm configuration?
+              </h2>
+              <h2
+                style={{
+                  color: "crimson",
+                  fontSize: "26px",
+                  textDecoration: "underline",
+                }}
+              >
+                keep in mind your configuration may give you an advantage.
+              </h2>
+              <button
+                className="modepopup-confirm-button"
+                onClick={() => handleConfirm()}
+              >
+                confirm
+              </button>
+              <button
+                className="modepopup-close-button"
+                onClick={() => setShowPopup(false)}
+              >
+                cancel
+              </button>
             </div>
-          )}
+          </div>
+        )}
       </div>
     </div>
   );
