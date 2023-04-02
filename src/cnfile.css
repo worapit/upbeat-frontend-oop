@@ -357,12 +357,12 @@ input[type="radio"]:checked + .custom-radio::before {
 }
 
 .modepopup-inner {
-  background-color: rgba(201, 199, 238, 0.88);
+  background-color: rgb(255, 255, 255);
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-  font-family: "bungee";
-  border: 7px solid #008118;
+  font-family: "outfit";
+  border: 8px solid #008118;
   box-sizing: border-box;
   max-width: 80%; /* Optional: Limit width of the popup content */
 }
@@ -373,7 +373,7 @@ input[type="radio"]:checked + .custom-radio::before {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
   border-radius: 40px;
   margin-left: 40px;
   margin-right: 40px;
@@ -381,18 +381,18 @@ input[type="radio"]:checked + .custom-radio::before {
   transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
 }
 .modepopup-confirm-button {
-  background-color: #4f94e2;
+  background-color: #0e863e;
 }
 .modepopup-close-button {
-  background-color: #e24f65;
+  background-color: #dd2626;
 }
 
 .modepopup-confirm-button:hover {
-  background-color: #2a81e4;
+  background-color: #1b6b10;
 }
 
 .modepopup-close-button:hover {
-  background-color: #d32f2f;
+  background-color: #841010;
 }
 
 

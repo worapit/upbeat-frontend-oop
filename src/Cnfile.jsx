@@ -463,19 +463,19 @@ export default function Cnfile() {
         {showPopup && (
             <div className="modepopup">
               <div className="modepopup-inner">
-                <h2 style={{fontSize: "28px"}}>Are you sure to confirm configuration?</h2>
-                <h2 style={{color: "crimson", fontSize: "20px", textDecoration: "underline"}}>keep in mind your configuration may give you an advantage.</h2>
+                <h2 style={{fontSize: "36px"}}>Are you sure to confirm configuration?</h2>
+                <h2 style={{color: "crimson", fontSize: "26px", textDecoration: "underline"}}>keep in mind your configuration may give you an advantage.</h2>
                 <button
                   className="modepopup-confirm-button"
                   onClick={() => handleConfirm()}
                 >
-                  Confirm
+                  confirm
                 </button>
                 <button
                   className="modepopup-close-button"
                   onClick={() => setShowPopup(false)}
                 >
-                  Cancel
+                  cancel
                 </button>
               </div>
             </div>
