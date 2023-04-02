@@ -170,7 +170,7 @@ export default function SetComplete() {
             <div className="decor-text-input">
               <p>Budget: {initBudget}</p>
               <p>Center deposit: {initCenterDep}</p>
-              <p>Ost of changing plan: {revCost}</p>
+              <p>Cost of changing plan: {revCost}</p>
               <p>Max deposit: {maxDep}</p>
               <p>Interest percent: {interestPct}</p>
             </div>
