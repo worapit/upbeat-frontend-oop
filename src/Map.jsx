@@ -18,20 +18,27 @@ export default function Map() {
   const [territory, setTerritory] = useState([[]]);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
+  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
+  const [waitingForOtherPlayer, setWaitingForOtherPlayer] = useState(false);
+  
+
   const navigate = useNavigate();
+
   const navigateToCstPlan = () => {
     setIsConfirmPopupOpen(false);
+    client.publish({ destination: "/app/changePlan", body: JSON.stringify({ status: "changing" }) });
     navigate('/cstPlan');
+    setIsPopupOpen(false);
   };
-  const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
+  
+
   const showConfirmPopup = () => {
     setIsConfirmPopupOpen(true);
   };
+
   const cancelChangePlan = () => {
     setIsConfirmPopupOpen(false);
   };
-  
-  
 
   localStorage.removeItem("timeOut");
   
@@ -52,11 +59,40 @@ export default function Map() {
               const body = JSON.parse(message.body);
               setTerritory(body);
             });
+
+            client.subscribe("/topic/changePlan", (message) => {
+              const body = JSON.parse(message.body);
+              if (body.status === "changing") {
+                setWaitingForOtherPlayer(true);
+              } else if (body.status === "done") {
+                setWaitingForOtherPlayer(false);
+              }
+            });
+
+          
+            
           }
         });
       client.activate();
     }
   }, []);
+
+  useEffect(() => {
+    const handleStorageChange = (e) => {
+      if (e.key === "confirmStatus" && e.newValue === "done") {
+        setIsConfirmPopupOpen(false);
+        setIsPopupOpen(false);
+        localStorage.removeItem("confirmStatus");
+      }
+    };
+  
+    window.addEventListener("storage", handleStorageChange);
+  
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+  
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -100,11 +136,10 @@ export default function Map() {
               <p>column   <br></br> {depositPosition.y}</p>
             </div>
             <div className="deposit-border-decor">
-            <span style={{color: "#b19a9a"}}>deposit</span>
-            <p>16000000</p>
+              <span style={{color: "#b19a9a"}}>deposit</span>
+              <p>16000000</p>
             </div>
            </div>
-        
         </div>
       </div>
 
@@ -166,6 +201,13 @@ export default function Map() {
           </div>
         )}
       </div>
+      {waitingForOtherPlayer && (
+        <div id="mapconfirm-popup-container">
+          <div className="mapconfirm-popup">
+            <p>Waiting for another player is changing plan...</p>
+          </div>
+        </div>
+      )}
       {isConfirmPopupOpen && (
         <div id="mapconfirm-popup-container">
           <div className="mapconfirm-popup">
