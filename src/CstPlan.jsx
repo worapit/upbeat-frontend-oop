@@ -178,10 +178,9 @@ export default function CstPlan() {
   
   const click = (x, y) => {
     x++;
+    y++;
     setDepositPosition({ x, y });
   };
-
-  console.log(errorMgs);
 
   return (
     <div className="cst-page">
@@ -200,8 +199,10 @@ export default function CstPlan() {
                 {row.map((col, colIndex) => (
                   <Hexagon
                     key={`${rowIndex}${colIndex}`}
-                    x={rowIndex}
-                    y={colIndex}
+                    x={territory[rowIndex][colIndex]["row"]}
+                    y={territory[rowIndex][colIndex]["col"]}
+                    isCityCenter={territory[rowIndex][colIndex]["cityCenter"]}
+                    owner={territory[rowIndex][colIndex]["owner"] == null ? null : territory[rowIndex][colIndex]["owner"]["name"]}
                     click={click}
                   />
                 ))}
