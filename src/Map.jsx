@@ -16,6 +16,9 @@ let client;
 
 export default function Map() {
   const [territory, setTerritory] = useState([[]]);
+  const [p1Ready, setP1Ready] = useState(false);
+  const [p2Ready, setP2Ready] = useState(false);
+
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
@@ -36,10 +39,7 @@ export default function Map() {
       localStorage.setItem("firstPlayer", true);
     }
   };
-  
-  
-  
-  
+
   const showConfirmPopup = () => {
     setIsConfirmPopupOpen(true);
   };
@@ -58,8 +58,16 @@ export default function Map() {
         {
           brokerURL: url,
           onConnect: () => {
-            client.subscribe("/app/game");
-            client.subscribe("/topic/game");
+            client.subscribe("/app/game", (message) => {
+              const body = JSON.parse(message.body);
+              setP1Ready(body["p1Ready"]);
+              setP2Ready(body["p2Ready"]);
+            });
+            client.subscribe("/topic/game", (message) => {
+              const body = JSON.parse(message.body);
+              setP1Ready(body["p1Ready"]);
+              setP2Ready(body["p2Ready"]);
+            });
             client.subscribe("/app/territory", (message) => {
               const body = JSON.parse(message.body);
               setTerritory(body);
@@ -88,7 +96,7 @@ export default function Map() {
         });
       client.activate();
     }
-  }, []);
+  }, [p1Ready, p2Ready]);
 
   useEffect(() => {
     const handleStorageChange = (e) => {
@@ -106,14 +114,9 @@ export default function Map() {
     };
   }, []);
   
-  
-  
-
   useEffect(() => {
     setWaitingForOtherPlayer(!bothPlayersConfirmed);
   }, [bothPlayersConfirmed]);
-  
-  
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -222,13 +225,13 @@ export default function Map() {
           </div>
         )}
       </div>
-      {waitingForOtherPlayer && (
+      {/* {waitingForOtherPlayer && (
         <div id="mapconfirm-popup-container">
           <div className="mapconfirm-popup">
             <p>Waiting for another player is changing plan...</p>
           </div>
         </div>
-      )}
+      )} */}
       {isConfirmPopupOpen && (
         <div id="mapconfirm-popup-container">
           <div className="mapconfirm-popup">
@@ -241,7 +244,7 @@ export default function Map() {
           </div>
         </div>
       )}
-      {waitingForOtherPlayer && !otherPlayerConfirmed && (
+      {(!p1Ready || !p2Ready) && (
       <div id="mapconfirm-popup-container">
         <div className="mapconfirm-popup">
           <p>Waiting for another player to finish writing the construction plan...</p>

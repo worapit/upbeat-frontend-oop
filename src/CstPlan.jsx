@@ -34,32 +34,25 @@ export default function CstPlan() {
 
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0, deposit: 0 });
   const navigate = useNavigate();
-  const [firstPlayer, setFirstPlayer] = useState(false);
-
 
   const handleClickComplete = () => {
     setShowPopup(true);
   };
   
-  const handleConfirmation = (choice) => {
-    if (choice) {
-      navigate("/map");
-
-    }
-    setShowPopup(false);
-  };
-
-  const handleSubmit = () => {
-    // Your existing handleSubmit code...
-    
-  };
-  
-  
-
   const handleConfirm = (choice) => {
     if (client) {
       if (client.connected) {
-        const username = localStorage.getItem("username");
+        let username = localStorage.getItem("username");
+        client.publish(
+          {
+            destination: "/app/confirmPlan",
+            body: JSON.stringify(
+              {
+                name: username,
+              }),
+            replyTo: "/app/game",
+          });
+        
         client.publish({
           destination: "/app/changePlan",
           body: JSON.stringify({ status: "done" }),
@@ -134,7 +127,6 @@ export default function CstPlan() {
             });
 
             const handleConfirm = () => {
-              // ...
               client.publish({ destination: "/app/changePlan", body: JSON.stringify({ status: "done" }) });
             };
             
