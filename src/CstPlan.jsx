@@ -142,15 +142,18 @@ export default function CstPlan() {
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
-      let newTimestamp;
-      if (!localStorage.getItem("setPlan")) {
-        newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+      if(!localStorage.getItem("timerTimestamp"))
+      {
+        let newTimestamp;
+        if (!localStorage.getItem("setPlan")) {
+          newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+        }
+        else {
+          newTimestamp = Date.now() + planRevMin * 60 * 1000 + planRevSec * 1000;
+        }
+        setStartingTimestamp(newTimestamp);
+        localStorage.setItem("timerTimestamp", newTimestamp);
       }
-      else {
-        newTimestamp = Date.now() + planRevMin * 60 * 1000 + planRevSec * 1000;
-      }
-      setStartingTimestamp(newTimestamp);
-      localStorage.setItem("timerTimestamp", newTimestamp);
     }
   }, [initPlanMin, initPlanSec, planRevMin, planRevSec, budget]);
 
