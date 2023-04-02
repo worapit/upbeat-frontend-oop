@@ -163,16 +163,16 @@ export default function Start() {
           {showConfirm && (
             <div className="confirm-dialog">
               <div className="confirm-dialog-content">
-                <h3>Are you sure you want to leave?</h3>
+                <h3 style={{fontSize: "36px"}}>Are you sure you want to leave?</h3>
                 <div className="confirm-actions">
                   <button className="confirm-yes" onClick={confirmNavigation}>
-                    Yes
+                    confirm
                   </button>
                   <button
                     className="confirm-no"
                     onClick={() => setShowConfirm(false)}
                   >
-                    No
+                    cancel
                   </button>
                 </div>
               </div>

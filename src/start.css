@@ -32,11 +32,11 @@ body {
 }
 
 .confirm-dialog-content {
-  background-color: rgba(201, 199, 238, 0.88);
+  background-color: rgba(255, 255, 255, 0.88);
   padding: 40px;
-  border-radius: 20px;
+  border-radius: 40px;
   text-align: center;
-  font-family: "bungee";
+  font-family: "outfit";
   border: 7px solid #f31c1c;
   box-sizing: border-box;
   max-width: 80%; /* Optional: Limit width of the popup content */
@@ -44,28 +44,34 @@ body {
 
 .confirm-actions {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin-top: 20px;
 }
 
 .confirm-yes,
 .confirm-no {
   padding: 10px 20px;
-  background-color: #25861e;
+  background-color: #1f8d17;
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  border-radius: 5px;
+  font-size: 24px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 40px;
 }
 
 .confirm-no {
   background-color: #D21404;
 }
 
-.confirm-yes:hover,
+
 .confirm-no:hover {
-  background-color: rgb(87, 21, 230);
+  background-color: rgb(160, 13, 13);
+}
+.confirm-yes:hover
+{
+  background-color: rgb(13, 89, 9);
 }
 
 
@@ -73,15 +79,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
     transition: opacity 5.0s ease-in-out;
     filter: brightness(75%);
-
-    
   }
 
 
@@ -391,23 +394,19 @@ body {
       bottom: 100%;
       transition: 1s;
       transition-delay: 0.75s;
-      
     }
     
     #start-popup-container {
       display: flex;
       justify-content: center;
       align-items: center;
-    
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-    
       background-color: rgba(0, 0, 0, 0.5);
       backdrop-filter: blur(5px);
-    
       gap: 15px;
     }
   }
