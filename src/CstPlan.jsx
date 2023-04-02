@@ -34,6 +34,8 @@ export default function CstPlan() {
 
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0, deposit: 0 });
   const navigate = useNavigate();
+  const [firstPlayer, setFirstPlayer] = useState(false);
+
 
   const handleClickComplete = () => {
     setShowPopup(true);
@@ -46,6 +48,13 @@ export default function CstPlan() {
     }
     setShowPopup(false);
   };
+
+  const handleSubmit = () => {
+    // Your existing handleSubmit code...
+    
+  };
+  
+  
 
   const handleConfirm = (choice) => {
     if (client) {
@@ -63,6 +72,10 @@ export default function CstPlan() {
       navigate("/map");
     }
     setShowPopup(false)
+    
+    if (!localStorage.getItem("firstPlayer")) {
+      localStorage.setItem("firstPlayer", "true");
+    }
   };
 
   useEffect(() => {
