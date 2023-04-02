@@ -3,7 +3,7 @@ import Hexagon from "./component/Hexagon";
 import PopUp from "./component/Popup";
 import myCustomFontt from "./font/Space.ttf";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +20,10 @@ export default function Map() {
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
   const [waitingForOtherPlayer, setWaitingForOtherPlayer] = useState(false);
-  
+  const [otherPlayerConfirmed, setOtherPlayerConfirmed] = useState(false);
+  const [bothPlayersConfirmed, setBothPlayersConfirmed] = useState(false);
+  const [firstPlayer, setFirstPlayer] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -29,9 +32,14 @@ export default function Map() {
     client.publish({ destination: "/app/changePlan", body: JSON.stringify({ status: "changing" }) });
     navigate('/cstPlan');
     setIsPopupOpen(false);
+    if (!localStorage.getItem("firstPlayer")) {
+      localStorage.setItem("firstPlayer", true);
+    }
   };
   
-
+  
+  
+  
   const showConfirmPopup = () => {
     setIsConfirmPopupOpen(true);
   };
@@ -71,8 +79,11 @@ export default function Map() {
               }
             });
 
-          
-            
+            client.subscribe("/topic/planConfirmation", (message) => {
+              const body = JSON.parse(message.body);
+              setBothPlayersConfirmed(body.confirmed);
+            });
+
           }
         });
       client.activate();
@@ -81,19 +92,27 @@ export default function Map() {
 
   useEffect(() => {
     const handleStorageChange = (e) => {
-      if (e.key === "confirmStatus" && e.newValue === "done") {
-        setIsConfirmPopupOpen(false);
+      if (e.key === "firstPlayer" && e.newValue === "true") {
         setIsPopupOpen(false);
-        localStorage.removeItem("confirmStatus");
+        setFirstPlayer(true);
+        localStorage.removeItem("firstPlayer");
       }
     };
-  
+
     window.addEventListener("storage", handleStorageChange);
-  
+
     return () => {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+  
+  
+  
+
+  useEffect(() => {
+    setWaitingForOtherPlayer(!bothPlayersConfirmed);
+  }, [bothPlayersConfirmed]);
+  
   
 
   function openPopup() {
@@ -221,6 +240,13 @@ export default function Map() {
             </div>
           </div>
         </div>
+      )}
+      {waitingForOtherPlayer && !otherPlayerConfirmed && (
+      <div id="mapconfirm-popup-container">
+        <div className="mapconfirm-popup">
+          <p>Waiting for another player to finish writing the construction plan...</p>
+        </div>
+      </div>
       )}
     </div>
   );

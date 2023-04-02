@@ -34,6 +34,8 @@ export default function CstPlan() {
 
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0, deposit: 0 });
   const navigate = useNavigate();
+  const [firstPlayer, setFirstPlayer] = useState(false);
+
 
   const handleClickComplete = () => {
     setShowPopup(true);
@@ -46,6 +48,13 @@ export default function CstPlan() {
     }
     setShowPopup(false);
   };
+
+  const handleSubmit = () => {
+    // Your existing handleSubmit code...
+    
+  };
+  
+  
 
   const handleConfirm = (choice) => {
     if (client) {
@@ -63,6 +72,10 @@ export default function CstPlan() {
       navigate("/map");
     }
     setShowPopup(false)
+    
+    if (!localStorage.getItem("firstPlayer")) {
+      localStorage.setItem("firstPlayer", "true");
+    }
   };
 
   useEffect(() => {
@@ -142,15 +155,18 @@ export default function CstPlan() {
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
-      let newTimestamp;
-      if (!localStorage.getItem("setPlan")) {
-        newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+      if(!localStorage.getItem("timerTimestamp"))
+      {
+        let newTimestamp;
+        if (!localStorage.getItem("setPlan")) {
+          newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
+        }
+        else {
+          newTimestamp = Date.now() + planRevMin * 60 * 1000 + planRevSec * 1000;
+        }
+        setStartingTimestamp(newTimestamp);
+        localStorage.setItem("timerTimestamp", newTimestamp);
       }
-      else {
-        newTimestamp = Date.now() + planRevMin * 60 * 1000 + planRevSec * 1000;
-      }
-      setStartingTimestamp(newTimestamp);
-      localStorage.setItem("timerTimestamp", newTimestamp);
     }
   }, [initPlanMin, initPlanSec, planRevMin, planRevSec, budget]);
 
