@@ -247,7 +247,14 @@ export default function Map() {
       {(!p1Ready || !p2Ready) && (
       <div id="mapconfirm-popup-container">
         <div className="mapconfirm-popup">
-          <p>Waiting for another player to finish writing the construction plan...</p>
+        <div className="load-circle-box">
+            <span className="s1"></span>
+            <span className="s2"></span>
+            <span className="s3"></span>
+          </div>
+          <p>Waiting for another player</p>
+          <p> to finish writing the construction plan</p>
+          
         </div>
       </div>
       )}

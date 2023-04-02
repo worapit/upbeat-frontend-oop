@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Outfit&display=swap");
 @font-face {
   font-family: space;
   src: url(./font/Space.ttf);
@@ -19,8 +20,10 @@
 
 
 img.user {
-width: 40px; /* change to desired width */
-margin-left: 5px;
+width:45px; /* change to desired width */
+margin-top: -8px;
+
+
 }
 img.pass {
 width: 40px; /* change to desired width */
@@ -36,7 +39,7 @@ margin-left: 5px;
 
     position: fixed;
     top: 40%;
-    left: 7%;
+    left: 10%;
 
     text-shadow: 0em 0em 0em rgb(190, 153, 21),
       0.03em 0.03em 0.02em rgb(178, 152, 214),
@@ -54,8 +57,8 @@ margin-left: 5px;
 
   .planet img {
     position: absolute;
-    top: -17%;
-    left: -4%;
+    top: -14%;
+    left: -2%;
     width: 60%;
     rotate: 10deg;
 
@@ -64,33 +67,6 @@ margin-left: 5px;
     z-index: -1;
   }
 
-  .rec {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    right: -365px;
-    object-fit: cover;
-    z-index: -1;
-
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.93) 18.39%,
-      rgba(0, 0, 0, 0.91) 22.13%,
-      rgba(0, 0, 0, 0.9) 25.71%,
-      rgba(0, 0, 0, 0.86) 33.85%,
-      rgba(0, 0, 0, 0.82) 40.33%,
-      rgba(0, 0, 0, 0.77) 47.48%,
-      rgba(0, 0, 0, 0.66) 53.43%,
-      rgba(0, 0, 0, 0.55) 60.74%,
-      rgba(0, 0, 0, 0.44) 65.33%,
-      rgba(0, 0, 0, 0.35) 72.64%,
-      rgba(0, 0, 0, 0.22) 78.59%,
-      rgba(0, 0, 0, 0.11) 84.55%
-    );
-    background-blend-mode: darken;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transform: matrix(0, -1, -1, 0, 0, 0);
-  }
 
   .home-login h2 {
     position: relative;
@@ -113,12 +89,16 @@ margin-left: 5px;
   }
 
   .home-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     width: 450px;
     height: 400px;
 
     right: 10%;
-    top: 17%;
+    top: 25%;
 
     padding: 50px;
 
@@ -164,10 +144,10 @@ margin-left: 5px;
     background: crimson;
     color: #fff;
     cursor: pointer;
+    width: auto;
     font-size: 1.3em;
     font-weight: 500;
     transition: 0.2s;
-    margin-left: 34px;
     margin-top: 40px;
   }
 
@@ -177,6 +157,75 @@ margin-left: 5px;
     background: mediumaquamarine;
   }
 
+  .homepopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+  }
+  .homepopup-content {
+    font-size: 28px;
+    background-color: rgba(201, 199, 238, 0.88);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+    font-family: "Outfit";
+    font-size: 35px;
+
+    height: auto;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .homepopup-content p{
+    font-size: 28px;
+    margin-top: 20px;
+  }
+
+  homebutton {
+    background-color: #D21404;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    border-radius: 8px;
+    margin-left: 40px;
+    margin-right: 40px;
+    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+  }
+
+  .red-flag-home{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+
+    background-color: #D21404;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .red-flag-home p{
+    font-size: 80px;
+    text-align: center;
+    color: #fff;
+  }
   
 }
 
@@ -206,7 +255,7 @@ margin-left: 5px;
 
   .planet img {
     position: absolute;
-    top: -17%;
+    top: -100px;
 
     width: 60%;
     rotate: 10deg;
@@ -216,33 +265,6 @@ margin-left: 5px;
     z-index: -1;
   }
 
-  .rec {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    right: -365px;
-    object-fit: cover;
-    z-index: -1;
-
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.93) 18.39%,
-      rgba(0, 0, 0, 0.91) 22.13%,
-      rgba(0, 0, 0, 0.9) 25.71%,
-      rgba(0, 0, 0, 0.86) 33.85%,
-      rgba(0, 0, 0, 0.82) 40.33%,
-      rgba(0, 0, 0, 0.77) 47.48%,
-      rgba(0, 0, 0, 0.66) 53.43%,
-      rgba(0, 0, 0, 0.55) 60.74%,
-      rgba(0, 0, 0, 0.44) 65.33%,
-      rgba(0, 0, 0, 0.35) 72.64%,
-      rgba(0, 0, 0, 0.22) 78.59%,
-      rgba(0, 0, 0, 0.11) 84.55%
-    );
-    background-blend-mode: darken;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    transform: matrix(0, -1, -1, 0, 0, 0);
-  }
 
   .home-login h2 {
     position: relative;
@@ -265,6 +287,10 @@ margin-left: 5px;
   }
 
   .home-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     width: 450px;
     height: 400px;
@@ -316,10 +342,10 @@ margin-left: 5px;
     background: crimson;
     color: #fff;
     cursor: pointer;
+    width: auto;
     font-size: 1.3em;
     font-weight: 500;
     transition: 0.2s;
-    margin-left: 34px;
     margin-top: 40px;
   }
 
@@ -327,6 +353,76 @@ margin-left: 5px;
     letter-spacing: 0.2em;
     color: black;
     background: mediumaquamarine;
+  }
+
+  .homepopup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+  }
+  .homepopup-content {
+    font-size: 28px;
+    background-color: rgba(201, 199, 238, 0.88);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: "bungee";
+    border: 7px solid #f31c1c;
+    box-sizing: border-box;
+    max-width: 80%; /* Optional: Limit width of the popup content */
+    font-family: "Outfit";
+    font-size: 35px;
+
+    height: auto;
+    width: auto;
+    overflow: hidden;
+  }
+
+  .homepopup-content p{
+    font-size: 28px;
+    margin-top: 20px;
+  }
+
+  homebutton {
+    background-color: #D21404;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 28px;
+    border-radius: 8px;
+    margin-left: 40px;
+    margin-right: 40px;
+    transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
+  }
+
+  .red-flag-home{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+
+    background-color: #D21404;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .red-flag-home p{
+    font-size: 80px;
+    text-align: center;
+    color: #fff;
   }
 
   
