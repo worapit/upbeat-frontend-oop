@@ -26,17 +26,38 @@ export default function CstPlan() {
   const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
   const [startingTimestamp, setStartingTimestamp] = useState(Date.now());
   const [showPopup, setShowPopup] = useState(false);
+
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0 });
   const navigate = useNavigate();
 
   const handleClickComplete = () => {
     setShowPopup(true);
   };
+  
   const handleConfirmation = (choice) => {
     if (choice) {
       navigate("/map");
+
     }
     setShowPopup(false);
+  };
+
+  const handleConfirm = (choice) => {
+    if (client) {
+      if (client.connected) {
+        const username = localStorage.getItem("username");
+        client.publish({
+          destination: "/app/changePlan",
+          body: JSON.stringify({ status: "done" }),
+        });
+        navigate("/map");
+      }
+    }
+    if(choice)
+    {
+      navigate("/map");
+    }
+    setShowPopup(false)
   };
 
   useEffect(() => {
@@ -59,6 +80,7 @@ export default function CstPlan() {
               if (body["playerMgs"] == localStorage.getItem("username")) {
                 setErrorMgs(body["errorMgs"]);
               }
+
             });
 
             client.subscribe("/app/getConfig", (message) => {
@@ -78,6 +100,12 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setTerritory(body);
             });
+
+            const handleConfirm = () => {
+              // ...
+              client.publish({ destination: "/app/changePlan", body: JSON.stringify({ status: "done" }) });
+            };
+            
           }
         });
       client.activate();
@@ -233,8 +261,8 @@ export default function CstPlan() {
           <div className="cstpopup-content">
             <p style={{fontSize: "38px"}}>Are you sure to confirm this plan?</p>
             <p style={{color: "red", fontSize: "26px", textDecoration: "underline", marginTop: "-2%"}}>keep in mind old plan will be replaced by the new one.</p>
-            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>confirm</button>
-            <button className="cstplanno" onClick={() => handleConfirmation(false)}>cancel</button>
+            <button className="cstplanyes" onClick={() => handleConfirm(true)}>confirm</button>
+            <button className="cstplanno" onClick={() => handleConfirm(false)}>cancel</button>
           </div>
         </div>
         )}
