@@ -25,7 +25,7 @@ export default function PopUp() {
 
   return (
     <div className="popup">
-      <h2 style={{ fontFamily: "Bungee, cursive" }}>HOW TO PLAY</h2>
+      <h1 style={{ fontFamily: "Bungee, cursive" }}>HOW TO PLAY</h1>
 
       <div
         className="text-popup"
