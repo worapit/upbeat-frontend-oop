@@ -147,7 +147,7 @@ body {
     font-family: "Bungee", sans-serif;
     text-decoration: none;
     color: #fff;
-    background-color: #1e90ff;
+    background-color: #149760;
     cursor: pointer;
     border-radius: 40px;
     transition: background-color 0.3s, letter-spacing 0.3s;
@@ -327,11 +327,12 @@ body {
     z-index: 1000;
   }
   .cstpopup-content {
-    background-color: rgba(201, 199, 238, 0.88);
+    background-color: rgb(255, 255, 255);
     padding: 40px;
-    border-radius: 20px;
+    font-size: 36px;
+    border-radius: 40px;
     text-align: center;
-    font-family: "bungee";
+    font-family: "outfit";
     border: 7px solid #f31c1c;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
@@ -355,7 +356,7 @@ body {
     padding: 40px;
     border-radius: 20px;
     text-align: center;
-    font-family: "bungee";
+    font-family: "outfit";
     border: 7px solid #f31c1c;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
@@ -368,8 +369,8 @@ body {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 22px;
-  border-radius: 8px;
+  font-size: 24px;
+  border-radius: 40px;
   margin-left: 40px;
   margin-right: 40px;
   transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
@@ -386,7 +387,7 @@ body {
 
 .cstplanno:hover,
 .cstplanyes:hover {
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 }
 
 
@@ -527,7 +528,7 @@ body {
     font-family: "Bungee", sans-serif;
     text-decoration: none;
     color: #fff;
-    background-color: #1e90ff;
+    background-color: #149760;
     cursor: pointer;
     border-radius: 40px;
     transition: background-color 0.3s, letter-spacing 0.3s;
@@ -706,13 +707,13 @@ body {
     align-items: center;
     z-index: 1000;
   }
-
   .cstpopup-content {
-    background-color: rgba(201, 199, 238, 0.88);
+    background-color: rgb(255, 255, 255);
     padding: 40px;
-    border-radius: 20px;
+    font-size: 36px;
+    border-radius: 40px;
     text-align: center;
-    font-family: "bungee";
+    font-family: "outfit";
     border: 7px solid #f31c1c;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
@@ -736,7 +737,7 @@ body {
     padding: 40px;
     border-radius: 20px;
     text-align: center;
-    font-family: "bungee";
+    font-family: "outfit";
     border: 7px solid #f31c1c;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
@@ -749,8 +750,8 @@ body {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 22px;
-  border-radius: 8px;
+  font-size: 24px;
+  border-radius: 40px;
   margin-left: 40px;
   margin-right: 40px;
   transition: letter-spacing 0.5s; /* Add a smooth transition for the letter-spacing */
@@ -767,9 +768,7 @@ body {
 
 .cstplanno:hover,
 .cstplanyes:hover {
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 }
-
-
 
 }

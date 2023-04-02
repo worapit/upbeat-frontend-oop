@@ -231,10 +231,10 @@ export default function CstPlan() {
         {showPopup && (
         <div className="cstpopup">
           <div className="cstpopup-content">
-            <p style={{fontSize: "30px"}}>Are you sure to confirm this plan?</p>
-            <p style={{color: "red", fontSize: "20px", textDecoration: "underline"}}>Keep in mind that changing plans will cost your budget.</p>
-            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>Confirm</button>
-            <button className="cstplanno" onClick={() => handleConfirmation(false)}>Cancel</button>
+            <p style={{fontSize: "38px"}}>Are you sure to confirm this plan?</p>
+            <p style={{color: "red", fontSize: "26px", textDecoration: "underline", marginTop: "-2%"}}>keep in mind old plan will be replaced by the new one.</p>
+            <button className="cstplanyes" onClick={() => handleConfirmation(true)}>confirm</button>
+            <button className="cstplanno" onClick={() => handleConfirmation(false)}>cancel</button>
           </div>
         </div>
         )}
@@ -247,11 +247,14 @@ export default function CstPlan() {
                 borderColor: errorMgs == null ? "green" : "#f31c1c",
               }}
             >
-              <p style={{ fontSize: "28px" }}>
+              <p style={{ fontSize: "32px" }}>
                 {errorMgs == null
-                  ? "Your code is correct"
-                  : "Your code is incorrect"}
-                {errorMgs && <><br />{"Reason: " +errorMgs}</>}
+                  ? "Your plan is correct"
+                  : "Your plan is incorrect"}
+                {errorMgs && <><br />{"Reason: " +errorMgs} <br /> 
+                  <p style={{color:"red",   textDecoration: "underline",
+                    fontSize: "28px",
+                     }}>Incorrect plans can't be confirmed.</p></>}
               </p>
               {errorMgs == null && (
                 <>
@@ -260,7 +263,7 @@ export default function CstPlan() {
                     style={{
                       color: "green",
                       textDecoration: "underline",
-                      fontSize: "20px",
+                      fontSize: "28px",
                       marginTop: "-30px"
                     }}
                   >
@@ -269,7 +272,7 @@ export default function CstPlan() {
                 </>
               )}
               <button className="cstplanno" onClick={() => setShowErrorPopup(false)}>
-                Close
+                close
               </button>
             </div>
           </div>
