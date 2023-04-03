@@ -260,6 +260,9 @@ export default function CstPlan() {
         {showPopup && (
         <div className="cstpopup">
           <div className="cstpopup-content">
+            <div className="red-flag-map">
+              <p>!</p>
+            </div>
             <p style={{fontSize: "38px"}}>Are you sure to confirm this plan?</p>
             <p style={{color: "red", fontSize: "26px", textDecoration: "underline", marginTop: "-2%"}}>keep in mind old plan will be replaced by the new one.</p>
             <button className="cstplanyes" onClick={() => handleConfirm(true)}>confirm</button>
