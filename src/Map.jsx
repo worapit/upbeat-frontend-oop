@@ -68,6 +68,7 @@ export default function Map() {
               setBudgetP1(body["player1"]["budget"]);
               setBudgetP2(body["player2"]["budget"]);
               setCurrentTurn(body["currentTurn"]["name"]);
+              setWinner(body["winner"]);
             });
             client.subscribe("/topic/game", (message) => {
               const body = JSON.parse(message.body);
@@ -76,6 +77,7 @@ export default function Map() {
               setBudgetP1(body["player1"]["budget"]);
               setBudgetP2(body["player2"]["budget"]);
               setCurrentTurn(body["currentTurn"]["name"]);
+              setWinner(body["winner"]);
             });
             client.subscribe("/app/territory", (message) => {
               const body = JSON.parse(message.body);
@@ -85,19 +87,9 @@ export default function Map() {
               const body = JSON.parse(message.body);
               setTerritory(body);
             });
-            client.subscribe("/app/doPlan", (message) => {
-              const body = JSON.parse(message.body);
-              setBudgetP1(body["player1"]["budget"]);
-              setBudgetP2(body["player2"]["budget"]);
-              setCurrentTurn(body["currentTurn"]["name"]);
-              setWinner(body["winner"]);
-            });
-            client.subscribe("/topic/doPlan", (message) => {
-              const body = JSON.parse(message.body);
-              setBudgetP1(body["player1"]["budget"]);
-              setBudgetP2(body["player2"]["budget"]);
-              setCurrentTurn(body["currentTurn"]["name"]);
-              setWinner(body["winner"]);
+            client.publish({
+              destination: "/app/doPlan",
+              replyTo: "/app/game",
             });
           }
         });
