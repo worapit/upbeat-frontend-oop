@@ -2,16 +2,25 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import region from "../image/region.png";
 import cityCenter from "../image/city_center.png";
+import cityCrew from "../image/city_crew.png";
 import city from "../image/city.png";
 import "./hexagon.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Hexagon({ x, y, deposit, isCityCenter, owner, click }) {
   function setRegion() {
-    if (isCityCenter && owner) return cityCenter;
-    else if (owner) return city;
-    else return region;
+    if (isCityCenter && owner["name"] === localStorage.getItem("username")) {
+      return cityCenter;
+    }
+    else if (owner != null && owner["name"] === localStorage.getItem("username") &&
+      x === owner["cityCrew_m"] && y === owner["cityCrew_n"]) {
+      return cityCrew;
+    }
+    else if (owner != null && owner["name"] === localStorage.getItem("username")) {
+      return city;
+    }
+    else {
+      return region;
+    }
   }
 
   return (

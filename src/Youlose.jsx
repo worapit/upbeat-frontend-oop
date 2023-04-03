@@ -11,6 +11,8 @@ export default function Youlose() {
   const navigate = useNavigate();
   const [countdown, setCountdown] = useState(8);
 
+  localStorage.clear();
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(countdown - 1);

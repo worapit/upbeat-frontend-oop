@@ -33,7 +33,6 @@ export default function Home() {
     }
   `;
   
-
   useEffect(() => {
     if (!client) {
       client = new Client(
@@ -42,10 +41,17 @@ export default function Home() {
           onConnect: () => {
             client.subscribe("/app/game", (message) => {
               const body = JSON.parse(message.body);
+              if (body["winner"]) {
+                client.publish({
+                  destination: "/app/newGame",
+                  replyTo: "/app/game",
+                });
+              }
               if (body["player1"])
                 setNameP1(body["player1"]["name"]);
               if (body["player2"])
                 setNameP2(body["player2"]["name"]);
+              console.log("app/game", body);
             });
 
             client.subscribe("/topic/game", (message) => {
@@ -82,10 +88,9 @@ export default function Home() {
           body: JSON.stringify({
             name: username,
           }),
-          replyTo: "/topic/game",
+          replyTo: "/app/game",
         });
       }
-  
       navigate("/start");
     }
   };
