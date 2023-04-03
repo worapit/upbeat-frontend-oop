@@ -27,87 +27,9 @@ export default function Map() {
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0, deposit: 0, owner: null });
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
 
-  const navigate = useNavigate();
-
-  const handleConfirm = (choice) => {
-    if (choice) {
-      if (client) {
-        if (client.connected) {
-          let username = localStorage.getItem("username");
-          client.publish(
-            {
-              destination: "/app/changPlan",
-              body: JSON.stringify(
-                {
-                  name: username,
-                }),
-              replyTo: "/topic/game",
-            });
-        }
-      }
-      navigate('/cstPlan');
-    }
-    setIsConfirmPopupOpen(false);
-  };
-
-  const showConfirmPopup = () => {
-    setIsConfirmPopupOpen(true);
-  };
-  
-  useEffect(() => {
-    if (!client) {
-      client = new Client(
-        {
-          brokerURL: url,
-          onConnect: () => {
-            client.subscribe("/app/game", (message) => {
-              const body = JSON.parse(message.body);
-              setNameP1(body["player1"]["name"]);
-              setP1Ready(body["p1Ready"]);
-              setP2Ready(body["p2Ready"]);
-              setBudgetP1(body["player1"]["budget"]);
-              setBudgetP2(body["player2"]["budget"]);
-              setCurrentTurn(body["currentTurn"]["name"]);
-            });
-            client.subscribe("/topic/game", (message) => {
-              const body = JSON.parse(message.body);
-              setP1Ready(body["p1Ready"]);
-              setP2Ready(body["p2Ready"]);
-              setBudgetP1(body["player1"]["budget"]);
-              setBudgetP2(body["player2"]["budget"]);
-              setCurrentTurn(body["currentTurn"]["name"]);
-            });
-            client.subscribe("/app/territory", (message) => {
-              const body = JSON.parse(message.body);
-              setTerritory(body);
-            });
-            client.subscribe("/topic/territory", (message) => {
-              const body = JSON.parse(message.body);
-              setTerritory(body);
-            });
-            client.subscribe("/app/doPlan", (message) => {
-              const body = JSON.parse(message.body);
-              setBudgetP1(body["player1"]["budget"]);
-              setBudgetP2(body["player2"]["budget"]);
-              setCurrentTurn(body["currentTurn"]["name"]);
-              setWinner(body["winner"]);
-            });
-            client.subscribe("/topic/doPlan", (message) => {
-              const body = JSON.parse(message.body);
-              setBudgetP1(body["player1"]["budget"]);
-              setBudgetP2(body["player2"]["budget"]);
-              setCurrentTurn(body["currentTurn"]["name"]);
-              setWinner(body["winner"]);
-            });
-          }
-        });
       client.activate();
 
-      localStorage.removeItem("timerTimestamp");
-      localStorage.removeItem("timeOut");
-      localStorage.setItem("setPlan", true);
-    }
-  }, [p1Ready, p2Ready, budgetP1, budgetP2, currentTurn, winner]);
+
 
   function openPopup() {
     setIsPopupOpen(true);
@@ -124,10 +46,7 @@ export default function Map() {
   }
 `;
 
-  const click = (x, y, deposit, owner) => {
-    x++;
-    y++;
-    setDepositPosition({ x, y, deposit, owner });
+
   };
 
   if (winner != null) {
@@ -151,21 +70,24 @@ export default function Map() {
         </span>
       </div>
 
-      <div className="map-show-deposit" >
+      <div className="map-show-deposit">
         <div className="map-show-type">
-          <span >DEPOSIT</span>
+          <span>DEPOSIT</span>
         </div>
         <div className="text-box-deposit">
-           <div>
+          <div>
             <div className="display-deposit-box">
-              <p>row   <br></br> {depositPosition.x}</p>
-              <p>column   <br></br> {depositPosition.y}</p>
+              <p>
+                row <br></br> {depositPosition.x}
+              </p>
+              <p>
+                column <br></br> {depositPosition.y}
+              </p>
             </div>
             <div className="deposit-border-decor">
-              <span style={{color: "#b19a9a"}}>deposit</span>
-              <p>{depositPosition.owner == null ? "-" : depositPosition.owner["name"] === localStorage.getItem("username") ? depositPosition.deposit : "-"}</p>
+
             </div>
-           </div>
+          </div>
         </div>
       </div>
 
@@ -197,9 +119,9 @@ export default function Map() {
         </div>
       </div>
 
-      <div className="map-show-budget" >
+      <div className="map-show-budget">
         <div className="map-show-type2">
-          <span >BUDGET</span>
+          <span>BUDGET</span>
         </div>
         <div className="map-budget">
           <div className="map-withIcon">
@@ -233,12 +155,25 @@ export default function Map() {
 
       {isConfirmPopupOpen && (
         <div id="mapconfirm-popup-container">
-          <div className="mapconfirm-popup">
+          <div className="mapconfirm-popup1">
+            <div className="red-flag-map">
+              <p>!</p>
+            </div>
             <p>Are you sure to change plan?</p>
-            <p style={{color: "red", fontSize: "26px", textDecoration: "underline", marginTop: "-2%"}}>keep in mind that changing plans will cost your budget and if plans aren't confirmed in time, the system will submit only one word "done" automatically.</p>
+            <p
+              style={{
+                color: "red",
+                fontSize: "26px",
+                textDecoration: "underline",
+                marginTop: "-2%",
+              }}
+            >
+              keep in mind that changing plans will cost your budget and if
+              plans aren't confirmed in time, the system will submit only one
+              word "done" automatically.
+            </p>
             <div className="mapconfirm-popup-buttons">
-              <button className="map-yes" onClick={() => handleConfirm(true)}>confirm</button>
-              <button className="map-no" onClick={() => handleConfirm(false)}>cancel</button>
+
             </div>
           </div>
         </div>
@@ -259,4 +194,3 @@ export default function Map() {
     </div>
   );
 }
-
