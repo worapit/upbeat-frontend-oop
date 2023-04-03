@@ -2,8 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Hexagon from "./component/Hexagon";
 import CountdownTimer from "./CountdownTimer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins } from "@fortawesome/free-solid-svg-icons";
 import "./cstPlan.css";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
@@ -22,10 +20,11 @@ export default function CstPlan() {
   const [territory, setTerritory] = useState([[]]);
   const [initPlanMin, setInitPlanMin] = useState(0);
   const [initPlanSec, setInitPlanSec] = useState(0);
-  const [planRevMin, setPlanRevMin] = useState(0);
-  const [planRevSec, setPlanRevSec] = useState(0);
+  // const [planRevMin, setPlanRevMin] = useState(0);
+  // const [planRevSec, setPlanRevSec] = useState(0);
 
-  const [budget, setBudget] = useState(0);
+  const [budgetP1, setBudgetP1] = useState(0);
+  const [budgetP2, setBudgetP2] = useState(0);
 
   const [showErrorPopup, setShowErrorPopup] = useState(false);
   const [syntaxCheckClicked, setSyntaxCheckClicked] = useState(false);
@@ -40,35 +39,25 @@ export default function CstPlan() {
   };
   
   const handleConfirm = (choice) => {
-    if (client) {
-      if (client.connected) {
-        let username = localStorage.getItem("username");
-        client.publish(
-          {
-            destination: "/app/confirmPlan",
-            body: JSON.stringify(
-              {
-                name: username,
-              }),
-            replyTo: "/app/game",
-          });
-        
-        client.publish({
-          destination: "/app/changePlan",
-          body: JSON.stringify({ status: "done" }),
-        });
-        navigate("/map");
-      }
-    }
     if(choice)
     {
+      if (client) {
+        if (client.connected) {
+          let username = localStorage.getItem("username");
+          client.publish(
+            {
+              destination: "/app/confirmPlan",
+              body: JSON.stringify(
+                {
+                  name: username,
+                }),
+              replyTo: "/app/game",
+            });
+        }
+      }
       navigate("/map");
     }
     setShowPopup(false)
-    
-    if (!localStorage.getItem("firstPlayer")) {
-      localStorage.setItem("firstPlayer", "true");
-    }
   };
 
   useEffect(() => {
@@ -81,25 +70,15 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setNameP1(body["player1"]["name"]);
               setNameP2(body["player2"]["name"]);
-              if (localStorage.getItem("username") === nameP1) {
-                setBudget(body["player1"]["budget"]);
-              }
-              else {
-                setBudget(body["player2"]["budget"]);
-              }
+              setBudgetP1(body["player1"]["budget"]);
+              setBudgetP2(body["player2"]["budget"]);
               setErrorMgs(body["errorMgs"]);
             });
 
             client.subscribe("/topic/game", (message) => {
               const body = JSON.parse(message.body);
-              setNameP1(body["player1"]["name"]);
-              setNameP2(body["player2"]["name"]);
-              if (localStorage.getItem("username") === nameP1) {
-                setBudget(body["player1"]["budget"]);
-              }
-              else {
-                setBudget(body["player2"]["budget"]);
-              }
+              setBudgetP1(body["player1"]["budget"]);
+              setBudgetP2(body["player2"]["budget"]);
               if (body["playerMgs"] == localStorage.getItem("username")) {
                 setErrorMgs(body["errorMgs"]);
               }
@@ -125,11 +104,6 @@ export default function CstPlan() {
               const body = JSON.parse(message.body);
               setTerritory(body);
             });
-
-            const handleConfirm = () => {
-              client.publish({ destination: "/app/changePlan", body: JSON.stringify({ status: "done" }) });
-            };
-            
           }
         });
       client.activate();
@@ -143,24 +117,18 @@ export default function CstPlan() {
     if (storedTimestamp && !isNaN(storedTimestamp)) {
       setStartingTimestamp(parseInt(storedTimestamp));
     }
-  }, [nameP1, nameP2, errorMgs, syntaxCheckClicked]);
+  }, [nameP1, nameP2, errorMgs, syntaxCheckClicked, budgetP1, budgetP2]);
 
   useEffect(() => {
     if (initPlanMin !== 0 || initPlanSec !== 0) {
       if(!localStorage.getItem("timerTimestamp"))
       {
-        let newTimestamp;
-        if (!localStorage.getItem("setPlan")) {
-          newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
-        }
-        else {
-          newTimestamp = Date.now() + planRevMin * 60 * 1000 + planRevSec * 1000;
-        }
+        const newTimestamp = Date.now() + initPlanMin * 60 * 1000 + initPlanSec * 1000;
         setStartingTimestamp(newTimestamp);
         localStorage.setItem("timerTimestamp", newTimestamp);
       }
     }
-  }, [initPlanMin, initPlanSec, planRevMin, planRevSec, budget]);
+  }, [initPlanMin, initPlanSec]);
 
   const setPlan = () => {
     setSyntaxCheckClicked(true);
@@ -172,6 +140,7 @@ export default function CstPlan() {
             destination: "/app/setPlan",
             body: JSON.stringify(
               {
+                firstPlan: localStorage.getItem("setPlan") == null,
                 name: username,
                 plan: planText,
               }),
@@ -182,22 +151,23 @@ export default function CstPlan() {
     }
   };
 
-  if(localStorage.getItem("timeOut"))
-  {
-    if (client) {
-      if (client.connected) {
-        const username = localStorage.getItem("username");
-        client.publish({
-          destination: "/app/setPlan",
-          body: JSON.stringify({
-            name: username,
-            plan: "done",
-          }),
-        });
-      }
-      navigate("/map");
-    }
-  }
+  // if(localStorage.getItem("timeOut"))
+  // {
+  //   if (client) {
+  //     if (client.connected) {
+  //       const username = localStorage.getItem("username");
+  //       client.publish({
+  //         destination: "/app/setPlan",
+  //         body: JSON.stringify({
+  //           firstPlan: localStorage.getItem("setPlan") == null,
+  //           name: username,
+  //           plan: "done",
+  //         }),
+  //       });
+  //     }
+  //     navigate("/map");
+  //   }
+  // }
   
   const click = (x, y, deposit, owner) => {
     x++;
@@ -212,8 +182,8 @@ export default function CstPlan() {
         <div className="cst-show-detail">
           <CountdownTimer
             countdownTimestampMs={startingTimestamp}
-            minutes={localStorage.getItem("setPlan") == null ? initPlanMin : planRevMin}
-            seconds={localStorage.getItem("setPlan") == null ? initPlanSec : planRevSec}
+            minutes={initPlanMin}
+            seconds={initPlanSec}
           />
 
           <div className="cst-show-regions">
@@ -226,10 +196,7 @@ export default function CstPlan() {
                     y={territory[rowIndex][colIndex]["col"]}
                     deposit={territory[rowIndex][colIndex]["deposit"]}
                     isCityCenter={territory[rowIndex][colIndex]["cityCenter"]}
-                    owner={
-                      territory[rowIndex][colIndex]["owner"] == null ?
-                        false : territory[rowIndex][colIndex]["owner"]["name"] === localStorage.getItem("username")
-                    }
+                    owner={territory[rowIndex][colIndex]["owner"]}
                     click={click}
                   />
                 ))}
@@ -239,7 +206,7 @@ export default function CstPlan() {
           <div className="cst-show-budget">
             <div className="cst-budget">
               <span>BUDGET :</span>
-              <span style={{ color: "#DFE658" }}>{budget}</span>
+              <span style={{ color: "#DFE658" }}>{localStorage.getItem("username") === nameP1 ? budgetP1 : budgetP2}</span>
             </div>
           </div>
 
@@ -254,7 +221,7 @@ export default function CstPlan() {
               <div className="cst-line-decor"></div>
               <div className="cst-deposit">
                 <p >DEPOSIT</p>
-                <p style={{ color: "#DFE658" }}>{depositPosition.deposit}</p>
+                <p style={{ color: "#DFE658" }}>{depositPosition.owner == null ? "-" : depositPosition.owner["name"] === localStorage.getItem("username") ? depositPosition.deposit : "-"}</p>
               </div>
             </div>
           </div>
