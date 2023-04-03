@@ -164,6 +164,9 @@ export default function Start() {
           {showConfirm && (
             <div className="confirm-dialog">
               <div className="confirm-dialog-content">
+                <div className="red-flag-map">
+                  <p>!</p>
+                </div>
                 <h3 style={{fontSize: "36px"}}>Are you sure you want to leave?</h3>
                 <div className="confirm-actions">
                   <button className="confirm-yes" onClick={confirmNavigation}>
