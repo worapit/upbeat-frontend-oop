@@ -474,30 +474,35 @@ export default function Cnfile() {
         {showPopup && (
           <div className="modepopup">
             <div className="modepopup-inner">
-              <h2 style={{ fontSize: "36px" }}>
-                Are you sure to confirm configuration?
-              </h2>
-              <h2
-                style={{
-                  color: "crimson",
-                  fontSize: "26px",
-                  textDecoration: "underline",
-                }}
-              >
-                keep in mind your configuration may give you an advantage.
-              </h2>
-              <button
-                className="modepopup-confirm-button"
-                onClick={() => handleConfirm()}
-              >
-                confirm
-              </button>
-              <button
-                className="modepopup-close-button"
-                onClick={() => setShowPopup(false)}
-              >
-                cancel
-              </button>
+              <div className="red-flag-cnf">
+                <p>!</p>
+              </div>
+              <div className="set-text-popup-cn">
+                <h2 style={{ fontSize: "36px" }}>
+                  Are you sure to confirm configuration?
+                </h2>
+                <h2
+                  style={{
+                    color: "crimson",
+                    fontSize: "26px",
+                    textDecoration: "underline",
+                  }}
+                >
+                  keep in mind your configuration may give you an advantage.
+                </h2>
+                <button
+                  className="modepopup-confirm-button"
+                  onClick={() => handleConfirm()}
+                >
+                  confirm
+                </button>
+                <button
+                  className="modepopup-close-button"
+                  onClick={() => setShowPopup(false)}
+                >
+                  cancel
+                </button>
+              </div>
             </div>
           </div>
         )}

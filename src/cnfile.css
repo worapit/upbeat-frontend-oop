@@ -351,22 +351,54 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
   }
   
   .modepopup-inner {
     background-color: rgb(255, 255, 255);
     padding: 40px;
     border-radius: 20px;
+    height: 430px;
+
     text-align: center;
     font-family: "outfit";
     border: 8px solid #008118;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
   }
+
+  .red-flag-cnf{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+
+    background-color: #D21404;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+   
+    
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .red-flag-cnf p{
+    font-size: 80px;
+    margin-top: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .set-text-popup-cn{
+    margin-top: 40px;
+  }
+  
   
   .modepopup-close-button,
   .modepopup-confirm-button {
@@ -827,21 +859,52 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
   }
   
   .modepopup-inner {
     background-color: rgb(255, 255, 255);
     padding: 40px;
     border-radius: 20px;
+    height: 430px;
+
     text-align: center;
     font-family: "outfit";
     border: 8px solid #008118;
     box-sizing: border-box;
     max-width: 80%; /* Optional: Limit width of the popup content */
+  }
+
+  .red-flag-cnf{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    text-align: center;
+
+    background-color: #D21404;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+   
+    
+    margin: auto;
+    overflow: hidden;
+  }
+
+  .red-flag-cnf p{
+    font-size: 80px;
+    margin-top: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  .set-text-popup-cn{
+    margin-top: 40px;
   }
   
   .modepopup-close-button,
