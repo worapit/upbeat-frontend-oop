@@ -26,8 +26,6 @@ export default function Map() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [depositPosition, setDepositPosition] = useState({ x: 0, y: 0, deposit: 0, owner: null });
   const [isConfirmPopupOpen, setIsConfirmPopupOpen] = useState(false);
-  const [bothPlayersConfirmed, setBothPlayersConfirmed] = useState(false);
-
 
   const navigate = useNavigate();
 
@@ -43,7 +41,7 @@ export default function Map() {
                 {
                   name: username,
                 }),
-              replyTo: "/app/game",
+              replyTo: "/topic/game",
             });
         }
       }
