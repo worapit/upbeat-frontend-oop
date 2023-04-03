@@ -252,7 +252,8 @@ export default function Map() {
               word "done" automatically.
             </p>
             <div className="mapconfirm-popup-buttons">
-
+            <button className="map-yes" onClick={() => handleConfirm(true)}>confirm</button>
+              <button className="map-no" onClick={() => handleConfirm(false)}>cancel</button>
             </div>
           </div>
         </div>
